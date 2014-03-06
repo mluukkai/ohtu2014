@@ -200,22 +200,23 @@ Ohjelmakoodin editointi kannattaa tehdä IDE:llä, ja välillä myös ohjelman j
 
 Alkuvalmistelut:
 
-* luo käyttäjätunnus laitoksen palvelimella sijaitsevaan Jenkinsiin "http://jenkins.staff.cs.helsinki.fi/":http://jenkins.staff.cs.helsinki.fi/
+* Suomen johtava IaaS-palvelu [UpCloud](http://fi.upcloud.com/) on tarjonnut kurssin käyttöön palvelimen Jenkinsin hostaamista varten, palvelin on osoittessa http://ohtu.jamo.io/
+* luo käyttäjätunnus Jenkinsiin
   * sign up oikeassa yläkulmassa
-* Downloadaa Jenkins Guide osoitteesta "http://www.wakaleo.com/books/jenkins-the-definitive-guide":http://www.wakaleo.com/books/jenkins-the-definitive-guide
-  * jos et halua täyttää kaikkia lomakkeita, löytyy myös paikallinen kopio "intranetissä":https://www.cs.helsinki.fi/i/mluukkai/jenkins-the-definitive-guide.pdf
-  * *tarkempia ohjeita allaoleviin tehtäviin on Jenkins Guidessa, sivuilla 21-40 tehdään periaatteessa lähes sama kuin alla
+* Downloadaa Jenkins Guide osoitteesta http://www.wakaleo.com/books/jenkins-the-definitive-guide
+  * jos et halua täyttää kaikkia lomakkeita, löytyy myös paikallinen kopio [intranetissä](https://www.cs.helsinki.fi/i/mluukkai/jenkins-the-definitive-guide.pdf)
+  * tarkempia ohjeita allaoleviin tehtäviin on Jenkins Guidessa, sivuilla 21-40 tehdään periaatteessa lähes sama kuin alla
 
-luodaan ensimmäinen "build job" ja määritellään se kääntämään ja testaamaan edellisen tehtävän "OhtuVarasto"
+Luodaan ensimmäinen "build job" ja määritellään se kääntämään ja testaamaan edellisen tehtävän "OhtuVarasto"
 
-* valitse *new job* ja *free style software project*
+* valitse *new item* ja *free style software project*
   * nimeä projekti muodossa __<käyttäjätunnus>-viikko1__
 * täytä lomakkeesta kohdat:
   * laita rasti kohtaan *discard old build* ja merkkaa avautuvaan laatikkoon esim 10
   * kohtaan *GitHub project* projetkin GitHub-repositorion osoite
 * Source Code Management
   * valitse *git*
-  * laita kohtaan *Repository URL* GitHubista projektin kohdalta löytyvä *Git Read-Only* 
+  * laita kohtaan *Repository URL* GitHubista projektin kohdalta löytyvä *HTTPS clone URL* (**Katso ao. kuva**)
 * Build
   * *add build step -> invoke top-level maven targets*
   * kohtaan *goals* laitetaan halutut maven-targetit, tällä kertaa <code>clean test</code>
@@ -225,6 +226,9 @@ luodaan ensimmäinen "build job" ja määritellään se kääntämään ja testa
 * jos kaikki on hyvin, tulee build job -kohtaan sininen pallo
   * klikkaa palloa katso mitä *console output*:ista löytyy
   * console output on tärkeä paikka jos kaikki ei mene odotusten mukaisesti
+
+![kuva](https://github.com/mluukkai/ohtu2014/raw/master/images/viikko1-3.png)
+
 
 ## 8. Jenkins, osa 2
 
