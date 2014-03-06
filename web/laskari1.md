@@ -189,7 +189,7 @@ Ohjelmakoodin editointi kannattaa tehdä IDE:llä, ja välillä myös ohjelman j
   * Joudut huomioimaan ainakin tapaukset, joissa varastoon yritetään laittaa liikaa tavaraa ja varastosta yritetään ottaa enemmän kuin siellä on
   * edellinenkään ei vielä riitä
 * testauskattavuuden saat selville seuraavasti:
-  * käytetään mavenissa pluginina olevaa [cobertura]()http://cobertura.sourceforge.net/)-nimistä koodikattavuustyökalua
+  * käytetään mavenissa pluginina olevaa [cobertura](http://cobertura.sourceforge.net/)-nimistä koodikattavuustyökalua
   * suorita projektin juuresta komento <code>mvn cobertura:cobertura</code>
   * kattavuusraportit tulevat hakemistoon target/site/cobertura
   * saat avattua raportin esim. komennolla <code>firefox target/site/cobertura/index.html</code>
