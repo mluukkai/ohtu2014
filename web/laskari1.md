@@ -11,35 +11,41 @@ Tämän viikon tehtävät ovat lähes luennoista riippumattomia, luentomateriaal
 ## 1 Githubiin
 
 Tee itsellesi tarvittaessa tunnus GitHubiin
+
 * mene osoitteeseen "https://github.com/plans":https://github.com/plans
 * valitse create free account
 
 Luo repositorio nimellä ohtu-viikko1 
+
 * klikkaa yläpalkin oikeassa reunassa olevaa  "Create a new repo"-ikonia 
 * **laita rasti** kohtaan Initialize this repository with a README 
 
 ![kuva](https://github.com/mluukkai/ohtu2014/raw/master/images/viikko1-1.png)
 
 Hae akateemista tunnusta, näin saat käyttöösi (ilmaiseksi) yksityisiä repositorioita
+
 * "https://github.com/edu":https://github.com/edu
 * HUOM: tämän viikon tehtävissä et vielä tarvitse akateemista tunnusta, ja tämän viikon repositorion *tulee* olla julkinen!
 
 Luo paikalliselle koneellesi ssh-avain (tapahtuu komentoriviltä käsin)
+
 * ks. ohje "http://www.cs.helsinki.fi/group/kuje/compfac/ssh_avain.html":http://www.cs.helsinki.fi/group/kuje/compfac/ssh_avain.html
 
 Lisää avaimen julkinen pari githubiin:
+
 * "https://github.com/settings/ssh":https://github.com/settings/ssh
 
 Näin pystyt käyttämään GitHubia ilman salasanan syöttämistä koneelta jossa juuri luodun avaimen salainen pari löytyy
 
 Konfiguroi nimesi ja emailosoitteesi paikallisen koneesi git:iin antamalla komennot:
-* git config --global user.name "Your Name"
-* git config --global user.email my.address@gmail.com
+
+    git config --global user.name "Your Name"
+    git config --global user.email my.address@gmail.com
 
 
 Kloonaa nyt githubiin tehty repositorio **paikalliselle koneelle**. Tämä tapahtuu antamalla komentoriviltä komento
 
-  git clone git@github.com:mluukkai/ohtu-viikko1.git
+    git clone git@github.com:mluukkai/ohtu-viikko1.git
 
 missä komennon <code>git clone</code> parametrina on repositosiosi sivulta selviävä 'clone URL' (huomaa, että formaatin on oltava SSH):
 
@@ -51,56 +57,59 @@ Nyt paikalliselle koneellesi synytt hakemisto <code>ohtu-viikko1</code> joka on 
 
 * Tee interaktiivinen git-tutoriaali http://try.github.io/levels/1/challenges/1
 * Lue https://we.riseup.net/debian/git-development-howto ja http://www.ralfebert.de/tutorials/git/, molemmat kohtaan *Branching* asti ja samalla komentoriviltä kaikki dokumentin esimerkit. Koulun koneille git on jo asennettu, joten kohdan *Install git* voit skipata
-  * Lisää git-ohjeita esim. "Pro Git -oppaassa":http://git-scm.com/bookbook, kannattaa lukea näin alkuun luku 2
-  * Hyviä ohjeita löydät myös "Githubin helpistä":https://help.github.com/articles/
+  * Lisää git-ohjeita esim. [Pro Git -oppaassa](http://git-scm.com/book), kannattaa lukea näin alkuun luku 2
+  * Hyviä ohjeita löydät myös [Githubin helpistä](https://help.github.com/articles/)
 * git saattaa vaikuttaa aluksi sekavalta, pienen totuttelun jälkeen peruskäyttö on kuitenkin helppoa ja se nostaa elämäsi laatua merkittävästi
 
-tee seuraavat:
+**tee seuraavat:**
+
 * mene edellisessä tehtävässä luotuun repositorion klooniin (eli komennon <code>git clone</code> luomaan hakemiston)
-* lisää ja committaa repositorioon kaksi tiedostoa ja hakemistoa joiden sisällä on tiedostoja
-**  muista hyödyllinen komento git status
+* lisää ja committaa repositorioon kaksi tiedostoa ja hakemistoa, joiden sisällä on tiedostoja
+  * muista hyödyllinen komento git status
 * muuta ainakin kahden tiedoston sisältöä ja committaa muutokset repositorioon
-* tee .gitignore-tiedosto jossa määrittelet että repositorion juurihakemistossa olevat tiedostot joiden pääte on xxx ja hakemisto jonka nimi on target ignoroidaan
+* tee .gitignore-tiedosto, jossa määrittelet että repositorion juurihakemistossa olevat tiedostot joiden pääte on xxx ja hakemisto jonka nimi on target ignoroidaan
 * lisää xxx-päätteisä tiedostoja repositorioon ja varmista että git jättää ne huomioimatta
-* lisää myös hakemisto nimeltä target ja hakemiston sisälle joku tiedosto. varmista että target sisältöineen ei mene versionhallinnan alaisuuteen
+* lisää myös hakemisto nimeltä _target_ ja hakemiston sisälle joku tiedosto. varmista että target sisältöineen ei mene versionhallinnan alaisuuteen
 * tee muutos tiedostoon, älä lisää tiedostoa "staging"-alueelle
-** peru muutos (git status -komento antaa vihjeen miten tämä tapahtuu)
+  * peru muutos (git status -komento antaa vihjeen miten tämä tapahtuu)
 * tee muutos ja lisää tiedosto "staging"-alueelle
-** peru muutos (git status -komento antaa vihjeen miten tämä tapahtuu)
+  * peru muutos (git status -komento antaa vihjeen miten tämä tapahtuu)
 
 ## 3 Tiedostojen lisääminen GitHubiin
 
-Tehtävässä 1 tehtiin GitHubiin repostorio, joka liitettiin paikalliselle koneelle luotuun repositorioon "remote repositoryksi".
+Tehtävässä 1 tehtiin GitHubiin repostorio, joka liitettiin paikalliselle koneelle luotuun repositorioon "remote repositoryksi". Synkronoidaan paikallisen repositorion ja githubin tilanne:
 
-* Lisää nyt tehtävässä 1 paikalliselle koneelle tehtyyn repositorioon muutama tiedosto. 
-* "pushaa" nämä GitHubissa olevaan etärepositorioon antamalla komento "git push"
+* "pushaa" nämä GitHubissa olevaan etärepositorioon antamalla komento <code>git push</code>
 * varmista selaimella että lisätyt tiedostot menevät GitHubiin
 
-## 4 GitHubissa olevan repositorion kloonaaminen
+## 4 Monta kloonia samasta repositoriosta
 
-Yleensä on tapana pitää GitHubissa olevaa repositorioa tiedostojen "keskitettynä" sijoituspaikkana ja liittää paikallisella koneella oleva repositorio GitHubissa olevan repositorion etärepostitorioksi. Tehtävässä 1 tehty tapa (git remote add...) on yksi keino liittää GitHubissa oleva repositorio paikallisen koneen repositorion remoteksi. Toinen tapa on kloonaaminen. Vaikka yleensä yhdestä GitHub-repositoriosta riittää yksi paikallinen kopio, kloonataan nyt harjoituksen vuoksi tehtävässä 1 repositorio paikalliselle koneelle.
+Yleensä on tapana pitää GitHubissa olevaa repositorioa tiedostojen "keskitettynä" sijoituspaikkana ja liittää paikallisella koneella oleva repositorio GitHubissa olevan repositorion etärepostitorioksi kuten teimme tehtävässä 1. 
 
-* mene komentoriville ja esim kotihakemistoosi  (tai johonkin paikkaan joka ei ole git-repositorio) 
+Jos työskennellään useammalta koneelta, on githubissa olevasta repositoriosta monta kloonia ja koloonien tila on pidettävä ajantasalla.
+
+Luodaan nyt paikalliselle koneelle repositoriosta toinen klooni:
+
+* mene komentoriville ja esim. kotihakemistoosi  (tai johonkin paikkaan joka ei ole git-repositorio) 
 * anna komento git clone git@github.com:githubtunnus/repositorionNimi.git nimiKloonille
-** githubtunnus ja repositorionNimi ovat selviävät GitHubista repositoriosi sivulta
-** Huomaathan, että repositotyä kloonatessasi haluat valita osoitteeksi ssh:n etkä http:n.
-!https://github-images.s3.amazonaws.com/help/ssh-clone-url.png!
-** nimiKloonille tulee olemaan kloonatun repositorion nimi, varmista että annat nimen jonka nimistä tiedostoa tai hakemistoa ei ole
+  * githubtunnus ja repositorionNimi ovat selviävät GitHubista repositoriosi sivulta yllä olevan kuvan osoittamasta paikasta
+  * *nimiKloonille* tulee olemaan kloonatun repositorion nimi, varmista että annat nimen jonka nimistä tiedostoa tai hakemistoa ei ole
 * mene kloonattuun repositorioon, lisää sinne jotain tiedostoja ja committaa
 * "pushaa" muutokset GitHubiin
 * varmista selaimella että lisätyt tiedostot menevät GitHubiin
 
-Mene nyt tehtävässä 1 olevaan paikalliseen GitHub-repositoriosi kopioon.
+**Mene nyt tehtävässä 1 tehtyyn GitHub-repositorion klooniin.**
 
-* alkuperäinen paikallinen kopio ei ole enää ajantasalla, "pullaa" sinne muutokset komennolla "git pull origin master"
-** koska alkuperäinen ei ole kloonattu repositorio, joudut kertomaan mistä pullataan (=origin) ja mitä (=master-branch)
+* alkuperäinen paikallinen klooni ei ole enää ajantasalla, "pullaa" sinne muutokset komennolla <code>git pull</code>
 * varmista että molempien paikallisten repositioiden sisältö on nyt sama
 * lisää alkuperäiseen kopioon joitain tiedostoja ja pushaa ne GitHubiin
 * mene jälleen kloonattuun kopioon ja pullaa
 
-* hae osoitteesta "https://github.com/mluukkai/ohtu2013/blob/master/viikko1/OhtuVarasto.zip?raw=true":https://github.com/mluukkai/ohtu2013/blob/master/viikko1/OhtuVarasto.zip?raw=true löytyvä zipattu paketti, pura se kloonattuun repositorioon
+
+
+* hae osoitteesta "https://github.com/mluukkai/ohtu2014/blob/master/viikko1/OhtuVarasto.zip?raw=true":https://github.com/mluukkai/ohtu2014/blob/master/viikko1/OhtuVarasto.zip?raw=true löytyvä zipattu paketti, pura se kloonattuun repositorioon
 * lisää .gitignore-tiedostoosi hakemisto OhtuVarasto/target/
-** huom: hakemistoa ei vielä ole olemassa
+  * huom: hakemistoa ei vielä ole olemassa
 * lisää ja committoi zipistä purettu hakemisto repositorioon ja pushaa se GitHubiin
 * katso vielä kerran selaimella että GitHubissa kaikki on ajan tasalla
 
