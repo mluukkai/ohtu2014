@@ -1,14 +1,14 @@
-h3. Huom: ohjausta tehtävien tekoon to klo 14-16 ja pe klo 14-16 salissa BK107
+## Huom: ohjausta tehtävien tekoon to klo 14-16 ja pe klo 14-16 salissa BK107
 
-h3. Tehtävien palautuksen deadline su 16.3. klo 23.59
+### Tehtävien palautuksen deadline su 16.3. klo 23.59
 
-h3. Miten viikon 1 tehtävät palautetaan?
+## Miten viikon 1 tehtävät palautetaan?
 
 GitHubin, Jenkinsin ja lopussa olevan "palautuslomakkeen" avulla! Eli teet kaiken mitä alla sanotaan, se riittää, kenellekään ei tarvitse näyttää mitään.
 
 Tämän viikon tehtävät ovat lähes luennoista riippumattomia, luentomateriaalista ei tehtäviin ole apua, kaikki tarvittava materiaali on linkitettetty tehtävien yhteyteen
 
-h2. 1 Githubiin
+## 1 Githubiin
 
 Tee itsellesi tarvittaessa tunnus GitHubiin
 * mene osoitteeseen "https://github.com/plans":https://github.com/plans
@@ -40,7 +40,7 @@ Luo paikallinen repositorio ja liitä GitHubin repositorio siihen
 * tee ensin koneellesi hakemisto nimeltä ohtu-viikko1, ja mene hakemistoon
 * toimi Githubiin luomasi uuden repositorion avausnäkymän kohdan *Create a new repository on the command line* mukaan
 
-h2. 2 Gitin alkeet
+## 2 Gitin alkeet
 
 * Lue "https://we.riseup.net/debian/git-development-howto":https://we.riseup.net/debian/git-development-howto ja "http://www.ralfebert.de/tutorials/git/":http://www.ralfebert.de/tutorials/git/, molemmat kohtaan *Branching* asti ja samalla komentoriviltä kaikki dokumentin esimerkit. Koulun koneille git on jo asennettu, joten kohdan *Install git* voit skipata
 **  Lisää git-ohjeita esim. "Pro Git -oppaassa":http://git-scm.com/book, kannattaa lukea näin alkuun luku 2
@@ -60,7 +60,7 @@ tee seuraavat:
 * tee muutos ja lisää tiedosto "staging"-alueelle
 ** peru muutos (git status -komento antaa vihjeen miten tämä tapahtuu)
 
-h2. 3 Tiedostojen lisääminen GitHubiin
+## 3 Tiedostojen lisääminen GitHubiin
 
 Tehtävässä 1 tehtiin GitHubiin repostorio, joka liitettiin paikalliselle koneelle luotuun repositorioon "remote repositoryksi".
 
@@ -68,7 +68,7 @@ Tehtävässä 1 tehtiin GitHubiin repostorio, joka liitettiin paikalliselle kone
 * "pushaa" nämä GitHubissa olevaan etärepositorioon antamalla komento "git push"
 * varmista selaimella että lisätyt tiedostot menevät GitHubiin
 
-h2. 4 GitHubissa olevan repositorion kloonaaminen
+## 4 GitHubissa olevan repositorion kloonaaminen
 
 Yleensä on tapana pitää GitHubissa olevaa repositorioa tiedostojen "keskitettynä" sijoituspaikkana ja liittää paikallisella koneella oleva repositorio GitHubissa olevan repositorion etärepostitorioksi. Tehtävässä 1 tehty tapa (git remote add...) on yksi keino liittää GitHubissa oleva repositorio paikallisen koneen repositorion remoteksi. Toinen tapa on kloonaaminen. Vaikka yleensä yhdestä GitHub-repositoriosta riittää yksi paikallinen kopio, kloonataan nyt harjoituksen vuoksi tehtävässä 1 repositorio paikalliselle koneelle.
 
@@ -98,7 +98,7 @@ Mene nyt tehtävässä 1 olevaan paikalliseen GitHub-repositoriosi kopioon.
 
 Nyt voit poistaa toisen paikallisista kopioista
 
-h2. 5 Maven
+## 5 Maven
 
 * lue ensin "https://www.ibm.com/developerworks/java/tutorials/j-mavenv2/":https://www.ibm.com/developerworks/java/tutorials/j-mavenv2/ kohtaan working with multiple projects asti
 ** myös tämä voi olla hyödyksi "http://docs.codehaus.org/display/MAVENUSER/The+Maven+2+tutorial":http://docs.codehaus.org/display/MAVENUSER/The+Maven+2+tutorial
@@ -158,7 +158,7 @@ h2. 5 Maven
 </pre>
 * generoi jar komennolla <code>mvn assembly:assembly</code>
 
-h2. 6. JUnit
+## 6. JUnit
 * kertaa JUnitin perusteet osoitteesta "https://wiki.helsinki.fi/display/ohma/JUnit":https://wiki.helsinki.fi/display/ohma/JUnit
 * täydennä tehtävässä 4 repositorioosi lisäämäsi projektin testejä siten että luokan Varasto rivikattavuudeksi (line coverage) tulee 100%
 ** Joudut huomioimaan ainakin tapaukset, joissa varastoon yritetään laittaa liikaa tavaraa ja varastosta yritetään ottaa enemmän kuin siellä on
@@ -170,7 +170,7 @@ h2. 6. JUnit
 ** saat avattua raportin esim. komennolla <code>firefox target/site/cobertura/index.html</code>
 * kun luokan Varasto testien koodikattavuus on 100% pushaa tekemäsi muutokset GitHubiin
 
-h2. 7. Jenkins, osa 1
+## 7. Jenkins, osa 1
 
 Alkuvalmistelut:
 
@@ -200,7 +200,7 @@ luodaan ensimmäinen "build job" ja määritellään se kääntämään ja testa
 ** klikkaa palloa katso mitä *console output*:ista löytyy
 ** console output on tärkeä paikka jos kaikki ei mene odotusten mukaisesti
 
-h2. 8. Jenkins, osa 2
+## 8. Jenkins, osa 2
 
 jatketaan kokeiluja
 
@@ -235,7 +235,7 @@ jatketaan kokeiluja
 * tutki mitä kaikkea Jenkins-projektissasi nyt on
 ** mikä on Workspace:n sisältö?
 
-h2. 9 Jenkins, osa 3
+## 9 Jenkins, osa 3
 
 Automatisoidaan vielä buildaus siten, että Jenkins tekee kaikki konfiguroidut toimenpiteet automaattisesti kun GitHubissa olevaan koodiin tulee muutos
 
@@ -256,7 +256,7 @@ Automatisoidaan vielä buildaus siten, että Jenkins tekee kaikki konfiguroidut 
 ** lisää tähän Jenkins-projektisi buildin triggeröivä url
 ** tee muutos projektiisi ja varmista että Jenkins reagoi
 
-h2. 10.  Forkaa repositorio https://github.com/mluukkai/ohtu2013
+## 10.  Forkaa repositorio https://github.com/mluukkai/ohtu2013
 * forkkaaminen tapahtuu seuraavasti:
 ** kun olet kirjautuneena GitHubiin, mene yo. osoitteeseen
 ** paina oikeassa yläkulmassa olevaa nappia "fork"
@@ -271,7 +271,7 @@ h2. 10.  Forkaa repositorio https://github.com/mluukkai/ohtu2013
 ** paina oikeassa kulmassa olevaa nappia "pull request"
 ** anna tehtävistä palautetta avautuvaan lomakkeeseen
 
-h2. tehtävien kirjaaminen palautetuksi
+## tehtävien kirjaaminen palautetuksi
 
 * Kirjaa tekemäsi tehtävät "tänne":http://ohtustats-2013.herokuapp.com (sivun aukeamisessa saattaa joskus kestää hetki)
 ** huom: tehtävien palautuksen deadline on su 17.3. klo 23.59
