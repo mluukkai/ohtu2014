@@ -154,6 +154,7 @@ Ohjelmakoodin editointi kannattaa tehdä IDE:llä, ja välillä myös ohjelman j
 * tee projektista jar-tiedosto: <code>mvn install</code>
   *  komennolla tree näen minne hakemistoon jar tulee
 * suorita jar komennolla <code>java -cp tiedostonNimi.jar ohtu.ohtuvarasto.Main</code>
+  * komento siis annetaan hakemistosta, jossa jar-tiedosto sijaitsee 
 
 **HUOM** mavenin versiolla 3 komennolla <code>mvn install</code> tehty jar ei välttämättä toimi. Jos näin käy, tee seuraavasti:
 
@@ -188,7 +189,7 @@ Ohjelmakoodin editointi kannattaa tehdä IDE:llä, ja välillä myös ohjelman j
   * Joudut huomioimaan ainakin tapaukset, joissa varastoon yritetään laittaa liikaa tavaraa ja varastosta yritetään ottaa enemmän kuin siellä on
   * edellinenkään ei vielä riitä
 * testauskattavuuden saat selville seuraavasti:
-  * käytetään mavenissa pluginina olevaa "cobertura":http://cobertura.sourceforge.net/-nimistä koodikattavuustyökalua
+  * käytetään mavenissa pluginina olevaa [cobertura]()http://cobertura.sourceforge.net/)-nimistä koodikattavuustyökalua
   * suorita projektin juuresta komento <code>mvn cobertura:cobertura</code>
   * kattavuusraportit tulevat hakemistoon target/site/cobertura
   * saat avattua raportin esim. komennolla <code>firefox target/site/cobertura/index.html</code>
