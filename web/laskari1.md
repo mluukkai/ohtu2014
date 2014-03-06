@@ -117,17 +117,17 @@ Nyt voit poistaa toisen paikallisista kopioista
 
 ## 5 Maven
 
-* lue ensin https://www.ibm.com/developerworks/java/tutorials/j-mavenv2/kohtaan working with multiple projects asti
+* lue ensin https://www.ibm.com/developerworks/java/tutorials/j-mavenv2/ kohtaan _working with multiple projects_ asti
   * myös tämä voi olla hyödyksi http://docs.codehaus.org/display/MAVENUSER/The+Maven+2+tutorial  
   * vielä syventävämpää tietoa http://www.sonatype.com/books/mvnref-book/reference/
 
-* edellisessä tehtävässä lisättiin repositorioon maven-muodossa oleva projekti joka sisältää [ohjelmoinnin perusteissa](http://www.cs.helsinki.fi/u/wikla/ohjelmointi/materiaali/02_oliot/#15) olleen luokan Varasto, sen käyttöä demonstroivan pääohjelman ja muutaman JUnit-testin
-* tutki maven-muotoisen projektin hakemistorakennetta, esim. antamalla komento <code>tree</code> projektin juuressa (tree ei ole maveniin liittyvä käsky vaan normaali shell-komento)
-  * tarkastele projektin määrittelevän pom.xml-tiedoston sisältöä
+* edellisessä tehtävässä lisättiin repositorioon maven-muodossa oleva projekti, joka sisältää aikoinaan [ohjelmoinnin perusteissa](http://www.cs.helsinki.fi/u/wikla/ohjelmointi/materiaali/02_oliot/#15) olleen luokan <code>Varasto</code>, sen käyttöä demonstroivan pääohjelman ja muutaman JUnit-testin
+* tutki maven-muotoisen projektin hakemistorakennetta, esim. antamalla komento <code>tree</code> projektin sisältävän hakeiston juuressa (tree ei ole maveniin liittyvä käsky vaan normaali shell-komento)
   * HUOM: macissa ei ole oletusarvoisesti tree-komentoa
   * mikäli koneellasi on [HomeBrew](http://mxcl.github.com/homebrew/ asennettuna), saat tree:n asennettua <code>brew install tree</code>
   * vaihtoehtoisesti saat treetä vastaavan toiminnallisuuden macissa komennolla <code>find .  ! -regex './\..'  -print | sed -e 's;[^/]*/;|__;g;s;__|; |;g'</code>
   * myöskään kaikissa linuxeissa ei tree ole oletusarvoisesti asennettu. debian-pohjaisissa linuxeissa (esim ubuntussa) saat asennettua tree:n komennolla <code>sudo apt-get install tree</code>
+* tarkastele projektin määrittelevän pom.xml-tiedoston sisältöä
 
 **avaa edellisen tehtävän projekti suosikki-idelläsi**
  
