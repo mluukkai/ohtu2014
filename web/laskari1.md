@@ -322,5 +322,5 @@ Parempi tapa on määritellä GitHub kertomaan Jenkinssille aina kun projektiin 
 
 **Jos olet tehnyt Jenkins-tehtävät, muista että github-repositoriosi readme.MD-tiedostossa tulee olla linkki projektisi Jenkins-sivulle!**
 
-* Kirjaa tekemäsi tehtävät "tänne":http://ohtustats.herokuapp.com (sivun aukeamisessa saattaa joskus kestää hetki)
+* Kirjaa tekemäsi tehtävät "tänne":http://ohtustats.herokuapp.com 
   * huom: tehtävien palautuksen deadline on su 16.3. klo 23.59
