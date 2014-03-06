@@ -107,8 +107,8 @@ Luodaan nyt paikalliselle koneelle repositoriosta toinen klooni:
 
 
 
-* hae osoitteesta "https://github.com/mluukkai/ohtu2014/blob/master/viikko1/OhtuVarasto.zip?raw=true":https://github.com/mluukkai/ohtu2014/blob/master/viikko1/OhtuVarasto.zip?raw=true löytyvä zipattu paketti, pura se kloonattuun repositorioon
-* lisää .gitignore-tiedostoosi hakemisto OhtuVarasto/target/
+* hae osoitteesta https://github.com/mluukkai/ohtu2014/blob/master/viikko1/OhtuVarasto.zip?raw=true löytyvä zipattu paketti, pura se kloonattuun repositorioon
+* lisää .gitignore-tiedostoosi hakemisto _OhtuVarasto/target/_
   * huom: hakemistoa ei vielä ole olemassa
 * lisää ja committoi zipistä purettu hakemisto repositorioon ja pushaa se GitHubiin
 * katso vielä kerran selaimella että GitHubissa kaikki on ajan tasalla
@@ -118,43 +118,48 @@ Nyt voit poistaa toisen paikallisista kopioista
 ## 5 Maven
 
 * lue ensin "https://www.ibm.com/developerworks/java/tutorials/j-mavenv2/":https://www.ibm.com/developerworks/java/tutorials/j-mavenv2/ kohtaan working with multiple projects asti
-** myös tämä voi olla hyödyksi "http://docs.codehaus.org/display/MAVENUSER/The+Maven+2+tutorial":http://docs.codehaus.org/display/MAVENUSER/The+Maven+2+tutorial
-** vielä syventävämpää tietoa "http://www.sonatype.com/books/mvnref-book/reference/":http://www.sonatype.com/books/mvnref-book/reference/
+  * myös tämä voi olla hyödyksi "http://docs.codehaus.org/display/MAVENUSER/The+Maven+2+tutorial":http://docs.codehaus.org/display/MAVENUSER/The+Maven+2+tutorial
+  * vielä syventävämpää tietoa "http://www.sonatype.com/books/mvnref-book/reference/":http://www.sonatype.com/books/mvnref-book/reference/
 
 * edellisessä tehtävässä lisättiin repositorioon maven-muodossa oleva projekti joka sisältää "ohjelmoinnin perusteista":http://www.cs.helsinki.fi/u/wikla/ohjelmointi/materiaali/02_oliot/#15 tutun luokan Varasto, sen käyttöä demonstroivan pääohjelman ja muutaman JUnit-testin
 * tutki maven-muotoisen projektin hakemistorakennetta, esim. antamalla komento <code>tree</code> projektin juuressa (tree ei ole maveniin liittyvä käsky vaan normaali shell-komento)
-** tarkastele projektin määrittelevän pom.xml-tiedoston sisältöä
-** HUOM: macissa ei ole oletusarvoisesti tree-komentoa
-*** mikäli koneellasi on "HomeBrew":http://mxcl.github.com/homebrew/ asennettuna, saat tree:n asennettua <code>brew install tree</code>
-*** tai sitten asentamalla sen manuaalisemmin, kts asennusohje "täällä":http://shaunchapman.me/post/329270449/how-to-install-the-tree-command-on-mac-os-x
-** vaihtoehtoisesti saat treetä vastaavan toiminnallisuuden macissa komennolla <code>find .  ! -regex './\..'  -print | sed -e 's;[^/]*/;|__;g;s;__|; |;g'</code>
-** myöskään kaikissa linuxeissa ei tree ole oletusarvoisesti asennettu. debian-pohjaisissa linuxeissa (esim ubuntussa) saat asennettua tree:n komennolla <code>sudo apt-get install tree</code>
+  * tarkastele projektin määrittelevän pom.xml-tiedoston sisältöä
+  * HUOM: macissa ei ole oletusarvoisesti tree-komentoa
+  * mikäli koneellasi on "HomeBrew":http://mxcl.github.com/homebrew/ asennettuna, saat tree:n asennettua <code>brew install tree</code>
+  * vaihtoehtoisesti saat treetä vastaavan toiminnallisuuden macissa komennolla <code>find .  ! -regex './\..'  -print | sed -e 's;[^/]*/;|__;g;s;__|; |;g'</code>
+  * myöskään kaikissa linuxeissa ei tree ole oletusarvoisesti asennettu. debian-pohjaisissa linuxeissa (esim ubuntussa) saat asennettua tree:n komennolla <code>sudo apt-get install tree</code>
 
-* avaa edellisen tehtävän projekti suosikki-idelläsi
-**  NetBeans ja IntellijIdea tukevat maven-muotoisia projekteja suoraan
-** jos NetBeans ei tunnista projektia, asenna maven-plugin valitsemalla tools -> plugins -> available plugins
-** HUOM: jos et ole aiemmin kääntänyt koneellasi maven-muotoisia projekteja, saattaa IDE valittaa tässä vaiheessa joidenkin kirjastojen (mm. JUnit) puuttumisesta, asia korjaantuu "buildaamalla" tai kääntämällä projekti komentoriviltä (ohjeet alla) 
-** Ohjeita Eclipse-käyttäjille http://maven.apache.org/eclipse-plugin.html  
-* Ohjelmakoodin editointi kannattaa tehdä IDE:llä, ja välillä myös ohjelman ja testien ajaminenkin. mavenia kannattaa kuitenkin ehdottomasti totutella käyttämään myös komentoriviltä. Kokeile seuraavia:
-**  aloita puhtaalta pöydältä: <code>mvn clean</code>
-*** tee juuressa komento <code>tree</code>
-** käännä: <code>mvn compile</code>
-*** tee jälleen juuressa komento tree, mitä muutoksia huomaat?
-** käännöksen jälkeen voit suorittaa pääohjelman komennolla <code>mvn exec:java -Dexec.mainClass=ohtu.ohtuvarasto.Main</code>
-*** parametrina siis main-metodin sisältävän luokan nimi
-** tee <code>mvn clean</code> ja yritä suorittaa ohjelma uudelleen, miten käy?
-*** suorita cleanin jälkeen tree-komento, mitä clean tekee?
-** aja testit komennolla <code>mvn test</code>
-*** suorita jälleen komento <code>tree</code>
-*** huomaat, että testien ajaminen luo hakemiston tree/surefire-reports, testien diagnostiikka tulee hakemistoon
-** tee projektista jar-tiedosto: <code>mvn install</code>
-***  komennolla tree näen minne hakemistoon jar tulee
-** suorita jar komennolla <code>java -cp tiedostonNimi.jar ohtu.ohtuvarasto.Main</code>
+**avaa edellisen tehtävän projekti suosikki-idelläsi**
+ 
+*  NetBeans ja IntellijIdea tukevat maven-muotoisia projekteja suoraan
+* jos NetBeans ei tunnista projektia, asenna maven-plugin valitsemalla tools -> plugins -> available plugins
+* HUOM: jos et ole aiemmin kääntänyt koneellasi maven-muotoisia projekteja, saattaa IDE valittaa tässä vaiheessa joidenkin kirjastojen (mm. JUnit) puuttumisesta, asia korjaantuu "buildaamalla" tai kääntämällä projekti komentoriviltä (ohjeet alla) 
+* Ohjeita Eclipse-käyttäjille http://maven.apache.org/eclipse-plugin.html  
 
-*HUOM* mavenin versiolla 3 komennolla <code>mvn install</code> tehty jar ei välttämättä toimi. Jos näin käy, tee seuraavasti:
-* lisää projektissa olevaan __pom.xml__-tiedostoon __plugins_-tägien sisään seuraava:
+Ohjelmakoodin editointi kannattaa tehdä IDE:llä, ja välillä myös ohjelman ja testien ajaminenkin. mavenia kannattaa kuitenkin ehdottomasti totutella käyttämään myös komentoriviltä. 
 
-<pre>
+**Kokeile seuraavia:**
+ 
+* aloita puhtaalta pöydältä: <code>mvn clean</code>
+* tee juuressa komento <code>tree</code>
+* käännä: <code>mvn compile</code>
+  * tee jälleen juuressa komento tree, mitä muutoksia huomaat?
+* käännöksen jälkeen voit suorittaa pääohjelman komennolla <code>mvn exec:java -Dexec.mainClass=ohtu.ohtuvarasto.Main</code>
+  * parametrina siis main-metodin sisältävän luokan nimi
+* tee <code>mvn clean</code> ja yritä suorittaa ohjelma uudelleen, miten käy?
+  * suorita cleanin jälkeen tree-komento, mitä clean tekee?
+* aja testit komennolla <code>mvn test</code>
+  * suorita jälleen komento <code>tree</code>
+  * huomaat, että testien ajaminen luo hakemiston tree/surefire-reports, testien diagnostiikka tulee hakemistoon
+* tee projektista jar-tiedosto: <code>mvn install</code>
+  *  komennolla tree näen minne hakemistoon jar tulee
+* suorita jar komennolla <code>java -cp tiedostonNimi.jar ohtu.ohtuvarasto.Main</code>
+
+**HUOM** mavenin versiolla 3 komennolla <code>mvn install</code> tehty jar ei välttämättä toimi. Jos näin käy, tee seuraavasti:
+
+* lisää projektissa olevaan _pom.xml_-tiedostoon _plugins_-tägien sisään seuraava:
+
+```html
        <plugins>
             //
             // älä koske olemassaoleviin plugineihin!
@@ -172,7 +177,8 @@ Nyt voit poistaa toisen paikallisista kopioista
             </plugin>
 
        </plugins>
-</pre>
+```
+
 * generoi jar komennolla <code>mvn assembly:assembly</code>
 
 ## 6. JUnit
