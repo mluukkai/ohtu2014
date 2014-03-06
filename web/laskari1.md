@@ -210,13 +210,20 @@ Alkuvalmistelut:
 Luodaan ensimmäinen "build job" ja määritellään se kääntämään ja testaamaan edellisen tehtävän "OhtuVarasto"
 
 * valitse *new item* ja *free style software project*
-  * nimeä projekti muodossa __<käyttäjätunnus>-viikko1__
+  * nimeä projekti muodossa **<käyttäjätunnus>-viikko1**
 * täytä lomakkeesta kohdat:
   * laita rasti kohtaan *discard old build* ja merkkaa avautuvaan laatikkoon esim 10
   * kohtaan *GitHub project* projetkin GitHub-repositorion osoite
 * Source Code Management
   * valitse *git*
   * laita kohtaan *Repository URL* GitHubista projektin kohdalta löytyvä *HTTPS clone URL* (**Katso ao. kuva**)
+
+![kuva](https://github.com/mluukkai/ohtu2014/raw/master/images/viikko1-3.png)
+
+Varmista, että Jenkins on sivun autorefreshaavassa moodissa:
+
+![kuva](https://github.com/mluukkai/ohtu2014/raw/master/images/viikko1-4.png)
+
 * Build
   * *add build step -> invoke top-level maven targets*
   * kohtaan *goals* laitetaan halutut maven-targetit, tällä kertaa <code>clean test</code>
@@ -227,7 +234,7 @@ Luodaan ensimmäinen "build job" ja määritellään se kääntämään ja testa
   * klikkaa palloa katso mitä *console output*:ista löytyy
   * console output on tärkeä paikka jos kaikki ei mene odotusten mukaisesti
 
-![kuva](https://github.com/mluukkai/ohtu2014/raw/master/images/viikko1-3.png)
+
 
 
 ## 8. Jenkins, osa 2
