@@ -36,19 +36,27 @@ Konfiguroi nimesi ja emailosoitteesi paikallisen koneesi git:iin antamalla komen
 * git config --global user.name "Your Name"
 * git config --global user.email my.address@gmail.com
 
-Luo paikallinen repositorio ja liitä GitHubin repositorio siihen
-* tee ensin koneellesi hakemisto nimeltä ohtu-viikko1, ja mene hakemistoon
-* toimi Githubiin luomasi uuden repositorion avausnäkymän kohdan *Create a new repository on the command line* mukaan
+
+Kloonaa nyt githubiin tehty repositorio **paikalliselle koneelle**. Tämä tapahtuu antamalla komentoriviltä komento
+
+  git clone git@github.com:mluukkai/ohtu-viikko1.git
+
+missä komennon <code>git clone</code> parametrina on repositosiosi sivulta selviävä 'clone URL' (huomaa, että formaatin on oltava SSH):
+
+![kuva](https://github.com/mluukkai/ohtu2014/raw/master/images/viikko1-1.png)
+
+Nyt paikalliselle koneellesi synytt hakemisto <code>ohtu-viikko1</code> joka on on githubissa olevan repositorion klooni.
 
 ## 2 Gitin alkeet
 
-* Lue "https://we.riseup.net/debian/git-development-howto":https://we.riseup.net/debian/git-development-howto ja "http://www.ralfebert.de/tutorials/git/":http://www.ralfebert.de/tutorials/git/, molemmat kohtaan *Branching* asti ja samalla komentoriviltä kaikki dokumentin esimerkit. Koulun koneille git on jo asennettu, joten kohdan *Install git* voit skipata
-**  Lisää git-ohjeita esim. "Pro Git -oppaassa":http://git-scm.com/book, kannattaa lukea näin alkuun luku 2
+* Tee interaktiivinen git-tutoriaali http://try.github.io/levels/1/challenges/1
+* Lue https://we.riseup.net/debian/git-development-howto ja http://www.ralfebert.de/tutorials/git/, molemmat kohtaan *Branching* asti ja samalla komentoriviltä kaikki dokumentin esimerkit. Koulun koneille git on jo asennettu, joten kohdan *Install git* voit skipata
+**  Lisää git-ohjeita esim. "Pro Git -oppaassa":http://git-scm.com/bookbook, kannattaa lukea näin alkuun luku 2
 **  Hyviä ohjeita löydät myös "Githubin helpistä":https://help.github.com/articles/
 * git saattaa vaikuttaa aluksi sekavalta, pienen totuttelun jälkeen peruskäyttö on kuitenkin helppoa ja se nostaa elämäsi laatua merkittävästi
 
 tee seuraavat:
-* alusta johonkin paikalliseen hakemistoosi git-repositorio
+* mene edellisessä tehtävässä luotuun repositorion klooniin (eli komennon <code>git clone</code> luomaan hakemiston)
 * lisää ja committaa repositorioon kaksi tiedostoa ja hakemistoa joiden sisällä on tiedostoja
 **  muista hyödyllinen komento git status
 * muuta ainakin kahden tiedoston sisältöä ja committaa muutokset repositorioon
