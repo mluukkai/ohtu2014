@@ -284,22 +284,23 @@ Tutki mitä kaikkea Jenkins-projektissasi nyt on
 
 Automatisoidaan vielä buildaus siten, että Jenkins tekee kaikki konfiguroidut toimenpiteet automaattisesti kun GitHubissa olevaan koodiin tulee muutos
 
-* huonompi tapa hoitaa asia on laittaa Jenkins pollaamaan repositoioa määräajoin, kokeillaan ensin tätä
-  * valitse *configure* ja laita rasti kohtaan *poll scm*
-  * avautuvaan schedule-laatikkoon määritellään cron-formaatissa miten usein repositorioa pollataan
-  * määrittele että pollaus tapahtuu kerran minuutissa
-  * riko ohjelmasta joku testi, pushaa se githubiin ja varmista että Jenkins huomaa muutoksen
-  * korjaa testi ja varmista että Jenkins reagoi taas
-* parempi tapa on määritellä GitHub kertomaan Jenkinssille aina kun projektiin tulee muutoksia, eli määritellä GitHubiin Post Update hook
-  * poista rasti kohdasta *poll scm*
-  * valitse *Trigger builds remotely*
-  * anna kohtaan *authentication token* joku merkkijono
-  * tämän jälkeen voit triggeröidä käänöksen urlista __<jenkinsprojektisi-url>/build?token=TOKEN_NAME__
-  * kokeile komentoriviltä että tämä onnistuu, voit käyttää esim, curl-komentoa tyyliin:<code> curl http://jenkins.staff.cs.helsinki.fi/job/kayttajatunnuksesi-viikko1/build?token=maarittelemasi-token</code>
-  * mene selaimella GitHub-projektiisi ja klikkaa ylhäältä *settings*
-  * valitse *service hooks* ja *WebHook URLs*
-  * lisää tähän Jenkins-projektisi buildin triggeröivä url
-  * tee muutos projektiisi ja varmista että Jenkins reagoi
+Huonompi tapa hoitaa asia on laittaa Jenkins pollaamaan repositoioa määräajoin, kokeillaan ensin tätä
+* valitse *configure* ja laita rasti kohtaan *poll scm*
+* avautuvaan schedule-laatikkoon määritellään cron-formaatissa miten usein repositorioa pollataan
+* määrittele että pollaus tapahtuu kerran minuutissa
+* riko ohjelmasta joku testi, pushaa se githubiin ja varmista että Jenkins huomaa muutoksen
+* korjaa testi ja varmista että Jenkins reagoi taas
+
+Parempi tapa on määritellä GitHub kertomaan Jenkinssille aina kun projektiin tulee muutoksia, eli määritellä GitHubiin Post Update hook
+* poista rasti kohdasta *poll scm*
+* valitse *Trigger builds remotely*
+* anna kohtaan *authentication token* joku merkkijono
+* tämän jälkeen voit triggeröidä käänöksen urlista __<jenkinsprojektisi-url>/build?token=TOKEN_NAME__
+* kokeile komentoriviltä että tämä onnistuu, voit käyttää esim, curl-komentoa tyyliin: <code>curl http://ohtu.jamo.io/job/kayttajatunnuksesi-otm-viikko1/build?token=maarittelemasi-token</code>
+* mene selaimella GitHub-projektiisi ja klikkaa oikealta *settings*
+* valitse *Webhooks and services* ja *Add webhook*
+* lisää tähän Jenkins-projektisi buildin triggeröivä url kohtaan *payload url*
+* tee muutos projektiisi ja varmista että Jenkins reagoi
 
 ## 11.  Forkaa repositorio https://github.com/mluukkai/ohtu2013
 
@@ -321,5 +322,5 @@ Automatisoidaan vielä buildaus siten, että Jenkins tekee kaikki konfiguroidut 
 
 **Jos olet tehnyt Jenkins-tehtävät, muista että github-repositoriosi readme.MD-tiedostossa tulee olla linkki projektisi Jenkins-sivulle!**
 
-* Kirjaa tekemäsi tehtävät "tänne":http://ohtustats-2013.herokuapp.com (sivun aukeamisessa saattaa joskus kestää hetki)
+* Kirjaa tekemäsi tehtävät "tänne":http://ohtustats.herokuapp.com (sivun aukeamisessa saattaa joskus kestää hetki)
   * huom: tehtävien palautuksen deadline on su 16.3. klo 23.59
