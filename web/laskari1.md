@@ -117,15 +117,15 @@ Nyt voit poistaa toisen paikallisista kopioista
 
 ## 5 Maven
 
-* lue ensin "https://www.ibm.com/developerworks/java/tutorials/j-mavenv2/":https://www.ibm.com/developerworks/java/tutorials/j-mavenv2/ kohtaan working with multiple projects asti
-  * myös tämä voi olla hyödyksi "http://docs.codehaus.org/display/MAVENUSER/The+Maven+2+tutorial":http://docs.codehaus.org/display/MAVENUSER/The+Maven+2+tutorial
-  * vielä syventävämpää tietoa "http://www.sonatype.com/books/mvnref-book/reference/":http://www.sonatype.com/books/mvnref-book/reference/
+* lue ensin https://www.ibm.com/developerworks/java/tutorials/j-mavenv2/kohtaan working with multiple projects asti
+  * myös tämä voi olla hyödyksi http://docs.codehaus.org/display/MAVENUSER/The+Maven+2+tutorial  
+  * vielä syventävämpää tietoa http://www.sonatype.com/books/mvnref-book/reference/
 
-* edellisessä tehtävässä lisättiin repositorioon maven-muodossa oleva projekti joka sisältää "ohjelmoinnin perusteista":http://www.cs.helsinki.fi/u/wikla/ohjelmointi/materiaali/02_oliot/#15 tutun luokan Varasto, sen käyttöä demonstroivan pääohjelman ja muutaman JUnit-testin
+* edellisessä tehtävässä lisättiin repositorioon maven-muodossa oleva projekti joka sisältää [ohjelmoinnin perusteissa](http://www.cs.helsinki.fi/u/wikla/ohjelmointi/materiaali/02_oliot/#15) olleen luokan Varasto, sen käyttöä demonstroivan pääohjelman ja muutaman JUnit-testin
 * tutki maven-muotoisen projektin hakemistorakennetta, esim. antamalla komento <code>tree</code> projektin juuressa (tree ei ole maveniin liittyvä käsky vaan normaali shell-komento)
   * tarkastele projektin määrittelevän pom.xml-tiedoston sisältöä
   * HUOM: macissa ei ole oletusarvoisesti tree-komentoa
-  * mikäli koneellasi on "HomeBrew":http://mxcl.github.com/homebrew/ asennettuna, saat tree:n asennettua <code>brew install tree</code>
+  * mikäli koneellasi on [HomeBrew](http://mxcl.github.com/homebrew/ asennettuna), saat tree:n asennettua <code>brew install tree</code>
   * vaihtoehtoisesti saat treetä vastaavan toiminnallisuuden macissa komennolla <code>find .  ! -regex './\..'  -print | sed -e 's;[^/]*/;|__;g;s;__|; |;g'</code>
   * myöskään kaikissa linuxeissa ei tree ole oletusarvoisesti asennettu. debian-pohjaisissa linuxeissa (esim ubuntussa) saat asennettua tree:n komennolla <code>sudo apt-get install tree</code>
 
@@ -136,7 +136,7 @@ Nyt voit poistaa toisen paikallisista kopioista
 * HUOM: jos et ole aiemmin kääntänyt koneellasi maven-muotoisia projekteja, saattaa IDE valittaa tässä vaiheessa joidenkin kirjastojen (mm. JUnit) puuttumisesta, asia korjaantuu "buildaamalla" tai kääntämällä projekti komentoriviltä (ohjeet alla) 
 * Ohjeita Eclipse-käyttäjille http://maven.apache.org/eclipse-plugin.html  
 
-Ohjelmakoodin editointi kannattaa tehdä IDE:llä, ja välillä myös ohjelman ja testien ajaminenkin. mavenia kannattaa kuitenkin ehdottomasti totutella käyttämään myös komentoriviltä. 
+Ohjelmakoodin editointi kannattaa tehdä IDE:llä, ja välillä myös ohjelman ja testien ajaminenkin. **mavenia kannattaa kuitenkin ehdottomasti totutella käyttämään myös komentoriviltä.** 
 
 **Kokeile seuraavia:**
  
@@ -182,15 +182,16 @@ Ohjelmakoodin editointi kannattaa tehdä IDE:llä, ja välillä myös ohjelman j
 * generoi jar komennolla <code>mvn assembly:assembly</code>
 
 ## 6. JUnit
-* kertaa JUnitin perusteet osoitteesta "https://wiki.helsinki.fi/display/ohma/JUnit":https://wiki.helsinki.fi/display/ohma/JUnit
+
+* kertaa JUnitin perusteet osoitteesta https://github.com/mluukkai/OTM2013/wiki/Ohje-JUnit:in-k%C3%A4ytt%C3%B6%C3%B6n
 * täydennä tehtävässä 4 repositorioosi lisäämäsi projektin testejä siten että luokan Varasto rivikattavuudeksi (line coverage) tulee 100%
-** Joudut huomioimaan ainakin tapaukset, joissa varastoon yritetään laittaa liikaa tavaraa ja varastosta yritetään ottaa enemmän kuin siellä on
-** edellinenkään ei vielä riitä
+  * Joudut huomioimaan ainakin tapaukset, joissa varastoon yritetään laittaa liikaa tavaraa ja varastosta yritetään ottaa enemmän kuin siellä on
+  * edellinenkään ei vielä riitä
 * testauskattavuuden saat selville seuraavasti:
-** käytetään mavenissa pluginina olevaa "cobertura":http://cobertura.sourceforge.net/-nimistä koodikattavuustyökalua
-** suorita projektin juuresta komento <code>mvn cobertura:cobertura</code>
-** kattavuusraportit tulevat hakemistoon target/site/cobertura
-** saat avattua raportin esim. komennolla <code>firefox target/site/cobertura/index.html</code>
+  * käytetään mavenissa pluginina olevaa "cobertura":http://cobertura.sourceforge.net/-nimistä koodikattavuustyökalua
+  * suorita projektin juuresta komento <code>mvn cobertura:cobertura</code>
+  * kattavuusraportit tulevat hakemistoon target/site/cobertura
+  * saat avattua raportin esim. komennolla <code>firefox target/site/cobertura/index.html</code>
 * kun luokan Varasto testien koodikattavuus on 100% pushaa tekemäsi muutokset GitHubiin
 
 ## 7. Jenkins, osa 1
@@ -198,103 +199,104 @@ Ohjelmakoodin editointi kannattaa tehdä IDE:llä, ja välillä myös ohjelman j
 Alkuvalmistelut:
 
 * luo käyttäjätunnus laitoksen palvelimella sijaitsevaan Jenkinsiin "http://jenkins.staff.cs.helsinki.fi/":http://jenkins.staff.cs.helsinki.fi/
-** sign up oikeassa yläkulmassa
+  * sign up oikeassa yläkulmassa
 * Downloadaa Jenkins Guide osoitteesta "http://www.wakaleo.com/books/jenkins-the-definitive-guide":http://www.wakaleo.com/books/jenkins-the-definitive-guide
-** jos et halua täyttää kaikkia lomakkeita, löytyy myös paikallinen kopio "intranetissä":https://www.cs.helsinki.fi/i/mluukkai/jenkins-the-definitive-guide.pdf
-** *tarkempia ohjeita allaoleviin tehtäviin on Jenkins Guidessa, sivuilla 21-40 tehdään periaatteessa lähes sama kuin alla
+  * jos et halua täyttää kaikkia lomakkeita, löytyy myös paikallinen kopio "intranetissä":https://www.cs.helsinki.fi/i/mluukkai/jenkins-the-definitive-guide.pdf
+  * *tarkempia ohjeita allaoleviin tehtäviin on Jenkins Guidessa, sivuilla 21-40 tehdään periaatteessa lähes sama kuin alla
 
 luodaan ensimmäinen "build job" ja määritellään se kääntämään ja testaamaan edellisen tehtävän "OhtuVarasto"
 
 * valitse *new job* ja *free style software project*
-** nimeä projekti muodossa __<käyttäjätunnus>-viikko1__
+  * nimeä projekti muodossa __<käyttäjätunnus>-viikko1__
 * täytä lomakkeesta kohdat:
-** laita rasti kohtaan *discard old build* ja merkkaa avautuvaan laatikkoon esim 10
-** kohtaan *GitHub project* projetkin GitHub-repositorion osoite
+  * laita rasti kohtaan *discard old build* ja merkkaa avautuvaan laatikkoon esim 10
+  * kohtaan *GitHub project* projetkin GitHub-repositorion osoite
 * Source Code Management
-** valitse *git*
-** laita kohtaan *Repository URL* GitHubista projektin kohdalta löytyvä *Git Read-Only* 
+  * valitse *git*
+  * laita kohtaan *Repository URL* GitHubista projektin kohdalta löytyvä *Git Read-Only* 
 * Build
-** *add build step -> invoke top-level maven targets*
-** kohtaan *goals* laitetaan halutut maven-targetit, tällä kertaa <code>clean test</code>
-** klikkaa *advanced* ja määrittele kohtaan *POM* tiedoston pom.xml sijainti projektissasi eli <code>OhtuVarasto/pom.xml</code>
-** tämän jälkeen voit sanoa *save*
+  * *add build step -> invoke top-level maven targets*
+  * kohtaan *goals* laitetaan halutut maven-targetit, tällä kertaa <code>clean test</code>
+  * klikkaa *advanced* ja määrittele kohtaan *POM* tiedoston pom.xml sijainti projektissasi eli <code>OhtuVarasto/pom.xml</code>
+  * tämän jälkeen voit sanoa *save*
 * peruskonfiguraatio on valmis, klikkaa *build now*
 * jos kaikki on hyvin, tulee build job -kohtaan sininen pallo
-** klikkaa palloa katso mitä *console output*:ista löytyy
-** console output on tärkeä paikka jos kaikki ei mene odotusten mukaisesti
+  * klikkaa palloa katso mitä *console output*:ista löytyy
+  * console output on tärkeä paikka jos kaikki ei mene odotusten mukaisesti
 
 ## 8. Jenkins, osa 2
 
 jatketaan kokeiluja
 
 * riko projektistasi joku testi, pushaa se githubiin ja tee uudelleen *build now*
-** huomioi miten Jenkins raportoi tilanteen, katso myös *console outputia* rikki menneestä buildista
+  * huomioi miten Jenkins raportoi tilanteen, katso myös *console outputia* rikki menneestä buildista
 * testitulosten parempi raportointi
-** valitse *configure* ja laita rasti *post build actions*:in alta löytyvään kohtaan *Publish JUnit test result report*
-** määrittele testiraporttiesi sijainti, etsi esim komennon tree avulla paikallisesta repositoriostasi missä testiraportit ovat, muista että projektisi on reposition sisällä hakemistossa OhtuVarasto, eli xml:n sijaintipolun alku on __OhtuVarasto/target/...__
-** talleta ja buildaa taas
-** tarkista punaisen pallon takaa löytyvästä kohdasta *Test results* miten Jenkins raportoi testituloksen
+  * valitse *configure* ja laita rasti *post build actions*:in alta löytyvään kohtaan *Publish JUnit test result report*
+  * määrittele testiraporttiesi sijainti, etsi esim komennon tree avulla paikallisesta repositoriostasi missä testiraportit ovat, muista että projektisi on reposition sisällä hakemistossa OhtuVarasto, eli xml:n sijaintipolun alku on __OhtuVarasto/target/...__
+  * talleta ja buildaa taas
+  * tarkista punaisen pallon takaa löytyvästä kohdasta *Test results* miten Jenkins raportoi testituloksen
 * buildaa projektisi vielä kerran
-** mene build job:in pääsivulle ja refreshaa selain (ctrl+F5). testien läpimenostatistiikan pitäisi nyt näkyä etisivulla 
-** HUOM: kannattaa laittaa sivun automaattinen päivitys päälle klikkaamalla oikeasta yläkulmasta *enable auto refresh*
+  * mene build job:in pääsivulle ja refreshaa selain (ctrl+F5). testien läpimenostatistiikan pitäisi nyt näkyä etisivulla 
+  * HUOM: kannattaa laittaa sivun automaattinen päivitys päälle klikkaamalla oikeasta yläkulmasta *enable auto refresh*
 * __ennen seuraavaa vaihetta, varmista että testisi menevät läpi!__
-** huom: voit perua uusimman commitin (jolla äsken rikoit testi) gitillä seuraavasti <code>git revert HEAD --no-edit</code>
+  * huom: voit perua uusimman commitin (jolla äsken rikoit testi) gitillä seuraavasti <code>git revert HEAD --no-edit</code>
 * konfiguroi Jenkins myös näyttämään testikattavuus 
-** toimi Jenkins Guiden sivujen 34-39 ohjeiden mukaan
-** huom1: plugin ovat Jenkinsissä valmiiksi asennettuna
-** huom2: build goaliksi testikattavuuden osalta pitää laittaa <code>cobertura:cobertura -Dcobertura.report.format=xml</code>
-** kohtaan "Cobertura xml report pattern" voit laittaa <code>OhtuVarasto/target/site/cobertura/coverage.xml</code>
-** huom3: jos määrittelet erillisen build-stepin, muista määritellä pom.xml-tiedoston sijainti!
+  * toimi Jenkins Guiden sivujen 34-39 ohjeiden mukaan
+  * huom1: plugin ovat Jenkinsissä valmiiksi asennettuna
+  * huom2: build goaliksi testikattavuuden osalta pitää laittaa <code>cobertura:cobertura -Dcobertura.report.format=xml</code>
+  * kohtaan "Cobertura xml report pattern" voit laittaa <code>OhtuVarasto/target/site/cobertura/coverage.xml</code>
+  * huom3: jos määrittelet erillisen build-stepin, muista määritellä pom.xml-tiedoston sijainti!
 * konfiguroi Jenkins myös näyttämään JavaDoc
-** kokeile javadoc:ien generointia paikallisella koneella antamalla komento mvn javadoc:javadoc
-** etsi tree-komennon avulla generoitujen dokumenttien sijaintipaikka ja avaa JavaDoc selaimella
-** laita JavaDoc:in generointi Jenkinsiin build targetiksi 
-** Jenksinsin Post-build Actions:in *Publish Javadoc* ei jostain syystä toimi, mutta voimme julkaista JavaDocin normaalina html:nä seuraavasti:
+  * kokeile javadoc:ien generointia paikallisella koneella antamalla komento mvn javadoc:javadoc
+  * etsi tree-komennon avulla generoitujen dokumenttien sijaintipaikka ja avaa JavaDoc selaimella
+  * laita JavaDoc:in generointi Jenkinsiin build targetiksi 
+  * Jenksinsin Post-build Actions:in *Publish Javadoc* ei jostain syystä toimi, mutta voimme julkaista JavaDocin normaalina html:nä seuraavasti:
 *** valitse Post-build Actions:in alta *Publish HTML reports*, laita HTML-directoryksi *OhtuVarasto/target/site/apidocs/* report titleksi esim. *JavaDoc*
 * konfiguroi Jenkins vielä generoimaan projektistasi jar-tiedosto
-** lisää *build goal*:iksi *install* (tämä tekee oikeastaan test-goalin tarpeettomaksi sillä install:ia ennen tehdään aina test)
-**  Valitse *Post build -actions*:sta kohta  *Archive the artifacts*
-** kohtaan *files to archive tulee* generoidun jar-tiedoston polku. Selvitä se tekemällä <code>mvn install</code> paikallisesti
+  * lisää *build goal*:iksi *install* (tämä tekee oikeastaan test-goalin tarpeettomaksi sillä install:ia ennen tehdään aina test)
+  *  Valitse *Post build -actions*:sta kohta  *Archive the artifacts*
+  * kohtaan *files to archive tulee* generoidun jar-tiedoston polku. Selvitä se tekemällä <code>mvn install</code> paikallisesti
 * tutki mitä kaikkea Jenkins-projektissasi nyt on
-** mikä on Workspace:n sisältö?
+  * mikä on Workspace:n sisältö?
 
 ## 9 Jenkins, osa 3
 
 Automatisoidaan vielä buildaus siten, että Jenkins tekee kaikki konfiguroidut toimenpiteet automaattisesti kun GitHubissa olevaan koodiin tulee muutos
 
 * huonompi tapa hoitaa asia on laittaa Jenkins pollaamaan repositoioa määräajoin, kokeillaan ensin tätä
-** valitse *configure* ja laita rasti kohtaan *poll scm*
-** avautuvaan schedule-laatikkoon määritellään cron-formaatissa miten usein repositorioa pollataan
-** määrittele että pollaus tapahtuu kerran minuutissa
-** riko ohjelmasta joku testi, pushaa se githubiin ja varmista että Jenkins huomaa muutoksen
-** korjaa testi ja varmista että Jenkins reagoi taas
+  * valitse *configure* ja laita rasti kohtaan *poll scm*
+  * avautuvaan schedule-laatikkoon määritellään cron-formaatissa miten usein repositorioa pollataan
+  * määrittele että pollaus tapahtuu kerran minuutissa
+  * riko ohjelmasta joku testi, pushaa se githubiin ja varmista että Jenkins huomaa muutoksen
+  * korjaa testi ja varmista että Jenkins reagoi taas
 * parempi tapa on määritellä GitHub kertomaan Jenkinssille aina kun projektiin tulee muutoksia, eli määritellä GitHubiin Post Update hook
-** poista rasti kohdasta *poll scm*
-** valitse *Trigger builds remotely*
-** anna kohtaan *authentication token* joku merkkijono
-** tämän jälkeen voit triggeröidä käänöksen urlista __<jenkinsprojektisi-url>/build?token=TOKEN_NAME__
-** kokeile komentoriviltä että tämä onnistuu, voit käyttää esim, curl-komentoa tyyliin:<code> curl http://jenkins.staff.cs.helsinki.fi/job/kayttajatunnuksesi-viikko1/build?token=maarittelemasi-token</code>
-** mene selaimella GitHub-projektiisi ja klikkaa ylhäältä *settings*
-** valitse *service hooks* ja *WebHook URLs*
-** lisää tähän Jenkins-projektisi buildin triggeröivä url
-** tee muutos projektiisi ja varmista että Jenkins reagoi
+  * poista rasti kohdasta *poll scm*
+  * valitse *Trigger builds remotely*
+  * anna kohtaan *authentication token* joku merkkijono
+  * tämän jälkeen voit triggeröidä käänöksen urlista __<jenkinsprojektisi-url>/build?token=TOKEN_NAME__
+  * kokeile komentoriviltä että tämä onnistuu, voit käyttää esim, curl-komentoa tyyliin:<code> curl http://jenkins.staff.cs.helsinki.fi/job/kayttajatunnuksesi-viikko1/build?token=maarittelemasi-token</code>
+  * mene selaimella GitHub-projektiisi ja klikkaa ylhäältä *settings*
+  * valitse *service hooks* ja *WebHook URLs*
+  * lisää tähän Jenkins-projektisi buildin triggeröivä url
+  * tee muutos projektiisi ja varmista että Jenkins reagoi
 
 ## 10.  Forkaa repositorio https://github.com/mluukkai/ohtu2013
+
 * forkkaaminen tapahtuu seuraavasti:
-** kun olet kirjautuneena GitHubiin, mene yo. osoitteeseen
-** paina oikeassa yläkulmassa olevaa nappia "fork"
+  * kun olet kirjautuneena GitHubiin, mene yo. osoitteeseen
+  * paina oikeassa yläkulmassa olevaa nappia "fork"
 * saat näin oman "forkatun" kopion repositoriosta ohtu2013
 * kloonaa forkattu repositorio paikalliselle koneellesi
 * lisää repositorioon hakemisto jonka nimi on muotoa SukunimiEtunimi
-** eli esim. oma hakemistoni olisi LuukkainenMatti
+  * eli esim. oma hakemistoni olisi LuukkainenMatti
 * lisää hakemiston sisälle tiedosto nimeltä viikko1
 * pushaa muutokset githubiin
 * tee forkkaamastasi repositiosta "pull request"
-** mene selaimella forkkaamaasi repositorioon
-** paina oikeassa kulmassa olevaa nappia "pull request"
-** anna tehtävistä palautetta avautuvaan lomakkeeseen
+  * mene selaimella forkkaamaasi repositorioon
+  * paina oikeassa kulmassa olevaa nappia "pull request"
+  * anna tehtävistä palautetta avautuvaan lomakkeeseen
 
 ## tehtävien kirjaaminen palautetuksi
 
 * Kirjaa tekemäsi tehtävät "tänne":http://ohtustats-2013.herokuapp.com (sivun aukeamisessa saattaa joskus kestää hetki)
-** huom: tehtävien palautuksen deadline on su 17.3. klo 23.59
+  * huom: tehtävien palautuksen deadline on su 16.3. klo 23.59
