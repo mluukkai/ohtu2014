@@ -209,6 +209,10 @@ Alkuvalmistelut:
 
 Luodaan ensimmäinen "build job" ja määritellään se kääntämään ja testaamaan edellisen tehtävän "OhtuVarasto"
 
+* Varmista ensin, että Jenkins on sivun autorefreshaavassa moodissa:
+
+![kuva](https://github.com/mluukkai/ohtu2014/raw/master/images/viikko1-4.png)
+
 * valitse *new item* ja *free style software project*
   * nimeä projekti muodossa **<käyttäjätunnus>-viikko1**
 * täytä lomakkeesta kohdat:
@@ -220,10 +224,6 @@ Luodaan ensimmäinen "build job" ja määritellään se kääntämään ja testa
 
 ![kuva](https://github.com/mluukkai/ohtu2014/raw/master/images/viikko1-3.png)
 
-Varmista, että Jenkins on sivun autorefreshaavassa moodissa:
-
-![kuva](https://github.com/mluukkai/ohtu2014/raw/master/images/viikko1-4.png)
-
 * Build
   * *add build step -> invoke top-level maven targets*
   * kohtaan *goals* laitetaan halutut maven-targetit, tällä kertaa <code>clean test</code>
@@ -234,8 +234,7 @@ Varmista, että Jenkins on sivun autorefreshaavassa moodissa:
   * klikkaa palloa katso mitä *console output*:ista löytyy
   * console output on tärkeä paikka jos kaikki ei mene odotusten mukaisesti
 
-
-
+**Lisää github-repositoriosi readme.MD-tiedostoon linkki projektisi Jenkins-sivulle!**
 
 ## 8. Jenkins, osa 2
 
@@ -245,34 +244,43 @@ jatketaan kokeiluja
   * huomioi miten Jenkins raportoi tilanteen, katso myös *console outputia* rikki menneestä buildista
 * testitulosten parempi raportointi
   * valitse *configure* ja laita rasti *post build actions*:in alta löytyvään kohtaan *Publish JUnit test result report*
-  * määrittele testiraporttiesi sijainti, etsi esim komennon tree avulla paikallisesta repositoriostasi missä testiraportit ovat, muista että projektisi on reposition sisällä hakemistossa OhtuVarasto, eli xml:n sijaintipolun alku on __OhtuVarasto/target/...__
+  * määrittele testiraporttiesi sijainti, se on todennäköisesti seuraava __OhtuVarasto/target/surefire-reports/TEST-ohtu.ohtuvarasto.VarastoTest.xml__, varmista komennolla <code>tree</code>
   * talleta ja buildaa taas
   * tarkista punaisen pallon takaa löytyvästä kohdasta *Test results* miten Jenkins raportoi testituloksen
 * buildaa projektisi vielä kerran
   * mene build job:in pääsivulle ja refreshaa selain (ctrl+F5). testien läpimenostatistiikan pitäisi nyt näkyä etisivulla 
-  * HUOM: kannattaa laittaa sivun automaattinen päivitys päälle klikkaamalla oikeasta yläkulmasta *enable auto refresh*
-* __ennen seuraavaa vaihetta, varmista että testisi menevät läpi!__
-  * huom: voit perua uusimman commitin (jolla äsken rikoit testi) gitillä seuraavasti <code>git revert HEAD --no-edit</code>
+* korjaa rikottu testi, commitoi koodi ja suorita jenkins build uudelleen  
+  
+  
+__varmista, että ennen seuraavaa vaihetta testisi menevät läpi!__
+
 * konfiguroi Jenkins myös näyttämään testikattavuus 
   * toimi Jenkins Guiden sivujen 34-39 ohjeiden mukaan
-  * huom1: plugin ovat Jenkinsissä valmiiksi asennettuna
+  * huom1: plugin on Jenkinsissä valmiiksi asennettuna
   * huom2: build goaliksi testikattavuuden osalta pitää laittaa <code>cobertura:cobertura -Dcobertura.report.format=xml</code>
   * kohtaan "Cobertura xml report pattern" voit laittaa <code>OhtuVarasto/target/site/cobertura/coverage.xml</code>
   * huom3: jos määrittelet erillisen build-stepin, muista määritellä pom.xml-tiedoston sijainti!
-* konfiguroi Jenkins myös näyttämään JavaDoc
-  * kokeile javadoc:ien generointia paikallisella koneella antamalla komento mvn javadoc:javadoc
-  * etsi tree-komennon avulla generoitujen dokumenttien sijaintipaikka ja avaa JavaDoc selaimella
-  * laita JavaDoc:in generointi Jenkinsiin build targetiksi 
-  * Jenksinsin Post-build Actions:in *Publish Javadoc* ei jostain syystä toimi, mutta voimme julkaista JavaDocin normaalina html:nä seuraavasti:
-*** valitse Post-build Actions:in alta *Publish HTML reports*, laita HTML-directoryksi *OhtuVarasto/target/site/apidocs/* report titleksi esim. *JavaDoc*
-* konfiguroi Jenkins vielä generoimaan projektistasi jar-tiedosto
-  * lisää *build goal*:iksi *install* (tämä tekee oikeastaan test-goalin tarpeettomaksi sillä install:ia ennen tehdään aina test)
-  *  Valitse *Post build -actions*:sta kohta  *Archive the artifacts*
-  * kohtaan *files to archive tulee* generoidun jar-tiedoston polku. Selvitä se tekemällä <code>mvn install</code> paikallisesti
-* tutki mitä kaikkea Jenkins-projektissasi nyt on
-  * mikä on Workspace:n sisältö?
+  
+## 9 Jenkins, osa 3  
+  
+Konfiguroi Jenkins näyttämään myös JavaDoc
 
-## 9 Jenkins, osa 3
+* kokeile javadoc:ien generointia paikallisella koneella antamalla komento <code>mvn javadoc:javadoc</code>
+* etsi tree-komennon avulla generoitujen dokumenttien sijaintipaikka ja avaa JavaDoc selaimella
+* laita JavaDoc:in generointi Jenkinsiin build targetiksi 
+* Valitse *Post build -actions*:in alta *Publish Javadoc*, laita javadoc-directoryksi *OhtuVarasto/target/site/apidocs* report
+* kun suoritat seuraavan kerran jenkins-buildin, tulee koodista generoitu javadoc projektin sivulle, huonosti nimetyn linkin *Document* taakse
+  
+Konfiguroi Jenkins vielä generoimaan projektistasi jar-tiedosto
+
+* lisää *build goal*:iksi *install* (tämä tekee oikeastaan test-goalin tarpeettomaksi sillä install:ia ennen tehdään aina test)
+* Valitse *Post build -actions*:sta kohta  *Archive the artifacts*
+  * kohtaan *files to archive tulee* generoidun jar-tiedoston polku. Selvitä se tekemällä <code>mvn install</code> paikallisesti
+  
+Tutki mitä kaikkea Jenkins-projektissasi nyt on
+* mikä on Workspace:n sisältö?
+
+## 10 Jenkins, osa 4
 
 Automatisoidaan vielä buildaus siten, että Jenkins tekee kaikki konfiguroidut toimenpiteet automaattisesti kun GitHubissa olevaan koodiin tulee muutos
 
@@ -293,7 +301,7 @@ Automatisoidaan vielä buildaus siten, että Jenkins tekee kaikki konfiguroidut 
   * lisää tähän Jenkins-projektisi buildin triggeröivä url
   * tee muutos projektiisi ja varmista että Jenkins reagoi
 
-## 10.  Forkaa repositorio https://github.com/mluukkai/ohtu2013
+## 11.  Forkaa repositorio https://github.com/mluukkai/ohtu2013
 
 * forkkaaminen tapahtuu seuraavasti:
   * kun olet kirjautuneena GitHubiin, mene yo. osoitteeseen
@@ -310,6 +318,8 @@ Automatisoidaan vielä buildaus siten, että Jenkins tekee kaikki konfiguroidut 
   * anna tehtävistä palautetta avautuvaan lomakkeeseen
 
 ## tehtävien kirjaaminen palautetuksi
+
+**Jos olet tehnyt Jenkins-tehtävät, muista että github-repositoriosi readme.MD-tiedostossa tulee olla linkki projektisi Jenkins-sivulle!**
 
 * Kirjaa tekemäsi tehtävät "tänne":http://ohtustats-2013.herokuapp.com (sivun aukeamisessa saattaa joskus kestää hetki)
   * huom: tehtävien palautuksen deadline on su 16.3. klo 23.59
