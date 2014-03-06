@@ -144,6 +144,7 @@ Ohjelmakoodin editointi kannattaa tehdä IDE:llä, ja välillä myös ohjelman j
 * tee juuressa komento <code>tree</code>
 * käännä: <code>mvn compile</code>
   * tee jälleen juuressa komento tree, mitä muutoksia huomaat?
+  * huom: projekti olettaa että koneellasi on javasta jdk:sta vähintään versio 1.7, jos koneellasi on venhempi versio, asenna uudempi jdk
 * käännöksen jälkeen voit suorittaa pääohjelman komennolla <code>mvn exec:java -Dexec.mainClass=ohtu.ohtuvarasto.Main</code>
   * parametrina siis main-metodin sisältävän luokan nimi
 * tee <code>mvn clean</code> ja yritä suorittaa ohjelma uudelleen, miten käy?
@@ -193,7 +194,7 @@ Ohjelmakoodin editointi kannattaa tehdä IDE:llä, ja välillä myös ohjelman j
   * suorita projektin juuresta komento <code>mvn cobertura:cobertura</code>
   * kattavuusraportit tulevat hakemistoon target/site/cobertura
   * saat avattua raportin esim. komennolla <code>firefox target/site/cobertura/index.html</code>
-* kun luokan Varasto testien koodikattavuus on 100% pushaa tekemäsi muutokset GitHubiin
+* kun luokan <code>Varasto/code> testien rivikattavuus (line coverage) on 100% pushaa tekemäsi muutokset GitHubiin
 
 ## 7. Jenkins, osa 1
 
