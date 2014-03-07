@@ -47,11 +47,11 @@ Kloonaa nyt githubiin tehty repositorio **paikalliselle koneelle**. Tämä tapah
 
     git clone git@github.com:mluukkai/ohtu-viikko1.git
 
-missä komennon <code>git clone</code> parametrina on repositosiosi sivulta selviävä 'clone URL' (huomaa, että formaatin on oltava SSH):
+missä komennon <code>git clone</code> parametrina on repositorioosi sivulta selviävä 'clone URL' (huomaa, että formaatin on oltava SSH):
 
 ![kuva](https://github.com/mluukkai/ohtu2014/raw/master/images/viikko1-1.png)
 
-Nyt paikalliselle koneellesi synytt hakemisto <code>ohtu-viikko1</code> joka on on githubissa olevan repositorion klooni.
+Nyt paikalliselle koneellesi syntynyt hakemisto <code>ohtu-viikko1</code> joka on on githubissa olevan repositorion klooni.
 
 ## 2 Gitin alkeet
 
@@ -68,7 +68,7 @@ Nyt paikalliselle koneellesi synytt hakemisto <code>ohtu-viikko1</code> joka on 
 * muuta ainakin kahden tiedoston sisältöä ja committaa muutokset repositorioon
 * tee .gitignore-tiedosto, jossa määrittelet että repositorion juurihakemistossa olevat tiedostot joiden pääte on xxx ja hakemisto jonka nimi on target ignoroidaan
 * lisää xxx-päätteisä tiedostoja repositorioon ja varmista että git jättää ne huomioimatta
-* lisää myös hakemisto nimeltä _target_ ja hakemiston sisälle joku tiedosto. varmista että target sisältöineen ei mene versionhallinnan alaisuuteen
+* lisää myös hakemisto nimeltä _target_ ja hakemiston sisälle joku tiedosto, varmista että target sisältöineen ei mene versionhallinnan alaisuuteen
 * tee muutos tiedostoon, älä lisää tiedostoa "staging"-alueelle
   * peru muutos (git status -komento antaa vihjeen miten tämä tapahtuu)
 * tee muutos ja lisää tiedosto "staging"-alueelle
@@ -83,15 +83,15 @@ Tehtävässä 1 tehtiin GitHubiin repostorio, joka liitettiin paikalliselle kone
 
 ## 4 Monta kloonia samasta repositoriosta
 
-Yleensä on tapana pitää GitHubissa olevaa repositorioa tiedostojen "keskitettynä" sijoituspaikkana ja liittää paikallisella koneella oleva repositorio GitHubissa olevan repositorion etärepostitorioksi kuten teimme tehtävässä 1. 
+Yleensä on tapana pitää GitHubissa olevaa repositorioa tiedostojen "keskitettynä" sijoituspaikkana ja liittää paikallisella koneella oleva repositorio GitHubissa olevan repositorion etärepositorioksi kuten teimme tehtävässä 1. 
 
-Jos työskennellään useammalta koneelta, on githubissa olevasta repositoriosta monta kloonia ja koloonien tila on pidettävä ajantasalla.
+Jos työskennellään useammalta koneelta, on githubissa olevasta repositoriosta monta kloonia ja kloonien tila on pidettävä ajantasalla.
 
 Luodaan nyt paikalliselle koneelle repositoriosta toinen klooni:
 
 * mene komentoriville ja esim. kotihakemistoosi  (tai johonkin paikkaan joka ei ole git-repositorio) 
 * anna komento git clone git@github.com:githubtunnus/repositorionNimi.git nimiKloonille
-  * githubtunnus ja repositorionNimi ovat selviävät GitHubista repositoriosi sivulta yllä olevan kuvan osoittamasta paikasta
+  * githubtunnus ja repositorionNimi selviävät  GitHubista repositoriosi sivulta yllä olevan kuvan osoittamasta paikasta
   * *nimiKloonille* tulee olemaan kloonatun repositorion nimi, varmista että annat nimen jonka nimistä tiedostoa tai hakemistoa ei ole
 * mene kloonattuun repositorioon, lisää sinne jotain tiedostoja ja committaa
 * "pushaa" muutokset GitHubiin
@@ -100,7 +100,7 @@ Luodaan nyt paikalliselle koneelle repositoriosta toinen klooni:
 **Mene nyt tehtävässä 1 tehtyyn GitHub-repositorion klooniin.**
 
 * alkuperäinen paikallinen klooni ei ole enää ajantasalla, "pullaa" sinne muutokset komennolla <code>git pull</code>
-* varmista että molempien paikallisten repositioiden sisältö on nyt sama
+* varmista että molempien paikallisten repositorioiden sisältö on nyt sama
 * lisää alkuperäiseen kopioon joitain tiedostoja ja pushaa ne GitHubiin
 * mene jälleen kloonattuun kopioon ja pullaa
 
@@ -143,7 +143,7 @@ Ohjelmakoodin editointi kannattaa tehdä IDE:llä, ja välillä myös ohjelman j
 * tee juuressa komento <code>tree</code>
 * käännä: <code>mvn compile</code>
   * tee jälleen juuressa komento tree, mitä muutoksia huomaat?
-  * huom: projekti olettaa että koneellasi on javasta jdk:sta vähintään versio 1.7, jos koneellasi on venhempi versio, asenna uudempi jdk
+  * huom: projekti olettaa että koneellasi on javan jdk:sta vähintään versio 1.7, jos koneellasi on venhempi versio, asenna uudempi jdk
 * käännöksen jälkeen voit suorittaa pääohjelman komennolla <code>mvn exec:java -Dexec.mainClass=ohtu.ohtuvarasto.Main</code>
   * parametrina siis main-metodin sisältävän luokan nimi
 * tee <code>mvn clean</code> ja yritä suorittaa ohjelma uudelleen, miten käy?
@@ -152,7 +152,7 @@ Ohjelmakoodin editointi kannattaa tehdä IDE:llä, ja välillä myös ohjelman j
   * suorita jälleen komento <code>tree</code>
   * huomaat, että testien ajaminen luo hakemiston tree/surefire-reports, testien diagnostiikka tulee hakemistoon
 * tee projektista jar-tiedosto: <code>mvn install</code>
-  *  komennolla tree näen minne hakemistoon jar tulee
+  *  komennolla tree näet minne hakemistoon jar tulee
 * suorita jar komennolla <code>java -cp tiedostonNimi.jar ohtu.ohtuvarasto.Main</code>
   * komento siis annetaan hakemistosta, jossa jar-tiedosto sijaitsee 
 
@@ -247,7 +247,7 @@ jatketaan kokeiluja
   * talleta ja buildaa taas
   * tarkista punaisen pallon takaa löytyvästä kohdasta *Test results* miten Jenkins raportoi testituloksen
 * buildaa projektisi vielä kerran
-  * mene build job:in pääsivulle ja refreshaa selain (ctrl+F5). testien läpimenostatistiikan pitäisi nyt näkyä etisivulla 
+  * mene build job:in pääsivulle ja refreshaa selain. testien läpimenostatistiikan pitäisi nyt näkyä etusivulla 
 * korjaa rikottu testi, commitoi koodi ja suorita jenkins build uudelleen  
   
   
@@ -283,7 +283,7 @@ Tutki mitä kaikkea Jenkins-projektissasi nyt on
 
 Automatisoidaan vielä buildaus siten, että Jenkins tekee kaikki konfiguroidut toimenpiteet automaattisesti kun GitHubissa olevaan koodiin tulee muutos
 
-Huonompi tapa hoitaa asia on laittaa Jenkins pollaamaan repositoioa määräajoin, kokeillaan ensin tätä
+Huonompi tapa hoitaa asia on laittaa Jenkins pollaamaan repositorioa määräajoin, kokeillaan ensin tätä
 * valitse *configure* ja laita rasti kohtaan *poll scm*
 * avautuvaan schedule-laatikkoon määritellään cron-formaatissa miten usein repositorioa pollataan
 * määrittele että pollaus tapahtuu kerran minuutissa
@@ -301,12 +301,12 @@ Parempi tapa on määritellä GitHub kertomaan Jenkinssille aina kun projektiin 
 * lisää tähän Jenkins-projektisi buildin triggeröivä url kohtaan *payload url*
 * tee muutos projektiisi ja varmista että Jenkins reagoi
 
-## 11.  Forkaa repositorio https://github.com/mluukkai/ohtu2013
+## 11.  Forkaa repositorio https://github.com/mluukkai/ohtu2014
 
 * forkkaaminen tapahtuu seuraavasti:
   * kun olet kirjautuneena GitHubiin, mene yo. osoitteeseen
   * paina oikeassa yläkulmassa olevaa nappia "fork"
-* saat näin oman "forkatun" kopion repositoriosta ohtu2013
+* saat näin oman "forkatun" kopion repositoriosta ohtu2014
 * kloonaa forkattu repositorio paikalliselle koneellesi
 * lisää repositorioon hakemisto jonka nimi on muotoa SukunimiEtunimi
   * eli esim. oma hakemistoni olisi LuukkainenMatti
@@ -321,5 +321,5 @@ Parempi tapa on määritellä GitHub kertomaan Jenkinssille aina kun projektiin 
 
 **Jos olet tehnyt Jenkins-tehtävät, muista että github-repositoriosi readme.MD-tiedostossa tulee olla linkki projektisi Jenkins-sivulle!**
 
-* Kirjaa tekemäsi tehtävät "tänne":http://ohtustats.herokuapp.com 
+* Kirjaa tekemäsi tehtävät [tänne](http://ohtustats.herokuapp.com) 
   * huom: tehtävien palautuksen deadline on su 16.3. klo 23.59
