@@ -255,7 +255,7 @@ Jos haluttaisiin, että jokaisella getBean-pyynnöllä syntyy uusi olio, tulisi 
 
 ### Springin konfigurointi annotaatioilla
 
-Esimerkkiporojekti [https://github.com/mluukkai/ohtu2014/viikko2/Riippuvuuksieninjektointi3](https://github.com/mluukkai/ohtu2014/viikko2/Riippuvuuksieninjektointi3) esittelee vaihtoehoisen tavan konfiguroida Springin hallinnoimia oliota. Konfiguraatiotiedosto on nyt muotoa
+Esimerkkiprojekti [https://github.com/mluukkai/ohtu2014/viikko2/Riippuvuuksieninjektointi3](https://github.com/mluukkai/ohtu2014/viikko2/Riippuvuuksieninjektointi3) esittelee vaihtoehoisen tavan konfiguroida Springin hallinnoimia oliota. Konfiguraatiotiedosto on nyt muotoa
 
 ``` java
 <?xml version="1.0" encoding="UTF-8"?>
