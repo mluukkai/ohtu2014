@@ -2,7 +2,7 @@
 
 Lue ensin [http://jamesshore.com/Blog/Dependency-Injection-Demystified.html](http://jamesshore.com/Blog/Dependency-Injection-Demystified.html)
 
-Allaolevat koodiesimerkit löytyvät maven-muotoisina projekteina [täältä](https://github.com/mluukkai/ohtu2014) (hakemistossa viikko2/RiippuvuuksienInjektointi)
+Allaolevat koodiesimerkit löytyvät maven-muotoisina projekteina [täältä](https://github.com/mluukkai/ohtu2014) (hakemistossa viikko2)
 
 Luennolla esiteltiin yksinkertainen laskin:
 
@@ -47,7 +47,7 @@ Ohjelman ikävä puoli on se, että Laskin-luokalla on konkreettinen riippuvuus 
 
 Konkreettiset riippuvuudet vaikeuttavat testaamista ja tekevät ohjelman laajentamisen vaikeaksi.
 
-h3. Riippuvuus rajapintaan
+### Riippuvuus rajapintaan
 
 Määritellään rajapinta jonka taakse konkreettiset riippuvuudet voidaan piilottaa:
 
@@ -183,7 +183,7 @@ Esimerkkimme tapauksessa konfigurointi on helppoa. Isommissa ohjelmissa konfigur
 
 [Spring-sovelluskehys](http://www.springsource.org/) tarjoaa mahdollisuuden olioiden konfigurointiin erillisten konfiguraatiotiedostojen avulla.
 
-Spring saadaan käyttöön lisäämällä sopivat riippuvuudet maven-projektin määrittelemään pom.xml-tiedostoon, katso tarkemmin projektista Riippuvuuksieninjektointi2
+Spring saadaan käyttöön lisäämällä sopivat riippuvuudet maven-projektin määrittelemään pom.xml-tiedostoon, katso tarkemmin projektista [https://github.com/mluukkai/ohtu2014/viikko2/Riippuvuuksieninjektointi2](https://github.com/mluukkai/ohtu2014/viikko2/Riippuvuuksieninjektointi2)
 
 Springissä konfigurointi tehdään xml-tiedostoon:
 
@@ -255,7 +255,7 @@ Jos haluttaisiin, että jokaisella getBean-pyynnöllä syntyy uusi olio, tulisi 
 
 ### Springin konfigurointi annotaatioilla
 
-Esimerkkiporojekti Riippuvuuksieninjektointi3 esittelee vaihtoehoisen tavan konfiguroida Springin hallinnoimia oliota. Konfiguraatiotiedosto on nyt muotoa
+Esimerkkiporojekti [https://github.com/mluukkai/ohtu2014/viikko2/Riippuvuuksieninjektointi3](https://github.com/mluukkai/ohtu2014/viikko2/Riippuvuuksieninjektointi3) esittelee vaihtoehoisen tavan konfiguroida Springin hallinnoimia oliota. Konfiguraatiotiedosto on nyt muotoa
 
 ``` java
 <?xml version="1.0" encoding="UTF-8"?>
