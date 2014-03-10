@@ -183,7 +183,7 @@ Esimerkkimme tapauksessa konfigurointi on helppoa. Isommissa ohjelmissa konfigur
 
 [Spring-sovelluskehys](http://www.springsource.org/) tarjoaa mahdollisuuden olioiden konfigurointiin erillisten konfiguraatiotiedostojen avulla.
 
-Spring saadaan käyttöön lisäämällä sopivat riippuvuudet maven-projektin määrittelemään pom.xml-tiedostoon, katso tarkemmin projektista [https://github.com/mluukkai/ohtu2014/viikko2/Riippuvuuksieninjektointi2](https://github.com/mluukkai/ohtu2014/viikko2/Riippuvuuksieninjektointi2)
+Spring saadaan käyttöön lisäämällä sopivat riippuvuudet maven-projektin määrittelemään pom.xml-tiedostoon, katso tarkemmin projektista [https://github.com/mluukkai/ohtu2014/tree/master/viikko2/RiippuvuuksienInjektointi2](https://github.com/mluukkai/ohtu2014/tree/master/viikko2/RiippuvuuksienInjektointi2)
 
 Springissä konfigurointi tehdään xml-tiedostoon:
 
@@ -255,7 +255,7 @@ Jos haluttaisiin, että jokaisella getBean-pyynnöllä syntyy uusi olio, tulisi 
 
 ### Springin konfigurointi annotaatioilla
 
-Esimerkkiprojekti [https://github.com/mluukkai/ohtu2014/viikko2/Riippuvuuksieninjektointi3](https://github.com/mluukkai/ohtu2014/viikko2/Riippuvuuksieninjektointi3) esittelee vaihtoehoisen tavan konfiguroida Springin hallinnoimia oliota. Konfiguraatiotiedosto on nyt muotoa
+Esimerkkiprojekti [https://github.com/mluukkai/ohtu2014/tree/master/viikko2/RiippuvuuksienInjektointi3](https://github.com/mluukkai/ohtu2014/tree/master/viikko2/RiippuvuuksienInjektointi3) esittelee vaihtoehoisen tavan konfiguroida Springin hallinnoimia oliota. Konfiguraatiotiedosto on nyt muotoa
 
 ``` java
 <?xml version="1.0" encoding="UTF-8"?>
