@@ -12,7 +12,7 @@ Tämän viikon tehtävät ovat lähes luennoista riippumattomia, luentomateriaal
 
 Tee itsellesi tarvittaessa tunnus GitHubiin
 
-* mene osoitteeseen "https://github.com/plans":https://github.com/plans
+* mene osoitteeseen https://github.com/plans
 * valitse create free account
 
 Luo repositorio nimellä ohtu-viikko1 
@@ -24,16 +24,16 @@ Luo repositorio nimellä ohtu-viikko1
 
 Hae akateemista tunnusta, näin saat käyttöösi (ilmaiseksi) yksityisiä repositorioita
 
-* "https://github.com/edu":https://github.com/edu
+* https://github.com/edu
 * HUOM: tämän viikon tehtävissä et vielä tarvitse akateemista tunnusta, ja tämän viikon repositorion *tulee* olla julkinen!
 
 Luo paikalliselle koneellesi ssh-avain (tapahtuu komentoriviltä käsin)
 
-* ks. ohje "http://www.cs.helsinki.fi/group/kuje/compfac/ssh_avain.html":http://www.cs.helsinki.fi/group/kuje/compfac/ssh_avain.html
+* ks. ohje http://www.cs.helsinki.fi/group/kuje/compfac/ssh_avain.html
 
 Lisää avaimen julkinen pari githubiin:
 
-* "https://github.com/settings/ssh":https://github.com/settings/ssh
+* https://github.com/settings/ssh
 
 Näin pystyt käyttämään GitHubia ilman salasanan syöttämistä koneelta jossa juuri luodun avaimen salainen pari löytyy
 
@@ -49,7 +49,7 @@ Kloonaa nyt githubiin tehty repositorio **paikalliselle koneelle**. Tämä tapah
 
 missä komennon <code>git clone</code> parametrina on repositorioosi sivulta selviävä 'clone URL' (huomaa, että formaatin on oltava SSH):
 
-![kuva](https://github.com/mluukkai/ohtu2014/raw/master/images/viikko1-1.png)
+![kuva](https://github.com/mluukkai/ohtu2014/raw/master/images/viikko1-2.png)
 
 Nyt paikalliselle koneellesi syntynyt hakemisto <code>ohtu-viikko1</code> joka on on githubissa olevan repositorion klooni.
 
