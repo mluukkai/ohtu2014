@@ -70,7 +70,123 @@ public class StaticsticsTest {
 
 Kun injektoit readerStub-olion testissä Statistics-oliolle, palauttaa se aina saman pelaajalistan.
 
-## 4. riippuvuuksien injektointi osa 3: Verkkokauppa
+
+## 4. lisää git:iä: branchit
+
+lue brancheja käsittelevät osuudet seuraavista: [https://we.riseup.net/debian/git-development-howto](https://we.riseup.net/debian/git-development-howto) ja [http://www.ralfebert.de/tutorials/git/](http://www.ralfebert.de/tutorials/git/)
+* jos haluat lukea hieman perusteellisemman selityksen asiasta, lue [http://progit.org/book/](http://progit.org/book/):n luku kolme
+* tee samalla kaikki tekstien esimerkit
+
+Kannattaa huomioida myös erittäin hyvä brancheja käsittelevä visuaalinen materiaali osoitteessa [http://pcottle.github.com/learnGitBranching/](http://pcottle.github.com/learnGitBranching/)
+
+**huom:** kun liikut branchien välillä kannattaa pitää working tree ja staging -alue tyhjinä!
+
+tee seuraavat paikalliseen git-repositorioosi
+
+* luo reposoitorio ja committaa masteriin tiedosto __masteri1.txt__
+* luo branch __eka__, siirry branchiin, luo sinne tiedosto __eka.txt__ ja committaa
+* siirry takaisin __master__-branchiin. tiedoston __eka.txt__ ei pitäisi nyt näkyä
+* lisää ja committaa __masteriin__ tiedosto __masteri2.txt__
+* mene branchiin __eka__ ja tarkasta, että __masteriin__ lisätty tiedosto ei ole branchissa
+* lisää branchiin tavaraa, esim. tiedosto __eka2.txt__ ja committaa
+* siirry takaisin __master__-branchiin
+* tarkasta että __eka__-branchiin lisätyt muutokset eivät ole masterissa
+* tarkastele komennolla <code>gitk --all</code> miltä repositorio ja branchit näyttävät (ei tietoa toimiiko gitk windowsissa)
+* mergeä branchin __eka__ sisältö __masteriin__
+* katso jälleen miltä näyttää gitk --all
+* tuhoa branchi __eka__
+
+## 5. lisää git:iä: konflikti!
+
+tee paikalliseen git-repoon seuraavat
+
+* lisää __master__-branchiin tiedosto __tarkea.txt__, kirjota sinne tekstiä ja committaa
+* tee uusi branchi __toka__, editoi tiedoston __tarkea.txt__ loppua ja committaa
+* mene takaisin __master__-branchiin, editoi tiedoston __tarkea__.txt alkua ja committaa
+* mergeä branchin __toka__ sisältö __masteriin__
+  * katso tiedoston __tarkea.txt__-sisältöä, sen pitäisi sisältää nyt molemmissa brancheissa tehdyt muutokset
+* lisää jotain tiedoston loppuun ja committaa
+* siirry branchiin __toka__
+* lisää jotain tiedoston __tarkea.txt__ loppuun ja committaa
+* mergeä branchin __master__ sisältö branchiin __toka__
+  * nyt pitäisi aiheutua konflikti
+* ratkaise konflikti:
+  * editoi tiedoston __tarkea.txt__ sisältö haluamaksesi
+  * ja toimi ym. artikkelien ohjeen mukaan eli lisää konfliktoinut tiedosto staging-alueelle ja committoi
+
+## 6. lisää git:iä: branchit ja GitHub
+
+aloita lukemalla [http://progit.org/book/](http://progit.org/book/) luku Remote Branches
+
+branch githubiin:
+
+* lisää tehtävien palauttamiseen käyttämäsi GitHub-reposition paikalliseen kopioon branchit __haara1__ ja __haara2__
+* mene branchiin __haara1__, lisää sinne tiedosto __haara1.txt__ ja committaa
+* mene branchiin __haara2__, lisää sinne tiedosto __haara2.txt__ ja committaa
+* pushaa uudet branchit GitHubiin
+* tarkastele GitHub-repositoria selaimella, varmista että branchit syntyvät ja niillä on haluttu sisältö
+
+kloonaa GitHub-repositoriosta koneellesi toinen kopio
+
+* kuten huomaat, eivät branchit tule kloonattuun kopioon
+* tee paikalliseen kopioon branch joka "träkkää" GitHub:issa olevan projektisi branchia __haara1__ (ks. [http://progit.org/book](http://progit.org/book) kohta Tracking Branches)
+* lisää "träkkäävään" branchiin joku tiedosto, committaa ja pushaa branchi GitHubiin
+* tarkastele GitHub-repositoria selaimella, varmista että branchi päivittyy
+
+mene GitHub-repon alkuperäiseen paikalliseen kopioon
+
+* mene branchiin haara1 ja pullaa muutokset GitHub:in vastaavasta branchista
+  * huom: koska kyseessä ei ole "träkkäävä" branchi, joudut pullaamaan komennolla <code>git pull origin haara1</code>
+* mene branchiin __haara2__, lisää sitten tiedosto, committaa ja pushaa branchi GitHubiin
+  * huom: koska kyseessä ei ole "träkkäävä" branchi, ei git push riitä vaan joudut määrittelemään branchin jonne push kohdistuu eli antamaan komennon <code>git push origin haara2</code>
+
+mene jälleen toiseen kopioon
+* suorita komento <code>git remote show origin</code>
+  * komento kertoo 'origin':issa eli githubissa olevien branchien ja paikallisten branchien suhteen 
+* tee sinne GitHub:issa olevan projektisi branchia __haara2__ träkkäävä branch
+* suorita jälleen <code>git remote show origin</code>, mitä muutoksia huomaat?
+* tee branchiin muutoksia ja pushaa ne githubiin
+  *  huom: koska kyseessä träkkäävä branch, riittää git push
+* tarkastele GitHub-repositoria selaimella, varmista että branchi päivittyy
+
+suorita vielä komento <code>git remote show origin</code> alkuperäisessä paikallisessa kopiossa
+
+Branchien kanssa työskentely voi aluksi tuntua sekavalta varsinkin jos GitHub:issa on myös useita brancheja.
+
+## 7. mihin brancheja käytetään?
+
+Lue artikkeli [http://nvie.com/posts/a-successful-git-branching-model/](http://nvie.com/posts/a-successful-git-branching-model/) Se esittelee yhden tavan käyttää brancheja ohjelmistoprojektissa. Pienemmissä projekteissa selviää yksinkertaisemmillakin branching-malleilla. Projektissa tulee kuitenkin sopia minkälaista mallia käytetään ja kaikkien kehittäjien on mallia noudatettava.
+
+## 8. epäajantasaisen kopion pushaaminen
+
+Demonstroidaan ylein esiintyvää tilannetta, jossa epäajantasaisen repositorion pushaaminen githubissa olevaan etärepositorioon epäonnistuu.
+
+* mene alkuperäiseen repositorion alkuperäisen kopion __master__ haaraan, tee joku muutos, commitoi ja pushaa se githubiin
+* mene toisen kopion __master__-haaraan ja  tee sinne joku muutos 
+* commitoi ja pushaa muutos githubiin
+* kaikki ei kuitenkaan mene hyvin, seurauksena on seuraavantyylinen virheilmoitus:
+
+<pre>
+mluukkai@e42-17:~/klooni$ git push
+Counting objects: 12, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (9/9), 764 bytes, done.
+Total 9 (delta 3), reused 0 (delta 0)
+To git@github.com:mluukkai/ohtu-viikko1.git
+   58b92fd..5198e05  haara2 -> haara2
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'git@github.com:mluukkai/ohtu-viikko1.git'
+To prevent you from losing history, non-fast-forward updates were rejected
+Merge the remote changes before pushing again.  See the 'Note about
+fast-forwards' section of 'git push --help' for details.
+</pre>
+
+Virheen syynä on se, että githubissa oleva __master__-haara oli edellä paikallisen repositorion __master_-haaraa. Ongelma korjaantuu tekemällä ensin <code>git pull</code>, ratkaisemalla mahdolliset konfliktit ja pushaamalla sitten uudelleen.
+* eli toimi näin ja varmista, että tekemäsi muutokset menevät githubiin
+
+
+## 9. riippuvuuksien injektointi osa 3: Verkkokauppa
 
 Repositorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) hakemistossa viikko2/Verkkokauppa1 on yksinkertaisen verkkokaupan ohjelmakoodi
 
@@ -96,7 +212,7 @@ Repositorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai
 Kauppa kauppa = new Kauppa(Varasto.getInstance(), Pankki.getInstance(), Viitegeneraattori.getInstance() );
 ```
 
-## 5. riippuvuuksien injektointi osa 4: ei enää singletoneja verkkokaupassa
+## 10. riippuvuuksien injektointi osa 4: ei enää singletoneja verkkokaupassa
 
 * singleton-suunnittelumallia pidetään osittain ongelmallisena, poistammekin edellisestä tehtävästä singletonit
 ** katso esim. [http://blogs.msdn.com/b/scottdensmore/archive/2004/05/25/140827.aspx](http://blogs.msdn.com/b/scottdensmore/archive/2004/05/25/140827.aspx)
@@ -117,7 +233,7 @@ Kauppa kauppa              = new Kauppa(varasto, pankki, viitegen);
 
 Kuten huomaamme, alkaa kaupan konfigurointi olla aika vaivalloista...
 
-## 6. Spring osa 1: Verkkokauppa siistiksi
+## 11. Spring osa 1: Verkkokauppa siistiksi
 
 Spring tarjoaa pelastuksen käsillä olevaan tilanteeseen.
 
@@ -138,7 +254,7 @@ public static void main(String[] args) {
 
 Kannattanee edetä tehtävässä pienin askelin siirtäen yksi luokka kerrallaan Springin hallinnoinnin alle
 
-## 7. Spring osa 2: Verkkokauppa siistiksi annotaatioilla
+## 12. Spring osa 2: Verkkokauppa siistiksi annotaatioilla
 
 * HUOM: älä tee tätä edellisen tehtävän päälle, tee projektista kopio
 * tai tee se erilliseen branchiin:
@@ -147,12 +263,12 @@ Kannattanee edetä tehtävässä pienin askelin siirtäen yksi luokka kerrallaan
   * jotta joku muu branch kuin master (eli "pääbranch") saadaan githubiin, tulee push-komennon olla muodossa git push origin <branchin-nimi>
   * palaamme brancheihin tarkemmin ensi viikon tehtävissä
 
-* muuta edellistä tehtävää siten, että konfigurointi tapahtuu annotaatioiden @Component ja @Autowired avulla
+* muuta edellistä tehtävää siten, että konfigurointi tapahtuu annotaatioiden <code>@Component</code> ja <code>@Autowired</code> avulla
 * huom: 
   * tehtävää ei välttämättä kannata tehdä yhtenä isona askeleena, saattaa olla viistasta muuttaa luokka kerrallaan xml-konfiguraatiosta annotaatiokonfiguroiduksi
   * virheilmoitukset eivät ole noviisille selkeimpiä mahdollisa
-  * muista määritellä kaikkiin @Component edellisessä tehtävässä xml:ssä määriteltyihin luokkiin
-  * muista laittaa @Autowired jokaiseen luokkaan jolla on riippuvuuksia
+  * muista määritellä <code>@Component</code> kaikkiin edellisessä tehtävässä xml:ssä määriteltyihin luokkiin
+  * muista laittaa <code>@Autowired</code> jokaiseen luokkaan, jolla on riippuvuuksia
 
 ## tehtävien kirjaaminen palautetuksi
 
