@@ -81,9 +81,9 @@ Kannattaa huomioida myös erittäin hyvä brancheja käsittelevä visuaalinen ma
 
 **huom:** kun liikut branchien välillä kannattaa pitää working tree ja staging -alue tyhjinä!
 
-tee seuraavat paikalliseen git-repositorioosi
+tee seuraavat paikalliseen git-repositorioosi (kyseessä ei siis tarvitse olla tehtävien palautusrepositorio)
 
-* luo reposoitorio ja committaa masteriin tiedosto __masteri1.txt__
+* luo repositorio ja committaa masteriin tiedosto __masteri1.txt__
 * luo branch __eka__, siirry branchiin, luo sinne tiedosto __eka.txt__ ja committaa
 * siirry takaisin __master__-branchiin. tiedoston __eka.txt__ ei pitäisi nyt näkyä
 * lisää ja committaa __masteriin__ tiedosto __masteri2.txt__
@@ -100,11 +100,12 @@ tee seuraavat paikalliseen git-repositorioosi
 
 tee paikalliseen git-repoon seuraavat
 
-* lisää __master__-branchiin tiedosto __tarkea.txt__, kirjota sinne tekstiä ja committaa
+* lisää __master__-branchiin tiedosto __tarkea.txt__, kirjota sinne muutama rivi tekstiä ja committaa
 * tee uusi branchi __toka__, editoi tiedoston __tarkea.txt__ loppua ja committaa
-* mene takaisin __master__-branchiin, editoi tiedoston __tarkea__.txt alkua ja committaa
+* mene takaisin __master__-branchiin, editoi tiedoston __tarkea.txt__ alkua ja committaa
 * mergeä branchin __toka__ sisältö __masteriin__
   * katso tiedoston __tarkea.txt__-sisältöä, sen pitäisi sisältää nyt molemmissa brancheissa tehdyt muutokset
+  * **huom:** jo tässä vaiheessa saattaa syntyä konflikti jos olet vahingossa muuttanut merkkejä väärästä kohtaa tiedostoa! Toimi tällöin ao. ohjeen mukaan.
 * lisää jotain tiedoston loppuun ja committaa
 * siirry branchiin __toka__
 * lisää jotain tiedoston __tarkea.txt__ loppuun ja committaa
@@ -116,7 +117,7 @@ tee paikalliseen git-repoon seuraavat
 
 ## 6. lisää git:iä: branchit ja GitHub
 
-aloita lukemalla [http://git-scm.com/book](http://git-scm.com/book)luku Remote Branches
+aloita lukemalla [http://git-scm.com/book](http://git-scm.com/book) luku Remote Branches
 
 branch githubiin:
 
