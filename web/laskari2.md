@@ -14,7 +14,6 @@
 
 * lue ensin tiistain luennolla nopeasti läpikäytyjen asioiden kertaus [https://github.com/mluukkai/ohtu2014/blob/master/web/riippuvuuksien_injektointi.md](https://github.com/mluukkai/ohtu2014/blob/master/web/riippuvuuksien_injektointi.md)
 * hae koodiesimerkit repostitoriosta [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) (hakemistosta viikko2/RiippuvuuksienInjektointi*) ja kokeile että kaikki toimivat
-
 * järkevintä lienee että kloonaat repositorion paikalliselle koneellesi
   * vaikka viime viikolla sama repositorio forkattiin, ei forkattua repositorioa saa ihan helposti synkronoitua alkuperäiseen
 
@@ -30,20 +29,20 @@
 
 **itse tehtävä:**
 
-* Määrittele rajapinta <code>Reader</code>, jolla on samat metodit kuin PlayerReaderilla. Laita PlayerReader toteuttamaan rajapinta.
-* Muokkaa ohjelman rakennetta siten, että Statictics saa konstruktoriparametrina Reader-olion.
+* Määrittele rajapinta <code>Reader</code>, jolla on samat julkiset metodit kuin PlayerReaderilla, eli ainoastaan metodi <code>List<Player> getPlayers()</code>. Laita PlayerReader toteuttamaan rajapinta.
+* Muokkaa ohjelman rakennetta siten, että Statictics saa konstruktoriparametrina <code>Reader</code>-tyyppisen olion.
 * Muokkaa pääohjelma siten, että se injektoi Statistics-oliolle PlayerReaderin ja kokeile että ohjelma toimii edelleen:
 
 ``` java
-Statistics stats = new Statistics( new PlayerReader("http://nhlstatistics.herokuapp.com/players.txt") );
+Statistics stats = new Statistics( new PlayerReader("http://nhlstats-2013-14.herokuapp.com/players.txt") );
 ```
 
 ## 3.  NHLStatistics-ohjelman yksikkötestaus
 
 * tee yksikkötestit luokalle Statistics
-  * testien rivikattavuuden tulee olla 100% (mitataan coberturalla, ks. viikko 1)
+  * testien rivi- ja haarautumakattavuuden tulee (Statistics-luokan osalta) olla 100% (mitataan coberturalla, ks. viikko 1)
   * testit eivät saa käyttää verkkoyhteyttä
-  * verkkoyhteyden tarpeen saat eliminoitua luomalla testiä varten rajapinnan Reader-toteuttavan "stubin" jonka sisälle kovakoodaat palautettavan pelaajalistan
+  * verkkoyhteyden tarpeen saat eliminoitua luomalla testiä varten rajapinnan Reader-toteuttavan "stubin", jonka sisälle kovakoodaat palautettavan pelaajalistan
   * voit luoda stubin testin sisälle anonyyminä sisäluokkana seuraavasti:
 
 ``` java
@@ -73,11 +72,11 @@ Kun injektoit readerStub-olion testissä Statistics-oliolle, palauttaa se aina s
 
 ## 4. riippuvuuksien injektointi osa 3: Verkkokauppa
 
-Repositorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) hakemistosta viikko2/Verkkokauppa1 on yksinkertaisen verkkokaupan ohjelmakoodi
+Repositorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) hakemistossa viikko2/Verkkokauppa1 on yksinkertaisen verkkokaupan ohjelmakoodi
 
 * tutustu koodiin, piirrä luokkakaavio ohjelman rakenteesta
-* ohjelman luokista Pankki, Varasto, Viitegeneraattori ja Kirjanpito ovat sellaisia, että niistä on tarkoitus olla olemassa vaan yksi olio. Tälläisiä ainutkertaisia olioita sanotaan *singletoneiksi*. Koodissa singletonit ovat toteutettu "klassisella tavalla"
-  * Singleton on "GoF-kirjan":http://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612/ref=pd_bxgy_b_text_y yksi alkuperäisistä suunnittelumalleista, lue lisää singletoneista esim. "täältä":http://www.oodesign.com/singleton-pattern.html
+* ohjelman luokista <code>Pankki</code>, <code>Varasto</code>, <code>Viitegeneraattori</code> ja <code>Kirjanpito</code> ovat sellaisia, että niistä on tarkoitus olla olemassa vain yksi olio. Tälläisiä ainutkertaisia olioita sanotaan **singletoneiksi**. Koodissa singletonit ovat toteutettu "klassisella tavalla"
+  * Singleton on [GoF-kirjan](http://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612/ref=pd_bxgy_b_text_y) yksi alkuperäisistä suunnittelumalleista, lue lisää singletoneista esim. [täältä](http://www.oodesign.com/singleton-pattern.html)
   * Singleton ei ole erinäisistä syistä enää oikein muodissa, ja korvaamme sen seuraavassa tehtävässä
     
 * kuten huomaamme, on koodissa toivottoman paljon konkreettisia riippuvuuksia:
@@ -87,12 +86,11 @@ Repositorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai
   * Kauppa --> Viitegeneraatori
   * Kauppa --> Varasto
 * Pura luokan <code>Kauppa</code> konkreettiset riippuvuudet rajapintojen avulla
-  * *HUOM:* NetBeansissa on automaattinen refaktorointiominaisuus, jonka avulla luokasta saa helposti heneroitua rajapinnan jolla on samat metodit kuin luokalla. Klikkaa luokan kohdalla hiiren oikeaa nappia, valitse refactor ja "extract interface"
+  * *HUOM:* NetBeansissa on automaattinen refaktorointiominaisuus, jonka avulla luokasta saa helposti generoitua rajapinnan, jolla on samat metodit kuin luokalla. Klikkaa luokan kohdalla hiiren oikeaa nappia, valitse refactor ja "extract interface"
   * muut riippuvuudet jätetään vielä
    
-* Määrittele luokalle sopiva konstruktori, jotta voit injektoida riippuvuudet
+* Määrittele luokalle sopiva konstruktori, jotta voit injektoida riippuvuudet, konstruktorin parametrien tulee olla tyypiltään **rajapintoja**
 * Muokkaa pääohjelmasi seuraavaan tyyliin:
-
 
 ``` java
 Kauppa kauppa = new Kauppa(Varasto.getInstance(), Pankki.getInstance(), Viitegeneraattori.getInstance() );
@@ -102,7 +100,8 @@ Kauppa kauppa = new Kauppa(Varasto.getInstance(), Pankki.getInstance(), Viitegen
 
 * singleton-suunnittelumallia pidetään osittain ongelmallisena, poistammekin edellisestä tehtävästä singletonit
 ** katso esim. [http://blogs.msdn.com/b/scottdensmore/archive/2004/05/25/140827.aspx](http://blogs.msdn.com/b/scottdensmore/archive/2004/05/25/140827.aspx)
-* poista kaikista luokista getInstance-metodit ja staattinen instance-muuttuja
+* **poista** kaikista luokista <code>getInstance</code>-metodit ja staattinen <code>instance</code>-muuttuja
+  * joudut muuttamaan luokilla olevat private-konstruktorit julkisiksi
 * poista rajapintojen ja dependency injektionin avulla edellisen tehtävän jäljiltä jääneet riippuvuudet, eli
   * Varasto --> Kirjanpito
   * Pankki --> Kirjanpito
@@ -124,7 +123,7 @@ Spring tarjoaa pelastuksen käsillä olevaan tilanteeseen.
 
 Lue nyt [sivu](https://github.com/mluukkai/ohtu2014/blob/master/web/riippuvuuksien_injektointi.md) Riippuvuuksien-injektointi kohdasta [Dependency injection Spring-sovelluskehyksessä](https://github.com/mluukkai/ohtu2014/blob/master/web/riippuvuuksien_injektointi.md#dependency-injection-spring-sovelluskehyksess%C3%A4) loppuun asti
 
-*  projektiin on konfiguroitu valmiiksi springin tarvitsemat riippuvuudet, konfiguraatiotiedosto spring-context.xml löytyy src/main/resources-kansion alta (NetBeansissa tämä löytyy kohdan Other Sources -alta)
+*  projektiin on konfiguroitu valmiiksi springin tarvitsemat riippuvuudet, konfiguraatiotiedosto <code>spring-context.xml</code> löytyy hakemiston _src/main/resources_ alta (NetBeansissa tämä löytyy kohdan Other Sources -alta)
   * *HUOM* mahdolliset virheilmoitukset __"org.springframework... package does not exist"__ katoavat kun buildaat projektin ensimmäisen kerran!
 * ota mallia tehtävän 1 ohjeesta ja konfiguroi verkkokauppa Springin xml-muotoista konfiguraatiota siten, että kauppa-olion luominen onnistuu Springin avulla seuraavasti:
 
@@ -139,7 +138,7 @@ public static void main(String[] args) {
 
 Kannattanee edetä tehtävässä pienin askelin siirtäen yksi luokka kerrallaan Springin hallinnoinnin alle
 
-h## 7. Spring osa 2: Verkkokauppa siistiksi annotaatioilla
+## 7. Spring osa 2: Verkkokauppa siistiksi annotaatioilla
 
 * HUOM: älä tee tätä edellisen tehtävän päälle, tee projektista kopio
 * tai tee se erilliseen branchiin:
