@@ -117,7 +117,7 @@ tee paikalliseen git-repoon seuraavat
 
 ## 6. lisää git:iä: branchit ja GitHub
 
-aloita lukemalla [http://git-scm.com/book](http://git-scm.com/book) luku Remote Branches
+aloita lukemalla ProGit kirjasta luku [Remote Branches](http://git-scm.com/book/en/Git-Branching-Remote-Branches)
 
 branch githubiin:
 
@@ -130,13 +130,13 @@ branch githubiin:
 kloonaa GitHub-repositoriosta koneellesi toinen kopio
 
 * kuten huomaat, eivät branchit tule kloonattuun kopioon
-* tee paikalliseen kopioon branch joka "träkkää" GitHub:issa olevan projektisi branchia __haara1__ (ks. [http://git-scm.com/book](http://git-scm.com/book) kohta Tracking Branches)
+* tee paikalliseen kopioon branch joka "träkkää" GitHub:issa olevan projektisi branchia __haara1__ (ks. [http://git-scm.com/book/en/Git-Branching-Remote-Branches](http://git-scm.com/book/en/Git-Branching-Remote-Branches) kohta Tracking Branches)
 * lisää "träkkäävään" branchiin joku tiedosto, committaa ja pushaa branchi GitHubiin
 * tarkastele GitHub-repositoria selaimella, varmista että branchi päivittyy
 
 mene GitHub-repon alkuperäiseen paikalliseen kopioon
 
-* mene branchiin haara1 ja pullaa muutokset GitHub:in vastaavasta branchista
+* mene branchiin __haara1__ ja pullaa muutokset GitHub:in vastaavasta branchista
   * huom: koska kyseessä ei ole "träkkäävä" branchi, joudut pullaamaan komennolla <code>git pull origin haara1</code>
 * mene branchiin __haara2__, lisää sitten tiedosto, committaa ja pushaa branchi GitHubiin
   * huom: koska kyseessä ei ole "träkkäävä" branchi, ei git push riitä vaan joudut määrittelemään branchin jonne push kohdistuu eli antamaan komennon <code>git push origin haara2</code>
