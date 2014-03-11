@@ -168,24 +168,20 @@ Demonstroidaan usein esiintyvää tilannetta, jossa epäajantasaisen repositorio
 * kaikki ei kuitenkaan mene hyvin, seurauksena on seuraavantyylinen virheilmoitus:
 
 <pre>
-mluukkai@e42-17:~/klooni$ git push
-Counting objects: 12, done.
-Delta compression using up to 2 threads.
-Compressing objects: 100% (6/6), done.
-Writing objects: 100% (9/9), 764 bytes, done.
-Total 9 (delta 3), reused 0 (delta 0)
-To git@github.com:mluukkai/ohtu-viikko1.git
-   58b92fd..5198e05  haara2 -> haara2
- ! [rejected]        master -> master (non-fast-forward)
-error: failed to push some refs to 'git@github.com:mluukkai/ohtu-viikko1.git'
-To prevent you from losing history, non-fast-forward updates were rejected
-Merge the remote changes before pushing again.  See the 'Note about
-fast-forwards' section of 'git push --help' for details.
+mbp-18:ohtu-viikko1-2014 mluukkai$ git push
+To git@github.com:mluukkai/ohtu-viikko1-2014.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'git@github.com:mluukkai/ohtu-viikko1-2014.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first merge the remote changes (e.g.,
+hint: 'git pull') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+mbp-18:ohtu-viikko1-2014 mluukkai$ 
 </pre>
 
 Virheen syynä on se, että githubissa oleva __master__-haara oli edellä paikallisen repositorion __master__-haaraa. Ongelma korjaantuu tekemällä ensin <code>git pull</code>, ratkaisemalla mahdolliset konfliktit ja pushaamalla sitten uudelleen.
 * eli toimi näin ja varmista, että tekemäsi muutokset menevät githubiin
-
 
 ## 9. riippuvuuksien injektointi osa 3: Verkkokauppa
 
