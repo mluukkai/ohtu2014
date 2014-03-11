@@ -196,7 +196,7 @@ Ohjelmakoodin editointi kannattaa tehdä IDE:llä, ja välillä myös ohjelman j
     * Jos törmäät virheeseen _Could not find artifact com.sun:tools:jar:0 at specified path /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/../lib/tools.jar_, asenna Java jdk 7 ja määrittele <code>JAVA_PATH</code>-ympäristömuuttuja. Ohje ympäristömuuttujan asettamiseen [OSX:llä](http://www.mkyong.com/java/how-to-set-java_home-environment-variable-on-mac-os-x/)
   * kattavuusraportit tulevat hakemistoon target/site/cobertura
   * saat avattua raportin esim. komennolla <code>firefox target/site/cobertura/index.html</code>
-* kun luokan <code>Varasto/code> testien rivikattavuus (line coverage) on 100% pushaa tekemäsi muutokset GitHubiin
+* kun luokan <code>Varasto</code> testien rivikattavuus (line coverage) on 100% pushaa tekemäsi muutokset GitHubiin
 
 ## 7. Jenkins, osa 1
 
