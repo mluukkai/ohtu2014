@@ -160,7 +160,7 @@ Lue artikkeli [http://nvie.com/posts/a-successful-git-branching-model/](http://n
 
 ## 8. epäajantasaisen kopion pushaaminen
 
-Demonstroidaan ylein esiintyvää tilannetta, jossa epäajantasaisen repositorion pushaaminen githubissa olevaan etärepositorioon epäonnistuu.
+Demonstroidaan usein esiintyvää tilannetta, jossa epäajantasaisen repositorion pushaaminen githubissa olevaan etärepositorioon epäonnistuu.
 
 * mene alkuperäiseen repositorion alkuperäisen kopion __master__ haaraan, tee joku muutos, commitoi ja pushaa se githubiin
 * mene toisen kopion __master__-haaraan ja  tee sinne joku muutos 
@@ -183,7 +183,7 @@ Merge the remote changes before pushing again.  See the 'Note about
 fast-forwards' section of 'git push --help' for details.
 </pre>
 
-Virheen syynä on se, että githubissa oleva __master__-haara oli edellä paikallisen repositorion __master_-haaraa. Ongelma korjaantuu tekemällä ensin <code>git pull</code>, ratkaisemalla mahdolliset konfliktit ja pushaamalla sitten uudelleen.
+Virheen syynä on se, että githubissa oleva __master__-haara oli edellä paikallisen repositorion __master__-haaraa. Ongelma korjaantuu tekemällä ensin <code>git pull</code>, ratkaisemalla mahdolliset konfliktit ja pushaamalla sitten uudelleen.
 * eli toimi näin ja varmista, että tekemäsi muutokset menevät githubiin
 
 
