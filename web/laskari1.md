@@ -1,3 +1,5 @@
+# Laskari 1
+
 ## Huom: ohjausta tehtävien tekoon to klo 14-16 ja pe klo 14-16 salissa BK107
 
 ### Tehtävien palautuksen deadline su 16.3. klo 23.59
@@ -301,7 +303,7 @@ Parempi tapa on määritellä GitHub kertomaan Jenkinssille aina kun projektiin 
 * lisää tähän Jenkins-projektisi buildin triggeröivä url kohtaan *payload url*
 * tee muutos projektiisi ja varmista että Jenkins reagoi
 
-## 11.  Forkaa repositorio https://github.com/mluukkai/ohtu2014
+## 11. Forkaa repositorio https://github.com/mluukkai/ohtu2014
 
 * forkkaaminen tapahtuu seuraavasti:
   * kun olet kirjautuneena GitHubiin, mene yo. osoitteeseen
@@ -319,7 +321,7 @@ Parempi tapa on määritellä GitHub kertomaan Jenkinssille aina kun projektiin 
 
 ## tehtävien kirjaaminen palautetuksi
 
-**Jos olet tehnyt Jenkins-tehtävät, muista että github-repositoriosi readme.MD-tiedostossa tulee olla linkki projektisi Jenkins-sivulle!**
+** Jos olet tehnyt Jenkins-tehtävät, muista että github-repositoriosi readme.MD-tiedostossa tulee olla linkki projektisi Jenkins-sivulle!**
 
 * Kirjaa tekemäsi tehtävät [tänne](http://ohtustats.herokuapp.com) 
   * huom: tehtävien palautuksen deadline on su 16.3. klo 23.59
