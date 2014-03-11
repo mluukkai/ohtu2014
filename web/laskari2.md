@@ -12,23 +12,23 @@
 
 ## 1. riippuvuuksien injektointi osa 1
 
-* tiistain luennolla nopeasti läpikäytyjen asioiden kertaus [https://github.com/mluukkai/ohtu2014/blob/master/web/riippuvuuksien_injektointi.md](https://github.com/mluukkai/ohtu2014/blob/master/web/riippuvuuksien_injektointi.md), lue se ensin
+* lue ensin tiistain luennolla nopeasti läpikäytyjen asioiden kertaus [https://github.com/mluukkai/ohtu2014/blob/master/web/riippuvuuksien_injektointi.md](https://github.com/mluukkai/ohtu2014/blob/master/web/riippuvuuksien_injektointi.md)
 * hae koodiesimerkit repostitoriosta [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) (hakemistosta viikko2/RiippuvuuksienInjektointi*) ja kokeile että kaikki toimivat
 
 * järkevintä lienee että kloonaat repositorion paikalliselle koneellesi
-** vaikka viime viikolla sama repositorio forkattiin, ei forkattua repositoria saa ihan helposti synkronoitua alkuperäiseen
+  * vaikka viime viikolla sama repositorio forkattiin, ei forkattua repositorioa saa ihan helposti synkronoitua alkuperäiseen
 
 ## 2. riippuvuuksien injektointi osa 2: NHL-tilastot
 
-* repositorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) Ohtu-NhlStatistics1 hakemistosta viikko2/Ohtu-NHLStatistics1 on ohjelma, jonka avulla on mahdollista tutkia nhl.com-sivulla olevia pelaajien tilastotietoja
+* repositorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) hakemistosta viikko2/Ohtu-NHLStatistics1 on ohjelma, jonka avulla on mahdollista tutkia [http://nhl.com](http://nhl.com)-sivulla olevia pelaajien tilastotietoja
 
 * Ohjelma koostuu kolmesta luokasta.
   * <code>Statistics</code> on palvelun tarjoava luokka, se tarjoaa metodit yhden pelaajan tietojen näyttämiseen, pistepörssin näyttämiseen ja yhden joukkueen pelaajien tietojen näyttämiseen
-  * <code>Player</code>  on luokka jonka, olioina Statistics käsittelee yksittäisen pelaajan tietoja
+  * <code>Player</code>  on luokka, jonka olioina Statistics käsittelee yksittäisen pelaajan tietoja
   * <code>PlayerReader</code>  on luokka, jonka avulla ohjelma käy hakemassa pelaajien tiedot internetistä
-* Ohjelma on nyt ikävästi struktoroitu ja esim yksikkötestaus on kovin hankalaa
+* Ohjelma on nyt ikävästi struktoroitu ja esim. yksikkötestaus on kovin hankalaa
 
-itse tehtävä:
+**itse tehtävä:**
 
 * Määrittele rajapinta <code>Reader</code>, jolla on samat metodit kuin PlayerReaderilla. Laita PlayerReader toteuttamaan rajapinta.
 * Muokkaa ohjelman rakennetta siten, että Statictics saa konstruktoriparametrina Reader-olion.
