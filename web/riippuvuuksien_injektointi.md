@@ -43,7 +43,7 @@ public class Laskin {
 }
 ```
 
-Ohjelman ikävä puoli on se, että Laskin-luokalla on konkreettinen riippuvuus Scanner-olioon ja ruudulle tulostamisen hoitavaan System.out-olioon.
+Ohjelman ikävä puoli on se, että <code>Laskin</code>-luokalla on konkreettinen riippuvuus <code>Scanner</code>-olioon ja ruudulle tulostamisen hoitavaan <code>System.out</code>-olioon.
 
 Konkreettiset riippuvuudet vaikeuttavat testaamista ja tekevät ohjelman laajentamisen vaikeaksi.
 
@@ -79,7 +79,7 @@ public class KonsoliIO implements IO {
 }
 ```
 
-Muokatussa Laskin-luokan versiossa määritellään IO-rajapinnan toteuttava oliomuuttuja joka annetaan laskin-oliolle konstruktorin parametrina:
+Muokatussa <code>Laskin</code>-luokan versiossa määritellään <code>IO</code>-rajapinnan toteuttava oliomuuttuja joka annetaan laskin-oliolle konstruktorin parametrina:
 
 ``` java
 public class Laskin {
@@ -244,7 +244,7 @@ Laskin laskin2 = ctx.getBean(Laskin.class);
 laskin2.suorita();
 ```
 
-Jos haluttaisiin, että jokaisella getBean-pyynnöllä syntyy uusi olio, tulisi konfiguraatiotiedosto olla muodossa:
+Jos haluttaisiin, että jokaisella <code>getBean</code>-pyynnöllä syntyy uusi olio, tulisi konfiguraatiotiedosto olla muodossa:
 
 
 ``` java
@@ -274,9 +274,9 @@ Esimerkkiprojekti [https://github.com/mluukkai/ohtu2014/tree/master/viikko2/Riip
  
 </beans>
 ```
-Ensin todetaan että käytetään annotaatioita konfigurointiin ja sen jälkeen määritellään, että annotaatioilla konfiguroidut luokat löytyvät pakkauksesta ohtu.laskin tai sen alipakkauksista.
+Ensin todetaan että käytetään annotaatioita konfigurointiin ja sen jälkeen määritellään, että annotaatioilla konfiguroidut luokat löytyvät pakkauksesta <code>ohtu.laskin</code> tai sen alipakkauksista.
 
-Luokan KonsoliIO alkuun on nyt lisätty annotaatio @Component:
+Luokan <code>KonsoliIO</code> alkuun on nyt lisätty annotaatio <code>@Component</code>:
 
 ``` java
 import org.springframework.stereotype.Component;
@@ -300,9 +300,9 @@ public class KonsoliIO implements IO {
 }
 ```
 
-Tämä saa aikaan sen, että Spring luo oliosäiliöön KonsoliIO-olion. Olion nimeksi tulee oletusarvoinen konsoliIO.
+Tämä saa aikaan sen, että Spring luo oliosäiliöön <code>KonsoliIO</code>-olion. Olion nimeksi tulee oletusarvoinen konsoliIO.
 
-Myös Laskin on merkitty samalla annotaatiolla. Laskimesta löytyy toinenkin mielenkiintoinen annotaatio, @Autowired:
+Myös Laskin on merkitty samalla annotaatiolla. Laskimesta löytyy toinenkin mielenkiintoinen annotaatio, <code>@Autowired</code>:
 
 ``` java
 import org.springframework.stereotype.Component;
@@ -328,7 +328,7 @@ public class Laskin {
 }
 ```
 
-@Autowired kertoo Springille, että sen täytyy etsiä konstruktoriparametriksi sopiva olio oliosäiliöstään ja antaa se laskimelle parametriksi luomishetkellä.
+<code>@Autowired</code> kertoo Springille, että sen täytyy etsiä konstruktoriparametriksi sopiva olio oliosäiliöstään ja antaa se laskimelle parametriksi luomishetkellä.
 
 Laskin saa oletusarvoisen nimen "laskin", eli sama kuin luokan nimi mutta ensimmäinen kirjain pienellä. Nyt Laskin on pääohjelman käytettävissä tutulla tavalla:
 
