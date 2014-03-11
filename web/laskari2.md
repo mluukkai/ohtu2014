@@ -74,7 +74,7 @@ Kun injektoit readerStub-olion testissä Statistics-oliolle, palauttaa se aina s
 ## 4. lisää git:iä: branchit
 
 lue brancheja käsittelevät osuudet seuraavista: [https://we.riseup.net/debian/git-development-howto](https://we.riseup.net/debian/git-development-howto) ja [http://www.ralfebert.de/tutorials/git/](http://www.ralfebert.de/tutorials/git/)
-* jos haluat lukea hieman perusteellisemman selityksen asiasta, lue [http://progit.org/book/](http://progit.org/book/):n luku kolme
+* jos haluat lukea hieman perusteellisemman selityksen asiasta, lue [http://git-scm.com/book](http://git-scm.com/book):n luku kolme
 * tee samalla kaikki tekstien esimerkit
 
 Kannattaa huomioida myös erittäin hyvä brancheja käsittelevä visuaalinen materiaali osoitteessa [http://pcottle.github.com/learnGitBranching/](http://pcottle.github.com/learnGitBranching/)
@@ -116,7 +116,7 @@ tee paikalliseen git-repoon seuraavat
 
 ## 6. lisää git:iä: branchit ja GitHub
 
-aloita lukemalla [http://progit.org/book/](http://progit.org/book/) luku Remote Branches
+aloita lukemalla [http://git-scm.com/book](http://git-scm.com/book)luku Remote Branches
 
 branch githubiin:
 
@@ -129,7 +129,7 @@ branch githubiin:
 kloonaa GitHub-repositoriosta koneellesi toinen kopio
 
 * kuten huomaat, eivät branchit tule kloonattuun kopioon
-* tee paikalliseen kopioon branch joka "träkkää" GitHub:issa olevan projektisi branchia __haara1__ (ks. [http://progit.org/book](http://progit.org/book) kohta Tracking Branches)
+* tee paikalliseen kopioon branch joka "träkkää" GitHub:issa olevan projektisi branchia __haara1__ (ks. [http://git-scm.com/book](http://git-scm.com/book) kohta Tracking Branches)
 * lisää "träkkäävään" branchiin joku tiedosto, committaa ja pushaa branchi GitHubiin
 * tarkastele GitHub-repositoria selaimella, varmista että branchi päivittyy
 
