@@ -272,6 +272,7 @@ Kannattanee edetä tehtävässä pienin askelin siirtäen yksi luokka kerrallaan
 tehtävien kirjaus:
 
 * Kirjaa tekemäsi tehtävät [tänne](http://ohtustats.herokuapp.com) 
+  * **Palautus onnistuu vasta ma 17.3.**
   * huom: tehtävien palautuksen deadline on su 23.3. klo 23.59
 
 palaute tehtävistä:
