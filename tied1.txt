@@ -1,1 +1,3 @@
-tiedostossa 1 on vähän tekstiä.
+Tiedostossa 1 on vähän tekstiä.
+
+Tämä rivi on lisätty tiedostoon.
