@@ -1,0 +1,4 @@
+# ei .xxx tiedostoja
+*.xxx
+# ei hakemistossa target/ olevia tiedostoja
+target/
