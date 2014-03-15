@@ -148,7 +148,7 @@ class IOStub implements IO {
 }
 ```
 
-Stublille voidaan siis antaa "käyttäjän syötteet" konstruktorin parametrina. Ohjelman tulosteet saadaan suorituksen jälkeen kysyttyä stubilta.
+Stubille voidaan siis antaa "käyttäjän syötteet" konstruktorin parametrina. Ohjelman tulosteet saadaan suorituksen jälkeen kysyttyä stubilta.
 
 Testi seuraavassa:
 
@@ -255,7 +255,7 @@ Jos haluttaisiin, että jokaisella <code>getBean</code>-pyynnöllä syntyy uusi 
 
 ### Springin konfigurointi annotaatioilla
 
-Esimerkkiprojekti [https://github.com/mluukkai/ohtu2014/tree/master/viikko2/RiippuvuuksienInjektointi3](https://github.com/mluukkai/ohtu2014/tree/master/viikko2/RiippuvuuksienInjektointi3) esittelee vaihtoehoisen tavan konfiguroida Springin hallinnoimia oliota. Konfiguraatiotiedosto on nyt muotoa
+Esimerkkiprojekti [https://github.com/mluukkai/ohtu2014/tree/master/viikko2/RiippuvuuksienInjektointi3](https://github.com/mluukkai/ohtu2014/tree/master/viikko2/RiippuvuuksienInjektointi3) esittelee vaihtoehtoisen tavan konfiguroida Springin hallinnoimia oliota. Konfiguraatiotiedosto on nyt muotoa
 
 ``` java
 <?xml version="1.0" encoding="UTF-8"?>

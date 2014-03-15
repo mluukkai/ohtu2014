@@ -13,13 +13,13 @@
 ## 1. riippuvuuksien injektointi osa 1
 
 * lue ensin tiistain luennolla nopeasti läpikäytyjen asioiden kertaus [https://github.com/mluukkai/ohtu2014/blob/master/web/riippuvuuksien_injektointi.md](https://github.com/mluukkai/ohtu2014/blob/master/web/riippuvuuksien_injektointi.md)
-* hae koodiesimerkit repostitoriosta [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) (hakemistosta viikko2/RiippuvuuksienInjektointi*) ja kokeile että kaikki toimivat
+* hae koodiesimerkit repostitoriosta [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) (hakemistosta viikko2/RiippuvuuksienInjektointi) ja kokeile että kaikki toimivat
 * järkevintä lienee että kloonaat repositorion paikalliselle koneellesi
   * vaikka viime viikolla sama repositorio forkattiin, ei forkattua repositorioa saa ihan helposti synkronoitua alkuperäiseen
 
 ## 2. riippuvuuksien injektointi osa 2: NHL-tilastot
 
-* repositorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) hakemistosta viikko2/Ohtu-NHLStatistics1 on ohjelma, jonka avulla on mahdollista tutkia [http://nhl.com](http://nhl.com)-sivulla olevia pelaajien tilastotietoja
+* repositorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) hakemistossa viikko2/Ohtu-NHLStatistics1 on ohjelma, jonka avulla on mahdollista tutkia [http://nhl.com](http://nhl.com)-sivulla olevia pelaajien tilastotietoja
 
 * Ohjelma koostuu kolmesta luokasta.
   * <code>Statistics</code> on palvelun tarjoava luokka, se tarjoaa metodit yhden pelaajan tietojen näyttämiseen, pistepörssin näyttämiseen ja yhden joukkueen pelaajien tietojen näyttämiseen
@@ -79,13 +79,15 @@ lue brancheja käsittelevät osuudet seuraavista: [https://we.riseup.net/debian/
 
 Kannattaa huomioida myös erittäin hyvä brancheja käsittelevä visuaalinen materiaali osoitteessa [http://pcottle.github.com/learnGitBranching/](http://pcottle.github.com/learnGitBranching/)
 
+Varsin selkeältä vaikuttaa myös [https://www.atlassian.com/git/tutorial/git-branches](https://www.atlassian.com/git/tutorial/git-branches)
+
 **huom:** kun liikut branchien välillä kannattaa pitää working tree ja staging -alue tyhjinä!
 
 tee seuraavat paikalliseen git-repositorioosi (kyseessä ei siis tarvitse olla tehtävien palautusrepositorio)
 
 * luo repositorio ja committaa masteriin tiedosto __masteri1.txt__
 * luo branch __eka__, siirry branchiin, luo sinne tiedosto __eka.txt__ ja committaa
-* siirry takaisin __master__-branchiin. tiedoston __eka.txt__ ei pitäisi nyt näkyä
+* siirry takaisin __master__-branchiin, tiedoston __eka.txt__ ei pitäisi nyt näkyä
 * lisää ja committaa __masteriin__ tiedosto __masteri2.txt__
 * mene branchiin __eka__ ja tarkasta, että __masteriin__ lisätty tiedosto ei ole branchissa
 * lisää branchiin tavaraa, esim. tiedosto __eka2.txt__ ja committaa
@@ -113,7 +115,7 @@ tee paikalliseen git-repoon seuraavat
   * nyt pitäisi aiheutua konflikti
 * ratkaise konflikti:
   * editoi tiedoston __tarkea.txt__ sisältö haluamaksesi
-  * ja toimi ym. artikkelien ohjeen mukaan eli lisää konfliktoinut tiedosto staging-alueelle ja committoi
+  * ja toimi em. artikkelien ohjeen mukaan eli lisää konfliktoinut tiedosto staging-alueelle ja committoi
 
 ## 6. lisää git:iä: branchit ja GitHub
 
@@ -154,11 +156,16 @@ suorita vielä komento <code>git remote show origin</code> alkuperäisessä paik
 
 Branchien kanssa työskentely voi aluksi tuntua sekavalta varsinkin jos GitHub:issa on myös useita brancheja.
 
-## 7. mihin brancheja käytetään?
+### mihin brancheja käytetään?
 
-Lue artikkeli [http://nvie.com/posts/a-successful-git-branching-model/](http://nvie.com/posts/a-successful-git-branching-model/) Se esittelee yhden tavan käyttää brancheja ohjelmistoprojektissa. Pienemmissä projekteissa selviää yksinkertaisemmillakin branching-malleilla. Projektissa tulee kuitenkin sopia minkälaista mallia käytetään ja kaikkien kehittäjien on mallia noudatettava.
+Ohjelmistotimi voi käyttää Gitiä hyvin monella eri tyylillä. Artikkeli
+[https://www.atlassian.com/git/workflows](https://www.atlassian.com/git/workflows) esittelee muutamia erilaisia tapoja järjestellä tiimin gitin käyttöön liittyvä workflow. Yksi yleinen tapa branchien käyttöön ovat ns. _featurebranchit_:
 
-## 8. epäajantasaisen kopion pushaaminen
+> The core idea behind the Feature Branch Workflow is that all feature development should take place in a dedicated branch instead of the master branch. This encapsulation makes it easy for multiple developers to work on a particular feature without disturbing the main codebase. It also means the master branch will never contain broken code, which is a huge advantage for continuous integration environments.
+
+Jos kiinnostaa, lue lisää yo. dokumentista.
+
+## 7. epäajantasaisen kopion pushaaminen
 
 Demonstroidaan usein esiintyvää tilannetta, jossa epäajantasaisen repositorion pushaaminen githubissa olevaan etärepositorioon epäonnistuu.
 
@@ -183,7 +190,7 @@ mbp-18:ohtu-viikko1-2014 mluukkai$
 Virheen syynä on se, että githubissa oleva __master__-haara oli edellä paikallisen repositorion __master__-haaraa. Ongelma korjaantuu tekemällä ensin <code>git pull</code>, ratkaisemalla mahdolliset konfliktit ja pushaamalla sitten uudelleen.
 * eli toimi näin ja varmista, että tekemäsi muutokset menevät githubiin
 
-## 9. riippuvuuksien injektointi osa 3: Verkkokauppa
+## 8. riippuvuuksien injektointi osa 3: Verkkokauppa
 
 Repositorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) hakemistossa viikko2/Verkkokauppa1 on yksinkertaisen verkkokaupan ohjelmakoodi
 
@@ -209,7 +216,7 @@ Repositorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai
 Kauppa kauppa = new Kauppa(Varasto.getInstance(), Pankki.getInstance(), Viitegeneraattori.getInstance() );
 ```
 
-## 10. riippuvuuksien injektointi osa 4: ei enää singletoneja verkkokaupassa
+## 9. riippuvuuksien injektointi osa 4: ei enää singletoneja verkkokaupassa
 
 * singleton-suunnittelumallia pidetään osittain ongelmallisena, poistammekin edellisestä tehtävästä singletonit
 ** katso esim. [http://blogs.msdn.com/b/scottdensmore/archive/2004/05/25/140827.aspx](http://blogs.msdn.com/b/scottdensmore/archive/2004/05/25/140827.aspx)
@@ -230,7 +237,7 @@ Kauppa kauppa              = new Kauppa(varasto, pankki, viitegen);
 
 Kuten huomaamme, alkaa kaupan konfigurointi olla aika vaivalloista...
 
-## 11. Spring osa 1: Verkkokauppa siistiksi
+## 10. Spring osa 1: Verkkokauppa siistiksi
 
 Spring tarjoaa pelastuksen käsillä olevaan tilanteeseen.
 

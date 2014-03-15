@@ -60,6 +60,7 @@ Nyt paikalliselle koneellesi syntynyt hakemisto <code>ohtu-viikko1</code> joka o
 * Lue https://we.riseup.net/debian/git-development-howto ja http://www.ralfebert.de/tutorials/git/, molemmat kohtaan *Branching* asti ja samalla komentoriviltä kaikki dokumentin esimerkit. Koulun koneille git on jo asennettu, joten kohdan *Install git* voit skipata
   * Lisää git-ohjeita esim. [Pro Git -oppaassa](http://git-scm.com/book), kannattaa lukea näin alkuun luku 2
   * Hyviä ohjeita löydät myös [Githubin helpistä](https://help.github.com/articles/)
+  * Varsin lupaavalta Git-tutorialilta näyttää myös [https://www.atlassian.com/git/tutorial](https://www.atlassian.com/git/tutorial)
 * git saattaa vaikuttaa aluksi sekavalta, pienen totuttelun jälkeen peruskäyttö on kuitenkin helppoa ja se nostaa elämäsi laatua merkittävästi
 
 **tee seuraavat:**
