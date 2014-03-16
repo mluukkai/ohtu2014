@@ -2,3 +2,6 @@
 *.xxx
 # ei hakemistossa target/ olevia tiedostoja
 target/
+# ei hakemsistoa OhtuVarasto/target/
+OhtuVarasto/target/
+
