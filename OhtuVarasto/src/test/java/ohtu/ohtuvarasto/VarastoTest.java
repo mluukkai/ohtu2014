@@ -89,7 +89,7 @@ public class VarastoTest {
     public void liikaaPois(){
         double maara=varasto.getSaldo();
         
-        assertEquals(-100,varasto.otaVarastosta(maara+2.0), vertailuTarkkuus);
+        assertEquals(maara,varasto.otaVarastosta(maara+2.0), vertailuTarkkuus);
     }
     
     @Test
