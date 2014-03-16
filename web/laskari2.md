@@ -258,7 +258,7 @@ public static void main(String[] args) {
 
 Kannattanee edetä tehtävässä pienin askelin siirtäen yksi luokka kerrallaan Springin hallinnoinnin alle
 
-## 12. Spring osa 2: Verkkokauppa siistiksi annotaatioilla
+## 11. Spring osa 2: Verkkokauppa siistiksi annotaatioilla
 
 * HUOM: älä tee tätä edellisen tehtävän päälle, tee projektista kopio
 * tai tee se erilliseen branchiin:
