@@ -66,19 +66,19 @@ Käynnistetään ensin Sonar
 * lataa Sonar osoitteesta [http://www.sonarsource.org/downloads/](http://www.sonarsource.org/downloads/)
 * pura zip-paketti esim. kotihakemistoosi ja mene hakemistoon <code>sonar-3.5/bin/linux-x86-32</code> (tai koneesi tyyppiä vastaavaan hakemistoon)
 * käynnistä Sonar. Linuxissa tämä tapahtuu komennolla <code>./sonar.sh start</code> 
-* Sonarin raportit ovat näkyvissä selaimessa osoitteessa <code>localhost:9000</code>, avaa sivu
-** *HUOM:* laitoksen koneilla sonar vaikuttaa käynnistyvän __hitaasti__. Jos niin käy, sammuta sonar komennolla <code>./sonar.sh start</code>, uudelleenkäynnistä ja uudelleenlataa sivua... jo sonar toivonmukaan herää  
+* Sonarin raportit ovat näkyvissä selaimessa osoitteessa [http://localhost:9000](http://localhost:9000), avaa sivu
+  * *HUOM:* laitoksen koneilla sonar vaikuttaa käynnistyvän __hitaasti__. Jos niin käy, sammuta sonar komennolla <code>./sonar.sh stop</code>, uudelleenkäynnistä ja uudelleenlataa sivua... jo sonar toivonmukaan herää  
 
 Generoidaan raportti muutamalle projektille
 * maven-muotoisille projekteille raportti generoidaan antamalla projektin hakemistossa komento <code>mvn clean test sonar:sonar</code>
-* generoi raportti viikon 2 laskarien verkkokaupalle ja  repositiorion [https://github.com/mluukkai/ohtu2013/](https://github.com/mluukkai/ohtu2013/) hakemistostosta KumpulaBiershop löytyvälle olutverkkokaupalle
+* generoi raportti viikon 2 laskarien verkkokaupalle ja  repositiorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2013/) hakemistostosta KumpulaBiershop löytyvälle olutverkkokaupalle
   * huomaa, että Sonar pitää olla käynnistettynä raportin generointihetkellä!
 * tutki raportteja
   * katso erityisesti mitä löytyy kohdan __Tools__ alta
   * mieti miten korjaisit sonarin raportoimat koodin ongelmat 
 
 Sivulta [nemo.sonarsource.org](nemo.sonarsource.org) löytyy useiden open source -projektien Sonar-raportteja. 
-* vertaile esim. [Apachen](http://nemo.sonarsource.org/dashboard/index/176190) projektien raportoitua koodin laatua [Spring-sovelluskehyksen]h(ttp://nemo.sonarsource.org/dashboard/index/176260 koodin) laatuun
+* vertaile esim. [Apachen](http://nemo.sonarsource.org/dashboard/index/176190) projektien raportoitua koodin laatua [Spring-sovelluskehyksen](http://nemo.sonarsource.org/dashboard/index/176260 koodin) laatuun
 
 ## 3. tutustuminen easyB:hen
 
