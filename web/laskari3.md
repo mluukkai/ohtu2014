@@ -24,7 +24,7 @@ mene nyt johonkin valmiiseen projektiisi, esim. viikon 2 verkkokauppaan
 * oletusarvoisesti raportoidaan paljon kaikenlaista ja oleellinen uhkaa hukkua detaljien joukkoon
 
 checkstylen tarkkailemien virheiden joukko on konfiguroitavissa erillisen koniguraatiotiedoston avulla
-* hae repositiorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) hakemistosta viikko3 konfiguraatiotiedosto __my_checks.xml__, talleta se sopivaan paikkaan, kokeile:
+* hae repositiorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) hakemistosta viikko3 konfiguraatiotiedoston pohja __my_checks.xml__, talleta se sopivaan paikkaan, kokeile:
         <code>mvn jxr:jxr checkstyle:checkstyle -Dcheckstyle.config.location=my_checks.xml</code>       
 * komennossa oleva polku olettaa että konfiguraatiotiedosto sijaitsee projektihakemistoston juuressa
   * huom: saattaa olla, että komento ei toimi windowsilla, ongelma ehkä vaan win 8:ssa. jos näin käy, konfiguraatiotiedoston sijainnon voi määritellä pom.xml-tiedostossa seuraavasti:
@@ -46,14 +46,14 @@ checkstylen tarkkailemien virheiden joukko on konfiguroitavissa erillisen konigu
 
 eli lisää uusi __plugin__-määrittely __plugins__-määrittelyjen sisälle. Jos __plugins__:eja ei ole, joudut lisäämään myös <code><plugins>...</plugins></code>-tägit. 
 
-* tee alkuperäisestä konfiguraatiotiedostosta kopio, ja kommentoi kopiosta kaikki elementin <code>tree walker</code> sisällä olevat tarkistukset (modules) pois
-* määrittele seuraavat säännöt (ks. available checks ja standard checks checkstylen sivuilta):
-  * metodien pituus max 10 riviä
+* tee alkuperäisestä konfiguraatiotiedostosta kopio, ja poista kopiosta kaikki elementin <code>tree walker</code> sisällä olevat tarkistukset 
+* määrittele tiedostoon seuraavat säännöt (ks. available checks ja standard checks checkstylen [sivuilta](http://checkstyle.sourceforge.net/)):
+  * metodien pituus max 10 riviä (tämä ja seuraavat säännöt määritellään moduulin tree walker sisälle)
   * ei yli yhtä sisäkkäisiä if:iä
   * ei sisäkkäisiä for:eja
   * koodi on oikein sisennettyä
   * syklomaattinen koodikompleksisuus korkeinaan 3 (selvitä mitä tarkoittaa!)
-  * ei yli 3 rivin copy-pasteja (eli duplicated codea), huom: tätä tarkastusta ei tule laittaa tree-walkerin sisälle vaan "samalle tasolle" walkerin kanssa
+  * ei yli 5 rivin copy-pasteja (eli duplicated codea, löytyy kohdasta _standard checks_), huom: tätä tarkastusta ei tule laittaa tree-walkerin sisälle vaan "samalle tasolle" walkerin kanssa
   * tee koodiin muutoksia, jolla testaat että rikkoutuvat ehdot huomataan
 
 ## 2. sonar
