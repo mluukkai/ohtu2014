@@ -7,7 +7,7 @@
 ## palautetaan GitHubin kautta
 
 * palautusta varten tarvitaan yksityinen repositorio, jolla collaboratorina käyttäjä mluukkai
-** kannattaa käyttää samaa repoa kuin viikon 2 tehtävissä
+  * kannattaa käyttää samaa repoa kuin viikon 2 tehtävissä
 * palautusrepositorion nimi ilmoitetaan tehtävien lopussa olevalla palautuslomakkeella
 
 ## 1. lisää mavenia: koodin staattinen analyysi
@@ -20,11 +20,14 @@
 mene nyt johonkin valmiiseen projektiisi, esim. viikon 2 verkkokauppaan
 * kokeile suorittaa <code>mvn jxr:jxr checkstyle:checkstyle</code>
 * avaa raportti selaimella polulta __/target/site/checkstyle.html__
+  * tutki raporttia
 * oletusarvoisesti raportoidaan paljon kaikenlaista ja oleellinen uhkaa hukkua detaljien joukkoon
-* checkstylen toiminta on täysin konfiguroitavissa. hae repositiorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) hakemistosta viikko3 konfiguraatiotiedosto __my_checks.xml__ pohja, talleta se sopivaan paikkaan, kokeile:
+
+checkstylen tarkkailemien virheiden joukko on konfiguroitavissa erillisen koniguraatiotiedoston avulla
+* hae repositiorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) hakemistosta viikko3 konfiguraatiotiedosto __my_checks.xml__, talleta se sopivaan paikkaan, kokeile:
         <code>mvn jxr:jxr checkstyle:checkstyle -Dcheckstyle.config.location=my_checks.xml</code>       
-* komennossa oleva polku olettaa että konfiguraatiotiedosto sijaitsee projektihakemistossa
-* huom: saattaa olla, että komento ei toimi windowsilla, ongelma ehkä vaan win 8:ssa. jos näin käy, konfiguraatiotiedoston sijainnon voi määritellä pom.xml-tiedostossa seuraavasti:
+* komennossa oleva polku olettaa että konfiguraatiotiedosto sijaitsee projektihakemistoston juuressa
+  * huom: saattaa olla, että komento ei toimi windowsilla, ongelma ehkä vaan win 8:ssa. jos näin käy, konfiguraatiotiedoston sijainnon voi määritellä pom.xml-tiedostossa seuraavasti:
 
 <pre>
     <plugins>
@@ -51,7 +54,7 @@ eli lisää uusi __plugin__-määrittely __plugins__-määrittelyjen sisälle. J
   * koodi on oikein sisennettyä
   * syklomaattinen koodikompleksisuus korkeinaan 3 (selvitä mitä tarkoittaa!)
   * ei yli 3 rivin copy-pasteja (eli duplicated codea), huom: tätä tarkastusta ei tule laittaa tree-walkerin sisälle vaan "samalle tasolle" walkerin kanssa
-  * tee koodiin muutoksia jolla testaat että rikkoutuvat ehdot huomataan
+  * tee koodiin muutoksia, jolla testaat että rikkoutuvat ehdot huomataan
 
 ## 2. sonar
 
