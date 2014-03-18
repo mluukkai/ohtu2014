@@ -77,8 +77,8 @@ Generoidaan raportti muutamalle projektille
   * katso erityisesti mitä löytyy kohdan __Tools__ alta
   * mieti miten korjaisit sonarin raportoimat koodin ongelmat 
 
-Sivulta [nemo.sonarsource.org](nemo.sonarsource.org) löytyy useiden open source -projektien Sonar-raportteja. 
-* vertaile esim. [Apachen](http://nemo.sonarsource.org/dashboard/index/176190) projektien raportoitua koodin laatua [Spring-sovelluskehyksen](http://nemo.sonarsource.org/dashboard/index/176260 koodin) laatuun
+Sivulta [http://nemo.sonarsource.org](http://nemo.sonarsource.org) löytyy useiden open source -projektien Sonar-raportteja. 
+* vertaile esim. [Apachen](http://nemo.sonarsource.org/dashboard/index/176190) projektien raportoitua koodin laatua [Spring-sovelluskehyksen](http://nemo.sonarsource.org/dashboard/index/176260) koodin laatuun
 
 ## 3. tutustuminen easyB:hen
 
