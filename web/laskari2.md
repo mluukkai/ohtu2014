@@ -6,6 +6,7 @@
 
 ## palautetaan GitHubin kautta
 
+* tehtävät 1 ja 2 tehdään paikalliseen repositorioon, eli ne eivät näy palautuksessa mitenkään
 * tee palautusta varten yksityinen repositorio ja lisää sille collaboratoriksi käyttäjä mluukkai, voit käyttää myös viikon 1 repositoriotasi
   * jos et ole vielä ehtinyt saada GitHubin academic-tunnusta, voit tehdä palautuksen normaalia repositoriota käyttäen
 * palautusrepositorion nimi ilmoitetaan tehtävien lopussa olevalla palautuslomakkeella
@@ -279,7 +280,6 @@ Kannattanee edetä tehtävässä pienin askelin siirtäen yksi luokka kerrallaan
 tehtävien kirjaus:
 
 * Kirjaa tekemäsi tehtävät [tänne](http://ohtustats.herokuapp.com) 
-  * **Palautus onnistuu vasta ma 17.3.**
   * huom: tehtävien palautuksen deadline on su 23.3. klo 23.59
 
 palaute tehtävistä:
