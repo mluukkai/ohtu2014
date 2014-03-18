@@ -78,7 +78,7 @@ Generoidaan raportti muutamalle projektille
   * mieti miten korjaisit sonarin raportoimat koodin ongelmat 
 
 Sivulta [http://nemo.sonarsource.org](http://nemo.sonarsource.org) löytyy useiden open source -projektien Sonar-raportteja. 
-* vertaile esim. [Apachen](http://nemo.sonarsource.org/dashboard/index/176190) projektien raportoitua koodin laatua [Spring-sovelluskehyksen](http://nemo.sonarsource.org/dashboard/index/176260) koodin laatuun
+* vertaile esim. [Mavenin](http://nemo.sonarqube.org/dashboard/index/99176) raportoitua koodin laatua Spring-sovelluskehykseen kuuluvan komponentin [Spring-patch](http://nemo.sonarqube.org/dashboard/index/140632) koodin laatuun
 
 ## 3. tutustuminen easyB:hen
 
