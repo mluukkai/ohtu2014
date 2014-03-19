@@ -1,4 +1,4 @@
-# UNDER CONSTRUCTION!! Laskari 3
+# Laskari 3
 
 ## Huom: ohjausta tehtävien tekoon to klo 14-16 ja pe klo 14-16 salissa BK107
 
