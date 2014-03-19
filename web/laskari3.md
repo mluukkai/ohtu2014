@@ -128,50 +128,17 @@ public static void main(String[] args) {
 }
 ```
 
+Ohjeita löytyy viikon 2 laskareiden [lisämateriaalista](https://github.com/mluukkai/ohtu2014/blob/master/web/riippuvuuksien_injektointi.md#dependency-injection-spring-sovelluskehyksess%C3%A4)
+
 ## 7. FileUserDAO
 
 Laita ohjelma tallettamaan käyttäjätiedot tiedostoon. Hoida asia siten, että teet luokan <code>FileUserDAO</code>, joka toteuttaa rajapinnan <code>UserDAO</code>. Anna FileUserDAO:lle sen käyttämä tiedosto konstruktorin parametrina. Testatessa on edelleen mielekästä käyttää InMemoryUserDAO:a.
 
-* Jos tiedostojen käsittely on päässyt unohtumaan, ohjeita esim. [täällä](http://www.cs.helsinki.fi/group/java/k12/ohja/materiaali.html#53)
-** jos salasanatiedosto sijaitsee projektihakemiston juuressa, sen luettavaksi avaaminen onnistuu komennolla <code>new Scanner(new File("salasanat.txt"));</code>
-** päätä itse mitä tapahtuu tilanteessa, jossa parametrina annettua tiedostoa ei ole olemassa
+* Jos tiedostojen käsittely on päässyt unohtumaan, ohjeita esim. [Ohjelmoinnin jatkokurssin](https://www.cs.helsinki.fi/group/java/s2013-ohpe/ohja/) viikoilta 9 ja 11
+  * jos salasanatiedosto sijaitsee projektihakemiston juuressa, sen luettavaksi avaaminen onnistuu komennolla <code>new Scanner(new File("salasanat.txt"));</code>
+  * päätä itse mitä tapahtuu tilanteessa, jossa parametrina annettua tiedostoa ei ole olemassa
 
 Jos teit edellisen tehtävän, muokkaa Spring-konfiguraatiosi ottamaan huomioon uusi tilanne. Huom: joutunet konfiguroimaan FileUserDAO:n xml:ssä, sillä merkkijonomuotoista konstruktoriparametria ei pysty injektoimaan @Autowired-annotaatiolla. Ohje String-tyyppisen arvon injektointiin xml-konfiguraatiossa [täällä](http://www.roseindia.net/tutorial/spring/spring3/ioc/springconstructorargs.html)
-
-## 8. muutaatiotestaus
-
-Tarkastellaan tässä tehtävässä viikolla 1 täydentämiesi luokan <code>Varasto</code> testien hyvyyttä. 
-
-Pelkkä koodirivien kattaminen testeillä ei riitä
-
-On mahdollista kirjoittaa testejä jotka "koskevat" kaikkia koodirivejä mutta eivät testaa oikein mitään järkevää. Pelkän suuren kattavuuden tavoittelun lisäksi on siis tärkeä muistaa testata:
-
-* normaali toimina
-* poikkeuksellinen toiminta
-* virhetilanteet
-
-Erityinen huomio kannattaa kiinnittää ns. raja-arvoihin:
-
-* toimiiko esim. varastosta ottaminen jos yritetään ottaa täsmälleen varastossa oleva määrä tavaraa?
-
-Yksi tapa testien hyvyyden testaamiseen on mutaatiotestaus, josta oli hieman puhetta myös luennolla. Testaamme seuraavaksi testiemme hyvyyttä PIT-työkalun avulla.
-
-Seuraavassa PIT:in sivulta (joka ei tällä hetkellä toimi! "webarchivesta":http://web.archive.org/web/20130124070410/http://pitest.org/ sivu onneksi löytyy) otettu selitys joka kertoo mistä mutaatiotestauksessa on kyse:
-
-bq.  Mutation testing is conceptually quite simple. Faults (or mutations) are automatically seeded into your code, then your tests are run. If your tests fail then the mutation is killed, if your tests pass then the mutation lived.
-
-bq. The quality of your tests can be gauged from the percentage of mutations killed.
-
-bq. To put it another way – PIT runs your unit tests against automatically modified versions of your application code. When the application code changes, it should produce different results and cause the unit tests to fail. If a unit test does not fail in this situation, it may indicate an issue with the test suite.
-
-Mutaatiotestaa varastosi suorittamalla komento
-<code>mvn test org.pitest:pitest-maven:mutationCoverage</code>
-
-Tulokset tulevat projektihakemistosi alihakemistoon target/pit-reports/aikaleima/index.html. Aikaleima on numerosarja joka kertoo suoritushetken, tyyliin 201211181742 (testi ajettu 18.11.2012 klo 1742). Avaa tulokset web-selaimella. Firefoxilla tämä tapahtuu komennolla open file. Voit myös avata selaimen terminaalissa menemällä ensin projektihakemistoon ja antamalla komento <code>chromium-browser target/pit-reports/aikaleima/index.html</code>. Kun ajat mutaatiotestit uudelleen, muista avat oikea raportti!
-
-Voit poistaa vanhat raportit komennolla <code>mvn clean</code>
-
-Raportista näet mitkä mutantit jäävät henkiin. Yritä parantaa testejäsi siten, että lausekattavuus säilyy ja mahdollisimman moni mutantti kuolee. *HUOM* osa mutanteista on ns. ekvivalentteja mutantteja ks. "http://en.wikipedia.org/wiki/Mutation_testing":http://en.wikipedia.org/wiki/Mutation_testing ja niitä on mahdotonta saada kuolemaan!
 
 ## tehtävien kirjaaminen palautetuksi
 
