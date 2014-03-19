@@ -90,17 +90,19 @@ tutustu linkin takana olevan ohjelman rakenteeseen ja aja siihen liittyvään te
 
 ## 4. Kirjautumisen testit
 
-tee User Storyn *User can log in with valid username/password-combination* kaikista testeistä ajettavia
+tee User storyn *User can log in with valid username/password-combination* kaikista testeistä ajettavia
 
 ## 5. Uuden käyttäjän rekisteröitymisen testit
 
 tee User storyn *A new user account can be created if a proper unused username and a proper password are given* kaikista testeistä ajattavia.
 
-* käyttäjätunnuksen on oltava merkeistä a-z koostuva vähintään 3 merkin pituinen merkkijono joka ei ole vielä käytössä
+* käyttäjätunnuksen on oltava merkeistä a-z koostuva vähintään 3 merkin pituinen merkkijono, joka ei ole vielä käytössä
 * salasanan on oltava pituudeltaan vähintään 8 merkkiä ja sen tulee sisältää vähintään yksi numero tai erikoismerkki
 * **Täydennä ohjelmaa siten että testit menevät läpi**
 
 Testejä kannattaa tehdä yksi kerrallaan, laittaen samalla vastaava ominaisuus ohjelmasta kuntoon.
+
+**HUOM** voit vähentää testikoodisi copypastea määrittelemällä testeille apumetodeja. Ohjeita metodien määrittelemiseen ym. [täällä](http://groovy.codehaus.org/Documentation)
 
 ## 6. Spring jälleen kerran
 
