@@ -299,7 +299,7 @@ Parempi tapa on määritellä GitHub kertomaan Jenkinssille aina kun projektiin 
 * valitse *Trigger builds remotely*
 * anna kohtaan *authentication token* joku merkkijono
 * tämän jälkeen voit triggeröidä käänöksen urlista __<jenkinsprojektisi-url>/build?token=TOKEN_NAME__
-* kokeile komentoriviltä että tämä onnistuu, voit käyttää esim, curl-komentoa tyyliin: <code>curl http://ohtu.jamo.io/job/kayttajatunnuksesi-otm-viikko1/build?token=maarittelemasi-token</code>
+* kokeile komentoriviltä että tämä onnistuu, voit käyttää esim, curl-komentoa tyyliin: <code>curl http://ohtu.jamo.io/job/kayttajatunnuksesi-ohtu-viikko1/build?token=maarittelemasi-token</code>
 * mene selaimella GitHub-projektiisi ja klikkaa oikealta *settings*
 * valitse *Webhooks and services* ja *Add webhook*
 * lisää tähän Jenkins-projektisi buildin triggeröivä url kohtaan *payload url*
