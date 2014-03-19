@@ -82,7 +82,7 @@ Sivulta [http://nemo.sonarsource.org](http://nemo.sonarsource.org) löytyy useid
 
 ## 3. tutustuminen easyB:hen
 
-Lue seuraava "https://github.com/mluukkai/ohtu2013/wiki/EasyB":https://github.com/mluukkai/ohtu2013/wiki/EasyB
+Lue seuraava [https://github.com/mluukkai/ohtu2014/blob/master/web/easyb.md](https://github.com/mluukkai/ohtu2014/blob/master/web/easyb.md)
 
 tutustu linkin takana olevan ohjelman rakenteeseen ja aja siihen liittyvään testit.
 * käynnistä ohjelma <code>mvn exec ...</code> -komennolla 
