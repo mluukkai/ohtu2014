@@ -4,14 +4,18 @@ Tutustumme nyt tarkemmin keskiviikon luennolla käsiteltyyn [easyB-testauskehyks
 
 Lue ensin [http://www.javaworld.com/javaworld/jw-09-2008/jw-09-easyb.html](http://www.javaworld.com/javaworld/jw-09-2008/jw-09-easyb.html)
 
-* easyB:llä voidaan kirjoittaa kahdentyylisiä testejä, spesifikaatioita ja storyjä
+* easyB:llä voidaan kirjoittaa kahdentyylisiä testejä, _spesifikaatioita_ ja _storyjä_
 * artikkelin sivulla 2 esitellään spesifikaatioita (it should...), niitä emme ainakaan tässä laskarissa käytä
-* sivun 3 storyt ja niitä testaavat skenaariot (given... when... then) on käyttämämme tekniikka
+* sivun 3 storyt ja niitä testaavat _skenaariot_ (given... when... then) on käyttämämme tekniikka
 * sivun 4 "Running easyB" voit skipata, ajamme easyB:tä mavenin kautta
 
 Tarkastellaan esimerkkiprojektia joka löytyy repositorion [https://github.com/mluukkai/ohtu2014](https://github.com/mluukkai/ohtu2014) hakemistossa __viikko3/LoginEasyB1__
 
-Testit on kirjotettu hakemistoon src/main/test/easyb tekstietiedostoina joilla on pääte .story
+Tutustu olevan ohjelman rakenteeseen 
+* käynnistä ohjelma <code>mvn exec ...</code> -komennolla (ks. [viikon 1 laskarit](https://github.com/mluukkai/ohtu2014/blob/master/web/laskari1.md#5-maven))
+* ohjelman tuntemat komennot ovat __login__ ja __new__
+
+Testit on kirjotettu hakemistoon _src/main/test/easyb_ tekstietiedostoina, joilla on pääte .story. NetBeansissa easyB-testitiedostot löytyvät kohdan _Other Test Sources_ alta.
 
 Projektiimme on konfiguroitu easyB maven-pluginiksi. Konfigurointi suoritetaan pom.xml-tiedostossa (käy katsomassa pomia, sen sisältöön sinun ei tällä kertaa tarvitse koskea):
 
@@ -49,9 +53,9 @@ Projektiimme on konfiguroitu easyB maven-pluginiksi. Konfigurointi suoritetaan p
 </project>
 ```
 
-Konfiguraatio kertoo pluginin nimen (groupId+artifactId) ja version. Sen lisäksi sanotaan, että plugin suoritetaan __integration-test__ vaiheessa, eli kun annetaan komento <code>mvn integration-test</code>.
+Konfiguraatio kertoo pluginin nimen (groupId+artifactId) ja version. Sen lisäksi sanotaan, että plugin suoritetaan vaiheessa __integration-test__, eli kun annetaan komento <code>mvn integration-test</code>.
 
-Voisimme myös konfiguroida easyB:n suoritettavaksi vaiheessa __test__, jolloin komento <code>mvn test</code> suorittaisin muiden testien lisäksi easyB-testit. Ideana on kuitenkin jakaa testit kahteen vaiheeseen: yksikkötesteihin, jotka suoritetaan aina ja User Storyjen hyväksymätesteihin (ja integraatiotesteihin), joita ei välttämättä suoriteta aina ja totka on tämän takia konfiguroitu eri testivaiheeseen kuin muut testit. Hyväksymä- ja integraatiotestit ovat joskus hitaita suorittaa, siksi ne halutaan erilliseen vaiheeseen yksikkötestien kanssa.
+Voisimme myös konfiguroida easyB:n suoritettavaksi vaiheessa __test__, jolloin komento <code>mvn test</code> suorittaisin muiden testien lisäksi easyB-testit. Ideana on kuitenkin jakaa testit kahteen vaiheeseen: yksikkötesteihin, jotka suoritetaan aina ja User storyjen hyväksymätesteihin (ja integraatiotesteihin), joita ei välttämättä suoriteta aina ja jotka on tämän takia konfiguroitu eri testivaiheeseen kuin muut testit. Hyväksymä- ja integraatiotestit ovat joskus hitaita suorittaa, siksi ne halutaan erilliseen vaiheeseen yksikkötestien kanssa.
 
 Kun suoritamme testit komennolla <code>mvn integration-test</code> tulee tulosteen sekaan easyB:n ajamisesta kertovaa tekstiä:
 
@@ -81,11 +85,14 @@ Kaiken tekstin seasta nähdään, että easyB on ajanut kahteen User Storyyn lii
 
 Jos testit eivät mene läpi, nähdään ikävämpää tekstiä.
 
-easyB:n konfiguraatiossa sanoimme, että testien tulost tulee raportoida html-muodossa tiedostossa target/easyb/easyb-report.html
+easyB:n konfiguraatiossa sanoimme, että testien tulost tulee raportoida html-muodossa tiedostossa _target/easyb/easyb-report.html_
+
+![kuva](https://github.com/mluukkai/ohtu2014/raw/master/images/viikko3-1.png)
+
 
 Aja testit ja avaa tiedosto selaimellasi.
 
-h2. User storyt
+## User storyt
 
 Ohjelmassamme on siis kaksi User Storyä:
 
@@ -116,7 +123,7 @@ scenario "nonexistent user can not login to ", {
 }
 ```
 
-Alussa on  __description__ eli Storyn kuvaus. Kyseessä on suunilleen sama asia joka kirjoitetaan Storyä vastaavaan pahvikorttiin jos sellaiset ovat käytössä. Kuvaus voidaan antaa myös narrative-muodossa (as a... I want... so that), kuten linkitetyssä artikkelissa tehtiin.
+Alussa on  __description__ eli Storyn kuvaus. Kyseessä on suunilleen sama asia, joka kirjoitetaan Storyä vastaavaan pahvikorttiin jos sellaiset ovat käytössä. Kuvaus voidaan antaa myös narrative-muodossa (as a... I want... so that), kuten linkitetyssä artikkelissa tehtiin.
 
 Kuvauksen jälkeen määritellään Storyn testit eli skenaariot. Skenaariot määritellään given... when... then -muotoisina testi-askelina:
 
@@ -124,7 +131,7 @@ Kuvauksen jälkeen määritellään Storyn testit eli skenaariot. Skenaariot mä
 * when kuvaa toiminnon mitä testataan
 * then kuvaa testin odotettua lopputulosta
 
-Testin askeleet (eli given, when, then -osat) sisältävät asiakkaan terminologialla kirjoitetun merkkijonon joka kertoo mistä askeleessa on kysymys.
+Testin askeleet (eli given, when, then -osat) sisältävät asiakkaan terminologialla kirjoitetun merkkijonon, joka kertoo mistä askeleessa on kysymys.
 
 Askel voi olla myös moniosainen, esim:
 
@@ -144,7 +151,7 @@ and-osan voi liittää myös when-askeleeseen.
 
 Kun ajamme testit ja skenaarioihin ei liity mäppäystä testikoodiin, ilmoitetaan testien olevan "pending"-tilassa, eli ei läpi mutta ei myöskään feilanneena.
 
-Testit mäpätään ajettavaan koodiin kirjoittamalla kunkin skenaarion askeleen kohtalle lohko johon tulee askelta vastaava testikoodi. Testikoodi kirjoitetaan Groovy-kielellä. "Groovyn":http://groovy.codehaus.org/ voi ajatella olevan "laiskasti kirjoitettua Javaa", eli esim puolipisteitä ei tarvita, muuttujien tyyppejä ei määritellä jne.
+Testit mäpätään ajettavaan koodiin kirjoittamalla kunkin skenaarion askeleen kohdalle lohko, johon tulee askelta vastaava testikoodi. Testikoodi kirjoitetaan Groovy-kielellä. [Groovyn](http://groovy.codehaus.org/) voi ajatella olevan "laiskasti kirjoitettua Javaa", eli esim puolipisteitä ei tarvita, muuttujien tyyppejä ei määritellä jne.
 
 Seuraavassa esimerkki skenaarion __"user can login with correct password"__ mäppäämisestä ajettavaan koodin:
 
@@ -177,9 +184,9 @@ scenario "user can login with correct password", {
 //...
 ```
 
-Viimeiseen askel eli then varmistaa, että järjestelmä toimii halutulla tavalla. Eli kun käyttäjä antaa syötteet <code>login<enter>pekka<enter>akkep<enter></code> vastaa järjestelmä tulostamalla logged in
+Viimeiseen askel eli _then_ varmistaa, että järjestelmä toimii halutulla tavalla. Eli kun käyttäjä antaa syötteet _login<enter>pekka<enter>akkep<enter>_ vastaa järjestelmä tulostamalla _logged in_
 
-Kokeile ajaa ohjelmaa komentoriviltä ja tutustu sen rakenteeseen.
+Jos et jo niin tehnyt, kokeile ajaa ohjelmaa komentoriviltä ja tutustu sen rakenteeseen.
 * muistutus viikolta 1, maven-muotoisen ohjelman suoritus tapahtuu komennolla <code>mvn exec:java -Dexec.mainClass=ohtu.App</code>
 * jos olet muuttanut koodia, tulee se myös kääntää, eli antaa komento  <code>mvn compile exec:java -Dexec.mainClass=ohtu.App</code>
 
@@ -204,10 +211,10 @@ then 'user will be logged in to system', {
 }
 ```
 
-shoudHave ja shouldNotHave -komennoilla testataan listan sisältöä. Yksittäistä arvoa voidaan testata esim. seuraavasti:
+Komennoilla shoudHave ja shouldNotHave  testataan listan sisältöä. Yksittäistä arvoa voidaan testata esim. seuraavasti:
 
 ``` java
-   tulosteita =  io.getPrints().length()
+   tulosteita = io.getPrints().length()
  
    tulosteita.shouldBeAn Integer
    tulosteita.shouldEqual 3
@@ -222,13 +229,13 @@ AuthenticationService-olio ei talleta suoraan User-oliota vaan epäsuorasti User
 
 DAO eli Data Access Object on yleisesti käytetty suunnittelumalli jonka avulla abstrahoidaan sovellukselta se miten oliot on talletettu, ks. [http://www.corej2eepatterns.com/Patterns2ndEd/DataAccessObject.htm](http://www.corej2eepatterns.com/Patterns2ndEd/DataAccessObject.htm)
 
-Ideana on, että sovellus "hakee" ja "tallettaa" User-oliot aina UserDAO-rajapinnan metodeja käyttäen. Sovellukselle on injektoitu konkreettinen toteutus joka tallettaa oliot esim. tietokantaan tai tiedostoon. Se minne talletus tapahtuu on kuitenkin läpinäkyvää sovelluksen muden osien kannalta.
+Ideana on, että sovellus "hakee" ja "tallettaa" User-oliot aina UserDAO-rajapinnan metodeja käyttäen. Sovellukselle on injektoitu konkreettinen toteutus, joka tallettaa oliot esim. tietokantaan tai tiedostoon. Se minne talletus tapahtuu on kuitenkin läpinäkyvää sovelluksen muden osien kannalta.
 
-Ohjelmaamme on määritelty testauskäyttön sopiva InMemoryUserDao joka tallettaa User-oliot ainoastaan muistiin. Muu ohjelma säilyisi täysin muuttumattomana jos määriteltäisiin esim. MySQLUserDao joka hoitaa talletuksen tietokantaan ja injektoitaisiin tämä sovellukselle.
+Ohjelmaamme on määritelty testauskäyttön sopiva InMemoryUserDao, joka tallettaa User-oliot ainoastaan muistiin. Muu ohjelma säilyisi täysin muuttumattomana jos määriteltäisiin esim. MySQLUserDao joka hoitaa talletuksen tietokantaan ja injektoitaisiin tämä sovellukselle.
 
 DAO-suunnittelumalli on oikeastaan sama asia mistä jotkut käyttävät nimitystä [data mapper](http://martinfowler.com/eaaCatalog/dataMapper.html)
 
-h2. Linkkejä
+## Linkkejä
   
 * [http://www.easyb.org](http://www.easyb.org)
 * melko perusteellinen esimerkki [täällä](http://www.ibm.com/developerworks/java/tutorials/j-easyb/)

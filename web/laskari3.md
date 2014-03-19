@@ -85,7 +85,7 @@ Sivulta [http://nemo.sonarsource.org](http://nemo.sonarsource.org) löytyy useid
 Lue seuraava [https://github.com/mluukkai/ohtu2014/blob/master/web/easyb.md](https://github.com/mluukkai/ohtu2014/blob/master/web/easyb.md)
 
 tutustu linkin takana olevan ohjelman rakenteeseen ja aja siihen liittyvään testit.
-* käynnistä ohjelma <code>mvn exec ...</code> -komennolla 
+* käynnistä ohjelma <code>mvn exec ...</code> -komennolla (ks. [viikon 1 laskarit](https://github.com/mluukkai/ohtu2014/blob/master/web/laskari1.md#5-maven))
 * ohjelman tuntemat komennot ovat __login__ ja __new__
 
 ## 4. Kirjautumisen testit
