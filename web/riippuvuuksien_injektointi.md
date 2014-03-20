@@ -37,7 +37,6 @@ public class Laskin {
         }
     }
  
-    private int laskeSumma(int luku1, int luku2) {
         return luku1+luku2;
     }
 }
@@ -165,7 +164,7 @@ public class LaskinTest {
 }
 ```
 
-###  __tästä eteenpäin olevaa osaa tarvitset oikeastaan vasta tehtävissä 5 ja 6 eli voit tehdä ensimmäiset tehtävät ensin__
+###  __tästä eteenpäin olevaa osaa tarvitset oikeastaan vasta tehtävissä 10 ja 11 eli voit tehdä muut tehtävät ensin__
 
 ## Dependency injection Spring-sovelluskehyksessä
 
