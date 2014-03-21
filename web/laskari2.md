@@ -104,7 +104,7 @@ tee seuraavat paikalliseen git-repositorioosi (kyseessä ei siis tarvitse olla t
 tee paikalliseen git-repoon seuraavat
 
 * lisää __master__-branchiin tiedosto __tarkea.txt__, kirjota sinne muutama rivi tekstiä ja committaa
-* tee uusi branchi __toka__, editoi tiedoston __tarkea.txt__ loppua ja committaa
+* tee uusi branchi __toka__, siirry branchiin, editoi tiedoston __tarkea.txt__ loppua ja committaa
 * mene takaisin __master__-branchiin, editoi tiedoston __tarkea.txt__ alkua ja committaa
 * mergeä branchin __toka__ sisältö __masteriin__
   * katso tiedoston __tarkea.txt__-sisältöä, sen pitäisi sisältää nyt molemmissa brancheissa tehdyt muutokset
