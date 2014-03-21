@@ -1,3 +1,5 @@
+# Laskari 1
+
 ## Huom: ohjausta tehtävien tekoon to klo 14-16 ja pe klo 14-16 salissa BK107
 
 ### Tehtävien palautuksen deadline su 16.3. klo 23.59
@@ -12,7 +14,7 @@ Tämän viikon tehtävät ovat lähes luennoista riippumattomia, luentomateriaal
 
 Tee itsellesi tarvittaessa tunnus GitHubiin
 
-* mene osoitteeseen "https://github.com/plans":https://github.com/plans
+* mene osoitteeseen https://github.com/plans
 * valitse create free account
 
 Luo repositorio nimellä ohtu-viikko1 
@@ -24,16 +26,16 @@ Luo repositorio nimellä ohtu-viikko1
 
 Hae akateemista tunnusta, näin saat käyttöösi (ilmaiseksi) yksityisiä repositorioita
 
-* "https://github.com/edu":https://github.com/edu
+* https://github.com/edu
 * HUOM: tämän viikon tehtävissä et vielä tarvitse akateemista tunnusta, ja tämän viikon repositorion *tulee* olla julkinen!
 
 Luo paikalliselle koneellesi ssh-avain (tapahtuu komentoriviltä käsin)
 
-* ks. ohje "http://www.cs.helsinki.fi/group/kuje/compfac/ssh_avain.html":http://www.cs.helsinki.fi/group/kuje/compfac/ssh_avain.html
+* ks. ohje http://www.cs.helsinki.fi/group/kuje/compfac/ssh_avain.html
 
 Lisää avaimen julkinen pari githubiin:
 
-* "https://github.com/settings/ssh":https://github.com/settings/ssh
+* https://github.com/settings/ssh
 
 Näin pystyt käyttämään GitHubia ilman salasanan syöttämistä koneelta jossa juuri luodun avaimen salainen pari löytyy
 
@@ -49,7 +51,7 @@ Kloonaa nyt githubiin tehty repositorio **paikalliselle koneelle**. Tämä tapah
 
 missä komennon <code>git clone</code> parametrina on repositorioosi sivulta selviävä 'clone URL' (huomaa, että formaatin on oltava SSH):
 
-![kuva](https://github.com/mluukkai/ohtu2014/raw/master/images/viikko1-1.png)
+![kuva](https://github.com/mluukkai/ohtu2014/raw/master/images/viikko1-2.png)
 
 Nyt paikalliselle koneellesi syntynyt hakemisto <code>ohtu-viikko1</code> joka on on githubissa olevan repositorion klooni.
 
@@ -58,6 +60,7 @@ Nyt paikalliselle koneellesi syntynyt hakemisto <code>ohtu-viikko1</code> joka o
 * Lue https://we.riseup.net/debian/git-development-howto ja http://www.ralfebert.de/tutorials/git/, molemmat kohtaan *Branching* asti ja samalla komentoriviltä kaikki dokumentin esimerkit. Koulun koneille git on jo asennettu, joten kohdan *Install git* voit skipata
   * Lisää git-ohjeita esim. [Pro Git -oppaassa](http://git-scm.com/book), kannattaa lukea näin alkuun luku 2
   * Hyviä ohjeita löydät myös [Githubin helpistä](https://help.github.com/articles/)
+  * Varsin lupaavalta Git-tutorialilta näyttää myös [https://www.atlassian.com/git/tutorial](https://www.atlassian.com/git/tutorial)
 * git saattaa vaikuttaa aluksi sekavalta, pienen totuttelun jälkeen peruskäyttö on kuitenkin helppoa ja se nostaa elämäsi laatua merkittävästi
 
 **tee seuraavat:**
@@ -191,9 +194,10 @@ Ohjelmakoodin editointi kannattaa tehdä IDE:llä, ja välillä myös ohjelman j
 * testauskattavuuden saat selville seuraavasti:
   * käytetään mavenissa pluginina olevaa [cobertura](http://cobertura.sourceforge.net/)-nimistä koodikattavuustyökalua
   * suorita projektin juuresta komento <code>mvn cobertura:cobertura</code>
+    * Jos törmäät virheeseen _Could not find artifact com.sun:tools:jar:0 at specified path /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/../lib/tools.jar_, asenna Java jdk 7 ja määrittele <code>JAVA_PATH</code>-ympäristömuuttuja. Ohje ympäristömuuttujan asettamiseen [OSX:llä](http://www.mkyong.com/java/how-to-set-java_home-environment-variable-on-mac-os-x/)
   * kattavuusraportit tulevat hakemistoon target/site/cobertura
   * saat avattua raportin esim. komennolla <code>firefox target/site/cobertura/index.html</code>
-* kun luokan <code>Varasto/code> testien rivikattavuus (line coverage) on 100% pushaa tekemäsi muutokset GitHubiin
+* kun luokan <code>Varasto</code> testien rivikattavuus (line coverage) on 100% pushaa tekemäsi muutokset GitHubiin
 
 ## 7. Jenkins, osa 1
 
@@ -301,7 +305,7 @@ Parempi tapa on määritellä GitHub kertomaan Jenkinssille aina kun projektiin 
 * lisää tähän Jenkins-projektisi buildin triggeröivä url kohtaan *payload url*
 * tee muutos projektiisi ja varmista että Jenkins reagoi
 
-## 11.  Forkaa repositorio https://github.com/mluukkai/ohtu2014
+## 11. Forkaa repositorio https://github.com/mluukkai/ohtu2014
 
 * forkkaaminen tapahtuu seuraavasti:
   * kun olet kirjautuneena GitHubiin, mene yo. osoitteeseen
@@ -319,7 +323,7 @@ Parempi tapa on määritellä GitHub kertomaan Jenkinssille aina kun projektiin 
 
 ## tehtävien kirjaaminen palautetuksi
 
-**Jos olet tehnyt Jenkins-tehtävät, muista että github-repositoriosi readme.MD-tiedostossa tulee olla linkki projektisi Jenkins-sivulle!**
+** Jos olet tehnyt Jenkins-tehtävät, muista että github-repositoriosi readme.MD-tiedostossa tulee olla linkki projektisi Jenkins-sivulle!**
 
 * Kirjaa tekemäsi tehtävät [tänne](http://ohtustats.herokuapp.com) 
   * huom: tehtävien palautuksen deadline on su 16.3. klo 23.59
