@@ -1,6 +1,10 @@
 package ohtu.verkkokauppa;
 
-public class Kauppa {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class Kauppa implements KauppaRajapinta {
 
     private Varasto varasto;
     private Pankki pankki;
@@ -8,22 +12,26 @@ public class Kauppa {
     private Viitegeneraattori viitegeneraattori;
     private String kaupanTili;
 
-    public Kauppa() {
-        varasto = Varasto.getInstance();
-        pankki = Pankki.getInstance();
-        viitegeneraattori = Viitegeneraattori.getInstance();
+    @Autowired
+    public Kauppa(Varasto varasto, Pankki pankki, Viitegeneraattori viitegeneraattori) {
+        this.varasto = varasto;
+        this.pankki = pankki;
+        this.viitegeneraattori = viitegeneraattori;
         kaupanTili = "33333-44455";
     }
 
+    @Override
     public void aloitaAsiointi() {
         ostoskori = new Ostoskori();
     }
 
+    @Override
     public void poistaKorista(int id) {
         Tuote t = varasto.haeTuote(id); 
         varasto.palautaVarastoon(t);
     }
 
+    @Override
     public void lisaaKoriin(int id) {
         if (varasto.saldo(id)>0) {
             Tuote t = varasto.haeTuote(id);             
@@ -32,6 +40,7 @@ public class Kauppa {
         }
     }
 
+    @Override
     public boolean tilimaksu(String nimi, String tiliNumero) {
         int viite = viitegeneraattori.uusi();
         int summa = ostoskori.hinta();
