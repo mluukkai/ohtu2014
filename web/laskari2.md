@@ -6,7 +6,7 @@
 
 ## palautetaan GitHubin kautta
 
-* tehtävät 1 ja 2 tehdään paikalliseen repositorioon, eli ne eivät näy palautuksessa mitenkään
+* tehtävät 4 ja 5 tehdään paikalliseen repositorioon, eli ne eivät näy palautuksessa mitenkään
 * tee palautusta varten yksityinen repositorio ja lisää sille collaboratoriksi käyttäjä mluukkai, voit käyttää myös viikon 1 repositoriotasi
   * jos et ole vielä ehtinyt saada GitHubin academic-tunnusta, voit tehdä palautuksen normaalia repositoriota käyttäen
 * palautusrepositorion nimi ilmoitetaan tehtävien lopussa olevalla palautuslomakkeella
