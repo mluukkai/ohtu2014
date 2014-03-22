@@ -94,7 +94,7 @@ tee seuraavat paikalliseen git-repositorioosi (kyseessä ei siis tarvitse olla t
 * lisää branchiin tavaraa, esim. tiedosto __eka2.txt__ ja committaa
 * siirry takaisin __master__-branchiin
 * tarkasta että __eka__-branchiin lisätyt muutokset eivät ole masterissa
-* tarkastele komennolla <code>gitk --all</code> miltä repositorio ja branchit näyttävät (ei tietoa toimiiko gitk windowsissa)
+* tarkastele komennolla <code>gitk --all</code> miltä repositorio ja branchit näyttävät (gitk toimii windowsilla ainakin Github for Windowsin Git Shellissä.)
 * mergeä branchin __eka__ sisältö __masteriin__
 * katso jälleen miltä näyttää gitk --all
 * tuhoa branchi __eka__
