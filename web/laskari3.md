@@ -14,7 +14,7 @@
 
 * luennolla 5 puhuttiin koodikatselmoinnin yhteydessä staattisen analyysin työkaluista, joita voidaan käyttää koodin katselmoinnin apuna
 * tutustu staattisen analyysin työkaluun chekstyleen ks. [http://checkstyle.sourceforge.net/](http://checkstyle.sourceforge.net/)
-* checkstyleä on helppo käyttää maven-projekteiss,a sillä checkstyle on valmiiksi konfiguroituna pluginina mavenissa, ks. [http://maven.apache.org/plugins/maven-checkstyle-plugin/](http://maven.apache.org/plugins/maven-checkstyle-plugin/) checkstyleä kannattaa käyttää yhdessä [http://maven.apache.org/plugins/maven-jxr-plugin/](http://maven.apache.org/plugins/maven-jxr-plugin/):n kanssa
+* checkstyleä on helppo käyttää maven-projekteissa, sillä checkstyle on valmiiksi konfiguroituna pluginina mavenissa, ks. [http://maven.apache.org/plugins/maven-checkstyle-plugin/](http://maven.apache.org/plugins/maven-checkstyle-plugin/) checkstyleä kannattaa käyttää yhdessä [http://maven.apache.org/plugins/maven-jxr-plugin/](http://maven.apache.org/plugins/maven-jxr-plugin/):n kanssa
   * jxr:n avulla checkstylen raportista pääsee klikkaamalla vastaaville sorsakoodin riveille
 
 mene nyt johonkin valmiiseen projektiisi, esim. viikon 2 verkkokauppaan
@@ -26,8 +26,8 @@ mene nyt johonkin valmiiseen projektiisi, esim. viikon 2 verkkokauppaan
 checkstylen tarkkailemien virheiden joukko on konfiguroitavissa erillisen koniguraatiotiedoston avulla
 * hae repositiorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) hakemistosta viikko3 konfiguraatiotiedoston pohja __my_checks.xml__, talleta se sopivaan paikkaan, kokeile:
         <code>mvn jxr:jxr checkstyle:checkstyle -Dcheckstyle.config.location=my_checks.xml</code>       
-* komennossa oleva polku olettaa että konfiguraatiotiedosto sijaitsee projektihakemistoston juuressa
-  * huom: saattaa olla, että komento ei toimi windowsilla, ongelma ehkä vaan win 8:ssa. jos näin käy, konfiguraatiotiedoston sijainnon voi määritellä pom.xml-tiedostossa seuraavasti:
+* komennossa oleva polku olettaa että konfiguraatiotiedosto sijaitsee projektihakemiston juuressa
+  * huom: saattaa olla, että komento ei toimi windowsilla, ongelma ehkä vaan win 8:ssa. jos näin käy, konfiguraatiotiedoston sijainnin voi määritellä pom.xml-tiedostossa seuraavasti:
 
 <pre>
     <plugins>
@@ -56,7 +56,7 @@ eli lisää uusi __plugin__-määrittely __plugins__-määrittelyjen sisälle. J
   * ei yli 5 rivin copy-pasteja (eli duplicated codea, löytyy kohdasta _standard checks_), huom: tätä tarkastusta ei tule laittaa tree-walkerin sisälle vaan "samalle tasolle" walkerin kanssa
   * tee koodiin muutoksia, jolla testaat että rikkoutuvat ehdot huomataan
 
-## 2. sonar
+## 2. Sonar
 
 [Sonar](http://www.sonarsource.org/) on ohjelma, joka kokoaa erilaisia koodin laatua mittaavien työkalujen (mm. staattisen analyysin työkalut kuten checkstyle ja testikattavuus kuten cobertura) yhdeksi raportiksi. Sonar tallettaa generoidut raportit tietokantaan, ja näinollen koodin laadun kehitystä on mahdollista seurata projektin edetessä.
 
@@ -67,7 +67,7 @@ Käynnistetään ensin Sonar
 * pura zip-paketti esim. kotihakemistoosi ja mene hakemistoon <code>sonar-3.5/bin/linux-x86-32</code> (tai koneesi tyyppiä vastaavaan hakemistoon)
 * käynnistä Sonar. Linuxissa tämä tapahtuu komennolla <code>./sonar.sh start</code> 
 * Sonarin raportit ovat näkyvissä selaimessa osoitteessa [http://localhost:9000](http://localhost:9000), avaa sivu
-  * *HUOM:* laitoksen koneilla sonar vaikuttaa käynnistyvän __hitaasti__. Jos niin käy, sammuta sonar komennolla <code>./sonar.sh stop</code>, uudelleenkäynnistä ja uudelleenlataa sivua... jo sonar toivonmukaan herää  
+  * *HUOM:* laitoksen koneilla Sonar vaikuttaa käynnistyvän __hitaasti__. Jos niin käy, sammuta Sonar komennolla <code>./sonar.sh stop</code>, uudelleenkäynnistä ja uudelleenlataa sivua... ja Sonar toivonmukaan herää  
 
 Generoidaan raportti muutamalle projektille
 * maven-muotoisille projekteille raportti generoidaan antamalla projektin hakemistossa komento <code>mvn clean test sonar:sonar</code>

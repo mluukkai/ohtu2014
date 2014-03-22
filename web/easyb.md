@@ -15,7 +15,7 @@ Tutustu olevan ohjelman rakenteeseen
 * käynnistä ohjelma <code>mvn exec ...</code> -komennolla (ks. [viikon 1 laskarit](https://github.com/mluukkai/ohtu2014/blob/master/web/laskari1.md#5-maven))
 * ohjelman tuntemat komennot ovat __login__ ja __new__
 
-Testit on kirjotettu hakemistoon _src/main/test/easyb_ tekstietiedostoina, joilla on pääte .story. NetBeansissa easyB-testitiedostot löytyvät kohdan _Other Test Sources_ alta.
+Testit on kirjoitettu hakemistoon _src/main/test/easyb_ tekstietiedostoina, joilla on pääte .story. NetBeansissa easyB-testitiedostot löytyvät kohdan _Other Test Sources_ alta.
 
 Projektiimme on konfiguroitu easyB maven-pluginiksi. Konfigurointi suoritetaan pom.xml-tiedostossa (käy katsomassa pomia, sen sisältöön sinun ei tällä kertaa tarvitse koskea):
 
@@ -55,7 +55,7 @@ Projektiimme on konfiguroitu easyB maven-pluginiksi. Konfigurointi suoritetaan p
 
 Konfiguraatio kertoo pluginin nimen (groupId+artifactId) ja version. Sen lisäksi sanotaan, että plugin suoritetaan vaiheessa __integration-test__, eli kun annetaan komento <code>mvn integration-test</code>.
 
-Voisimme myös konfiguroida easyB:n suoritettavaksi vaiheessa __test__, jolloin komento <code>mvn test</code> suorittaisin muiden testien lisäksi easyB-testit. Ideana on kuitenkin jakaa testit kahteen vaiheeseen: yksikkötesteihin, jotka suoritetaan aina ja User storyjen hyväksymätesteihin (ja integraatiotesteihin), joita ei välttämättä suoriteta aina ja jotka on tämän takia konfiguroitu eri testivaiheeseen kuin muut testit. Hyväksymä- ja integraatiotestit ovat joskus hitaita suorittaa, siksi ne halutaan erilliseen vaiheeseen yksikkötestien kanssa.
+Voisimme myös konfiguroida easyB:n suoritettavaksi vaiheessa __test__, jolloin komento <code>mvn test</code> suorittaisi muiden testien lisäksi easyB-testit. Ideana on kuitenkin jakaa testit kahteen vaiheeseen: yksikkötesteihin, jotka suoritetaan aina ja User storyjen hyväksymätesteihin (ja integraatiotesteihin), joita ei välttämättä suoriteta aina ja jotka on tämän takia konfiguroitu eri testivaiheeseen kuin muut testit. Hyväksymä- ja integraatiotestit ovat joskus hitaita suorittaa, siksi ne halutaan erilliseen vaiheeseen yksikkötestien kanssa.
 
 Kun suoritamme testit komennolla <code>mvn integration-test</code> tulee tulosteen sekaan easyB:n ajamisesta kertovaa tekstiä:
 
@@ -85,7 +85,7 @@ Kaiken tekstin seasta nähdään, että easyB on ajanut kahteen User Storyyn lii
 
 Jos testit eivät mene läpi, nähdään ikävämpää tekstiä.
 
-easyB:n konfiguraatiossa sanoimme, että testien tulost tulee raportoida html-muodossa tiedostossa _target/easyb/easyb-report.html_
+easyB:n konfiguraatiossa sanoimme, että testien tulokset tulee raportoida html-muodossa tiedostossa _target/easyb/easyb-report.html_
 
 ![kuva](https://github.com/mluukkai/ohtu2014/raw/master/images/viikko3-1.png)
 
@@ -184,7 +184,7 @@ scenario "user can login with correct password", {
 //...
 ```
 
-Viimeiseen askel eli _then_ varmistaa, että järjestelmä toimii halutulla tavalla. Eli kun käyttäjä antaa syötteet _login<enter>pekka<enter>akkep<enter>_ vastaa järjestelmä tulostamalla _logged in_
+Viimeiseen askel eli _then_ varmistaa, että järjestelmä toimii halutulla tavalla. Eli kun käyttäjä antaa syötteet _login[enter]pekka[enter]akkep[enter]_ vastaa järjestelmä tulostamalla _logged in_
 
 Jos et jo niin tehnyt, kokeile ajaa ohjelmaa komentoriviltä ja tutustu sen rakenteeseen.
 * muistutus viikolta 1, maven-muotoisen ohjelman suoritus tapahtuu komennolla <code>mvn exec:java -Dexec.mainClass=ohtu.App</code>
@@ -229,9 +229,9 @@ AuthenticationService-olio ei talleta suoraan User-oliota vaan epäsuorasti User
 
 DAO eli Data Access Object on yleisesti käytetty suunnittelumalli jonka avulla abstrahoidaan sovellukselta se miten oliot on talletettu, ks. [http://www.corej2eepatterns.com/Patterns2ndEd/DataAccessObject.htm](http://www.corej2eepatterns.com/Patterns2ndEd/DataAccessObject.htm)
 
-Ideana on, että sovellus "hakee" ja "tallettaa" User-oliot aina UserDAO-rajapinnan metodeja käyttäen. Sovellukselle on injektoitu konkreettinen toteutus, joka tallettaa oliot esim. tietokantaan tai tiedostoon. Se minne talletus tapahtuu on kuitenkin läpinäkyvää sovelluksen muden osien kannalta.
+Ideana on, että sovellus "hakee" ja "tallettaa" User-oliot aina UserDAO-rajapinnan metodeja käyttäen. Sovellukselle on injektoitu konkreettinen toteutus, joka tallettaa oliot esim. tietokantaan tai tiedostoon. Se minne talletus tapahtuu on kuitenkin läpinäkyvää sovelluksen muiden osien kannalta.
 
-Ohjelmaamme on määritelty testauskäyttön sopiva InMemoryUserDao, joka tallettaa User-oliot ainoastaan muistiin. Muu ohjelma säilyisi täysin muuttumattomana jos määriteltäisiin esim. MySQLUserDao joka hoitaa talletuksen tietokantaan ja injektoitaisiin tämä sovellukselle.
+Ohjelmaamme on määritelty testauskäyttöön sopiva InMemoryUserDao, joka tallettaa User-oliot ainoastaan muistiin. Muu ohjelma säilyisi täysin muuttumattomana jos määriteltäisiin esim. MySQLUserDao joka hoitaa talletuksen tietokantaan ja injektoitaisiin tämä sovellukselle.
 
 DAO-suunnittelumalli on oikeastaan sama asia mistä jotkut käyttävät nimitystä [data mapper](http://martinfowler.com/eaaCatalog/dataMapper.html)
 
