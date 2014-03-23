@@ -102,8 +102,234 @@ Löydät tämän Storyn easyB-pohjan viimeviikon tehtävistä. Kopioi story proj
 * Skenaarion "can login with succesfully generated account" mäppäävän koodin kirjoittaminen ei ole täysin suoraviivaista. Koska luotu käyttäjä kirjautuu automaattisesti järjestelmään, joudut kirjaamaan käyttäjän ensin ulos ja kokeilemaan tämän jälkeen että luotu käyttäjä pystyy kirjautumaan sivulle uudelleen.
 * Huomaa, että jos luot käyttäjän yhdessä testissä, et voi luoda toisessa testissä samannimistä käyttäjää uudelleen!
 
-## 5.-10. tulossa
+## 5. Yksikkötestaus ja riippuvuudet: Mockito, osa 1
 
+Useimmilla luokilla on riippuvuuksia toisiin luokkiin. Esim. viikon 2 verkkokauppaesimerkin luokka Kauppa riippui Pankista, Varastosta ja Viitegeneraattorista. Riippuvuuksien injektoinnilla ja rajapinnoilla saimme mukavasti purettua riippuvuudet konreettisten luokkien väliltä.
+
+Vaikka luokilla ei olisikaan riippuvuuksia toisiin konkreettisiin luokkiin, on tilanne edelleen se, että luokan oliot käyttävät joidenkin toisten luokkien olioiden palveluita. Tämä tekee joskus yksikkötestauksesta hankalaa. Miten esim. luokkaa Kauppa tulisi testata? Tuleeko Kaupan testeissä olla mukana toimivat versiot kaikista sen riippuvuuksista?
+
+Olemme jo muutamaan otteeseen (esim. Nhl-Statsreader-tehtävässä viikolla 2) ratkaisseet asian ohjelmoimalla riippuvuuden korvaavan "tynkäkomponentin". Javalle (niinkuin kaikille muillekin kielille) on tarjolla myös valmiita kirjastoja tynkäkomponettien toiselta nimeltään "mock-olioiden" luomiseen.
+
+Kuten pian huomaamme, mock-oliot eivät ole pelkkiä "tynkäolioita", mockien avulla voi myös varmistaa että testattava luokka kutsuu olioiden metodeja asiaankuuluvalla tavalla.
+
+Tutustumme nyt [Mockito-nimiseen](http://code.google.com/p/mockito/) mock-kirjastoon. Muita vaihtoehtoja esim.
+
+* [Easy Mock](http://www.easymock.org/)
+* [jmock](http://www.jmock.org/)
+
+Hae repositorion [https://github.com/mluukkai/ohtu2014](https://github.com/mluukkai/ohtu2014) hakemistossa __viikko4/MockitoDemo__ oleva projekti. Kyseessä on yksinkertaistettu versio Verkkokauppaesimerkistä.
+
+Kaupan toimintaperiaate on yksinkertainen:
+
+``` java
+    Pankki myNetBank = new Pankki();
+    Viitegeneraattori viitteet = new Viitegeneraattori();
+    Kauppa kauppa = new Kauppa(myNetBank, viitteet);
+        
+    kauppa.aloitaOstokset();
+    kauppa.lisaaOstos(5);
+    kauppa.lisaaOstos(7);
+    kauppa.maksa("1111");
+``` 
+
+Ostokset aloitetaan tekemällä metodikutsu <code>aloitaOstokset</code>. Tämän jälkeen "ostoskoriin" lisätään tuotteita joiden hinta kerrotaan metodin <code>lisaaOstos</code> parametrina. Ostokset lopetetaan kutsumalla metodia <code>maksa</code> joka saa parametrikseen tilinumeron jolta summa veloitetaan.
+
+Kauppa tekee veloituksen käyttäen tuntemaansa luokan <code>Pankki</code> olioa. Viitenumerona käytetään luokan <code>Viitegeneraattori</code> generoimaa numeroa.
+
+Projektiin on kirjoitettu 6 Mockitoa hyödyntävää testiä. Testit testaavat, että kauppa tekee ostoksiin liittyvän veloituksen oikein, eli että se kutsuu _pankin_ metodia <code>maksa</code> oikeilla parametreilla, ja että jokaiselle laskutukselle on kytsytty viitenumero _viitegeneraattorilta_. Testit siis eivät kohdistu olion pankki tilaan vaan sen muiden olioiden kanssa käymän interaktion oikeellisuuteen.
+Testeissä kapuan riippuvuudet (Pankki ja Viitegeneraattori) on määritelty mock-olioina.
+
+Seuraavassa testi, joka testaa, että kauppa kutsuu pankin metodia oikealla tilinumerolla ja summalla:
+
+``` java
+    @Test
+    public void kutsutaanPankkiaOikeallaTilinumerollaJaSummalla() {
+        Pankki mockPankki = mock(Pankki.class);
+        Viitegeneraattori mockViite = mock(Viitegeneraattori.class);
+
+        kauppa = new Kauppa(mockPankki, mockViite);
+
+        kauppa.aloitaOstokset();
+        kauppa.lisaaOstos(5);
+        kauppa.lisaaOstos(5);
+        kauppa.maksa("1111");
+
+        verify(mockPankki).maksa(eq("1111"), eq(10), anyInt());
+    }
+``` 
+
+Testi siis aloittaa luomalla kaupan riippuvuuksista mock-oliot:
+
+``` java
+        Pankki mockPankki = mock(Pankki.class);
+        Viitegeneraattori mockViite = mock(Viitegeneraattori.class);
+
+        kauppa = new Kauppa(mockPankki, mockViite);
+``` 
+
+kyseessä siis eivät ole normaalit oliot vaan normaaleja olioita "matkivat" valeoliot, jotka myös pystyvät tarkastamaan että niiden metodeja on kutsuttu oikein parametrein. 
+
+Testi tarkastaa, että kaupalle tehdyt metodikutsut aiheuttavat sen, että pankin mock-olion metodia <code>maksa</code> on kutsuttu oikeilla parametreilla. Kolmanteen parametriin eli tilinumeroon ei kiinnitetä huomiota:
+
+``` java
+    verify(mockPankki).maksa(eq("1111"), eq(10), anyInt());
+``` 
+
+Mock-olioille tehtyjen metodikutsujen paluuarvot on myös mahdollista määritellä. Seuraavassa määritellään, että viitegeneraattori palauttaa arvon 55 kun sen metodia <code>seruaava</code> kutsutaan:
+
+``` java
+    @Test
+    public void kaytetaanMaksussaPalautettuaViiteta() {
+        Pankki mockPankki = mock(Pankki.class);
+        Viitegeneraattori mockViite = mock(Viitegeneraattori.class);
+        
+        // määritellään viitegeneraattorin metodikutsun vastaus
+        when(mockViite.seruaava()).thenReturn(55);
+
+        kauppa = new Kauppa(mockPankki, mockViite);
+
+        kauppa.aloitaOstokset();
+        kauppa.lisaaOstos(5);
+        kauppa.lisaaOstos(5);
+        kauppa.maksa("1111");
+
+        verify(mockPankki).maksa(eq("1111"), eq(10), eq(55));
+    }
+``` 
+
+Testin lopussa varmistetaan, että pankin mockolioa on kutsuttu oikeilla parametrinarvoilla, eli kolmantena parametrina tulee olla viitegeneraattorin palauttama arvo.
+
+Tutustu projektiin ja sen kaikkin testeihin.
+
+Mockiton dokumentaatio: [http://docs.mockito.googlecode.com/hg/latest/org/mockito/Mockito.html](http://docs.mockito.googlecode.com/hg/latest/org/mockito/Mockito.html)
+
+## 6. Yksikkötestaus ja riippuvuudet: Mockito, osa 2
+
+Hae repositorion [https://github.com/mluukkai/ohtu2014](https://github.com/mluukkai/ohtu2014) hakemistossa __viikko2/LyyrakorttiMockito__ oleva projekti. Kyseessä on yksinkertaistettu versio ohjelmoinnin perusteista tutusta tehtävästä Kassapääte ja tyhmä lyyrakortti.
+
+Tässä tehtävässä on tarkoitus testata ja täydentää luokkaa <code>Kassapaate</code>. Lyrakorttin koodiin ei tehtävässä saa koskea ollenkaan! Testeissä ei myöskään ole tarkoitus luoda konkreettisia instansseja lyyrakortista, testien tarvitsemat kortit tulee luoda mockitolla.
+
+Projektissa on valmiina kaksi testiä:
+
+``` java
+public class KassapaateTest {
+    
+    Kassapaate kassa;
+    Lyyrakortti kortti;
+    
+    @Before
+    public void setUp() {
+        kassa = new Kassapaate();
+        kortti = mock(Lyyrakortti.class);
+    }
+    
+    @Test
+    public void kortiltaVelotetaanHintaJosRahaaOn() {
+        when(kortti.getSaldo()).thenReturn(10);
+
+        kassa.ostaLounas(kortti);
+        
+        verify(kortti, times(1)).getSaldo();
+        verify(kortti).osta(eq(Kassapaate.HINTA));
+    }
+
+    @Test
+    public void kortiltaEiVelotetaJosRahaEiRiita() {
+        when(kortti.getSaldo()).thenReturn(4);
+
+        kassa.ostaLounas(kortti);
+        
+        verify(kortti, times(1)).getSaldo();
+        verify(kortti, times(0)).osta(anyInt());
+    }
+}
+``` 
+
+Ensimmäisessä testissa varmistetaan, että jos kortilla on riittävästi rahaa, kassapäätteen metodin <code>ostaLounas</code> kutsuminen 
+varmistaa kortin saldon _ja_ velottaa summan kortilta. 
+
+Testi ottaa siis kantaa ainoastaan siihen miten kassapääte kutsuu lyyrakortin metodeja. Lyyrakortin saldoa ei erikseen tarkasteta, sillä oletuksena on, että lyyrakortin omat testit varmistavat kortin toiminnan.
+
+Toinen testi varmisteta, että jos kortilla ei ole riittävästi rahaa, kassapäätteen metodin <code>ostaLounas</code> kutsuminen 
+varmistaa kortin saldon mutta _ei_ velota kortilta rahaa.
+
+Testit eivät mene läpi. Korjaa kassapäätteen metodi <code>ostaLounas</code>.
+
+Tee tämän jälkeen samaa periaatetta noudattaen seuraavat testit:
+* kassapäätteen metodin <code>lataa</code> kutsu lisää lyyrakortille ladattavan rahamäärän käyttäen kortin metodia <code>lataa</code> jos ladattava summa on positiivinen
+* kassapäätteen metodin <code>lataa</code> kutsu ei tee lyyrakortille mitään jos ladattava summa on positiivinen
+
+Korjaa kassapäätettä siten, että määrittelemäsi testit menevät läpi. 
+
+## 7. Yksikkötestaus ja riippuvuudet: Mockito, osa 3
+
+Testataan viikolta 2 tutun Verkkokaupan Kauppa-luokkaa
+
+* Spring-versio löytyy [https://github.com/mluukkai/ohtu2013](https://github.com/mluukkai/ohtu2013) hakemistossa viikko2/Verkkokauppa3 (xml:llä konfiguroitu) ja viikko2/Verkkokauppa4 (annotaatioilla konfiguroitu)
+* ota edellisistä jompi kumpi pohjaksi jos ei tehnyt tehtävää
+
+Kaupalle injektoidaan konstruktorissa Pankki, Viitelaskuri ja Varasto.
+
+Tehdään näistä testissä Mockitolla mockatut versiot.
+
+Seuraavassa esimerkkinä testi, joka testaa, että ostostapahtuman jälkeen pankin metodia __tilisiirto__ on kutsuttu:
+
+``` java
+    @Test
+    public void ostoksenPaaytyttyapankinMetodiaTilisiirtoKutsutaan() {
+        // luodaan ensin mock-oliot
+        Pankki pankki = mock(Pankki.class);
+        
+        Viitegeneraattori viite = mock(Viitegeneraattori.class);
+        when(viite.uusi()).thenReturn(1);
+        
+        Varasto varasto = mock(Varasto.class);
+        when(varasto.saldo(1)).thenReturn(10); 
+        when(varasto.haeTuote(1)).thenReturn(new Tuote(1, "maito", 5));
+       
+        // sitten testattava kauppa 
+        Kauppa k = new Kauppa(varasto, pankki, viite);              
+        
+        // tehdään ostokset
+        k.aloitaAsiointi();
+        k.lisaaKoriin(1);
+        k.tilimaksu("pekka", "12345");
+        
+        // sitten suoritetaan varmistus, että pankin metodia tilisiirto on kutsuttu
+        verify(pankki).tilisiirto(anyString(), anyInt(), anyString(), anyString(),anyInt());        
+    }
+```
+
+Tee seuraavat testit:
+
+* aloitataan asiointi, koriin lisätään koriin tuote jota varastossa on ja suoritetaan ostos (eli kutsutaan metodia kaupan __tilimaksu()__). varmistettava että kutsutaan pankin metodia __tilisiirto__ oikealla asiakkaalla, tilinumerolla ja summalla
+* aloitataan asiointi, koriin lisätään koriin kaksi eri tuotetta joita varastossa on ja suoritetaan ostos. varmistettava että kutsutaan pankin metodia __tilisiirto__ oikealla asiakkaalla, tilinumerolla ja summalla
+* aloitataan asiointi, koriin lisätään koriin kaksi samaa tuotetta jota on varastossa tarpeeksi ja suoritetaan ostos. varmistettava että kutsutaan pankin metodia __tilisiirto__ oikealla asiakkaalla, tilinumerolla ja summalla
+* aloitataan asiointi, koriin lisätään koriin tuote jota on varastossa tarpeeksi ja tuote joka on loppu ja suoritetaan ostos. varmistettava että kutsutaan pankin metodia __tilisiirto__ oikealla asiakkaalla, tilinumerolla ja summalla
+* varmistettava että metodin aloita asiointi kutsuminen nollaa edellisen ostoksen tiedot
+* varmistettava että kauppa pyytää uuden viitenumeron jokaiselle maksutapahtumalle
+
+Kaikkien testien tarkastukset onnistuvat mockiton __verify__-komennolla.
+
+Tarkasta vanhan ystävämme coberturan avulla mikä on luokan Kauppa testauskattavuus. Jotain taitaa puuttua. Lisää testi joka nostaa kattavuuden noin sataan prosenttiin!
+
+Muista lisätä pom.xml-tiedoston riippuvuuksiin mockito:
+
+``` java
+<dependency>
+     <groupId>org.mockito</groupId>
+     <artifactId>mockito-all</artifactId>
+     <version>1.9.0</version>
+     <scope>test</scope>
+</dependency>
+```
+
+
+Lisää testitiedostoosi import:
+
+``` java
+import static org.mockito.Mockito.*;
+``` java
 
 ## tehtävien kirjaaminen palautetuksi
 
