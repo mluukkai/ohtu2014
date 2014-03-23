@@ -20,19 +20,19 @@ Hae projekti ja käynnistä se komennolla
 mvn jetty:run
 ```
 
-Jetty on keyvt HTTP-palvelin ja Servlettien ajoympäristö. Projektiin on konfiguroitu Jetty Maven-pluginiksi. Jos kaikki menee hyvin, on sovellus nyt käynnissä ja voit käyttää sitä web-selaimella osoitteesta __http://localhost:8080__ eli paikalliselta koneeltasi portista 8080.
+Jetty on keyvt HTTP-palvelin ja Servlettien ajoympäristö. Projektiin on konfiguroitu Jetty Maven-pluginiksi. Jos kaikki menee hyvin, on sovellus nyt käynnissä ja voit käyttää sitä web-selaimella osoitteesta [http://localhost:8080](http://localhost:8080) eli paikalliselta koneeltasi portista 8080.
 
-Jos koneellasi on jo jotain muuta portissa 8080, voit konfiguroida sovelluksen käynnistymään johonkin muuhun porttiin esim. 9999:n seuraavasti:
+Jos koneellasi on jo jotain muuta portissa 8090, voit konfiguroida sovelluksen käynnistymään johonkin muuhun porttiin esim. 9999:n seuraavasti:
 
 ``` java
 mvn -D jetty.port=9999 jetty:run
 ```
 
-SpringWebMVC:stä tällä kurssilla ei tarvitse ymmärtää. Kannattaa kuitenkin vilkaista tiedostoa __ohtu.OhtuController.java__, joka sisältää koodin joka hoitaa sovelluksen eri osoitteisiin tulevat kutsut. Kontrolleri käyttää __AuthenticationService__-luokkaa toteuttamaan kirjautumisen tarkastuksen ja uusien käyttäjien luomisen. Kontrolleri delegoi www-sivujen renderöinnin hakemiston __WebPages/WEB-INF-views__ alla olevien jsp-sivujen avulla.
+SpringWebMVC:stä tällä kurssilla ei tarvitse ymmärtää. Kannattaa kuitenkin vilkaista tiedostoa __ohtu.OhtuController.java__, joka sisältää sovelluksen eri osoitteisiin tulevista kutsuista huolehtivan koodin. Kontrolleri käyttää __AuthenticationService__-luokkaa toteuttamaan kirjautumisen tarkastuksen ja uusien käyttäjien luomisen. Kontrolleri delegoi www-sivujen renderöinnin hakemiston __WebPages/WEB-INF-views__ alla oleville jsp-tiedostoille.
 
-Eli tutustu nyt sovelluksen rakenteeseen ja toiminnallisuuteen. Saat sammutettua sovelluksen painamalla ctrl+c tai ctrl+d konsolissa.
+Eli tutustu nyt sovelluksen rakenteeseen ja toiminnallisuuteen. Saat sammutettua sovelluksen painamalla konsolissa ctrl+c tai ctrl+d.
 
-h2. 2. Selenium, eli web-selaimen simulointi ohjelmakoodista
+## 2. Selenium, eli web-selaimen simulointi ohjelmakoodista
 
 Web-selaimen simulointi onnistuu mukavasti [Selenium WebDriver](http://docs.seleniumhq.org/projects/webdriver/) -kirjaston avulla. Edellisessä tehtävässä olevassa projektissa on luokassa __ohtu.Tester.java__ pääohjelma, jonka koodi on seuraava:
 
@@ -40,7 +40,7 @@ Web-selaimen simulointi onnistuu mukavasti [Selenium WebDriver](http://docs.sele
 public static void main(String[] args) {
         WebDriver driver = new HtmlUnitDriver();
  
-        driver.get("http://localhost:8080");
+        driver.get("http://localhost:8090");
         System.out.println( driver.getPageSource() );
         WebElement element = driver.findElement(By.linkText("login"));
         element.click();
@@ -60,7 +60,7 @@ public static void main(String[] args) {
 }
 ```
 
-Käynnistä sovellus edellisen tehtävän tapaan. Varmista selaimella että sovellus on päällä.
+Käynnistä sovellus edellisen tehtävän tapaan komentoriviltä. Varmista selaimella että sovellus on päällä.
 
 Aja Tester.java:ssa oleva ohjelma. Esim. NetBeansilla tämä onnistuu valitsemalla tiedoston nimen kohdalta oikealla hiiren napilla "Run file".
 
@@ -72,7 +72,7 @@ Tester-ohjelmassa luodaan alussa selainta simuloiva olio __WebDriver driver__. T
 WebElement element = driver.findElement(By.linkText("login"));
 ```
 
-Linkkielementtiä klikataan ja jälleen tulostetaan sivun lähdekoodi. Seuraavaksi etsitään sivulta jonne päädyttiin elementti, jonka nimi on __username__, kyseessä on lomakkeen input-kenttä, ja ohjelma "kirjoittaa" kenttään komennolla sendKeys() nimen "pekka".
+Linkkielementtiä klikataan ja jälleen tulostetaan sivun lähdekoodi. Seuraavaksi etsitään sivulta elementti, jonka nimi on __username__, kyseessä on lomakkeen input-kenttä, ja ohjelma "kirjoittaa" kenttään komennolla sendKeys() nimen "pekka".
 
 Tämän jälkeen täytetään vielä salasanakenttä ja painetaan lomakkeessa olevaa nappia. Lopuksi tulostetaan vielä sivun lähdekoodi.
 
@@ -82,25 +82,25 @@ Muuta koodia siten, että läpikäyt seuraavat skenaariot:
 
 * epäonnistunut kirjautuminen: oikea käyttäjätunnus, väärä salasana
 * epäonnistunut kirjautuminen: eiolemassaoleva käyttäjätunnus
-* uuden käyttäjätunnuksen luominen
 * uuden käyttäjätunnuksen luominen ja luodulla käyttäjätunnuksella kirjautuminen
 
 *HUOM:* salasanan varmistuskentän (confirm password) nimi on __passwordConfirmation__
 
 ## 3. Web-sovelluksen testaaminen: easyB+Selenium
 
-Pääsemme jälleen käyttämään viime viikolta tuttua [easyB:tä](https://github.com/mluukkai/ohtu2014/blob/master/web/easyb.md) . Hakemistosta Other Test Sources/easyb löytyy valmiina User Storyn *User can log in with valid username/password-combination* määrittelevä story. Yksi skenaarioista on valmiiksi mäpätty koodiin. Täydennä kaksi muuta skenaariota.
-
+Pääsemme jälleen käyttämään viime viikolta tuttua [easyB:tä](https://github.com/mluukkai/ohtu2014/blob/master/web/easyb.md). Hakemistosta Other Test Sources/easyb löytyy valmiina User storyn *User can log in with valid username/password-combination* määrittelevä story. Yksi skenaarioista on valmiiksi mäpätty koodiin. Täydennä kaksi muuta skenaariota.
 
 ## 4. Web-sovelluksen testaaminen osa 2
 
-Kuten viimeviikolta muistamme, toinen järjestelmän toimintaa määrittelevä User Story on *A new user account can be created if a proper unused username and a proper password are given*
+Kuten viimeviikolta muistamme, toinen järjestelmän toimintaa määrittelevä User story on *A new user account can be created if a proper unused username and a proper password are given*
 
-Löydät tämän Storyn easyB-pohjan viimeviikon tehtävistä. Kopioi story projektiisi ja tee skenaarioista suoritettavia kirjottamalla niihin sopivaa seleniumin avulla (edellisen tehtävän tyyliin) sovellusta testaavaa koodia. Muista lisätä story-tiedostoon Seleniumin vaatimat importit!
+Löydät tämän Storyn easyB-pohjan viimeviikon tehtävistä. Kopioi story projektiisi ja tee skenaarioista suoritettavia kirjottamalla niihin Seleniumin avulla (edellisen tehtävän tyyliin) sovellusta testaavaa koodia. Muista lisätä story-tiedostoon Seleniumin vaatimat importit!
 
-*Huom1:* voit tehdä __Tester.java__:n tapaisen pääohjelman sisältävän luokan jos haluat/joudut debuggaamaan AuthenticationServiceä.
-
-*Huom2: Uuden käyttäjän luomisen pohjalla käytettävään luokkaan __UserData__ on määritelty validoinnit käyttäjätunnuksen muodon ja salasanan oikeellisuuden tarkastamiseksi. Eli toisin kuin viime viikolla, ei AuthenticationServicen tarvitse suorittaa validointeja.
+**Huomioita**
+* voit (ja ehkä jopa kannattaa) tehdä __Tester.java__:n tapaisen pääohjelman sisältävän luokan jos haluat/joudut debuggaamaan testiä.
+* Uuden käyttäjän luomisen pohjalla käytettävään luokkaan __UserData__ on määritelty validoinnit käyttäjätunnuksen muodon ja salasanan oikeellisuuden tarkastamiseksi. Eli toisin kuin viime viikolla, ei AuthenticationServicen tarvitse suorittaa validointeja.
+* Skenaarion "can login with succesfully generated account" mäppäävän koodin kirjoittaminen ei ole täysin suoraviivaista. Koska luotu käyttäjä kirjautuu automaattisesti järjestelmään, joudut kirjaamaan käyttäjän ensin ulos ja kokeilemaan tämän jälkeen että luotu käyttäjä pystyy kirjautumaan sivulle uudelleen.
+* Huomaa, että jos luot käyttäjän yhdessä testissä, et voi luoda toisessa testissä samannimistä käyttäjää uudelleen!
 
 ## 5.-10. tulossa
 
