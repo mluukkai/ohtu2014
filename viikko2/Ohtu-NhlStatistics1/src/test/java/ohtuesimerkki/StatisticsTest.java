@@ -56,7 +56,7 @@ public class StatisticsTest {
     }
     
     @Test
-    public void searchToimii(){
+    public void searchTest(){
         assertEquals("Kurri",stats.search("Kurri").getName());
     }
     
