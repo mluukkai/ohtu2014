@@ -9,9 +9,8 @@ public class Statistics {
 
     private List<Player> players;
 
-    public Statistics() {
-        PlayerReader reader = new PlayerReader("http://nhlstats-2013-14.herokuapp.com/players.txt");
-        players = reader.getPlayers();       
+    public Statistics(Reader r) {
+        this.players = r.getPlayers(); 
     }
 
     public Player search(String name) {
@@ -41,9 +40,8 @@ public class Statistics {
         ArrayList<Player> topScorers = new ArrayList<Player>();
         Iterator<Player> playerIterator = players.iterator();
         
-        while (howMany>=0) {
-            topScorers.add( playerIterator.next() );            
-            howMany--;
+        while (howMany-- > 0) {
+            topScorers.add(playerIterator.next());            
         }
         
         return topScorers;
