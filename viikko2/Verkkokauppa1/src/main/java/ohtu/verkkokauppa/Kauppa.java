@@ -15,13 +15,6 @@ public class Kauppa {
         this.pankki = pankki;
         this.kaupanTili = "33333-44455";
     }
-    
-//    public Kauppa() {
-//        varasto = Varasto.getInstance();
-//        pankki = Pankki.getInstance();
-//        viitegeneraattori = Viitegeneraattori.getInstance();
-//        kaupanTili = "33333-44455";
-//    }
 
         public void aloitaAsiointi() {
         ostoskori = new Ostoskori();
