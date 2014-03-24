@@ -145,7 +145,6 @@ Jos teit edellisen tehtävän, muokkaa Spring-konfiguraatiosi ottamaan huomioon 
 tehtävien kirjaus:
 
 * Kirjaa tekemäsi tehtävät [tänne](http://ohtustats.herokuapp.com) 
-  * **Palautus onnistuu vasta ma 24.3.**
   * huom: tehtävien palautuksen deadline on su 30.3. klo 23.59
 
 palaute tehtävistä:
