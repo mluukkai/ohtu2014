@@ -223,6 +223,12 @@ Komennoilla shoudHave ja shouldNotHave  testataan listan sisältöä. Yksittäis
 
 Lisää should:ista löytyy easyB:n sivulta, mm. [http://www.easyb.org/dsls.html](http://www.easyb.org/dsls.html)
 
+## parempi syntaksitarkastus
+
+NetBeans ei osaa tehdä minkäänlaista syntaksitarkastusta _.story_-päätteisille tiedostoille. Jos asennat NB:hen Groovy and Grails -pluginin (ks. tools/plugins) _ja_ nimeät storytiedostot loppumaan päätteeseen _Story.groovy_ (esim. logging_in_Story.groovy, huomaa iso S!) saat NB:hen hieman paremman syntaksitarkastuksen. Tosin ihan ongelmaton syntaksitarkastus ei ole vaan se ilmoittaa aiheetomasti tiettyjen luokkien näkymättömyydestä:
+
+![kuva](https://github.com/mluukkai/ohtu2014/raw/master/images/viikko3-2.png)
+
 ## DAO-suunnittelumalli
 
 AuthenticationService-olio ei talleta suoraan User-oliota vaan epäsuorasti UserDAO-rajapinnan kautta. Mistä on kysymys?
