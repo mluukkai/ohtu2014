@@ -254,7 +254,7 @@ Tehtävässä oletetaan, että sinulla on 2 repositoria GitHub:issa. Käytetää
 
 * kloonaa A koneellesi
 * liitä B paikalliselle koneelle kloonaamaasi repositorioon etärepositorioksi
-  * katso ohje [http://progit.org/book/ch2-5.html](http://progit.org/book/ch2-5.html)
+  * katso ohje [http://git-scm.com/book/en/Git-Basics-Working-with-Remotes](http://git-scm.com/book/en/Git-Basics-Working-with-Remotes)
 * nyt paikallisella repositoriollasi on kaksi remotea A (nimellä origin) ja B (määrittelemälläsi nimellä)
   * tarkista komennolla git remote -v että näin todellakin on
 * pullaa B:n master-haaran sisältö paikalliseen repositorioon (komennolla <code>git pull beelleantamasinimi master</code>)
@@ -268,7 +268,7 @@ jatketaan edellistä
 * liitä paikalliseen repositorioosi (edellisen tehtävän A) remoteksi repositorio [git://github.com/mluukkai/ohtu2014.git](git://github.com/mluukkai/ohtu2014.git) esim. nimellä ohtu
 * ei pullata ohtu-repossa olevaa tavaraa lokaaliin, vaan tehdään sille oma träkkäävä branchi:
   * anna komennot <code>git fetch ohtu</code> ja <code>git checkout -b ohtu-lokaali ohtu/master</code>
-  * varmista komennolla <code>git branc</code> että branchi (nimeltä ohtu-lokaali) syntyi ja menit siihen
+  * varmista komennolla <code>git branch</code> että branchi (nimeltä ohtu-lokaali) syntyi ja että olet branchissa
   * tee komento <code>ls</code> niin näet, että olet todellakin ohtu-repon lokaalissa kopiossa
 * siirretään (tai otetaan mukaan, alkuperäinen ei häviä) ohtu-lokaali:n hakemisto viikko2 paikallisen repon masteriin:
   * palaa master-branchiin komennolla <code>git checkout master</code>
@@ -278,11 +278,11 @@ jatketaan edellistä
   * nyt sait siirrettyä sopivan osan toisen etärepositorion tavarasta lokaaliin repositorioon!
 * pushaa lokaalin repositorion sisältö sekä originiin että B:hen
 
-h## 6. git: tägit
+## 6. git: tägit
 
 Tee tämä tehtävä repositorioon, jonka palautat
 
-* Lue [http://progit.org/book/ch2-6.html](http://progit.org/book/ch2-6.html) (kohdat signed tags ja verifying tags voit skipata)
+* Lue [http://git-scm.com/book/en/Git-Basics-Tagging](http://git-scm.com/book/en/Git-Basics-Tagging) (kohdat signed tags ja verifying tags voit skipata)
 * tee tägi nimellä tagi1 (lightweight tag riittää)
 * tee kolme committia (eli 3 kertaa muutos+add+commit )
 * tee tägi nimellä tagi2
@@ -297,6 +297,13 @@ Tee tämä tehtävä repositorioon, jonka palautat
   * joissain windowseissa muoto <code>HEAD^</code> ei toimi, sen sijasta voit käyttää muotoa <code>HEAD~</code>
   * tai katsomalla commitin tunniste (pitkä numerosarja) joko komennolla <code>git log</code> tai gitk:lla
 * kokeile molempia tapoja, tee niiden avulla kahteen edelliseen committiin tagit (tagi1a ja tagi1b)
+* katso komennolla <code>gitk</code> miltä historia näyttää
+
+Tagit eivät mene automaattisesti etärepositorioihin. Pushaa koodisi githubiin siten, että myös tagit siirtyvät mukana. Katso ohje [täältä](http://git-scm.com/book/en/Git-Basics-Tagging#Sharing-Tags)
+
+Varmista, etä tagit siirtyvät Githubiin:
+
+![kuva](https://github.com/mluukkai/ohtu2014/raw/master/images/viikko4-1.png)
 
 ## 7. Spring WebMVC
 
