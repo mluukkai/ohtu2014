@@ -227,7 +227,7 @@ Tarkasta vanhan ystävämme coberturan avulla mikä on luokan Kauppa testauskatt
 
 Muista lisätä pom.xml-tiedoston riippuvuuksiin mockito:
 
-``` java
+```java
 <dependency>
      <groupId>org.mockito</groupId>
      <artifactId>mockito-all</artifactId>
@@ -241,7 +241,7 @@ Lisää testitiedostoosi import:
 
 ``` java
 import static org.mockito.Mockito.*;
-``` java
+```
 
 ## Mock-olioiden käytöstä
 
