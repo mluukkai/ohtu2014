@@ -1,0 +1,1 @@
+luentoon 8 liittyvä koodi
