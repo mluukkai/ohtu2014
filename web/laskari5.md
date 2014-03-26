@@ -4,7 +4,7 @@
 
 Maven-projekti konfiguroidaan projektin juuressa olevassa pom.xml-tiedostossa.
 
-Tutkitaan hieman viime viikon tehtävissä 1-4 käytetyn projektin eli repositorion "https://github.com/mluukkai/ohtu2013":https://github.com/mluukkai/ohtu2013 hakemistossa __viikko4/LoginWeb2__ olevan projektin pom.xml:in sisältöä.
+Tutkitaan hieman viime viikon tehtävissä 7-11 käytetyn projektin eli repositorion [https://github.com/mluukkai/ohtu2014](https://github.com/mluukkai/ohtu2014) hakemistossa __viikko4/LoginWeb2__ olevan projektin pom.xml:in sisältöä.
 
 ``` java
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -273,40 +273,40 @@ Maven osaa ladata riippuvuuksia (eli käytännössä jar-tiedostoja) automaattis
 
 Riippuvuudet määritellään osassa *dependencies*
 
-* alussa olevien riippuvuuksien (mm. easyb, junit) scope on test, tämä tarkoittaa että ne ovat käytössä vain testeissä
-* selenium-riippuvuuden scope on compile, tällöin selenium on käytössä testeissä ja normaalissa koodissa
-* jos ohjelmassa tarvitaan jar:eja, tulee niitä vastaavat maven-riippuvuudet kirjata dependencies-osaan, riippuvuuksia voi etsiä mm. seuraavista: "http://search.maven.org":http://search.maven.org tai "http://mvnrepository.com/":http://mvnrepository.com/
+* alussa olevien riippuvuuksien (mm. easyb, junit) scope on _test_, tämä tarkoittaa että ne ovat käytössä vain testeissä
+* selenium-riippuvuuden scope on _compile_, tällöin selenium on käytössä testeissä ja normaalissa koodissa
+* jos ohjelmassa tarvitaan jar:eja, tulee niitä vastaavat maven-riippuvuudet kirjata dependencies-osaan, riippuvuuksia voi etsiä mm. seuraavista: [http://search.maven.org](http://search.maven.org) tai [http://mvnrepository.com/](http://mvnrepository.com/)
 
 Osassa *build* määritellään kääntämiseen liittyvien pluginien toimintaa
 
 * kääntämisessä määritellään käytettävän javan versiota 1.6, tämä tapahtuu maven-compiler-plugin:ia konfiguroimalla
-** jos tätä konfiguraatiota ei tehdä käyttää compiler-plugin oletusarvoista javan versiota. maven 3:ssa se on 1.6 mutta maven 2.*:ssa versio 1.3
+  * jos tätä konfiguraatiota ei tehdä käyttää compiler-plugin oletusarvoista javan versiota. maven 3:ssa se on 1.6 mutta maven 2.*:ssa versio 1.3
 * jetty-pluginiin liittyy enemmänkin konfiguraatioita
-** kohdan __executions__-alla määritellään, että jetty (sovelluksen suorittama maven-projektiin integroitu web-palvelin) käynnistetään vaiheessa __pre-integration-test__ ja sammutetaan vaiheessa __post-integration-test__, tämä saa aikaan sen, että kun ajetaan integraatiotestejä, eli suoritetaan komento <code>mvn integration-test</code>, on jetty päällä testien ajamisen aikana
+  * kohdan __executions__-alla määritellään, että jetty (eli sovelluksen käyttämä maven-projektiin integroitu web-palvelin) käynnistetään vaiheessa __pre-integration-test__ ja sammutetaan vaiheessa __post-integration-test__, tämä saa aikaan sen, että kun ajetaan integraatiotestejä, eli suoritetaan komento <code>mvn integration-test</code>, on jetty päällä testien ajamisen aikana
 * easyb-pluginin määritellään ajavan testit __integration-test__-vaiheessa
 
 ## 2. lisää mavenia: riippuvuuksien lisääminen
 
-Hae repositorion "https://github.com/mluukkai/ohtu2013":https://github.com/mluukkai/ohtu2013 hakemistossa viikko5/TyhjaProjekti lähes tyhjän maven-projektin runko.
+Hae repositorion [https://github.com/mluukkai/ohtu2014](https://github.com/mluukkai/ohtu2014) hakemistossa viikko5/TyhjaProjekti lähes tyhjän maven-projektin runko.
 
 * mukana on kaksi kohta tarvitsemaasi luokkaa: __Palautus__ ja __Palautukset__:
 
-Tehdään ohjelma jonka avulla voit lukea kurssilla palauttamiesi tehtävien statistiikan osoitteesta "http://ohtustats-2013.herokuapp.com/":http://ohtustats-2013.herokuapp.com
+Tehdään ohjelma jonka avulla voit lukea kurssilla palauttamiesi tehtävien statistiikan osoitteesta [http://ohtustats.herokuapp.com/](http://ohtustats.herokuapp.com/)
 
-Omat palautukset palauttava sivu on __http://ohtustats-2013.herokuapp.com/opiskelija/12345678.json__, missä __12345678__ siis opiskelijanumerosi. Palvelin palauttaa tietosi "json-muodossa":http://en.wikipedia.org/wiki/JSON.
+Omat palautukset palauttava sivu on __http://ohtustats.herokuapp.com/students/012345678/submissions__, missä __012345678__ siis opiskelijanumerosi. Palvelin palauttaa tietosi [json-muodossa](http://en.wikipedia.org/wiki/JSON)
 
-Tavoitteena on tehdä ohjelma joka ottaa komentoriviparametrina opiskelijanumeron ja tulostaa palautettujen tehtävien statistiikan ihmisystävällisessä muodossa.
+Tavoitteena on tehdä ohjelma, joka ottaa komentoriviparametrina opiskelijanumeron ja tulostaa palautettujen tehtävien statistiikan ihmisystävällisessä muodossa.
 
 Ohjelmassa tarvitaan muutamaa kirjastoa:
 
-* HTTP-pyynnön tekemiseen "http://hc.apache.org/httpclient-3.x/":http://hc.apache.org/httpclient-3.x/
-* InputStreamin merkkijonoksi muuttamiseen "http://commons.apache.org/io/":http://commons.apache.org/io/
-* json-muotoisen merkkijonon muuttaminen olioksi "http://code.google.com/p/google-gson/":http://code.google.com/p/google-gson/
+* HTTP-pyynnön tekemiseen [http://hc.apache.org/httpclient-3.x/](http://hc.apache.org/httpclient-3.x/)
+* InputStreamin merkkijonoksi muuttamiseen [http://commons.apache.org/io/](http://commons.apache.org/io/)
+* json-muotoisen merkkijonon muuttaminen olioksi [http://code.google.com/p/google-gson/](http://code.google.com/p/google-gson/)
 
 Liitä projektisi pom.xml:n seuraavat riippuvuudet
 
 * commons-httpclient, Commons IO, gson
-* löydät riippuvuuksien tiedot seuraavista "http://search.maven.org":http://search.maven.org tai "http://mvnrepository.com/":http://mvnrepository.com/
+* löydät riippuvuuksien tiedot seuraavista [http://search.maven.org](http://search.maven.org) tai [http://mvnrepository.com/](http://mvnrepository.com/)
 * Ainakin seuraavat versiot on todettu yhteensopiviksi ja toimivaksi projektin koodin kanssa: commons-httpclient 3.1, Commons IO 2.0, gson 2.1
 
 Ota mallia edellisen tehtävän projektista ja määrittele maven-compiler-plugin käyttämään javan versiota 1.6
@@ -321,52 +321,55 @@ import java.io.InputStream;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.io.IOUtils;
- 
+
 public class Main {
- 
+
     public static void main(String[] args) throws IOException {
-        String studentNr = "12345678";
+        String studentNr = "012345678";
         if ( args.length>0) {
             studentNr = args[0];
         }
- 
-        String url = "http://ohtustats-2013.herokuapp.com/opiskelija/"+studentNr+".json";
- 
+
+        String url = "http://ohtustats.herokuapp.com/students/"+studentNr+"/submissions";
+
         HttpClient client = new HttpClient();
         GetMethod method = new GetMethod(url);
         client.executeMethod(method);
- 
+
         InputStream stream =  method.getResponseBodyAsStream();
- 
+
         String bodyText = IOUtils.toString(stream);
- 
+
         System.out.println("json-muotoinen data:");
         System.out.println( bodyText );
- 
+
         Gson mapper = new Gson();
-        Palautukset palautukset = mapper.fromJson(bodyText, Palautukset.class);
- 
-        System.out.println("oliot:");
-        for (Palautus palautus : palautukset.getPalautukset()) {
-            System.out.println( palautus );
+        Submission[] subs = mapper.fromJson(bodyText, Submission[].class);
+        
+        System.out.println("Oliot:");
+        for (Submission submission : subs) {
+            System.out.println(submission);
         }
- 
+
     }
 }
 ```
 
 *HUOM:* jos teet koodia NetBeansilla, kirjastoja ei ehkä tunnisteta ennenkiun teet clean and buildin ja NB lataa ne mavenin repositoriosta koneellesi.
 
+Tehtäväpohjassa on valmiina luokan <code>Submission</code> koodin runko. Gson-kirjaston avulla json-muotoisesta datasta saadaan taulukollinen <code>Submission</code>-olioita, joissa jokainen olio vastaa yhden viikon palautusta. Tee luokkaan oliomuuttuja (sekä tarvittaessa getteri ja setteri) jokaiselle json-datassa olevalle kentälle, jota ohjelmasi tarvitsee. Kentät _a1_, _a2_ jne vastaavat viikolla tehtyjä yksittäisiä tehtäviä.
+
 Tee kuitenkin ohjelmastasi tulostusasultaan miellyttävämpi, esim. seuraavaan tyyliin:
 
 ``` java
-opiskelijanumero 123456578
- 
-viikko 1: 5 tehtävää 1, 2, 5, 7, 8      aikaa kului 12 tuntia
-viikko 2: 3 tehtävää 1, 4, 5            aikaa kului  3 tuntia
- 
-yhteensä  8 tehtävää 15 tuntia
+opiskelijanumero 014152737
+
+ viikko: 1 tehtyjä tehtäviä yhteensä: 9 aikaa kului 3 tuntia, tehdyt tehtävät: 1 2 3 4 5 6 7 9 11 
+ viikko: 2 tehtyjä tehtäviä yhteensä: 6 aikaa kului 4 tuntia, tehdyt tehtävät: 1 2 3 6 7 8  
+
+yhteensä: 15 tehtävää 7 tuntia
 ```
+
 
 ## 3. lisää mavenia: jar joka sisältää kaikki riippuvuudet
 
