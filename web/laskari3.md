@@ -29,22 +29,22 @@ checkstylen tarkkailemien virheiden joukko on konfiguroitavissa erillisen konigu
 * komennossa oleva polku olettaa että konfiguraatiotiedosto sijaitsee projektihakemiston juuressa
   * huom: saattaa olla, että komento ei toimi windowsilla, ongelma ehkä vaan win 8:ssa. jos näin käy, konfiguraatiotiedoston sijainnin voi määritellä pom.xml-tiedostossa seuraavasti:
 
-<pre>
-    <plugins>
-         <!-- muut mahdolliset pluginit -->
+```XML
+<plugins>
+  <!-- muut mahdolliset pluginit -->
  
-         <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-checkstyle-plugin</artifactId>
-              <version>2.10</version>
-              <configuration>
-                  <configLocation>my_checks.xml</configLocation>
-              </configuration>
-         </plugin>
-    </plugins>
-</pre>
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-checkstyle-plugin</artifactId>
+    <version>2.10</version>
+    <configuration>
+      <configLocation>my_checks.xml</configLocation>
+    </configuration>
+  </plugin>
+</plugins>
+```
 
-eli lisää uusi __plugin__-määrittely __plugins__-määrittelyjen sisälle. Jos __plugins__:eja ei ole, joudut lisäämään myös <code><plugins>...</plugins></code>-tägit. 
+eli lisää uusi __plugin__-määrittely __plugins__-määrittelyjen sisälle. Jos __plugins__:eja ei ole, joudut lisäämään myös `<plugins>...</plugins>`-tägit. 
 
 * tee alkuperäisestä konfiguraatiotiedostosta kopio, ja poista kopiosta kaikki elementin <code>tree walker</code> sisällä olevat tarkistukset 
 * määrittele tiedostoon seuraavat säännöt (ks. available checks ja standard checks checkstylen [sivuilta](http://checkstyle.sourceforge.net/)):
@@ -149,7 +149,7 @@ tehtävien kirjaus:
 
 palaute tehtävistä:
 
-* Lisää viikon 1 tehtävässä 11 forkaamasi repositorion omalla nimelläsi olevaan hakemistoon tiedosto nimeltä viikko2
+* Lisää viikon 1 tehtävässä 11 forkaamasi repositorion omalla nimelläsi olevaan hakemistoon tiedosto nimeltä viikko3
 * tee viime viikon tehtävän tapaan pull-request
   * anna tehtävistä palautetta avautuvaan lomakkeeseen
   * huom: jos teeh tehtävät alkuviikosta, voi olla, että edellistä pull-requestiasi ei ole vielä ehditty hyväksyä ja et pääse vielä tekemään uutta requestia
