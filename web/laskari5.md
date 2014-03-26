@@ -361,14 +361,14 @@ Tehtäväpohjassa on valmiina luokan <code>Submission</code> koodin runko. Gson-
 
 Tee kuitenkin ohjelmastasi tulostusasultaan miellyttävämpi, esim. seuraavaan tyyliin:
 
-``` java
+<pre>
 opiskelijanumero 014152737
 
  viikko: 1 tehtyjä tehtäviä yhteensä: 9 aikaa kului 3 tuntia, tehdyt tehtävät: 1 2 3 4 5 6 7 9 11 
  viikko: 2 tehtyjä tehtäviä yhteensä: 6 aikaa kului 4 tuntia, tehdyt tehtävät: 1 2 3 6 7 8  
 
 yhteensä: 15 tehtävää 7 tuntia
-```
+</pre>
 
 
 ## 3. lisää mavenia: jar joka sisältää kaikki riippuvuudet
