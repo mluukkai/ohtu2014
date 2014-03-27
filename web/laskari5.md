@@ -1,4 +1,14 @@
-# Laskari 5 UNDER CONSTRUCTION!
+# Laskari 5
+
+## Huom: ohjausta tehtävien tekoon to klo 14-16 ja pe klo 14-16 salissa BK107
+
+### Tehtävien palautuksen deadline su 13.4. klo 23.59
+
+## palautetaan GitHubin kautta
+
+* palautusta varten tarvitaan yksityinen repositorio, jolla collaboratorina käyttäjä mluukkai
+  * kannattaa käyttää samaa repoa kuin edellisten viikkojen tehtävissä
+* palautusrepositorion nimi ilmoitetaan tehtävien lopussa olevalla palautuslomakkeella
 
 ## 1. lisää mavenia: pom.xml
 
@@ -572,102 +582,20 @@ Poista branch haara. Etsi googlaamalla komento jolla saat tuhottua branchin.
 
 Tämä oli kurssin viimeinen git-tehtävä. Muista pitää git-rutiiniasi yllä päivittäin/viikoittain. Jos olet tehnyt kurssin kaikki git-tehtävät, tulet saamaan kurssisuorituksen myös Versionhallinta-kurssista (1 op). Jos git-tehtäviä on jäänyt tekemättä, ota yhteyttä välittömästi jos haluat saada Ohtun lisäksi myös Versionhallinaopintopisteen.
 
+## tehtävien kirjaaminen palautetuksi
 
-# AO siirtyy viikolle 6 (dl tulee olemaan 2.5 tms)
+tehtävien kirjaus:
 
-## 9. Kyselykieli NHLStatistics-ohjelmaan
+* Kirjaa tekemäsi tehtävät [tänne](http://ohtustats.herokuapp.com) 
+  * **Palautus onnistuu vasta ma 7.4.**
+  * huom: tehtävien palautuksen deadline on su 13.4. klo 23.59
 
-Repositorion [https://github.com/mluukkai/ohtu2014](https://github.com/mluukkai/ohtu2014) hakemistosta __viikko5/QueryLanguage__ löytyy jälleen yksi versio tutusta NHL-tilastoja lukevasta ohjelmasta.
+palaute tehtävistä:
 
-Tällä kertaa olemme kiinnostuneita tekemään hieman monimutkaisempia "kyselyjä" pelaajatietoihin, esim. __listaa kaikki joukkueen PHI pelaajat joilla on vähintään 5 maalia ja vähintään 10 syöttöä__.
+* Lisää viikon 1 tehtävässä 11 forkaamasi repositorion omalla nimelläsi olevaan hakemistoon tiedosto nimeltä viikko2
+* tee viime viikon tehtävän tapaan pull-request
+  * anna tehtävistä palautetta avautuvaan lomakkeeseen
+  * huom: jos teeh tehtävät alkuviikosta, voi olla, että edellistä pull-requestiasi ei ole vielä ehditty hyväksyä ja et pääse vielä tekemään uutta requestia
 
-Koodin onkin luotu hieman valmista kalustoa josta pääset liikkeelle. Edelläolevan kyselyn voi suorittaa seuraavasti:
 
 
-``` java
-public static void main(String[] args) {
-    Statistics stats = new Statistics(new PlayerReaderImpl("http://nhlstatistics.herokuapp.com/players.txt"));
- 
-    Matcher m = new And( new HasAtLeast(5, "goals"),
-                         new HasAtLeast(10, "assists"),
-                         new PlaysIn("PHI")
-    );
- 
-    for (Player player : stats.matches(m)) {
-        System.out.println( player );
-    }
-}
-```
-
-Luokalle __Statistics__ on tehty metodi __matches__, joka palauttaa listan pelaajista joille parametrina annettu __Matcher__-rajapinnan toteuttava olio palauttaa __true__
-
-Tutustu ohjelman rakenteeseen
-
-* huomioi miten __HasAtLeast__ käyttää Javan ns. reflektio-ominaisuutta kutsuessaan merkkijonoparametria vastaavaa metodia
-* toinen huomioinarvoinen piirre on __And__-luokan konstruktorissa käytetty vaihtuvamittainen parametrilista, eli "vararg", ks. lisää esim: [http://www.javadb.com/using-varargs-in-java](http://www.javadb.com/using-varargs-in-java)
-
-Tee rajapinnan __Matcher__ toteuttavat luokat, joiden avulla voit tehdä operaatiot
-
-* HasFewerThan (HasAtLeast-komennon negaatio eli, esim. on vähemmän kuin 25 maalia)
-* or
-* not
-
-Tee erilaisia kyselyjä, ja varmista että uudetkin operaatiot toimivat
-
-Kyselyt perustuvat rakenteeltaan __decorator__-suunnittelumalliin, vastaavasti kuten luennon 9 dekoroitu pino. __And__- ja __OR__-muotoiset kyseltyt on muodostetty composite-suunnittelumallin hengessä, ne ovat __Matcher__-rajapinnan toteuttavia olioita, jotka sisältävät itse monta __Matcher__-olioa. Niiden käyttäjä ei kuitenkaan tiedä sisäisestä rakenteesta mitään.
-
-## 10. Parannettu kyselykieli
-
-Matcher-olioiden avulla tehtyä kyselykieltä vaivaa se, että kyselyjen rakentaminen on hieman ikävää, sillä jokaista kyselyn osaa kohti on luotava new-komennolla uusi olio. Tee luennon 9 pinorakentajan hengessä kyselyrakentaja, jonka avulla voit luoda Matcher-olioita.
-
-Rakentaja voi toimia esim. seuraavaan tapaan.
-
-Ensin kysely missä tulostetaan pelaajat joiden joukkue on NYR, joilla on vähintään 10 mutta vähemmän kuin 25 maalia:
-
-``` java
-public static void main(String[] args) {
-    Statistics stats = new Statistics(new PlayerReaderImpl("http://nhlstatistics.herokuapp.com/players.txt"));
- 
-    QueryBuilder query = new QueryBuilder();
- 
-    Matcher m = query.playsIn("NYR")
-                     .hasAtLeast(10, "goals")
-                     .hasFewerThan(25, "assists").build();
- 
-    for (Player player : stats.matches(m)) {
-        System.out.println( player );
-    }
-```
-
-Peräkkäin ketjutetut ehdot siis toimivat "and"-periaatteella.
-
-Or-ehdon sisältävä komento voi olla muodostettu esim. seuraavasti:
-
-``` java
-
-Matcher m1 = query.playsIn("PHI")
-                  .hasAtLeast(10, "goals")
-                  .hasFewerThan(15, "assists").build();
- 
-Matcher m2 = query.playsIn("EDM")
-                  .hasAtLeast(50, "points").build();
- 
-Matcher m = query.oneOf(m1, m2).build();
-
-```
-
-Tai kaikki sama ilman apumuuttujia:
-
-``` java
-
-Matcher m = query.oneOf(
-                        query.playsIn("PHI")
-                             .hasAtLeast(10, "goals")
-                             .hasFewerThan(15, "assists").build(),
- 
-                        query.playsIn("EDM")
-                             .hasAtLeast(50, "points").build()
-                       ).build();
-```
-
-Rakentajasi ei ole pakko toimia samalla tavalla.
