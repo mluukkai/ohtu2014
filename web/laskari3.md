@@ -60,7 +60,7 @@ eli lisää uusi __plugin__-määrittely __plugins__-määrittelyjen sisälle. J
 
 [Sonar](http://www.sonarsource.org/) on ohjelma, joka kokoaa erilaisia koodin laatua mittaavien työkalujen (mm. staattisen analyysin työkalut kuten checkstyle ja testikattavuus kuten cobertura) yhdeksi raportiksi. Sonar tallettaa generoidut raportit tietokantaan, ja näinollen koodin laadun kehitystä on mahdollista seurata projektin edetessä.
 
-Tutkitaan nyt Sonarilla muutaman projektin koodia
+Tutkitaan nyt Sonarilla muutaman projektin koodia. **HUOM** Sonar toimii huonosti Mavenin version 2.* kanssa. Varmista komennolla <code>mvn -v</code> että käytössäsi on Mavenista versio 3.*.
 
 Käynnistetään ensin Sonar
 * lataa Sonar osoitteesta [http://www.sonarsource.org/downloads/](http://www.sonarsource.org/downloads/)
