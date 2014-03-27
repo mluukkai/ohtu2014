@@ -64,6 +64,7 @@ Tutkitaan nyt Sonarilla muutaman projektin koodia
 
 Käynnistetään ensin Sonar
 * lataa Sonar osoitteesta [http://www.sonarsource.org/downloads/](http://www.sonarsource.org/downloads/)
+* OS X:llä toimii brew install Sonar
 * pura zip-paketti esim. kotihakemistoosi ja mene hakemistoon <code>sonar-3.5/bin/linux-x86-32</code> (tai koneesi tyyppiä vastaavaan hakemistoon)
 * käynnistä Sonar. Linuxissa tämä tapahtuu komennolla <code>./sonar.sh start</code> 
 * Sonarin raportit ovat näkyvissä selaimessa osoitteessa [http://localhost:9000](http://localhost:9000), avaa sivu
@@ -71,7 +72,7 @@ Käynnistetään ensin Sonar
 
 Generoidaan raportti muutamalle projektille
 * maven-muotoisille projekteille raportti generoidaan antamalla projektin hakemistossa komento <code>mvn clean test sonar:sonar</code>
-* generoi raportti viikon 2 laskarien verkkokaupalle ja  repositiorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2013/) hakemistostosta KumpulaBiershop löytyvälle olutverkkokaupalle
+* generoi raportti viikon 2 laskarien verkkokaupalle ja repositiorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) viikon 3 hakemistostosta löytyvälle KumpulaBiershop olutverkkokaupalle
   * huomaa, että Sonar pitää olla käynnistettynä raportin generointihetkellä!
 * tutki raportteja
   * katso erityisesti mitä löytyy kohdan __Tools__ alta
