@@ -362,10 +362,10 @@ Tehtäväpohjassa on valmiina luokan <code>Submission</code> koodin runko. Gson-
 Tee kuitenkin ohjelmastasi tulostusasultaan miellyttävämpi, esim. seuraavaan tyyliin:
 
 <pre>
-opiskelijanumero 014152737
+opiskelijanumero 012345678
 
- viikko: 1 tehtyjä tehtäviä yhteensä: 9 aikaa kului 3 tuntia, tehdyt tehtävät: 1 2 3 4 5 6 7 9 11 
- viikko: 2 tehtyjä tehtäviä yhteensä: 6 aikaa kului 4 tuntia, tehdyt tehtävät: 1 2 3 6 7 8  
+ viikko 1: tehtyjä tehtäviä yhteensä: 9, aikaa kului 3 tuntia, tehdyt tehtävät: 1 2 3 4 5 6 7 9 11 
+ viikko 2: tehtyjä tehtäviä yhteensä: 6, aikaa kului 4 tuntia, tehdyt tehtävät: 1 2 3 6 7 8  
 
 yhteensä: 15 tehtävää 7 tuntia
 </pre>
@@ -420,18 +420,19 @@ Mistä on kyse?
 
 komennolla <code>mvn assembly:assembly</code> syntyy koko ohjelman sisältävä "standalone"-jar-tiedosto:
 
-``` java
-$ java -cp TyhjaProjekti2-1.0-jar-with-dependencies.jar ohtu.Main 12345678
+<pre>
+$ java -cp TyhjaProjekti2-1.0-jar-with-dependencies.jar ohtu.Main 012345678
  
-opiskelijanumero 123456578
- 
-viikko 1: 5 tehtävää 1, 2, 5, 7, 8      aikaa kului 12 tuntia
-viikko 2: 3 tehtävää 1, 4, 5            aikaa kului  3 tuntia
- 
-yhteensä  8 tehtävää 15 tuntia
-```
+opiskelijanumero 012345678
 
-Riippuvuudet sisältävä jar-voidaan myös tehdä käyttämällä mavenin "shade-pluginia":http://maven.apache.org/plugins/maven-shade-plugin/ Shade-pluginin avulla saadaan itseasiassa aikaan "helppokäyttöisempi" jar, joka voidaan käynnistää määrittelemättä main-metodin sisältävää luokkaa.
+ viikko 1: tehtyjä tehtäviä yhteensä: 9, aikaa kului 3 tuntia, tehdyt tehtävät: 1 2 3 4 5 6 7 9 11 
+ viikko 2: tehtyjä tehtäviä yhteensä: 6, aikaa kului 4 tuntia, tehdyt tehtävät: 1 2 3 6 7 8  
+
+yhteensä: 15 tehtävää 7 tuntia
+</pre>
+
+
+Riippuvuudet sisältävä jar-voidaan myös tehdä käyttämällä mavenin [shade-pluginia](http://maven.apache.org/plugins/maven-shade-plugin/) Shade-pluginin avulla saadaan itseasiassa aikaan "helppokäyttöisempi" jar, joka voidaan käynnistää määrittelemättä main-metodin sisältävää luokkaa.
 
 Määrittele shade-pluginille mainClassin sijainti lisäämällä pom.xml:ääsi seuraava:
 
@@ -470,25 +471,25 @@ Saat luotua jar:in komennolla <code>mvn package</code>, ja ohjelman suoritus tap
 
 ## 4. git: stash
 
-Lue "http://progit.org/book/ch6-3.html":http://progit.org/book/ch6-3.html kohtaan Un-applying a Stash asti.
+Lue [http://git-scm.com/book/en/Git-Tools-Stashing](http://git-scm.com/book/en/Git-Tools-Stashing) kohtaan Un-applying a Stash asti.
 
 Oletetaan että olet repositoriossa, jossa on ainakin kaksi branchia: master ja joku toinen (kutsutaan sitä tässä nimellä __toinen__).
 
-* ollessasi master-branchissa tee muutoksia joita lisäät staging-alueelle ja joitain muutoksia joita et vielä "äddää"
+* ollessasi master-branchissa tee muutoksia, joita lisäät staging-alueelle ja joitain muutoksia joita et vielä "äddää"
 * pomosi käskee sinua välittömästi tekemään pari muutosta branchiin __toinen__. Et kuitenkaan halua vielä comittoida masterissa olevia muutoksia
-* jos siirryt branchiin __toinen__ tekemättä comittia, tulee hirveä sotku sillä muutokset pysyvät muutoksina toisessakin branchissa
+* jos siirryt branchiin __toinen__ tekemättä comittia, tulee hirveä sotku, sillä muutokset pysyvät muutoksina toisessakin branchissa
 * stashays pelastaa tästä tilanteesta, eli stashaa masterissa olevat muutoset
 ** kokeile ennen ja jälkeen stash-komennon komentoa <code>git status</code>
 * siirry branchiin toinen, tee sinne joku muutos jonka committaat
 * palaa jälleen masteriin
 * palauta stashatyt muutokset komennolla <code>git stash apply</code>
-** varmista että muutokset palasivat
-** kuten huomaat, staging-alueelle jo lisätty muutos ei palaa staging-alueelle vaan joudut lisäämään sen uudelleen
-** jos edellisessä komento olisi annettu muodossa <code>git stash apply --index</code>, olisi tilanne palautunut täysin ennalleen
+  * varmista että muutokset palasivat
+  * kuten huomaat, staging-alueelle jo lisätty muutos ei palaa staging-alueelle, vaan joudut lisäämään sen uudelleen
+  * jos edellisessä komento olisi annettu muodossa <code>git stash apply --index</code>, olisi tilanne palautunut täysin ennalleen
 
 ## 5. git: vahingossa tuhotun tiedoston palautus
 
-* tehtävässä 3 palasimme jo menneisyyteen checkouttaamalla tagillä merkittyyn kohtaan
+* viikon 4 [tehtävässä 6](https://github.com/mluukkai/ohtu2014/blob/master/web/laskari4.md#6-git-t%C3%A4git) palasimme jo menneisyyteen checkouttaamalla tagillä merkittyyn kohtaan
 * katsotaan nyt miten voimme palauttaa jonkun menneisyydessä olevan tilanteen uudelleen voimaan
 * tee tiedosto xxx, lisää ja committaa se
 * poista tiedosto ja committaa
@@ -500,11 +501,11 @@ Oletetaan että olet repositoriossa, jossa on ainakin kaksi branchia: master ja 
 </pre>
     
 * Nykyhetki eli HEAD on (3). Commitissa (1) tiedosto xxx on olemassa, nykyhetkellä ja (2):ssa xxx:ää ei ole.
-** huom: komennolla <code>gitk</code> voit tutkia historiaa
+  * huom: komennolla <code>gitk</code> voit tutkia historiaa
 * haluamme palauttaa tiedoston
 * selvitä sen commitin id, jossa tiedosto vielä on olemassa, tämä onnistuu gitk:lla tai <code>git log</code> -komennolla
 * anna komento <code>git checkout 3290b03cea08af987ee7ea57bb98a4886b97efe0 -- xxx</code> missä pitkä merkkijono on siis kyseisen commitin id
-** varmista että tiedosto on ilmestynyt staging-alueelle komennolla <code>git status</code>
+  * varmista että tiedosto on ilmestynyt staging-alueelle komennolla <code>git status</code>
 * tee commit
 * xxx on palannut!
 * HUOM: koko id:tä ei komennossa tarvitse antaa, riittää antaa alusta niin monta merkkiä, että niiden perusteella id voidaan päätellä yksikäsitteisesti repositoriosi historiassa
@@ -512,11 +513,13 @@ Oletetaan että olet repositoriossa, jossa on ainakin kaksi branchia: master ja 
 ## 6. git: commitin muutosten kumoaminen, branchin "siirtäminen"
 
 * huomaamme, että juuri tehty commit oli virhe, kumotaan se sanomalla <code>git revert HEAD --no-edit</code>
-** HEAD siis viittaa siihen committiin minkä kohdalla nyt ollaan
+  * HEAD siis viittaa siihen committiin minkä kohdalla nyt ollaan
 * syntyy uusi commit, jossa edellisessä tehdyt muutokset on kumottu
-** ilman optiota __no-edit__ pääset editoimaan kumoamiseen liittyvään commitiin tulevaa viestiä 
-** huom: sanomalla <code>git checkout HEAD^</code> pääsemme takaisin kumottuun tilanteeseen, eli mitään ei ole lopullisesti kadotettu
+  * ilman optiota __no-edit__ pääset editoimaan kumoamiseen liittyvään commitiin tulevaa viestiä 
+  * huom: sanomalla <code>git checkout HEAD^</code> pääsemme takaisin kumottuun tilanteeseen, eli mitään ei ole lopullisesti kadotettu
 * vastaavalla tavalla voidaan revertata mikä tahansa commit eli: <code>git revert kumottavancommitinid</code>
+
+## 7. git: branchin "siirtäminen"
 
 * tee repoosi branchi nimeltä haara ja tee masteriin ja haaraan committeja siten että saat aikaan seuraavankaltaisen tilanteen:
 
@@ -527,15 +530,15 @@ Oletetaan että olet repositoriossa, jossa on ainakin kaksi branchia: master ja 
 </pre>
 
 * eli sekä master että haara ovat edenneet muutamien commitien verran haarautumisen tapahduttua
-** huom: komennolla <code>gitk --all</code> näet kaikki haarat, kokeile!
+  * huom: komennolla <code>gitk --all</code> näet kaikki haarat, kokeile!
 * yhtäkkiä huomaat, että master:iin tekemäsi asiat eivät olekaan kovin hyviä ja haara:ssa on paljon parempaa tavaraa, haluaisitkin että haara:sta tulisi uusi master
 * tämä onnistuu kun menet masteriin ja annat komennon <code>git reset --hard haara</code>
-** varmista että komento toimii oikein
-** vanhan master-haarankaan tavarat eivät katoa mihinkään, jos niihin jostain syystä vielä halutaan palata
+  * varmista että komento toimii oikein
+  * vanhan master-haarankaan tavarat eivät katoa mihinkään, jos niihin jostain syystä vielä halutaan palata
 
-## 7. Git: rebase
+## 8. Git: rebase
 
-Lue "http://progit.org/book/ch3-6.html":http://progit.org/book/ch3-6.html
+Lue [http://git-scm.com/book/en/Git-Branching-Rebasing](http://git-scm.com/book/en/Git-Branching-Rebasing)
 
 Aikaansaa seuraavankaltainen tilanne
 
@@ -570,9 +573,11 @@ Poista branch haara. Etsi googlaamalla komento jolla saat tuhottua branchin.
 Tämä oli kurssin viimeinen git-tehtävä. Muista pitää git-rutiiniasi yllä päivittäin/viikoittain. Jos olet tehnyt kurssin kaikki git-tehtävät, tulet saamaan kurssisuorituksen myös Versionhallinta-kurssista (1 op). Jos git-tehtäviä on jäänyt tekemättä, ota yhteyttä välittömästi jos haluat saada Ohtun lisäksi myös Versionhallinaopintopisteen.
 
 
-## 8. Kyselykieli NHLStatistics-ohjelmaan
+# AO siirtyy viikolle 6 (dl tulee olemaan 2.5 tms)
 
-Repositorion "https://github.com/mluukkai/ohtu2013":https://github.com/mluukkai/ohtu2013 hakemistosta __viikko6/QueryLanguage__ löytyy jälleen yksi versio tutusta NHL-tilastoja lukevasta ohjelmasta.
+## 9. Kyselykieli NHLStatistics-ohjelmaan
+
+Repositorion [https://github.com/mluukkai/ohtu2014](https://github.com/mluukkai/ohtu2014) hakemistosta __viikko5/QueryLanguage__ löytyy jälleen yksi versio tutusta NHL-tilastoja lukevasta ohjelmasta.
 
 Tällä kertaa olemme kiinnostuneita tekemään hieman monimutkaisempia "kyselyjä" pelaajatietoihin, esim. __listaa kaikki joukkueen PHI pelaajat joilla on vähintään 5 maalia ja vähintään 10 syöttöä__.
 
@@ -599,7 +604,7 @@ Luokalle __Statistics__ on tehty metodi __matches__, joka palauttaa listan pelaa
 Tutustu ohjelman rakenteeseen
 
 * huomioi miten __HasAtLeast__ käyttää Javan ns. reflektio-ominaisuutta kutsuessaan merkkijonoparametria vastaavaa metodia
-* toinen huomioinarvoinen piirre on __And__-luokan konstruktorissa käytetty vaihtuvamittainen parametrilista, eli "vararg", ks. lisää esim: "http://www.javadb.com/using-varargs-in-java":http://www.javadb.com/using-varargs-in-java
+* toinen huomioinarvoinen piirre on __And__-luokan konstruktorissa käytetty vaihtuvamittainen parametrilista, eli "vararg", ks. lisää esim: [http://www.javadb.com/using-varargs-in-java](http://www.javadb.com/using-varargs-in-java)
 
 Tee rajapinnan __Matcher__ toteuttavat luokat, joiden avulla voit tehdä operaatiot
 
@@ -611,7 +616,7 @@ Tee erilaisia kyselyjä, ja varmista että uudetkin operaatiot toimivat
 
 Kyselyt perustuvat rakenteeltaan __decorator__-suunnittelumalliin, vastaavasti kuten luennon 9 dekoroitu pino. __And__- ja __OR__-muotoiset kyseltyt on muodostetty composite-suunnittelumallin hengessä, ne ovat __Matcher__-rajapinnan toteuttavia olioita, jotka sisältävät itse monta __Matcher__-olioa. Niiden käyttäjä ei kuitenkaan tiedä sisäisestä rakenteesta mitään.
 
-## 9. Parannettu kyselykieli
+## 10. Parannettu kyselykieli
 
 Matcher-olioiden avulla tehtyä kyselykieltä vaivaa se, että kyselyjen rakentaminen on hieman ikävää, sillä jokaista kyselyn osaa kohti on luotava new-komennolla uusi olio. Tee luennon 9 pinorakentajan hengessä kyselyrakentaja, jonka avulla voit luoda Matcher-olioita.
 
