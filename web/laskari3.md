@@ -72,7 +72,7 @@ Käynnistetään ensin Sonar
 
 Generoidaan raportti muutamalle projektille
 * maven-muotoisille projekteille raportti generoidaan antamalla projektin hakemistossa komento <code>mvn clean test sonar:sonar</code>
-* generoi raportti viikon 2 laskarien verkkokaupalle ja  repositiorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2013/) hakemistostosta KumpulaBiershop löytyvälle olutverkkokaupalle
+* generoi raportti viikon 2 laskarien verkkokaupalle ja repositiorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) viikon 3 hakemistostosta löytyvälle KumpulaBiershop olutverkkokaupalle
   * huomaa, että Sonar pitää olla käynnistettynä raportin generointihetkellä!
 * tutki raportteja
   * katso erityisesti mitä löytyy kohdan __Tools__ alta
