@@ -6,6 +6,7 @@
 
 ## palautetaan GitHubin kautta
 
+* tehtävät 4 ja 5 tehdään paikalliseen repositorioon, eli ne eivät näy palautuksessa mitenkään
 * tee palautusta varten yksityinen repositorio ja lisää sille collaboratoriksi käyttäjä mluukkai, voit käyttää myös viikon 1 repositoriotasi
   * jos et ole vielä ehtinyt saada GitHubin academic-tunnusta, voit tehdä palautuksen normaalia repositoriota käyttäen
 * palautusrepositorion nimi ilmoitetaan tehtävien lopussa olevalla palautuslomakkeella
@@ -93,7 +94,7 @@ tee seuraavat paikalliseen git-repositorioosi (kyseessä ei siis tarvitse olla t
 * lisää branchiin tavaraa, esim. tiedosto __eka2.txt__ ja committaa
 * siirry takaisin __master__-branchiin
 * tarkasta että __eka__-branchiin lisätyt muutokset eivät ole masterissa
-* tarkastele komennolla <code>gitk --all</code> miltä repositorio ja branchit näyttävät (ei tietoa toimiiko gitk windowsissa)
+* tarkastele komennolla <code>gitk --all</code> miltä repositorio ja branchit näyttävät (gitk toimii windowsilla ainakin Github for Windowsin Git Shellissä.)
 * mergeä branchin __eka__ sisältö __masteriin__
 * katso jälleen miltä näyttää gitk --all
 * tuhoa branchi __eka__
@@ -258,7 +259,7 @@ public static void main(String[] args) {
 
 Kannattanee edetä tehtävässä pienin askelin siirtäen yksi luokka kerrallaan Springin hallinnoinnin alle
 
-## 12. Spring osa 2: Verkkokauppa siistiksi annotaatioilla
+## 11. Spring osa 2: Verkkokauppa siistiksi annotaatioilla
 
 * HUOM: älä tee tätä edellisen tehtävän päälle, tee projektista kopio
 * tai tee se erilliseen branchiin:
@@ -279,7 +280,6 @@ Kannattanee edetä tehtävässä pienin askelin siirtäen yksi luokka kerrallaan
 tehtävien kirjaus:
 
 * Kirjaa tekemäsi tehtävät [tänne](http://ohtustats.herokuapp.com) 
-  * **Palautus onnistuu vasta ma 17.3.**
   * huom: tehtävien palautuksen deadline on su 23.3. klo 23.59
 
 palaute tehtävistä:
