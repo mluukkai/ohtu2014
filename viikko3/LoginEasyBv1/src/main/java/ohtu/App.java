@@ -1,9 +1,7 @@
 package ohtu;
 
-import ohtu.data_access.InMemoryUserDao;
-import ohtu.data_access.UserDao;
-import ohtu.io.ConsoleIO;
-import ohtu.io.IO;
+import ohtu.data_access.*;
+import ohtu.io.*;
 import ohtu.services.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -58,23 +56,23 @@ public class App {
     }
 
     public static void main(String[] args) {
-//        UserDao dao = new InMemoryUserDao();
+        ApplicationContext ctx = new FileSystemXmlApplicationContext("src/main/resources/spring-context.xml");
+        
 //        IO io = new ConsoleIO();
+//        UserDao dao = new FileUserDAO("users.txt");
 //        AuthenticationService auth = new AuthenticationService(dao);
 //        new App(io, auth).run();
-        
-        ApplicationContext ctx = new FileSystemXmlApplicationContext("src/main/resources/spring-context.xml");
-
+//        
         App application = (App) ctx.getBean("app");
         application.run();
     }
     
-    // testejä debugatessa saattaa olla hyödyllistä testata ohjelman ajamista
-    // samoin kuin testi tekee, eli injektoimalla käyttäjän syötteen StubIO:n avulla
-    //
-    // UserDao dao = new InMemoryUserDao();  
-    // StubIO io = new StubIO("new", "eero", "sala1nen" );   
-    //  AuthenticationService auth = new AuthenticationService(dao);
-    // new App(io, auth).run();
-    // System.out.println(io.getPrints());
+//     testejä debugatessa saattaa olla hyödyllistä testata ohjelman ajamista
+//     samoin kuin testi tekee, eli injektoimalla käyttäjän syötteen StubIO:n avulla
+//    
+//     UserDao dao = new InMemoryUserDao();  
+//     StubIO io = new StubIO("new", "eero", "sala1nen" );   
+//      AuthenticationService auth = new AuthenticationService(dao);
+//     new App(io, auth).run();
+//     System.out.println(io.getPrints());
 }
