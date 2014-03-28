@@ -1,8 +1,10 @@
 package ohtu.verkkokauppa;
 
-import ohtu.interfaces.Accounting;
 import java.util.ArrayList;
+import ohtu.verkkokauppa.interfaces.Accounting;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Kirjanpito implements Accounting {
 
     private ArrayList<String> tapahtumat;

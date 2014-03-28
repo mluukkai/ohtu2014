@@ -1,12 +1,16 @@
 package ohtu.verkkokauppa;
 
-import ohtu.interfaces.Bank;
-import ohtu.interfaces.Accounting;
+import ohtu.verkkokauppa.interfaces.Accounting;
+import ohtu.verkkokauppa.interfaces.Bank;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Pankki implements Bank {
 
     private Accounting kirjanpito;
 
+    @Autowired
     public Pankki(Accounting kirjanpito) {
         this.kirjanpito = kirjanpito;
     }

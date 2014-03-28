@@ -1,9 +1,12 @@
 package ohtu.verkkokauppa;
 
-import ohtu.interfaces.Bank;
-import ohtu.interfaces.Generator;
-import ohtu.interfaces.Warehouse;
+import ohtu.verkkokauppa.interfaces.Bank;
+import ohtu.verkkokauppa.interfaces.Generator;
+import ohtu.verkkokauppa.interfaces.Warehouse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Kauppa {
 
     private Warehouse varasto;
@@ -12,6 +15,7 @@ public class Kauppa {
     private Generator viitegeneraattori;
     private String kaupanTili;
 
+    @Autowired
     public Kauppa(Warehouse varasto, Bank pankki, Generator viitegeneraattori) {
         this.varasto = varasto;
         this.pankki = pankki;

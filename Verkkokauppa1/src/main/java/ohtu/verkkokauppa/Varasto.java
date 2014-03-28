@@ -1,14 +1,18 @@
 package ohtu.verkkokauppa;
 
-import ohtu.interfaces.Warehouse;
 import java.util.*;
-import ohtu.interfaces.Accounting;
+import ohtu.verkkokauppa.interfaces.Accounting;
+import ohtu.verkkokauppa.interfaces.Warehouse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Varasto implements Warehouse {
 
     private Accounting kirjanpito;
     private HashMap<Tuote, Integer> saldot;
 
+    @Autowired
     public Varasto(Accounting kirjanpito) {
         this.kirjanpito = kirjanpito;
         saldot = new HashMap<Tuote, Integer>();

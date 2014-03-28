@@ -2,9 +2,6 @@ package ohtu;
 
 import ohtu.verkkokauppa.Kauppa;
 import ohtu.verkkokauppa.Kirjanpito;
-import ohtu.verkkokauppa.Pankki;
-import ohtu.verkkokauppa.Varasto;
-import ohtu.verkkokauppa.Viitegeneraattori;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -13,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         ApplicationContext ctx = new FileSystemXmlApplicationContext("src/main/resources/spring-context.xml");
 
-        Kauppa kauppa = ctx.getBean(Kauppa.class);
+        Kauppa kauppa = (Kauppa) ctx.getBean("kauppa");
 
         // kauppa hoitaa yhden asiakkaan kerrallaan seuraavaan tapaan:
         kauppa.aloitaAsiointi();
@@ -32,7 +29,8 @@ public class Main {
         kauppa.tilimaksu("Arto Vihavainen", "3425-1652");
 
         // kirjanpito
-        for (String tapahtuma : ctx.getBean(Kirjanpito.class).getTapahtumat()) {
+        Kirjanpito kp = (Kirjanpito) ctx.getBean("kirjanpito");
+        for (String tapahtuma : kp.getTapahtumat()) {
             System.out.println(tapahtuma);
         }
     }
