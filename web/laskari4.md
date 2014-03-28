@@ -165,7 +165,7 @@ Testit eivät mene läpi. Korjaa kassapäätteen metodi <code>ostaLounas</code>.
 
 Tee tämän jälkeen samaa periaatetta noudattaen seuraavat testit:
 * kassapäätteen metodin <code>lataa</code> kutsu lisää lyyrakortille ladattavan rahamäärän käyttäen kortin metodia <code>lataa</code> jos ladattava summa on positiivinen
-* kassapäätteen metodin <code>lataa</code> kutsu ei tee lyyrakortille mitään jos ladattava summa on positiivinen
+* kassapäätteen metodin <code>lataa</code> kutsu ei tee lyyrakortille mitään jos ladattava summa on negatiivinen
 
 Korjaa kassapäätettä siten, että määrittelemäsi testit menevät läpi. 
 
