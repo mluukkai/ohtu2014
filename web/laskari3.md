@@ -27,6 +27,7 @@ checkstylen tarkkailemien virheiden joukko on konfiguroitavissa erillisen konigu
 * hae repositiorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) hakemistosta viikko3 konfiguraatiotiedoston pohja __my_checks.xml__, talleta se sopivaan paikkaan, kokeile:
         <code>mvn jxr:jxr checkstyle:checkstyle -Dcheckstyle.config.location=my_checks.xml</code>       
 * komennossa oleva polku olettaa että konfiguraatiotiedosto sijaitsee projektihakemiston juuressa
+  * saattaa olla, että windowsissa komentoon on lisättävä pari hipsua: <code>mvn jxr:jxr checkstyle:checkstyle -D"checkstyle.config.location=my_checks.xml"</code>  
   * huom: saattaa olla, että komento ei toimi windowsilla, ongelma ehkä vaan win 8:ssa. jos näin käy, konfiguraatiotiedoston sijainnin voi määritellä pom.xml-tiedostossa seuraavasti:
 
 ```XML
