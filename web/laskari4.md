@@ -16,7 +16,7 @@ Useimmilla luokilla on riippuvuuksia toisiin luokkiin. Esim. viikon 2 verkkokaup
 
 Vaikka luokilla ei olisikaan riippuvuuksia toisiin konkreettisiin luokkiin, on tilanne edelleen se, että luokan oliot käyttävät joidenkin toisten luokkien olioiden palveluita. Tämä tekee joskus yksikkötestauksesta hankalaa. Miten esim. luokkaa Kauppa tulisi testata? Tuleeko Kaupan testeissä olla mukana toimivat versiot kaikista sen riippuvuuksista?
 
-Olemme jo muutamaan otteeseen (esim. Nhl-Statsreader-tehtävässä viikolla 2) ratkaisseet asian ohjelmoimalla riippuvuuden korvaavan "tynkäkomponentin". Javalle (niinkuin kaikille muillekin kielille) on tarjolla myös valmiita kirjastoja tynkäkomponettien toiselta nimeltään "mock-olioiden" luomiseen.
+Olemme jo muutamaan otteeseen (esim. Nhl-Statsreader-tehtävässä viikolla 2) ratkaisseet asian ohjelmoimalla riippuvuuden korvaavan "tynkäkomponentin". Javalle (niinkuin kaikille muillekin kielille) on tarjolla myös valmiita kirjastoja tynkäkomponenttien toiselta nimeltään "mock-olioiden" luomiseen.
 
 Kuten pian huomaamme, mock-oliot eivät ole pelkkiä "tynkäolioita", mockien avulla voi myös varmistaa että testattava luokka kutsuu olioiden metodeja asiaankuuluvalla tavalla.
 
@@ -44,8 +44,8 @@ Ostokset aloitetaan tekemällä metodikutsu <code>aloitaOstokset</code>. Tämän
 
 Kauppa tekee veloituksen käyttäen tuntemaansa luokan <code>Pankki</code> olioa. Viitenumerona käytetään luokan <code>Viitegeneraattori</code> generoimaa numeroa.
 
-Projektiin on kirjoitettu 6 Mockitoa hyödyntävää testiä. Testit testaavat, että kauppa tekee ostoksiin liittyvän veloituksen oikein, eli että se kutsuu _pankin_ metodia <code>maksa</code> oikeilla parametreilla, ja että jokaiselle laskutukselle on kytsytty viitenumero _viitegeneraattorilta_. Testit siis eivät kohdistu olion pankki tilaan vaan sen muiden olioiden kanssa käymän interaktion oikeellisuuteen.
-Testeissä kapuan riippuvuudet (Pankki ja Viitegeneraattori) on määritelty mock-olioina.
+Projektiin on kirjoitettu 6 Mockitoa hyödyntävää testiä. Testit testaavat, että kauppa tekee ostoksiin liittyvän veloituksen oikein, eli että se kutsuu _pankin_ metodia <code>maksa</code> oikeilla parametreilla, ja että jokaiselle laskutukselle on kysytty viitenumero _viitegeneraattorilta_. Testit siis eivät kohdistu olion pankki tilaan vaan sen muiden olioiden kanssa käymän interaktion oikeellisuuteen.
+Testeissä kaupan riippuvuudet (Pankki ja Viitegeneraattori) on määritelty mock-olioina.
 
 Seuraavassa testi, joka testaa, että kauppa kutsuu pankin metodia oikealla tilinumerolla ja summalla:
 
@@ -83,7 +83,7 @@ Testi tarkastaa, että kaupalle tehdyt metodikutsut aiheuttavat sen, että panki
     verify(mockPankki).maksa(eq("1111"), eq(10), anyInt());
 ``` 
 
-Mock-olioille tehtyjen metodikutsujen paluuarvot on myös mahdollista määritellä. Seuraavassa määritellään, että viitegeneraattori palauttaa arvon 55 kun sen metodia <code>seruaava</code> kutsutaan:
+Mock-olioille tehtyjen metodikutsujen paluuarvot on myös mahdollista määritellä. Seuraavassa määritellään, että viitegeneraattori palauttaa arvon 55 kun sen metodia <code>seuraava</code> kutsutaan:
 
 ``` java
     @Test
@@ -107,7 +107,7 @@ Mock-olioille tehtyjen metodikutsujen paluuarvot on myös mahdollista määritel
 
 Testin lopussa varmistetaan, että pankin mockolioa on kutsuttu oikeilla parametrinarvoilla, eli kolmantena parametrina tulee olla viitegeneraattorin palauttama arvo.
 
-Tutustu projektiin ja sen kaikkin testeihin.
+Tutustu projektiin ja sen kaikkiin testeihin.
 
 Mockiton dokumentaatio: [http://docs.mockito.googlecode.com/hg/latest/org/mockito/Mockito.html](http://docs.mockito.googlecode.com/hg/latest/org/mockito/Mockito.html)
 
@@ -115,7 +115,7 @@ Mockiton dokumentaatio: [http://docs.mockito.googlecode.com/hg/latest/org/mockit
 
 Hae repositorion [https://github.com/mluukkai/ohtu2014](https://github.com/mluukkai/ohtu2014) hakemistossa __viikko2/LyyrakorttiMockito__ oleva projekti. Kyseessä on yksinkertaistettu versio ohjelmoinnin perusteista tutusta tehtävästä Kassapääte ja tyhmä lyyrakortti.
 
-Tässä tehtävässä on tarkoitus testata ja täydentää luokkaa <code>Kassapaate</code>. Lyrakorttin koodiin ei tehtävässä saa koskea ollenkaan! Testeissä ei myöskään ole tarkoitus luoda konkreettisia instansseja lyyrakortista, testien tarvitsemat kortit tulee luoda mockitolla.
+Tässä tehtävässä on tarkoitus testata ja täydentää luokkaa <code>Kassapaate</code>. Lyyrakortin koodiin ei tehtävässä saa koskea ollenkaan! Testeissä ei myöskään ole tarkoitus luoda konkreettisia instansseja lyyrakortista, testien tarvitsemat kortit tulee luoda mockitolla.
 
 Projektissa on valmiina kaksi testiä:
 
@@ -153,12 +153,12 @@ public class KassapaateTest {
 }
 ``` 
 
-Ensimmäisessä testissa varmistetaan, että jos kortilla on riittävästi rahaa, kassapäätteen metodin <code>ostaLounas</code> kutsuminen 
+Ensimmäisessä testissä varmistetaan, että jos kortilla on riittävästi rahaa, kassapäätteen metodin <code>ostaLounas</code> kutsuminen 
 varmistaa kortin saldon _ja_ velottaa summan kortilta. 
 
 Testi ottaa siis kantaa ainoastaan siihen miten kassapääte kutsuu lyyrakortin metodeja. Lyyrakortin saldoa ei erikseen tarkasteta, sillä oletuksena on, että lyyrakortin omat testit varmistavat kortin toiminnan.
 
-Toinen testi varmisteta, että jos kortilla ei ole riittävästi rahaa, kassapäätteen metodin <code>ostaLounas</code> kutsuminen 
+Toinen testi varmistaa, että jos kortilla ei ole riittävästi rahaa, kassapäätteen metodin <code>ostaLounas</code> kutsuminen 
 varmistaa kortin saldon mutta _ei_ velota kortilta rahaa.
 
 Testit eivät mene läpi. Korjaa kassapäätteen metodi <code>ostaLounas</code>.
@@ -174,7 +174,7 @@ Korjaa kassapäätettä siten, että määrittelemäsi testit menevät läpi.
 Testataan viikolta 2 tutun Verkkokaupan Kauppa-luokkaa
 
 * Spring-versio löytyy [https://github.com/mluukkai/ohtu2013](https://github.com/mluukkai/ohtu2013) hakemistossa viikko4/Verkkokauppa3 (xml:llä konfiguroitu) ja viikko4/Verkkokauppa4 (annotaatioilla konfiguroitu)
-* ota edellisistä jompi kumpi pohjaksi jos ei tehnyt tehtävää
+* ota edellisistä jompi kumpi pohjaksi jos et tehnyt tehtävää
 
 Kaupalle injektoidaan konstruktorissa Pankki, Viitelaskuri ja Varasto.
 
@@ -213,13 +213,13 @@ Seuraavassa esimerkkinä testi, joka testaa, että ostostapahtuman jälkeen pank
 
 Tee seuraavat testit:
 
-* aloitataan asiointi, koriin lisätään koriin tuote ,jota varastossa on ja suoritetaan ostos (eli kutsutaan metodia kaupan __tilimaksu()__). varmistettava että kutsutaan pankin metodia __tilisiirto__ oikealla asiakkaalla, tilinumerolla ja summalla
+* aloitetaan asiointi, koriin lisätään tuote ,jota varastossa on ja suoritetaan ostos (eli kutsutaan metodia kaupan __tilimaksu()__). varmistettava että kutsutaan pankin metodia __tilisiirto__ oikealla asiakkaalla, tilinumerolla ja summalla
   * tämä siis on muuten copypaste esimerkistä, mutta verify:ssä on tarkastettava että parametreilla on oikeat arvot
-* aloitataan asiointi, koriin lisätään koriin kaksi eri tuotetta, joita varastossa on ja suoritetaan ostos. varmistettava että kutsutaan pankin metodia __tilisiirto__ oikealla asiakkaalla, tilinumerolla ja summalla
-* aloitataan asiointi, koriin lisätään koriin kaksi samaa tuotetta jota on varastossa tarpeeksi ja suoritetaan ostos. varmistettava että kutsutaan pankin metodia __tilisiirto__ oikealla asiakkaalla, tilinumerolla ja summalla
-* aloitataan asiointi, koriin lisätään koriin tuote jota on varastossa tarpeeksi ja tuote joka on loppu ja suoritetaan ostos. varmistettava että kutsutaan pankin metodia __tilisiirto__ oikealla asiakkaalla, tilinumerolla ja summalla
-* varmistetta, että <code>metodinAloita</code> asiointi kutsuminen nollaa edellisen ostoksen tiedot (eli edellisen ostoksen hinta ei näy uuden ostoksen hinnassa), katso tarvittaessa apua projektin MockitoDemo testeistä!
-* varmistetta, että kauppa pyytää uuden viitenumeron jokaiselle maksutapahtumalle, katso tarvittaessa apua projektin MockitoDemo testeistä!
+* aloitetaan asiointi, koriin lisätään kaksi eri tuotetta, joita varastossa on ja suoritetaan ostos. varmistettava että kutsutaan pankin metodia __tilisiirto__ oikealla asiakkaalla, tilinumerolla ja summalla
+* aloitetaan asiointi, koriin lisätään kaksi samaa tuotetta jota on varastossa tarpeeksi ja suoritetaan ostos. varmistettava että kutsutaan pankin metodia __tilisiirto__ oikealla asiakkaalla, tilinumerolla ja summalla
+* aloitetaan asiointi, koriin lisätään tuote jota on varastossa tarpeeksi ja tuote joka on loppu ja suoritetaan ostos. varmistettava että kutsutaan pankin metodia __tilisiirto__ oikealla asiakkaalla, tilinumerolla ja summalla
+* varmistettava, että metodin <code>aloitaAsiointi</code> kutsuminen nollaa edellisen ostoksen tiedot (eli edellisen ostoksen hinta ei näy uuden ostoksen hinnassa), katso tarvittaessa apua projektin MockitoDemo testeistä!
+* varmistettava, että kauppa pyytää uuden viitenumeron jokaiselle maksutapahtumalle, katso tarvittaessa apua projektin MockitoDemo testeistä!
 
 Kaikkien testien tarkastukset onnistuvat mockiton __verify__-komennolla.
 
@@ -315,7 +315,7 @@ Hae projekti ja käynnistä se komennolla
 mvn jetty:run
 ```
 
-Jetty on keyvt HTTP-palvelin ja Servlettien ajoympäristö. Projektiin on konfiguroitu Jetty Maven-pluginiksi. Jos kaikki menee hyvin, on sovellus nyt käynnissä ja voit käyttää sitä web-selaimella osoitteesta [http://localhost:8080](http://localhost:8080) eli paikalliselta koneeltasi portista 8080.
+Jetty on keyvt HTTP-palvelin ja Servlettien ajoympäristö. Projektiin on konfiguroitu Jetty Maven-pluginiksi. Jos kaikki menee hyvin, on sovellus nyt käynnissä ja voit käyttää sitä web-selaimella osoitteesta [http://localhost:8090](http://localhost:8090) eli paikalliselta koneeltasi portista 8090.
 
 Jos koneellasi on jo jotain muuta portissa 8090, voit konfiguroida sovelluksen käynnistymään johonkin muuhun porttiin esim. 9999:n seuraavasti:
 
@@ -376,7 +376,7 @@ Ohjelma siis simuloi selaimen käyttöskenaarion, jossa kirjaudutaan sovelluksee
 Muuta koodia siten, että läpikäyt seuraavat skenaariot:
 
 * epäonnistunut kirjautuminen: oikea käyttäjätunnus, väärä salasana
-* epäonnistunut kirjautuminen: eiolemassaoleva käyttäjätunnus
+* epäonnistunut kirjautuminen: ei-olemassaoleva käyttäjätunnus
 * uuden käyttäjätunnuksen luominen
 * uuden käyttäjätunnuksen luomisen jälkeen tapahtuva ulkoskirjautuminen sovelluksesta
 
@@ -388,9 +388,9 @@ Pääsemme jälleen käyttämään viime viikolta tuttua [easyB:tä](https://git
 
 ## 10. Web-sovelluksen testaaminen osa 2
 
-Kuten viimeviikolta muistamme, toinen järjestelmän toimintaa määrittelevä User story on *A new user account can be created if a proper unused username and a proper password are given*
+Kuten viime viikolta muistamme, toinen järjestelmän toimintaa määrittelevä User story on *A new user account can be created if a proper unused username and a proper password are given*
 
-Löydät tämän Storyn easyB-pohjan viimeviikon tehtävistä. Kopioi story projektiisi ja tee skenaarioista suoritettavia kirjottamalla niihin Seleniumin avulla (edellisen tehtävän tyyliin) sovellusta testaavaa koodia. Muista lisätä story-tiedostoon Seleniumin vaatimat importit!
+Löydät tämän Storyn easyB-pohjan viime viikon tehtävistä. Kopioi story projektiisi ja tee skenaarioista suoritettavia kirjoittamalla niihin Seleniumin avulla (edellisen tehtävän tyyliin) sovellusta testaavaa koodia. Muista lisätä story-tiedostoon Seleniumin vaatimat importit!
 
 **Huomioita**
 * voit tehdä __Tester.java__:n tapaisen pääohjelman sisältävän luokan jos haluat/joudut debuggaamaan testiä.
@@ -411,4 +411,4 @@ palaute tehtävistä:
 * Lisää viikon 1 tehtävässä 11 forkaamasi repositorion omalla nimelläsi olevaan hakemistoon tiedosto nimeltä viikko2
 * tee viime viikon tehtävän tapaan pull-request
   * anna tehtävistä palautetta avautuvaan lomakkeeseen
-  * huom: jos teeh tehtävät alkuviikosta, voi olla, että edellistä pull-requestiasi ei ole vielä ehditty hyväksyä ja et pääse vielä tekemään uutta requestia
+  * huom: jos teet tehtävät alkuviikosta, voi olla, että edellistä pull-requestiasi ei ole vielä ehditty hyväksyä ja et pääse vielä tekemään uutta requestia
