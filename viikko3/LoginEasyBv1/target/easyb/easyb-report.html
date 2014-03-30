@@ -1,0 +1,514 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+<head>
+  <meta http-equiv='content-type' content='text/html; charset=utf-8'/>
+  <title>easyb-report</title>
+  <meta name='keywords' content='BDD, behavior driven development, java, java bdd, groovy, groovy bdd, groovy behavior driven development, java behavior driven development, ruby, rspec, easyb, easy bdd'/>
+  <meta name='description' content='easyb is story verification framework built in the spirit of behavior driven development.'/>
+  <link href='easyb_report.css' rel='stylesheet' type='text/css'/>
+  <script src='prototype.js' type='text/javascript'></script>
+  <script type='text/javascript'>
+    function showOnlyContent(contentDiv, linkId) {
+      $('Summaries').hide();
+      $('summary-menu-link').removeClassName('selected-menu-link');
+    
+    
+      $('StoriesList').hide();
+      $('StoriesListPlain').hide();
+      $('stories-list-menu-link').removeClassName('selected-menu-link');
+      $('stories-list-plain-menu-link').removeClassName('selected-menu-link');
+    
+      $(linkId).addClassName('selected-menu-link');
+      $(contentDiv).show();
+    }
+    function toggleScenariosForStory(storyNumber) {
+      $('scenarios_for_story_' + storyNumber).toggle();
+      return false;
+    }
+    function toggleComponentsForSpecification(specificationNumber) {
+      $('components_for_specification_' + specificationNumber).toggle();
+      return false;
+    }
+  </script>
+</head>
+<body>
+<!-- start header -->
+<div id='header'>
+  <h1>
+    <a href='http://www.easyb.org'>
+      <span>easyb</span>
+    </a>
+  </h1>
+  <h2>&nbsp;&nbsp; -- BDD in java can't get any easier</h2>
+</div>
+<!-- end header -->
+
+
+<!-- start page -->
+<div id='page'>
+  <!-- start content -->
+  <div id='content'>
+    <div class='post'>
+      <div class='entry'>
+        <div id='Summaries'>
+          <h2>Summary</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Behaviors</th>
+                <th>Failed</th>
+                <th>Pending</th>
+                <th>Time (sec)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class='primaryRow'>
+                <td>10</td>
+                <td class=''>0</td>
+                <td class='stepResultPending'>7</td>
+                <td>1.403</td>
+              </tr>
+            </tbody>
+          </table>
+          <h2>Stories Summary</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Stories</th>
+                <th>Scenarios</th>
+                <th>Failed</th>
+                <th>Pending</th>
+                <th>Time (sec)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class='primaryRow'>
+                <td>2</td>
+                <td>10</td>
+                <td class=''>0</td>
+                <td class='stepResultPending'>7</td>
+                <td>1.403</td>
+              </tr>
+            </tbody>
+          </table>
+          <h2>Specifications Summary</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Specifications</th>
+                <th>Failed</th>
+                <th>Pending</th>
+                <th>Time (sec)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class='primaryRow'>
+                <td>0</td>
+                <td class=''>0</td>
+                <td class=''>0</td>
+                <td>0.0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        
+<div id='StoriesList' style='display:none;'>
+  <h2>Stories List</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Story</th>
+        <th>Scenarios</th>
+        <th>Failed</th>
+        <th>Pending</th>
+        <th>Time (sec)</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr class='primaryRow'>
+        <td>
+         
+          <a href="#" onclick="$('scenarios_for_story_' + 0).toggle(); return false;">logging_in_</a>
+         
+        </td>
+        <td>3</td>
+        <td class=''>0</td>
+        <td class='stepResultPending'>2</td>
+        <td>1.167</td>
+      </tr>
+
+       
+      <tr id='scenarios_for_story_0' class='scenariosForStory' style='display:none;'>
+        <td colspan='5'>
+          <table class='scenariosForStoriesTable'>
+            <tbody>
+              
+              <tr class='primaryScenarioRow'>
+                <td title='Scenario'>user can login with correct password</td>
+                <td title='Result' class='stepResultSuccess'>success</td>
+                <td title='Time (sec)'>0.108</td>
+              </tr>
+              
+              <tr class='scenarioComponents'>
+                <td>given command login selected</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>when a valid username and password are entered</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>then user will be logged in to system</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              
+              <tr class='secondaryScenarioRow'>
+                <td title='Scenario'>user can not login with incorrect password</td>
+                <td title='Result' class='stepResultPending'>pending</td>
+                <td title='Time (sec)'>0.042</td>
+              </tr>
+              
+              <tr class='scenarioComponents'>
+                <td>given command login selected</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>when a valid username and incorrect password are entered</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>then user will not be logged in to system</td>
+                <td class='stepResultPending'>pending</td>
+                <td />
+              </tr>
+              
+              
+              
+              <tr class='primaryScenarioRow'>
+                <td title='Scenario'>nonexistent user can not login to </td>
+                <td title='Result' class='stepResultPending'>pending</td>
+                <td title='Time (sec)'>0.002</td>
+              </tr>
+              
+              <tr class='scenarioComponents'>
+                <td>given command login selected</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>when a nonexistent username and some password are entered</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>then user will not be logged in to system</td>
+                <td class='stepResultPending'>pending</td>
+                <td />
+              </tr>
+              
+              
+              
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      
+      
+      <tr class='secondaryRow'>
+        <td>
+         
+          <a href="#" onclick="$('scenarios_for_story_' + 1).toggle(); return false;">new_user_creation_</a>
+         
+        </td>
+        <td>7</td>
+        <td class=''>0</td>
+        <td class='stepResultPending'>5</td>
+        <td>0.236</td>
+      </tr>
+
+       
+      <tr id='scenarios_for_story_1' class='scenariosForStory' style='display:none;'>
+        <td colspan='5'>
+          <table class='scenariosForStoriesTable'>
+            <tbody>
+              
+              <tr class='primaryScenarioRow'>
+                <td title='Scenario'>creation succesfull with correct username and password</td>
+                <td title='Result' class='stepResultSuccess'>success</td>
+                <td title='Time (sec)'>0.006</td>
+              </tr>
+              
+              <tr class='scenarioComponents'>
+                <td>given command new user is selected</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>when a valid username and password are entered</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>then new user is registered to system</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              
+              <tr class='secondaryScenarioRow'>
+                <td title='Scenario'>can login with succesfully generated account</td>
+                <td title='Result' class='stepResultSuccess'>success</td>
+                <td title='Time (sec)'>0.005</td>
+              </tr>
+              
+              <tr class='scenarioComponents'>
+                <td>given command new user is selected</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>when a valid username and password are entered</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>then new credentials allow logging in to system</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              
+              <tr class='primaryScenarioRow'>
+                <td title='Scenario'>creation fails with correct username and too short password</td>
+                <td title='Result' class='stepResultPending'>pending</td>
+                <td title='Time (sec)'>0.006</td>
+              </tr>
+              
+              <tr class='scenarioComponents'>
+                <td>given command new user is selected</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>when a valid username and too short password are entered</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>then new user is not be registered to system</td>
+                <td class='stepResultPending'>pending</td>
+                <td />
+              </tr>
+              
+              
+              
+              <tr class='secondaryScenarioRow'>
+                <td title='Scenario'>creation fails with correct username and pasword consisting of letters</td>
+                <td title='Result' class='stepResultPending'>pending</td>
+                <td title='Time (sec)'>0.003</td>
+              </tr>
+              
+              <tr class='scenarioComponents'>
+                <td>given command new user is selected</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>when a valid username and password consisting of letters are entered</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>then new user is not be registered to system</td>
+                <td class='stepResultPending'>pending</td>
+                <td />
+              </tr>
+              
+              
+              
+              <tr class='primaryScenarioRow'>
+                <td title='Scenario'>creation fails with too short username and valid pasword</td>
+                <td title='Result' class='stepResultPending'>pending</td>
+                <td title='Time (sec)'>0.004</td>
+              </tr>
+              
+              <tr class='scenarioComponents'>
+                <td>given command new user is selected</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>when a too sort username and valid password are entered</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>then new user is not be registered to system</td>
+                <td class='stepResultPending'>pending</td>
+                <td />
+              </tr>
+              
+              
+              
+              <tr class='secondaryScenarioRow'>
+                <td title='Scenario'>creation fails with already taken username and valid pasword</td>
+                <td title='Result' class='stepResultPending'>pending</td>
+                <td title='Time (sec)'>0.003</td>
+              </tr>
+              
+              <tr class='scenarioComponents'>
+                <td>given command new user is selected</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>when a already taken username and valid password are entered</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>then new user is not be registered to system</td>
+                <td class='stepResultPending'>pending</td>
+                <td />
+              </tr>
+              
+              
+              
+              <tr class='primaryScenarioRow'>
+                <td title='Scenario'>can not login with account that is not succesfully created</td>
+                <td title='Result' class='stepResultPending'>pending</td>
+                <td title='Time (sec)'>0.003</td>
+              </tr>
+              
+              <tr class='scenarioComponents'>
+                <td>given command new user is selected</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>when a invalid username/password are entered</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>then new credentials do not allow logging in to system</td>
+                <td class='stepResultPending'>pending</td>
+                <td />
+              </tr>
+              
+              
+              
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      
+      
+    </tbody>
+  </table>
+</div>
+
+
+
+
+<div id='StoriesListPlain' style='display:none;'>
+  <h2>Stories Text</h2>
+  
+  <div>10 scenarios (including 7 pending) executed successfully.</div>
+  <div><br/><br/>&nbsp;&nbsp;Story: logging_in_<br/><br/>&nbsp;&nbsp;&nbsp;User can log in with valid username/password-combination<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario user can login with correct password<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given command login selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when a valid username and password are entered<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then user will be logged in to system<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario user can not login with incorrect password<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given command login selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when a valid username and incorrect password are entered<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then user will not be logged in to system&nbsp;<span style='color:#BABFEE;'>[PENDING]</span><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario nonexistent user can not login to <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given command login selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when a nonexistent username and some password are entered<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then user will not be logged in to system&nbsp;<span style='color:#BABFEE;'>[PENDING]</span><br/><br/>&nbsp;&nbsp;Story: new_user_creation_<br/><br/>&nbsp;&nbsp;&nbsp;A new user account can be created 
+              if a proper unused username 
+              and a proper password are given<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario creation succesfull with correct username and password<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given command new user is selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when a valid username and password are entered<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then new user is registered to system<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario can login with succesfully generated account<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given command new user is selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when a valid username and password are entered<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then new credentials allow logging in to system<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario creation fails with correct username and too short password<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given command new user is selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when a valid username and too short password are entered<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then new user is not be registered to system&nbsp;<span style='color:#BABFEE;'>[PENDING]</span><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario creation fails with correct username and pasword consisting of letters<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given command new user is selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when a valid username and password consisting of letters are entered<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then new user is not be registered to system&nbsp;<span style='color:#BABFEE;'>[PENDING]</span><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario creation fails with too short username and valid pasword<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given command new user is selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when a too sort username and valid password are entered<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then new user is not be registered to system&nbsp;<span style='color:#BABFEE;'>[PENDING]</span><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario creation fails with already taken username and valid pasword<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given command new user is selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when a already taken username and valid password are entered<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then new user is not be registered to system&nbsp;<span style='color:#BABFEE;'>[PENDING]</span><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario can not login with account that is not succesfully created<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given command new user is selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when a invalid username/password are entered<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then new credentials do not allow logging in to system&nbsp;<span style='color:#BABFEE;'>[PENDING]</span></div>
+</div>
+
+      </div>
+    </div>
+
+  </div>
+  <!-- end content -->
+
+
+  <!-- start sidebar -->
+  <div id='sidebar'>
+    <ul>
+      <li>
+        <h2>Sections</h2>
+        <ul>
+          <li>
+            <a id='summary-menu-link' class='selected-menu-link' href='#' onclick='showOnlyContent("Summaries", "summary-menu-link")'>Summary</a>
+          </li>
+          
+          <li>
+            <a id='stories-list-menu-link' href='#' onclick='showOnlyContent("StoriesList", "stories-list-menu-link")'>Stories</a>
+          </li>
+          <li>
+            <a id='stories-list-plain-menu-link' href='#' onclick='showOnlyContent("StoriesListPlain", "stories-list-plain-menu-link")'>Stories Text</a>
+          </li>
+          
+          
+        </ul>
+      </li>
+    </ul>
+    <div style='clear: both;'>&nbsp;</div>
+  </div>
+  <!-- end sidebar -->
+
+</div>
+<!-- end page -->
+
+<div id='footer'/>
+</body>
+</html>

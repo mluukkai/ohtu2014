@@ -1,0 +1,9 @@
+<testsuite tests='3' results='1' failures='0' disabled='2' errors='0' time='1.167' name='behavior.logging_in_Story'>
+  <testcase classname='behavior.logging_in_Story' name='user can login with correct password' time='0.108' />
+  <testcase classname='behavior.logging_in_Story' name='user can not login with incorrect password' time='0.042'>
+    <skipped />
+  </testcase>
+  <testcase classname='behavior.logging_in_Story' name='nonexistent user can not login to ' time='0.002'>
+    <skipped />
+  </testcase>
+</testsuite>
