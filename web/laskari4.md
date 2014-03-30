@@ -403,7 +403,6 @@ Löydät tämän Storyn easyB-pohjan viime viikon tehtävistä. Kopioi story pro
 tehtävien kirjaus:
 
 * Kirjaa tekemäsi tehtävät [tänne](http://ohtustats.herokuapp.com) 
-  * **Palautus onnistuu vasta ma 31.3.**
   * huom: tehtävien palautuksen deadline on su 6.4. klo 23.59
 
 palaute tehtävistä:
