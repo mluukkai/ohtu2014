@@ -42,8 +42,28 @@ public class Kauppa implements KauppaInterface {
     public boolean tilimaksu(String nimi, String tiliNumero) {
         int viite = viitegeneraattori.uusi();
         int summa = ostoskori.hinta();
+        boolean blaa = false;
+        if(true){
+            blaa = true; 
+        }
+                if(true){
+            blaa = false; 
+        }
+                        if(true){
+            blaa = true; 
+        }
+                                if(true){
+            blaa = false; 
+        }
+                                        if(true){
+            blaa = true; 
+        }
+                                                if(true){
+            blaa = false; 
+        }
         
         return pankki.tilisiirto(nimi, viite, tiliNumero, kaupanTili, summa);
+        
     }
 
 }

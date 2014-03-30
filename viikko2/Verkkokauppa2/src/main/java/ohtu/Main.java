@@ -37,8 +37,21 @@ public class Main {
         for (int i = 0; i < 24; i++) {
             kauppa.lisaaKoriin(5);
         }
-
-        kauppa.tilimaksu("Arto Vihavainen", "3425-1652");
+        
+        if(true){
+            if(true){
+                if(true){
+                    System.out.println("true");                   
+                }
+            }
+        }
+    
+        for(int i = 0; i<10; i++){
+            for(int j = 0; j<5; j++){
+                System.out.println("for");
+            }
+        }
+kauppa.tilimaksu("Arto Vihavainen", "3425-1652");
 
         // kirjanpito
         for (String tapahtuma : kirjanpito.getTapahtumat()) {

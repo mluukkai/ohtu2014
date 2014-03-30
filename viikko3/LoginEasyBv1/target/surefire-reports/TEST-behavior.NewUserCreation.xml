@@ -1,0 +1,9 @@
+<testsuite tests='7' results='7' failures='0' disabled='0' errors='0' time='0.401' name='behavior.new_user_creation'>
+  <testcase classname='behavior.new_user_creation' name='creation succesfull with correct username and password' time='0.009' />
+  <testcase classname='behavior.new_user_creation' name='can login with succesfully generated account' time='0.009' />
+  <testcase classname='behavior.new_user_creation' name='creation fails with correct username and too short password' time='0.008' />
+  <testcase classname='behavior.new_user_creation' name='creation fails with correct username and pasword consisting of letters' time='0.007' />
+  <testcase classname='behavior.new_user_creation' name='creation fails with too short username and valid pasword' time='0.009' />
+  <testcase classname='behavior.new_user_creation' name='creation fails with already taken username and valid pasword' time='0.006' />
+  <testcase classname='behavior.new_user_creation' name='can not login with account that is not succesfully created' time='0.007' />
+</testsuite>
