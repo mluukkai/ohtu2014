@@ -3,7 +3,7 @@
 package ohtu.verkkokauppa;
 
 /**
- *
+ * [duplikaattikoodin testaus]
  * @author Santeri
  */
 public interface VarastoIF {
