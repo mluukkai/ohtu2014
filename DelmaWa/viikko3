@@ -1,0 +1,4 @@
+EasyB doesn't seem particulary easy or convenient.
+I had done static analysis to my code before with Checkstyle and PMD, but Sonar was new to me and seems superb for it.
+It would also be nice to have way to add String and other such things as beans from annotations or from code.
+What I resulted doing is that I extended File to create the user file so I could use @Component for it.
