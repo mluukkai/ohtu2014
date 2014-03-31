@@ -113,7 +113,7 @@ Mockiton dokumentaatio: [http://docs.mockito.googlecode.com/hg/latest/org/mockit
 
 ## 2. Yksikkötestaus ja riippuvuudet: Mockito, osa 2
 
-Hae repositorion [https://github.com/mluukkai/ohtu2014](https://github.com/mluukkai/ohtu2014) hakemistossa __viikko2/LyyrakorttiMockito__ oleva projekti. Kyseessä on yksinkertaistettu versio ohjelmoinnin perusteista tutusta tehtävästä Kassapääte ja tyhmä lyyrakortti.
+Hae repositorion [https://github.com/mluukkai/ohtu2014](https://github.com/mluukkai/ohtu2014) hakemistossa __viikko4/LyyrakorttiMockito__ oleva projekti. Kyseessä on yksinkertaistettu versio ohjelmoinnin perusteista tutusta tehtävästä Kassapääte ja tyhmä lyyrakortti.
 
 Tässä tehtävässä on tarkoitus testata ja täydentää luokkaa <code>Kassapaate</code>. Lyyrakortin koodiin ei tehtävässä saa koskea ollenkaan! Testeissä ei myöskään ole tarkoitus luoda konkreettisia instansseja lyyrakortista, testien tarvitsemat kortit tulee luoda mockitolla.
 
@@ -173,7 +173,7 @@ Korjaa kassapäätettä siten, että määrittelemäsi testit menevät läpi.
 
 Testataan viikolta 2 tutun Verkkokaupan Kauppa-luokkaa
 
-* Spring-versio löytyy [https://github.com/mluukkai/ohtu2013](https://github.com/mluukkai/ohtu2013) hakemistossa viikko4/Verkkokauppa3 (xml:llä konfiguroitu) ja viikko4/Verkkokauppa4 (annotaatioilla konfiguroitu)
+* Spring-versio löytyy [https://github.com/mluukkai/ohtu2014](https://github.com/mluukkai/ohtu2014) hakemistossa viikko2/Verkkokauppa3 (xml:llä konfiguroitu) ja viikko2/Verkkokauppa4 (annotaatioilla konfiguroitu)
 * ota edellisistä jompi kumpi pohjaksi jos et tehnyt tehtävää
 
 Kaupalle injektoidaan konstruktorissa Pankki, Viitelaskuri ja Varasto.
