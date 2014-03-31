@@ -1,4 +1,4 @@
-##. koheesio metoditasolla
+## koheesio metoditasolla
 
 Esimerkki artikkelista [http://www.ibm.com/developerworks/java/library/j-eaed4/index.html](http://www.ibm.com/developerworks/java/library/j-eaed4/index.html)
 
