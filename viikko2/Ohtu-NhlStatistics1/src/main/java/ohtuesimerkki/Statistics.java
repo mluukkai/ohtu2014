@@ -8,10 +8,9 @@ import java.util.List;
 public class Statistics {
 
     private List<Player> players;
-    private Reader reader;
 
-    public Statistics(Reader reader) {
-        this.reader = reader;
+    public Statistics() {
+        PlayerReader reader = new PlayerReader("http://nhlstats-2013-14.herokuapp.com/players.txt");
         players = reader.getPlayers();       
     }
 
@@ -42,7 +41,7 @@ public class Statistics {
         ArrayList<Player> topScorers = new ArrayList<Player>();
         Iterator<Player> playerIterator = players.iterator();
         
-        while (howMany>0) { // >= vai > ? Onko "howMany" listattavien pelaajien määrä vai ei?
+        while (howMany>=0) {
             topScorers.add( playerIterator.next() );            
             howMany--;
         }
