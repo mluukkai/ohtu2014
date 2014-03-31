@@ -489,7 +489,7 @@ Oletetaan että olet repositoriossa, jossa on ainakin kaksi branchia: master ja 
 * pomosi käskee sinua välittömästi tekemään pari muutosta branchiin __toinen__. Et kuitenkaan halua vielä comittoida masterissa olevia muutoksia
 * jos siirryt branchiin __toinen__ tekemättä comittia, tulee hirveä sotku, sillä muutokset pysyvät muutoksina toisessakin branchissa
 * stashays pelastaa tästä tilanteesta, eli stashaa masterissa olevat muutoset
-** kokeile ennen ja jälkeen stash-komennon komentoa <code>git status</code>
+  * kokeile ennen ja jälkeen stash-komennon komentoa <code>git status</code>
 * siirry branchiin toinen, tee sinne joku muutos jonka committaat
 * palaa jälleen masteriin
 * palauta stashatyt muutokset komennolla <code>git stash apply</code>
