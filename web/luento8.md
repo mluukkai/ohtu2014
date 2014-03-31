@@ -793,3 +793,237 @@ Ohjelmasta on näinollen saatu laajennettavuudeltaan varsin joustava. Uusia oper
 Hintana joustavuudelle on luokkien määrän kasvu. Nopealla vilkaisulla saattaakin olla vaikea havaita miten ohjelma toimii, varsinkaan jos ei ole vastaavaan tyyliin tottunut, mukaan on nimittäin piilotettu factory- ja command-suunnittelumallien lisäksi suunnittelumalli __template method__ (kaksiparametrisen komennon toteutukseen). Luokka- ja sekvenssikaavion piirtäminen lienee paikallaan.
 
 Yksinkertaisessa ohjelmassa ei tietenkään ole järkeä tehdä ohjelman rakenteesta näin joustavaa.
+
+## Koodissa olevan epätriviaalin copypasten poistaminen Strategy-patternin avulla, Java 8:a hyödyntävä versio
+
+Tarkastellaan [Project Gutenbergistä](http://www.gutenberg.org/) löytyvien kirjojen sisällön analysointiin tarkoitettua luokkaa <code>GutenbergLukija</code>:
+
+``` java
+public class GutenbergLukija {
+    
+    private List<String> rivit;
+    
+    public GutenbergLukija(String osoite) throws IllegalArgumentException {
+        rivit = new ArrayList<String>();
+        try {
+            URL url = new URL(osoite);
+            Scanner lukija = new Scanner(url.openStream());
+            lukija = new Scanner(new File("crime.txt"));
+            while (lukija.hasNextLine()) {
+                rivit.add(lukija.nextLine());
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e);
+        }
+    }
+    
+    public List<String> rivit() {
+        List<String> palautettavat = new ArrayList<>();
+        
+        for (String rivi : rivit) {
+            palautettavat.add(rivi);
+        }
+        
+        return palautettavat;
+    }
+    
+    public List<String> rivitJotkaPaattyvatHuutomerkkiin() {
+        List<String> ehdonTayttavat = new ArrayList<>();
+        
+        for (String rivi : rivit) {
+            if (rivi.endsWith("!")) {
+                ehdonTayttavat.add(rivi);
+            }
+        }
+        
+        return ehdonTayttavat;
+    }
+    
+    public List<String> rivitJoillaSana(String sana) {
+        List<String> ehdonTayttavat = new ArrayList<String>();
+        
+        for (String rivi : rivit) {
+            if (rivi.contains(sana)) {
+                ehdonTayttavat.add(rivi);
+            }
+        }
+        
+        return ehdonTayttavat;
+    }  
+}
+```
+
+Luokalla on kolme metodia, kaikki kirjan rivit palauttava <code>rivit</code> sekä <code>rivitJotkaPaattyvatHuutomerkkiin</code> ja <code>rivitJoillaSana(String sana)</code> jotka toimivat kuten metodin nimi antaa ymmärtää.
+
+Luokkaa käytetään seuraavasti:
+
+``` java
+    public static void main(String[] args) {
+        String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
+        GutenbergLukija kirja = new GutenbergLukija(osoite);
+
+        for( String rivi : kirja.rivitJoillaSana("beer") ) {
+            System.out.println(rivi)
+        }
+    }
+```
+
+Tutustutaan tehtävässä hieman [Java 8:n](http://docs.oracle.com/javase/8/docs/api/) tarjoamiin uusiin ominaisuuksiin. Voimme korvata listalla olevien merkkijonojen tulostamisen kutsumalla listoilla (tairkemmin sanottuna rajapinnan [Interable](http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html)-toteuttavilla) olevaa metodia <code>forEach</code> joka mahdollistaa listan alkioiden läpikäynnin "funktionaaliseen" tyyliin. Metodi saa parametrikseen "functional interfacen" (eli rajapinnan joka määrittelee ainoastaan yhden toteutettavan metodin) toteuttavan olion. Tälläisiä ovat Java 8:ssa myös ns. lambda-lausekkeen (lambda expression) joka tarkoittaa käytännössä anonyymia mihinkään luokkaan liittymätöntä metodia.  Seuraavassa metodin palauttavien kirjan rivien tulostus forEachia ja lambdaa käyttäen:
+
+
+``` java
+    public static void main(String[] args) {
+        String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
+        GutenbergLukija kirja = new GutenbergLukija(osoite);
+
+        kirja.rivitJoillaSana("beer").forEach(s->System.out.println(s));
+    }
+```
+
+Esimerkissä lambdan syntaksi oli seuraava:
+
+``` java
+    s->System.out.println(s)
+``` 
+
+parametri <code>s</code> saa arvokseen yksi kerrallaan kunkin läpikäytävän tekstirivin. Riveille suoritetaan "nuolen" oikealla puolella oleva tulostuskomento. Lisää lambdan syntaksista [täältä](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html).
+
+Luokan <code>GutenbergLukija</code> tarjoamat 3 kirjan sisällön hakemiseen tarkoitettua metodia ovat selvästi rakenteeltaan hyvin samantapaisia. Kaikki käyvät jokaisen kirjan rivin läpi ja palauttavat niistä osan (tai kaikki) metodin kutsujalle. Metodit eroavat sen suhteen mitä kirjan riveistä ne palauttavat. Voidaankin ajatella, että jokaisella metodissa on oma _strategiansa_ rivien palauttamiseen. Eriyttämällä rivien valintastrategia omaksi luokakseen, voitaisiin selvitä ainoastaan yhdellä metodilla joka hoitaisi rivien läpikäynnin.
+
+Määritellään rivien valintaa varten rajapinta:
+
+``` java
+public interface Ehto {
+    boolean test(String rivi);
+}
+```
+
+Huom: metodin nimen valinta ei ollut täysin sattumanvarainen. Tulemme myöhemmin merkkaamaa, että rajapinta laajentaan rajapinnan, joka määrittelee että rajapinnalla on nimenomaan <code>test</code>-niminen metodi.
+
+Ideana on luoda jokaista kirjojen erilaista _hakuehtoa_ kohti oma rajapinnan <code>Ehto</code> toteuttava luokka. 
+
+Seuraavassa ehto-luokka, joka tarkastaa sisältyykö tietty sana riville:
+
+``` java
+public class SisaltaaSanan implements Ehto {
+    private String sana;
+
+    public SisaltaaSanan(String sana) {
+        this.sana = sana;
+    }
+
+    @Override
+    public boolean test(String rivi) {
+        return rivi.contains(sana);
+    }
+}
+```
+
+Jos luokasta luodaan ilmentymä
+
+``` java
+    Ehto ehto = new SisaltaaSanan("olut");
+```
+
+voidaan luokan avulla tarkastella sisältävätkö merkkijonot sanan _olut_:
+
+
+``` java
+    Ehto ehto = new SisaltaaSanan("olut");
+    ehto.patee("internetin paras suomenkielinen olut-sivusto on olutopas.info");
+    ehto.patee("Java 8 ilmestyi 18.3.2014");
+```
+
+Ensimmäinen metodikutsuista palauttaisi _true_ ja jälkimäinen _false_.
+
+Kirjasta voidaan nyt palauttaa oikean ehdon täyttävät sanat lisäämällä luokalla <code>GutenbergLukija</code> metodi:
+
+``` java
+    public List<String> rivitJotkaTayttavatEhdon(Ehto ehto) {
+        List<String> palautettavatRivit = new ArrayList<>();
+        
+        for (String rivi : rivit) {
+            if (ehto.test(rivi)) {
+                palautettavatRivit.add(rivi);
+            }
+        }
+        
+        return palautettavatRivit;
+    }
+```
+
+ja sanan _beer_ sisältävät rivit saadaan tulostettua seuraavasti:
+
+``` java
+    kirja.rivitJotkaTayttavatEhdon(new SisaltaaSanan("beer")).forEach(s->System.out.println(s));
+```
+
+Pääsemmekin sopivien ehto-luokkien määrittelyllä eroon alkuperäisistä rivien hakumetodeista. Sovellus tulee sikälikin huomattavasti joustavammaksi, että uusia hakuehtoja voidaan helposti lisätä määrittelemällä uusia rajapinnan <code>Ehto</code> määritteleviä luokkia.
+
+Ehto-rajapinta on ns. _functional interface_ eli se määrittelee aionastaan yhden toteutettavan metodin (huom: Java 8:ssa rajapinnat voivat määritellä myös [oletusarvoisen toteutuksen](http://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html) sisältämiä metodeja!). Java 8:n aikana voimme määritellä ehtoja myös lambda-lausekkeiden avulla. Eli ei ole välttämätöntä tarvetta määritellä eksplisiittisesti rajapinnan <code>Ehto</code> määritteleviä luokkia. Edellinen esimerkki käyttäen käyttäen lambda-lauseketta ehdon määrittelemiseen:
+
+``` java
+kirja.rivitJotkaTayttavatEhdon(s->s.contains("beer")).forEach(s->System.out.println(s));
+```
+
+Lambdojen avulla on helppoa määritellä mielivaltaisia ehtoja. Seuraavassa tulostetaan kaikki rivit joilla esiintyy jompi kumpi sanoista _beer_ tai _vodka_. Ehdon ilmaiseva lambda-lauseke on nyt määritelty selvyyden vuoksi omalla rivillään:
+
+``` java
+    Ehto ehto = s -> s.contains("beer") || s.contains("vodka");
+        
+    kirja.rivitJotkaTayttavatEhdon(ehto).forEach(s->System.out.println(s));
+```
+
+Voimme hyödyntää Java 8:n uusia piirteitä myös luokan <code>GutenbergLukia</code> metodissa <code>rivitJotkaTayttavatEhdon</code>.
+
+Metodi on tällä hetkellä seuraava:
+
+``` java
+    public List<String> rivitJotkaTayttavatEhdon(Ehto ehto) {
+        List<String> palautettavatRivit = new ArrayList<>();
+        
+        for (String rivi : rivit) {
+            if (ehto.test(rivi)) {
+                palautettavatRivit.add(rivi);
+            }
+        }
+        
+        return palautettavatRivit;
+    }
+```
+
+Java 8:ssa kaikki rajapinnan <code>Collection</code> toteuttavatu luokat mahdollistavat alkioidensa käsittelyn <code>Stream</code>:ina eli "alkiovirtoina", ks. [API-kuvaus](http://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html). Kokoelmaluokasta saadaan sitä vastaava alkiovirta kutsumalla kokoelmalle metodia <code>stream</code>.
+
+Alkiovirtoja on taas mahdollista käsitellä monin tavoin, ja meitä nyt kiinnostava metodi on <code>filter</code>, jonka avulla streamista voidaan tehdä uusi streami, josta on poistettu ne alkiot, jotka eivät täytä filtterille annettua boolean-arvoista, funktionaalisen rajapinnan <code>Predicate<String></code> toteuttavaa ehtoa. 
+
+Määrittelemämme rajapinta <code>Ehto</code> on oikeastaan juuri tarkoitukseen sopiva, jotta voisimme käyttää rajapintaa, tulee meidän kuitenkin tyyppitarkastusten takia määriteltävä että rapajintamme laajentaa rajapintaa  <code>Predicate<String></code>:
+
+``` java
+import java.util.function.Predicate;
+
+public interface Ehto extends Predicate<String>{
+    boolean test(String rivi);
+}
+```
+
+Nyt saamme muutettua kirjan rivien streamin _ehdon_ täyttävien rivien streamiksi seuraavasti:
+
+
+``` java
+    public List<String> rivitJotkaTayttavatEhdon(Ehto ehto) {
+       // ei toimi vielä
+       rivit.stream().filter(ehto)
+    }
+```
+
+Metodin tulee palauttaa filtteröidyn streamin alkioista koostuva lista. Stream saadaan muutettua listaksi "keräämällä" sen sisältämät alkiot kutsumalla streamille metodia <code>collect</code> ja määrittelemällä, että palautetaan streamin sisältämät alkiot niemenomaan listana. Näin luotu filtteröity lista voidaan sitten palauttaa metodin kutsujalle. 
+
+Metodi on siis seuraavassa:
+
+``` java
+    public List<String> rivitJotkaTayttavatEhdon(Ehto ehto) {
+        return rivit.stream().filter(ehto).collect(Collectors.toList());
+    }
+```
+
+Kuten huomaamme, Javan version 8 tarjoamat funktionaaliset piirteet muuttavat lähes vallankumouksellisella tavalla kielen ilmaisuvoimaa! 
