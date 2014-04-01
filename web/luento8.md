@@ -868,7 +868,7 @@ Luokkaa käytetään seuraavasti:
     }
 ```
 
-Tutustutaan tehtävässä hieman [Java 8:n](http://docs.oracle.com/javase/8/docs/api/) tarjoamiin uusiin ominaisuuksiin. Voimme korvata listalla olevien merkkijonojen tulostamisen kutsumalla listoilla (tairkemmin sanottuna rajapinnan [Interable](http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html)-toteuttavilla) olevaa metodia <code>forEach</code> joka mahdollistaa listan alkioiden läpikäynnin "funktionaaliseen" tyyliin. Metodi saa parametrikseen "functional interfacen" (eli rajapinnan joka määrittelee ainoastaan yhden toteutettavan metodin) toteuttavan olion. Tälläisiä ovat Java 8:ssa myös ns. lambda-lausekkeen (lambda expression) joka tarkoittaa käytännössä anonyymia mihinkään luokkaan liittymätöntä metodia.  Seuraavassa metodin palauttavien kirjan rivien tulostus forEachia ja lambdaa käyttäen:
+Tutustutaan tehtävässä hieman [Java 8:n](http://docs.oracle.com/javase/8/docs/api/) tarjoamiin uusiin ominaisuuksiin. Voimme korvata listalla olevien merkkijonojen tulostamisen kutsumalla listoilla (tairkemmin sanottuna rajapinnan [Interable](http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html)-toteuttavilla) olevaa metodia <code>forEach</code> joka mahdollistaa listan alkioiden läpikäynnin "funktionaaliseen" tyyliin. Metodi saa parametrikseen "functional interfacen" (eli rajapinnan joka määrittelee ainoastaan yhden toteutettavan metodin) toteuttavan olion. Tälläisiä ovat Java 8:ssa myös ns. lambda-lausekkeet (lambda expression) joka tarkoittaa käytännössä anonyymia mihinkään luokkaan liittymätöntä metodia.  Seuraavassa metodin palauttavien kirjan rivien tulostus forEachia ja lambdaa käyttäen:
 
 
 ``` java
@@ -888,7 +888,7 @@ Esimerkissä lambdan syntaksi oli seuraava:
 
 parametri <code>s</code> saa arvokseen yksi kerrallaan kunkin läpikäytävän tekstirivin. Riveille suoritetaan "nuolen" oikealla puolella oleva tulostuskomento. Lisää lambdan syntaksista [täältä](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html).
 
-Luokan <code>GutenbergLukija</code> tarjoamat 3 kirjan sisällön hakemiseen tarkoitettua metodia ovat selvästi rakenteeltaan hyvin samantapaisia. Kaikki käyvät jokaisen kirjan rivin läpi ja palauttavat niistä osan (tai kaikki) metodin kutsujalle. Metodit eroavat sen suhteen mitä kirjan riveistä ne palauttavat. Voidaankin ajatella, että jokaisella metodissa on oma _strategiansa_ rivien palauttamiseen. Eriyttämällä rivien valintastrategia omaksi luokakseen, voitaisiin selvitä ainoastaan yhdellä metodilla joka hoitaisi rivien läpikäynnin.
+Luokan <code>GutenbergLukija</code> tarjoamat 3 kirjan sisällön hakemiseen tarkoitettua metodia ovat selvästi rakenteeltaan hyvin samantapaisia. Kaikki käyvät jokaisen kirjan rivin läpi ja palauttavat niistä osan (tai kaikki) metodin kutsujalle. Metodit eroavat sen suhteen mitä kirjan riveistä ne palauttavat. Voidaankin ajatella, että jokaisessa metodissa on oma _strategiansa_ rivien palauttamiseen. Eriyttämällä rivien valintastrategia omaksi luokakseen, voitaisiin selvitä ainoastaan yhdellä metodilla joka hoitaisi rivien läpikäynnin.
 
 Määritellään rivien valintaa varten rajapinta:
 
@@ -936,7 +936,7 @@ voidaan luokan avulla tarkastella sisältävätkö merkkijonot sanan _olut_:
 
 Ensimmäinen metodikutsuista palauttaisi _true_ ja jälkimäinen _false_.
 
-Kirjasta voidaan nyt palauttaa oikean ehdon täyttävät sanat lisäämällä luokalla <code>GutenbergLukija</code> metodi:
+Kirjasta voidaan nyt palauttaa oikean ehdon täyttävät sanat lisäämällä luokalle <code>GutenbergLukija</code> metodi:
 
 ``` java
     public List<String> rivitJotkaTayttavatEhdon(Ehto ehto) {
@@ -960,7 +960,7 @@ ja sanan _beer_ sisältävät rivit saadaan tulostettua seuraavasti:
 
 Pääsemmekin sopivien ehto-luokkien määrittelyllä eroon alkuperäisistä rivien hakumetodeista. Sovellus tulee sikälikin huomattavasti joustavammaksi, että uusia hakuehtoja voidaan helposti lisätä määrittelemällä uusia rajapinnan <code>Ehto</code> määritteleviä luokkia.
 
-Ehto-rajapinta on ns. _functional interface_ eli se määrittelee aionastaan yhden toteutettavan metodin (huom: Java 8:ssa rajapinnat voivat määritellä myös [oletusarvoisen toteutuksen](http://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html) sisältämiä metodeja!). Java 8:n aikana voimme määritellä ehtoja myös lambda-lausekkeiden avulla. Eli ei ole välttämätöntä tarvetta määritellä eksplisiittisesti rajapinnan <code>Ehto</code> määritteleviä luokkia. Edellinen esimerkki käyttäen käyttäen lambda-lauseketta ehdon määrittelemiseen:
+Ehto-rajapinta on ns. _functional interface_ eli se määrittelee aionastaan yhden toteutettavan metodin (huom: Java 8:ssa rajapinnat voivat määritellä myös [oletusarvoisen toteutuksen](http://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html) sisältämiä metodeja!). Java 8:n aikana voimme määritellä ehtoja myös lambda-lausekkeiden avulla. Eli ei ole välttämätöntä tarvetta määritellä eksplisiittisesti rajapinnan <code>Ehto</code> määritteleviä luokkia. Seuraavassa edellinen esimerkki käyttäen lambda-lauseketta ehdon määrittelemiseen:
 
 ``` java
 kirja.rivitJotkaTayttavatEhdon(s->s.contains("beer")).forEach(s->System.out.println(s));
@@ -974,7 +974,7 @@ Lambdojen avulla on helppoa määritellä mielivaltaisia ehtoja. Seuraavassa tul
     kirja.rivitJotkaTayttavatEhdon(ehto).forEach(s->System.out.println(s));
 ```
 
-Voimme hyödyntää Java 8:n uusia piirteitä myös luokan <code>GutenbergLukia</code> metodissa <code>rivitJotkaTayttavatEhdon</code>.
+Voimme hyödyntää Java 8:n uusia piirteitä myös luokan <code>GutenbergLukija</code> metodissa <code>rivitJotkaTayttavatEhdon</code>.
 
 Metodi on tällä hetkellä seuraava:
 
@@ -992,11 +992,11 @@ Metodi on tällä hetkellä seuraava:
     }
 ```
 
-Java 8:ssa kaikki rajapinnan <code>Collection</code> toteuttavatu luokat mahdollistavat alkioidensa käsittelyn <code>Stream</code>:ina eli "alkiovirtoina", ks. [API-kuvaus](http://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html). Kokoelmaluokasta saadaan sitä vastaava alkiovirta kutsumalla kokoelmalle metodia <code>stream</code>.
+Java 8:ssa kaikki rajapinnan <code>Collection</code> toteuttavat luokat mahdollistavat alkioidensa käsittelyn <code>Stream</code>:ina eli "alkiovirtoina", ks. [API-kuvaus](http://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html). Kokoelmaluokasta saadaan sitä vastaava alkiovirta kutsumalla kokoelmalle metodia <code>stream</code>.
 
-Alkiovirtoja on taas mahdollista käsitellä monin tavoin, ja meitä nyt kiinnostava metodi on <code>filter</code>, jonka avulla streamista voidaan tehdä uusi streami, josta on poistettu ne alkiot, jotka eivät täytä filtterille annettua boolean-arvoista, funktionaalisen rajapinnan <code>Predicate<String></code> toteuttavaa ehtoa. 
+Alkiovirtoja on taas mahdollista käsitellä monin tavoin, ja meitä nyt kiinnostava metodi on <code>filter</code>, jonka avulla streamistä voidaan tehdä uusi streami, josta on poistettu ne alkiot, jotka eivät täytä filtterille annettua boolean-arvoista, funktionaalisen rajapinnan <code>Predicate<String></code> toteuttavaa ehtoa. 
 
-Määrittelemämme rajapinta <code>Ehto</code> on oikeastaan juuri tarkoitukseen sopiva, jotta voisimme käyttää rajapintaa, tulee meidän kuitenkin tyyppitarkastusten takia määriteltävä että rapajintamme laajentaa rajapintaa  <code>Predicate<String></code>:
+Määrittelemämme rajapinta <code>Ehto</code> on oikeastaan juuri tarkoitukseen sopiva, jotta voisimme käyttää rajapintaa, tulee meidän kuitenkin tyyppitarkastusten takia määritellä että rajapintamme laajentaa rajapintaa  <code>Predicate<String></code>:
 
 ``` java
 import java.util.function.Predicate;
