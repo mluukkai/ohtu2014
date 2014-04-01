@@ -898,7 +898,7 @@ public interface Ehto {
 }
 ```
 
-Huom: metodin nimen valinta ei ollut täysin sattumanvarainen. Tulemme myöhemmin merkkaamaa, että rajapinta laajentaan rajapinnan, joka määrittelee että rajapinnalla on nimenomaan <code>test</code>-niminen metodi.
+Huom: metodin nimen valinta ei ollut täysin sattumanvarainen. Tulemme myöhemmin määrittelemään, että rajapinta <code>Ehto<code> laajentaa rajapinnan, joka määrittelee että rajapinnalla on nimenomaan <code>test</code>-niminen metodi.
 
 Ideana on luoda jokaista kirjojen erilaista _hakuehtoa_ kohti oma rajapinnan <code>Ehto</code> toteuttava luokka. 
 
@@ -930,8 +930,8 @@ voidaan luokan avulla tarkastella sisältävätkö merkkijonot sanan _olut_:
 
 ``` java
     Ehto ehto = new SisaltaaSanan("olut");
-    ehto.patee("internetin paras suomenkielinen olut-sivusto on olutopas.info");
-    ehto.patee("Java 8 ilmestyi 18.3.2014");
+    ehto.test("internetin paras suomenkielinen olut-sivusto on olutopas.info");
+    ehto.test("Java 8 ilmestyi 18.3.2014");
 ```
 
 Ensimmäinen metodikutsuista palauttaisi _true_ ja jälkimäinen _false_.
