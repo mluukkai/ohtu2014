@@ -542,7 +542,7 @@ Pino pino1 = rakenna.pino();  // luo normaalin pinon
 Pino pino2 = rakenna.kryptattu().loggaava(loki).prepaid.pino();  // luo sen mitä odottaa saattaa!
 ```
 
-Rakentajan toteutus perustuu tekniikkaan nimeltään "method chaining":http://en.wikipedia.org/wiki/Method_chaining eli metodien ketjutukseen. Metodit jotka ovat muuten luonteeltaan void:eja onkin laitettu palauttamaan rakentajaolio. Tämä taas mahdollistaa metodin kutsumisen toisen metodin palauttamalle rakentajalle, ja näin metodikutsuja voidaan ketjuttaa peräkkäin mielivaltainen määrä. Metodiketjutuksen motivaationa on yleensä saada olion rajapinta käytettävyydeltään mahdollisimman luonnollisen kielen kaltaiseksi DSL:ksi.
+Rakentajan toteutus perustuu tekniikkaan nimeltään [method chaining](http://en.wikipedia.org/wiki/Method_chaining) eli metodien ketjutukseen. Metodit jotka ovat muuten luonteeltaan void:eja onkin laitettu palauttamaan rakentajaolio. Tämä taas mahdollistaa metodin kutsumisen toisen metodin palauttamalle rakentajalle, ja näin metodikutsuja voidaan ketjuttaa peräkkäin mielivaltainen määrä. Metodiketjutuksen motivaationa on yleensä saada olion rajapinta käytettävyydeltään mahdollisimman luonnollisen kielen kaltaiseksi DSL:ksi.
 
 ## Komposiitti
 
@@ -637,11 +637,11 @@ public class Elementtitehdas {
     }
 }
 ```
-Ainoa huomionarvoinen seikka on viimeisen rakentajametodin varargs-tyyppinen parametri, jos se ei ole tuttu, ks esim: "http://www.javadb.com/using-varargs-in-java":http://www.javadb.com/using-varargs-in-java
+Ainoa huomionarvoinen seikka on viimeisen rakentajametodin varargs-tyyppinen parametri, jos se ei ole tuttu, ks esim: [http://www.javadb.com/using-varargs-in-java](http://www.javadb.com/using-varargs-in-java)
 
 Käytännössä varargs-parametri tarkoittaa, että metodilla saa olla Elementti-tyyppisiä parametreja vapaavalintainen määrä.
 
-Dokumentin sisältävien elementtien toteuttamiseen sopii erinomaisesti *komposiitti (engl composite) -suunnittelumalli*, ks. esim. ""http://sourcemaking.com/design_patterns/composite:http://sourcemaking.com/design_patterns/composite
+Dokumentin sisältävien elementtien toteuttamiseen sopii erinomaisesti *komposiitti (engl composite) -suunnittelumalli*, ks. esim. [http://sourcemaking.com/design_patterns/composite](http://sourcemaking.com/design_patterns/composite)
 
 Elementti on rajapinta joka määrittelee kaikkien elementtien yhteisen toiminnallisuuden:
 
@@ -697,6 +697,26 @@ public class KoosteElementti implements Elementti {
 
 Koska KoosteElementti toteuttaa itsekin rajapinnan Elementti, tarkoittaa tämä että kooste voi sisältää koosteita. Eli hyvin yksinkertaisella luokkarakenteella saadaan aikaan mielivaltaisista puumaisesti muodostuneista elementeistä koostuvia dokumentteja!
 
+Huomaamme, että <code>Elementti</code> on _funktionaalinen rejapinta_ eli se määrittelee ainoastaan yhden sen metodin joka rajapinnan toteuttavien luokkien on toteutettava. Kuten [edellisellä viikolla ](https://github.com/mluukkai/ohtu2014/blob/master/web/luento8.md#koodissa-olevan-ep%C3%A4triviaalin-copypasten-poistaminen-strategy-patternin-avulla-java-8a-hy%C3%B6dynt%C3%A4v%C3%A4-versio) totesimme Java 8:ssa voimme käyttää lambda-lausekkeita korvaamaan funktionaalisen rajapinnan toteuttavien luokkien instanssien tilalla. Koska luokat <code>TekstiElementti</code>, <code>ErotinElementti</code> ja <code>KoosteElementti</code> ovat niin yksinkertaisia, ei luokkia välttämättä tarvitse määritellä eksplisiittisesti. Voimmekin palauttaa elementtitehtaasta niiden tilalla sopivat lambda-lausekkeen avulla määritellyt elementit:
+
+``` java
+public class Elementtitehdas {
+    public static Elementti erotin(){
+        return ()->{ System.out.println("-------------------------"); };
+    }
+
+    public static Elementti teksti(String teksti){
+        return ()->{ System.out.println(teksti); };
+    }
+ 
+    public static Elementti kooste(Elementti... elementit){
+        return () -> { Stream.of(elementit).forEach(e->e.tulosta()); };
+    }
+}
+```
+
+Riittää siis että kukin tehdasmetodi palauttaa lambda-lausekkeen, joka määrittelee kyseessä olevan elementin metodin <code>tulosta</code> toiminnallisuuden.
+
 ## Proxy
 
 Oletetaan että asiakas haluaa elementtityypin WebElementti joka kapseloi tietyssä www-osoitteessa olevan sisällön. Ei ongelmaa:
@@ -730,12 +750,12 @@ Laajentamalla elementtitehdasta sopivasti pääsemme käyttämään dokumentin u
 
 ``` java
 public static void main(String[] args) {
-        Dokumentti doku = new Dokumentti();
- 
-        doku.lisaa(Elementtitehdas.web("http://www.jatkoaika.fi"));
-        doku.lisaa(Elementtitehdas.web("http://olutopas.info/"));
- 
-        doku.tallenna("webista.html");
+    Dokumentti doku = new Dokumentti();
+
+    doku.lisaa(Elementtitehdas.web("http://www.jatkoaika.fi"));
+    doku.lisaa(Elementtitehdas.web("http://olutopas.info/"));
+
+    doku.tallenna("webista.html");
 }
 ```
 
@@ -790,8 +810,8 @@ Asiakas on tyytyväinen aikaansaannokseemme.
 
 Nyt tarkastelemme tilannetta, jossa meillä on käytettävissä luokka joka oleellisesti ottaen tarjoaa haluamamme toiminnallisuuden, mutta sen rajapinta on hieman vääränlainen. Emme kuitenkaan voi muuttaa alkuperäistä luokkaa sillä muutos rikkoisi luokan muut käyttäjät.
 
-Adapteri-suunnittelumalli sopii tälläisiin tilanteisiin "http://sourcemaking.com/design_patterns/adapter
-":http://sourcemaking.com/design_patterns/adapter
+Adapteri-suunnittelumalli sopii tälläisiin tilanteisiin [http://sourcemaking.com/design_patterns/adapter]
+(http://sourcemaking.com/design_patterns/adapter)
 
 Tehdään aiemmasta esimerkistä tutulle Pinolle adapteri HyväPino joka muuttaa metodien nimiä ja tarjoaa muutaman lisätoiminnallisuuden:
 
