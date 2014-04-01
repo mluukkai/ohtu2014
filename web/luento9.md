@@ -359,7 +359,7 @@ Dekoroinnin avulla saamme siis suhteellisen vähällä ohjelmoinnilla pinolle pa
 
 Dekorointi siis ei oleellisesti ole perintää vaan delegointia, jälleen kerran oliosuunnitteun periaate "favour composition over inheritance" on näyttänyt voimansa.
 
-h2. Pintotehdas
+## Pintotehdas
 
 Huomaamme, että eri ominaisuuksilla varustettujen pinojen luominen on käyttäjän kannalta hieman ikävää. Teemmekin luomista helpottamaan pinotehtaan:
 
