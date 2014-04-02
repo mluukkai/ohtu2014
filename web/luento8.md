@@ -930,7 +930,7 @@ voidaan luokan avulla tarkastella sisältävätkö merkkijonot sanan _olut_:
 
 ``` java
     Ehto ehto = new SisaltaaSanan("olut");
-    ehto.test("internetin paras suomenkielinen olut-sivusto on olutopas.info");
+    ehto.test("internetin paras suomenkielinen olutsivusto on olutopas.info");
     ehto.test("Java 8 ilmestyi 18.3.2014");
 ```
 
@@ -960,7 +960,7 @@ ja sanan _beer_ sisältävät rivit saadaan tulostettua seuraavasti:
 
 Pääsemmekin sopivien ehto-luokkien määrittelyllä eroon alkuperäisistä rivien hakumetodeista. Sovellus tulee sikälikin huomattavasti joustavammaksi, että uusia hakuehtoja voidaan helposti lisätä määrittelemällä uusia rajapinnan <code>Ehto</code> määritteleviä luokkia.
 
-Ehto-rajapinta on ns. _functional interface_ eli se määrittelee aionastaan yhden toteutettavan metodin (huom: Java 8:ssa rajapinnat voivat määritellä myös [oletusarvoisen toteutuksen](http://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html) sisältämiä metodeja!). Java 8:n aikana voimme määritellä ehtoja myös lambda-lausekkeiden avulla. Eli ei ole välttämätöntä tarvetta määritellä eksplisiittisesti rajapinnan <code>Ehto</code> määritteleviä luokkia. Seuraavassa edellinen esimerkki käyttäen lambda-lauseketta ehdon määrittelemiseen:
+Ehto-rajapinta on ns. _functional interface_ eli se määrittelee ainoastaan yhden toteutettavan metodin (huom: Java 8:ssa rajapinnat voivat määritellä myös [oletusarvoisen toteutuksen](http://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html) sisältämiä metodeja!). Java 8:n aikana voimme määritellä ehtoja myös lambda-lausekkeiden avulla. Eli ei ole välttämätöntä tarvetta määritellä eksplisiittisesti rajapinnan <code>Ehto</code> määritteleviä luokkia. Seuraavassa edellinen esimerkki käyttäen lambda-lauseketta ehdon määrittelemiseen:
 
 ``` java
 kirja.rivitJotkaTayttavatEhdon(s->s.contains("beer")).forEach(s->System.out.println(s));
