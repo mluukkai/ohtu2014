@@ -898,7 +898,7 @@ public interface Ehto {
 }
 ```
 
-Huom: metodin nimen valinta ei ollut täysin sattumanvarainen. Tulemme myöhemmin määrittelemään, että rajapinta <code>Ehto</code> laajentaa rajapinnan, joka määrittelee että rajapinnalla on nimenomaan <code>test</code>-niminen metodi.
+Huom: metodin nimen valinta ei ollut täysin sattumanvarainen. Tulemme myöhemmin määrittelemään, että rajapinta <code>Ehto</code> laajentaa rajapinnan, joka vaatii että rajapinnalla on nimenomaan <code>test</code>-niminen metodi.
 
 Ideana on luoda jokaista kirjojen erilaista _hakuehtoa_ kohti oma rajapinnan <code>Ehto</code> toteuttava luokka. 
 
