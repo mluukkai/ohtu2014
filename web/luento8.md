@@ -888,7 +888,7 @@ Esimerkissä lambdan syntaksi oli seuraava:
 
 parametri <code>s</code> saa arvokseen yksi kerrallaan kunkin läpikäytävän tekstirivin. Riveille suoritetaan "nuolen" oikealla puolella oleva tulostuskomento. Lisää lambdan syntaksista [täältä](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html). Huomionarvoista on se, että lambdan parametrin eli muuttujan <code>s</code> tyyppiä ei tarvitse määritellä, kääntäjä osaa päätellä sen iteroitavana olevan kokoelman perusteella.
 
-Luokan <code>GutenbergLukija</code> tarjoamat 3 kirjan sisällön hakemiseen tarkoitettua metodia ovat selvästi rakenteeltaan hyvin samantapaisia. Kaikki käyvät jokaisen kirjan rivin läpi ja palauttavat niistä osan (tai kaikki) metodin kutsujalle. Metodit eroavat sen suhteen mitä kirjan riveistä ne palauttavat. Voidaankin ajatella, että jokaisessa metodissa on oma _strategiansa_ rivien palauttamiseen. Eriyttämällä rivien valintastrategia omaksi luokakseen, voitaisiin selvitä ainoastaan yhdellä metodilla joka hoitaisi rivien läpikäynnin.
+Luokan <code>GutenbergLukija</code> tarjoamat 3 kirjan sisällön hakemiseen tarkoitettua metodia ovat selvästi rakenteeltaan hyvin samantapaisia. Kaikki käyvät jokaisen kirjan rivin läpi ja palauttavat niistä osan (tai kaikki) metodin kutsujalle. Metodit eroavat sen suhteen mitä kirjan riveistä ne palauttavat. Voidaankin ajatella, että jokaisessa metodissa on oma _strategiansa_ rivien palauttamiseen. Eriyttämällä rivien valintastrategia omaksi luokakseen, voitaisiin selvitä ainoastaan yhdellä rivien läpikäynnin hoitavalla metodilla.
 
 Määritellään rivien valintaa varten rajapinta:
 
