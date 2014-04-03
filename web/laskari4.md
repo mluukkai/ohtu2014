@@ -355,6 +355,8 @@ public static void main(String[] args) {
 }
 ```
 
+**HUOM** koodissasi saatta olla vielä virheellisesti <code>driver.get("http://localhost:8080");</code>, jos näin on, korjaa portin numeroksi **8090**.
+
 Käynnistä sovellus edellisen tehtävän tapaan komentoriviltä. Varmista selaimella että sovellus on päällä.
 
 Aja Tester.java:ssa oleva ohjelma. Esim. NetBeansilla tämä onnistuu valitsemalla tiedoston nimen kohdalta oikealla hiiren napilla "Run file".
