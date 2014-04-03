@@ -4,7 +4,7 @@ import ohtu.verkkokauppa.*;
 import org.springframework.context.*;
 import org.springframework.context.support.*;
 
-
+// Annotaatioilla konfiguroitu.
 public class Main {
 
     public static void main(String[] args) {

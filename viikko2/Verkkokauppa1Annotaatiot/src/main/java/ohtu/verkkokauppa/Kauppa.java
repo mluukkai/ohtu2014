@@ -29,6 +29,7 @@ public class Kauppa implements Kaupankaynti {
     public void poistaKorista(int id) {
         Tuote t = varasto.haeTuote(id); 
         varasto.palautaVarastoon(t);
+        ostoskori.poista(t);
     }
 
     @Override
