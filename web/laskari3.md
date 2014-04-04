@@ -27,24 +27,25 @@ checkstylen tarkkailemien virheiden joukko on konfiguroitavissa erillisen konigu
 * hae repositiorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) hakemistosta viikko3 konfiguraatiotiedoston pohja __my_checks.xml__, talleta se sopivaan paikkaan, kokeile:
         <code>mvn jxr:jxr checkstyle:checkstyle -Dcheckstyle.config.location=my_checks.xml</code>       
 * komennossa oleva polku olettaa että konfiguraatiotiedosto sijaitsee projektihakemiston juuressa
+  * saattaa olla, että windowsissa komentoon on lisättävä pari hipsua: <code>mvn jxr:jxr checkstyle:checkstyle -D"checkstyle.config.location=my_checks.xml"</code>  
   * huom: saattaa olla, että komento ei toimi windowsilla, ongelma ehkä vaan win 8:ssa. jos näin käy, konfiguraatiotiedoston sijainnin voi määritellä pom.xml-tiedostossa seuraavasti:
 
-<pre>
-    <plugins>
-         <!-- muut mahdolliset pluginit -->
+```XML
+<plugins>
+  <!-- muut mahdolliset pluginit -->
  
-         <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-checkstyle-plugin</artifactId>
-              <version>2.10</version>
-              <configuration>
-                  <configLocation>my_checks.xml</configLocation>
-              </configuration>
-         </plugin>
-    </plugins>
-</pre>
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-checkstyle-plugin</artifactId>
+    <version>2.10</version>
+    <configuration>
+      <configLocation>my_checks.xml</configLocation>
+    </configuration>
+  </plugin>
+</plugins>
+```
 
-eli lisää uusi __plugin__-määrittely __plugins__-määrittelyjen sisälle. Jos __plugins__:eja ei ole, joudut lisäämään myös <code><plugins>...</plugins></code>-tägit. 
+eli lisää uusi __plugin__-määrittely __plugins__-määrittelyjen sisälle. Jos __plugins__:eja ei ole, joudut lisäämään myös `<plugins>...</plugins>`-tägit. 
 
 * tee alkuperäisestä konfiguraatiotiedostosta kopio, ja poista kopiosta kaikki elementin <code>tree walker</code> sisällä olevat tarkistukset 
 * määrittele tiedostoon seuraavat säännöt (ks. available checks ja standard checks checkstylen [sivuilta](http://checkstyle.sourceforge.net/)):
@@ -60,10 +61,11 @@ eli lisää uusi __plugin__-määrittely __plugins__-määrittelyjen sisälle. J
 
 [Sonar](http://www.sonarsource.org/) on ohjelma, joka kokoaa erilaisia koodin laatua mittaavien työkalujen (mm. staattisen analyysin työkalut kuten checkstyle ja testikattavuus kuten cobertura) yhdeksi raportiksi. Sonar tallettaa generoidut raportit tietokantaan, ja näinollen koodin laadun kehitystä on mahdollista seurata projektin edetessä.
 
-Tutkitaan nyt Sonarilla muutaman projektin koodia
+Tutkitaan nyt Sonarilla muutaman projektin koodia. **HUOM** Sonar toimii huonosti Mavenin version 2.* kanssa. Varmista komennolla <code>mvn -v</code> että käytössäsi on Mavenista versio 3.*.
 
 Käynnistetään ensin Sonar
 * lataa Sonar osoitteesta [http://www.sonarsource.org/downloads/](http://www.sonarsource.org/downloads/)
+* OS X:llä toimii brew install Sonar
 * pura zip-paketti esim. kotihakemistoosi ja mene hakemistoon <code>sonar-3.5/bin/linux-x86-32</code> (tai koneesi tyyppiä vastaavaan hakemistoon)
 * käynnistä Sonar. Linuxissa tämä tapahtuu komennolla <code>./sonar.sh start</code> 
 * Sonarin raportit ovat näkyvissä selaimessa osoitteessa [http://localhost:9000](http://localhost:9000), avaa sivu
@@ -71,7 +73,7 @@ Käynnistetään ensin Sonar
 
 Generoidaan raportti muutamalle projektille
 * maven-muotoisille projekteille raportti generoidaan antamalla projektin hakemistossa komento <code>mvn clean test sonar:sonar</code>
-* generoi raportti viikon 2 laskarien verkkokaupalle ja  repositiorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2013/) hakemistostosta KumpulaBiershop löytyvälle olutverkkokaupalle
+* generoi raportti viikon 2 laskarien verkkokaupalle ja repositiorion [https://github.com/mluukkai/ohtu2014/](https://github.com/mluukkai/ohtu2014/) viikon 3 hakemistostosta löytyvälle KumpulaBiershop olutverkkokaupalle
   * huomaa, että Sonar pitää olla käynnistettynä raportin generointihetkellä!
 * tutki raportteja
   * katso erityisesti mitä löytyy kohdan __Tools__ alta
@@ -149,7 +151,7 @@ tehtävien kirjaus:
 
 palaute tehtävistä:
 
-* Lisää viikon 1 tehtävässä 11 forkaamasi repositorion omalla nimelläsi olevaan hakemistoon tiedosto nimeltä viikko2
+* Lisää viikon 1 tehtävässä 11 forkaamasi repositorion omalla nimelläsi olevaan hakemistoon tiedosto nimeltä viikko3
 * tee viime viikon tehtävän tapaan pull-request
   * anna tehtävistä palautetta avautuvaan lomakkeeseen
   * huom: jos teeh tehtävät alkuviikosta, voi olla, että edellistä pull-requestiasi ei ole vielä ehditty hyväksyä ja et pääse vielä tekemään uutta requestia

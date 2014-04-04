@@ -241,7 +241,3 @@ Ohjelmaamme on määritelty testauskäyttöön sopiva InMemoryUserDao, joka tall
 
 DAO-suunnittelumalli on oikeastaan sama asia mistä jotkut käyttävät nimitystä [data mapper](http://martinfowler.com/eaaCatalog/dataMapper.html)
 
-## Linkkejä
-  
-* [http://www.easyb.org](http://www.easyb.org)
-* melko perusteellinen esimerkki [täällä](http://www.ibm.com/developerworks/java/tutorials/j-easyb/)
