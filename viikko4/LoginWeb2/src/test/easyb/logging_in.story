@@ -28,13 +28,41 @@ scenario "user can login with correct password", {
 }
 
 scenario "user can not login with incorrect password", {
-    given 'command login selected'
-    when 'a valid username and incorrect password are given'
-    then 'user will not be logged in to system'
+    given 'command login selected', {
+        driver = new HtmlUnitDriver();
+        driver.get("http://localhost:8090");
+        element = driver.findElement(By.linkText("login"));       
+        element.click();
+    }
+    when 'a valid username and incorrect password are given', {
+        element = driver.findElement(By.name("username"));
+        element.sendKeys("pekka");
+        element = driver.findElement(By.name("password"));
+        element.sendKeys("pekka");
+        element = driver.findElement(By.name("login"));
+        element.submit();
+    }
+    then 'user will not be logged in to system', {
+        driver.getPageSource().contains("wrong username or password").shouldBe true
+    }
 }
 
 scenario "nonexistent user can not login to system", {
-    given 'command login selected'
-    when 'a nonexistent username and some password are given'
-    then 'user will not be logged in to system'
+    given 'command login selected', {
+        driver = new HtmlUnitDriver();
+        driver.get("http://localhost:8090");
+        element = driver.findElement(By.linkText("login"));       
+        element.click();
+    }
+    when 'a nonexistent username and some password are given', {
+        element = driver.findElement(By.name("username"));
+        element.sendKeys("arhippa");
+        element = driver.findElement(By.name("password"));
+        element.sendKeys("arhippa");
+        element = driver.findElement(By.name("login"));
+        element.submit();
+    }
+    then 'user will not be logged in to system', {
+        driver.getPageSource().contains("wrong username or password").shouldBe true
+    }
 }
