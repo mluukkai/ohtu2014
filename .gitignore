@@ -2,3 +2,12 @@
 /viikko4/viikko4/MockitoDemo/target/
 /viikko4/viikko4/LyyrakorttiMockito/target/
 /viikko4/Verkkokauppa3/target/
+
+=======
+# ei .xxx tiedostoja
+*.xxx
+# ei hakemistossa target/ olevia tiedostoja
+target/
+# ei hakemsistoa OhtuVarasto/target/
+OhtuVarasto/target/
+
