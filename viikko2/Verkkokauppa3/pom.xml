@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ohtu</groupId>
-    <artifactId>Verkkokauppa1</artifactId>
+    <artifactId>Verkkokauppa3</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Verkkokauppa1</name>
+    <name>Verkkokauppa3</name>
     <url>http://maven.apache.org</url>
 
     <properties>
