@@ -363,7 +363,7 @@ Aja Tester.java:ssa oleva ohjelma. Esim. NetBeansilla tämä onnistuu valitsemal
 
 Katso mitä ohjelma tulostaa.
 
-Tester-ohjelmassa luodaan alussa selainta simuloiva olio __WebDriver driver__. Tämän jälkeen "mennään" selaimella osoitteeseen __localhost:8080__ ja tulostetaan sivun lähdekoodi. Tämän jälkeen haetaan sivulta elementti, jossa on linkkiteksti __login__ eli
+Tester-ohjelmassa luodaan alussa selainta simuloiva olio __WebDriver driver__. Tämän jälkeen "mennään" selaimella osoitteeseen __localhost:8090__ ja tulostetaan sivun lähdekoodi. Tämän jälkeen haetaan sivulta elementti, jossa on linkkiteksti __login__ eli
 
 ``` java
 WebElement element = driver.findElement(By.linkText("login"));
