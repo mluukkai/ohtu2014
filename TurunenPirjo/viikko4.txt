@@ -1,0 +1,2 @@
+viikko4 laskarit tehty 10/10 
+mielenkiintoista kuinka webapplikaation testit voi automatisoida easyB ja seleniumilla.
