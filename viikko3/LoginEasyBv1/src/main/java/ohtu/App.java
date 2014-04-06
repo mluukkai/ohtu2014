@@ -1,12 +1,15 @@
 package ohtu;
 
+import ohtu.data_access.FileUserDAO;
 import ohtu.data_access.InMemoryUserDao;
 import ohtu.data_access.UserDao;
 import ohtu.io.ConsoleIO;
 import ohtu.io.IO;
 import ohtu.services.AuthenticationService;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
@@ -58,6 +61,13 @@ public class App {
     }
 
     public static void main(String[] args) {
+//        BeanFactory bf = new ClassPathXmlApplicationContext("src/main/resources/spring-context.xml");
+//        FileUserDAO dao = (FileUserDAO) bf.getBean("tiedostopolku");
+        
+//        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+//        dao.getTiedostonNimi();
+//        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+        
         ApplicationContext ctx = new FileSystemXmlApplicationContext("src/main/resources/spring-context.xml");
 
         App application = ctx.getBean(App.class);

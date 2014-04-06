@@ -11,5 +11,9 @@
     
     <context:annotation-config />
     <context:component-scan base-package="ohtu" />  
-    
+    <!--
+    <bean id="tiedostopolku" class="ohtu.data_access.FileUserDAO">
+        <constructor-arg type="java.lang.String" value="tiedot.txt" />
+    </bean>
+    -->
 </beans>

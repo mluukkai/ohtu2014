@@ -19,6 +19,7 @@ public class AuthenticationService {
 
     public boolean logIn(String username, String password) {
         for (User user : userDao.listAll()) {
+            //System.out.println("XXXXXXXXXXXXXXXX  " + user.getUsername() + " " + user.getPassword() + "  XXXXXXXXXXXXXXXXXXXX");
             if (user.getUsername().equals(username)
                     && user.getPassword().equals(password)) {
                 return true;
