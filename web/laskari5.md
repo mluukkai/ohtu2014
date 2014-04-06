@@ -587,7 +587,6 @@ Tämä oli kurssin viimeinen git-tehtävä. Muista pitää git-rutiiniasi yllä 
 tehtävien kirjaus:
 
 * Kirjaa tekemäsi tehtävät [tänne](http://ohtustats.herokuapp.com) 
-  * **Palautus onnistuu vasta ma 7.4.**
   * huom: tehtävien palautuksen deadline on su 13.4. klo 23.59
 
 palaute tehtävistä:
