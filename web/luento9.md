@@ -539,7 +539,7 @@ Vastaavalla tavalla voidaan luoda pinoja muillakin ominaisuuksilla:
 Pinorakentaja rakenna = new Pinorakentaja();
  
 Pino pino1 = rakenna.pino();  // luo normaalin pinon
-Pino pino2 = rakenna.kryptattu().loggaava(loki).prepaid.pino();  // luo sen mitä odottaa saattaa!
+Pino pino2 = rakenna.kryptattu().loggaava(loki).prepaid(10).pino();  // luo sen mitä odottaa saattaa!
 ```
 
 Rakentajan toteutus perustuu tekniikkaan nimeltään [method chaining](http://en.wikipedia.org/wiki/Method_chaining) eli metodien ketjutukseen. Metodit jotka ovat muuten luonteeltaan void:eja onkin laitettu palauttamaan rakentajaolio. Tämä taas mahdollistaa metodin kutsumisen toisen metodin palauttamalle rakentajalle, ja näin metodikutsuja voidaan ketjuttaa peräkkäin mielivaltainen määrä. Metodiketjutuksen motivaationa on yleensä saada olion rajapinta käytettävyydeltään mahdollisimman luonnollisen kielen kaltaiseksi DSL:ksi.
