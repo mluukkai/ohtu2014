@@ -6,7 +6,7 @@ public class Submission {
     private String student_number;
     private int hours;
     private int week;
-    private Object a1;
+    private boolean a1;
     private boolean a2;
     private boolean a3;
     private boolean a4;
@@ -28,15 +28,19 @@ public class Submission {
     private boolean a20;
     private boolean a21;
     
-    private ArrayList tehdyt = new ArrayList();
+    private ArrayList tehdyt;
 
-    public Object getA1() {
+    public Submission() {
+        tehdyt = new ArrayList();
+    }
+
+    public boolean isA1() {
         return a1;
     }
 
     public void setA1(boolean a1) {
         this.a1 = a1;
-        if (a1 = true) {
+        if (a1 == true) {
             tehdyt.add(a1);
         }
     }
@@ -47,7 +51,7 @@ public class Submission {
 
     public void setA2(boolean a2) {
         this.a2 = a2;
-        if (a2 = true) {
+        if (a2 == true) {
             tehdyt.add(a2);
         }
     }
@@ -58,7 +62,7 @@ public class Submission {
 
     public void setA3(boolean a3) {
         this.a3 = a3;
-        if (a3 = true) {
+        if (a3 == true) {
             tehdyt.add(a3);
         }
     }
@@ -69,7 +73,7 @@ public class Submission {
 
     public void setA4(boolean a4) {
         this.a4 = a4;
-        if (a4 = true) {
+        if (a4 == true) {
             tehdyt.add(a4);
         }
     }
@@ -80,7 +84,7 @@ public class Submission {
 
     public void setA5(boolean a5) {
         this.a5 = a5;
-        if (a5 = true) {
+        if (a5 == true) {
             tehdyt.add(a5);
         }
     }
@@ -91,7 +95,7 @@ public class Submission {
 
     public void setA6(boolean a6) {
         this.a6 = a6;
-        if (a6 = true) {
+        if (a6 == true) {
             tehdyt.add(a6);
         }
     }
@@ -102,7 +106,7 @@ public class Submission {
 
     public void setA7(boolean a7) {
         this.a7 = a7;
-        if (a7 = true) {
+        if (a7 == true) {
             tehdyt.add(a7);
         }
     }
@@ -113,7 +117,7 @@ public class Submission {
 
     public void setA8(boolean a8) {
         this.a8 = a8;
-        if (a8 = true) {
+        if (a8 == true) {
             tehdyt.add(a8);
         }
     }
@@ -124,7 +128,7 @@ public class Submission {
 
     public void setA9(boolean a9) {
         this.a9 = a9;
-        if (a9 = true) {
+        if (a9 == true) {
             tehdyt.add(a9);
         }
     }
@@ -135,7 +139,7 @@ public class Submission {
 
     public void setA10(boolean a10) {
         this.a10 = a10;
-        if (a10 = true) {
+        if (a10 == true) {
             tehdyt.add(a10);
         }
     }
@@ -146,7 +150,7 @@ public class Submission {
 
     public void setA11(boolean a11) {
         this.a11 = a11;
-        if (a11 = true) {
+        if (a11 == true) {
             tehdyt.add(a11);
         }
     }
@@ -157,7 +161,7 @@ public class Submission {
 
     public void setA12(boolean a12) {
         this.a12 = a12;
-        if (a12 = true) {
+        if (a12 == true) {
             tehdyt.add(a12);
         }
     }
@@ -168,7 +172,7 @@ public class Submission {
 
     public void setA13(boolean a13) {
         this.a13 = a13;
-        if (a13 = true) {
+        if (a13 == true) {
             tehdyt.add(a13);
         }
     }
@@ -179,7 +183,7 @@ public class Submission {
 
     public void setA14(boolean a14) {
         this.a14 = a14;
-        if (a14 = true) {
+        if (a14 == true) {
             tehdyt.add(a14);
         }
     }
@@ -190,7 +194,7 @@ public class Submission {
 
     public void setA15(boolean a15) {
         this.a15 = a15;
-        if (a15 = true) {
+        if (a15 == true) {
             tehdyt.add(a15);
         }
     }
@@ -201,7 +205,7 @@ public class Submission {
 
     public void setA16(boolean a16) {
         this.a16 = a16;
-        if (a16 = true) {
+        if (a16 == true) {
             tehdyt.add(a16);
         }
     }
@@ -212,7 +216,7 @@ public class Submission {
 
     public void setA17(boolean a17) {
         this.a17 = a17;
-        if (a17 = true) {
+        if (a17 == true) {
             tehdyt.add(a17);
         }
     }
@@ -223,7 +227,7 @@ public class Submission {
 
     public void setA18(boolean a18) {
         this.a18 = a18;
-        if (a18 = true) {
+        if (a18 == true) {
             tehdyt.add(a18);
         }
     }
@@ -234,7 +238,7 @@ public class Submission {
 
     public void setA19(boolean a19) {
         this.a19 = a19;
-        if (a19 = true) {
+        if (a19 == true) {
             tehdyt.add(a19);
         }
     }
@@ -245,7 +249,7 @@ public class Submission {
 
     public void setA20(boolean a20) {
         this.a20 = a20;
-        if (a20 = true) {
+        if (a20 == true) {
             tehdyt.add(a20);
         }
     }
@@ -256,7 +260,7 @@ public class Submission {
 
     public void setA21(boolean a21) {
         this.a21 = a21;
-        if (a21 = true) {
+        if (a21 == true) {
             tehdyt.add(a21);
         }
     }
@@ -287,18 +291,85 @@ public class Submission {
 
     @Override
     public String toString() {
+        kokoaTehtavat();
         String tehty = tehdyt();
-        
         return "viikko "+week+": "+"tehtyjä tehtäviä yhteensä: "+tehdyt.size()+", aikaa kului "+hours+" tuntia, tehdyt tehtävät: "+tehty;
     }
 
     private String tehdyt() {
         String tehty = "";
         for (int i = 0; i < tehdyt.size(); i++) {
-            tehty = tehty+" "+i;
+            tehty = tehty+" "+(i+1);
         }
         
         return tehty;
+    }
+
+    // Ruma ratkaisu, mutta loppupeleissä, tämä oli ainoa asia, joka toimi...
+    private void kokoaTehtavat() {
+        if (a1 == true) {
+            tehdyt.add(a1);
+        }
+        if (a2 == true) {
+            tehdyt.add(a2);
+        }
+        if (a3 == true) {
+            tehdyt.add(a3);
+        }
+        if (a4 == true) {
+            tehdyt.add(a4);
+        }
+        if (a5 == true) {
+            tehdyt.add(a5);
+        }
+        if (a6 == true) {
+            tehdyt.add(a6);
+        }
+        if (a7 == true) {
+            tehdyt.add(a7);
+        }
+        if (a8 == true) {
+            tehdyt.add(a8);
+        }
+        if (a9 == true) {
+            tehdyt.add(a9);
+        }
+        if (a10 == true) {
+            tehdyt.add(a10);
+        }
+        if (a11 == true) {
+            tehdyt.add(a11);
+        }
+        if (a12 == true) {
+            tehdyt.add(a12);
+        }
+        if (a13 == true) {
+            tehdyt.add(a13);
+        }
+        if (a14 == true) {
+            tehdyt.add(a14);
+        }
+        if (a15 == true) {
+            tehdyt.add(a15);
+        }
+        if (a16 == true) {
+            tehdyt.add(a16);
+        }
+        if (a17 == true) {
+            tehdyt.add(a17);
+        }
+        if (a18 == true) {
+            tehdyt.add(a18);
+        }
+        if (a19 == true) {
+            tehdyt.add(a19);
+        }
+        if (a20 == true) {
+            tehdyt.add(a20);
+        }
+        if (a21 == true) {
+            tehdyt.add(a21);
+        }
     }
     
 }
