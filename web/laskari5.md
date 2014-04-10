@@ -591,7 +591,7 @@ tehtävien kirjaus:
 
 palaute tehtävistä:
 
-* Lisää viikon 1 tehtävässä 11 forkaamasi repositorion omalla nimelläsi olevaan hakemistoon tiedosto nimeltä viikko2
+* Lisää viikon 1 tehtävässä 11 forkaamasi repositorion omalla nimelläsi olevaan hakemistoon tiedosto nimeltä viikko5
 * tee viime viikon tehtävän tapaan pull-request
   * anna tehtävistä palautetta avautuvaan lomakkeeseen
   * huom: jos teeh tehtävät alkuviikosta, voi olla, että edellistä pull-requestiasi ei ole vielä ehditty hyväksyä ja et pääse vielä tekemään uutta requestia
