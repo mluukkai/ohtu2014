@@ -299,7 +299,7 @@ Osassa *build* määritellään kääntämiseen liittyvien pluginien toimintaa
 
 Hae repositorion [https://github.com/mluukkai/ohtu2014](https://github.com/mluukkai/ohtu2014) hakemistossa viikko5/TyhjaProjekti lähes tyhjän maven-projektin runko.
 
-* mukana on kaksi kohta tarvitsemaasi luokkaa: __Palautus__ ja __Palautukset__:
+* mukana on kohta tarvitsemasi luokka __Submission__ 
 
 Tehdään ohjelma jonka avulla voit lukea kurssilla palauttamiesi tehtävien statistiikan osoitteesta [http://ohtustats.herokuapp.com/](http://ohtustats.herokuapp.com/)
 
