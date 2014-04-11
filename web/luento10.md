@@ -190,7 +190,7 @@ Voimme siistiä koodia Comparatoreja rakentavan tehdasmetodin avulla. Periaattee
 Tehdasmetodin nimi on siis <code>by</code>. 
 
 Koska <code>Player</code>-olioiden getterimetodit ovat parametrittomia ja palauttavat arvon kokonaislukuarvon, ne 
-toteuttavat rajapinnan <code>Function<Player, Integer></code>. Tehtaan koodi on seuraavassa:
+toteuttavat rajapinnan <code>Function&#60;Player, Integer></code>. Tehtaan koodi on seuraavassa:
 
 ``` java
     public static Comparator<Player> by(Function<Player, Integer> getter){
