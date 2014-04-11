@@ -15,4 +15,8 @@ Ohjelmistotuotannon ensimmäisen viikon tehtävät.
 Jenkins-sivuni:
 http://ohtu.jamo.io/job/ilehikoi-viikko1/
 
+viikko5
+=======
 Testataan git:in stash komentoa ja sitä varten tehdään tähän muutos, jota ei kuitenkaan vielä haluta kommittaa. Vaan se stashataan. siis uusi yritys...
+
+tässä 5 tehtävässä piti lisätä ja poistaa tiedosto ja sitten piti tehdä muutoksia johonkin tiedostoon ja vähän väliä comitoida.
