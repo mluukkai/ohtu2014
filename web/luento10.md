@@ -1,7 +1,6 @@
 ## Pelaajastatistiikkaa Java 8:lla
 
-Muokataan hieman  
-[viikon 2 laskareissa]
+Muokataan hieman  [viikon 2 laskareissa]
 (https://github.com/mluukkai/ohtu2014/tree/master/viikko2)
 työn alla ollutta NHL-pelaajastatistiikka-ohjelmaa.
 
