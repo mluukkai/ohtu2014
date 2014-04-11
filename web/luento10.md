@@ -115,8 +115,6 @@ Yleistetyn metodin avulla on nyt helppo tehdä mielivaltaisen monimutkaisia haku
     public static void main(String[] args) {
         Statistics stats = new Statistics();
         
-        Statistics stats = new Statistics();
-        
         stats.find(p->p.getGoals()>20 && p.getAssists()>20).forEach(out::println);
     }        
 ```
@@ -176,7 +174,6 @@ Comparator-olioiden luominen on hieman ikävää, varsinkin jos joutuisimme luom
 
 ``` java
     Comparator<Player> byPoints = (p1, p2)->p2.getPoints()-p1.getPoints();
-    byPoints = compareBy(Player::getPoints);
     Comparator<Player> byGoals = (p1, p2)->p2.getGoals()-p1.getGoals();
     Comparator<Player> byAssists = (p1, p2)->p2.getAssists()-p1.getAssists();
     Comparator<Player> byPEnalties = (p1, p2)->p2.getPenalties()-p1.getPenalties();
