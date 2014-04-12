@@ -326,7 +326,7 @@ Tarkastellaan ensin yksinkertaisempaa tapausta, NHL-tulospalveluohjelmasta löyt
     });
 ```
 
-Nyt siis luotava olio "konfiguroidaan" antamalle pelaajalle lisättävälle metodille <code>create</code> lambda-lausekkeena määriteltävä koodilohko joka asettaa pelaajan kentille sopivat alkuarvot.
+Nyt siis luotava olio "konfiguroidaan" antamalle pelaajan luovalle metodille <code>create</code> lambda-lausekkeena määriteltävä koodilohko, joka asettaa pelaajan kentille sopivat alkuarvot.
 
 Metodin toteutus näyttää seuraavalta:
 
@@ -351,7 +351,7 @@ public class Player implements Comparable<Player> {
 }
 ```
 
-Metodin parametrina on siis <code>Consumer&#60;Player></code>-tyyppinen olio. Käytännössä kyseessä on rajapinta, joka määrittelee että sen toteuttajalla on metodi <code>void accept(Player)</code>. Rajapinnan toteuttava olio on helppo luoda lambda-lausekkeen avulla. Käytännössä siis rakentajametodi toimii siten, että se luo ensin pelaaja-olion ja kutsuu sen jälkeen metodin parametrina olevaa lambda-lausekkeen avulla määriteltyä koodilohkoa antaen luodun pelaaja-olion parametriksi. Näin koodilohkoon määritellyt setterikutsut suoritetaan luodulle pelaajaoliolle. Rakentajametodi palauttaa sitten luodun ja määritellyllä tavalla "konfiguroidun" olion kutsujalle.
+Metodin parametrina on siis <code>Consumer&#60;Player></code>-tyyppinen olio. Käytännössä kyseessä on rajapinta, joka määrittelee että sen toteuttajalla on metodi <code>void accept(Player p)</code>. Rajapinnan toteuttava olio on helppo luoda lambda-lausekkeen avulla. Käytännössä siis rakentajametodi toimii siten, että se luo ensin pelaaja-olion ja kutsuu sen jälkeen metodin parametrina olevaa lambda-lausekkeen avulla määriteltyä koodilohkoa antaen luodun pelaaja-olion parametriksi. Näin koodilohkoon määritellyt setterikutsut suoritetaan luodulle pelaajaoliolle. Rakentajametodi palauttaa lopuksi luodun ja määritellyllä tavalla "konfiguroidun" olion kutsujalle.
 
 Eli käytännössä jos rakentajaa kutsutaan seuraavasti:
 
@@ -381,13 +381,13 @@ rakentajan sisällä suoritettava toiminnallisuus vastaa seuraavaa:
 
 Rakentajan pelaaja-oliolle suorittamat komennot voidaan siis antaa lambda-lausekkeen muodossa parametrina.
 
-Näin saadaan erittäin joustava tapa luoda olioita, toisin kuin normaalia konstruktoria käytettäessä, riittää että oliolle kutsutaan ainoastaan niitä settereitä joiden avulla tietty kenttä halutaan alustuvan, muut kentät saavat oletusarvoisen alkuarvon.
+Näin saadaan erittäin joustava tapa luoda olioita, toisin kuin normaalia konstruktoria käytettäessä, riittää että oliolle kutsutaan ainoastaan niitä settereitä, joiden avulla tietty kenttä halutaan alustuvan, muut kentät saavat oletusarvoisen alkuarvon.
 
-Koska pelaaja-olion muodostaminen on suhteellisen suoraviivaista, rakentajasta ei tälläkertaa oltu tehty erillistä luokkaa ja rakentaminen hoitui staattisen metodin <code>create</code> sekä olion settereiden avulla.
+Koska pelaaja-olion muodostaminen on suhteellisen suoraviivaista, rakentajasta ei tällä kertaa oltu tehty erillistä luokkaa ja rakentaminen hoitui staattisen metodin <code>create</code> sekä olion settereiden avulla.
 
-Dekoroitujen pinojen rakentaminen on hieman monimutkaisempi operaatio joten rakentajasta kannattaa tehdä oma luokkansa. 
+Dekoroitujen pinojen rakentaminen on hieman monimutkaisempi operaatio, joten rakentajasta kannattaa tehdä oma luokkansa. 
 
-Seuraavassa esimerkki siitä miten pinoja on tarkoitus rakentaa: 
+Seuraavassa esimerkki siitä, miten pinoja on tarkoitus rakentaa: 
 
 ``` java
     PinonRakentaja builder = new PinonRakentaja();
@@ -406,7 +406,7 @@ Seuraavassa esimerkki siitä miten pinoja on tarkoitus rakentaa:
 
 Periaate on siis sama kuin pelaajaolioiden rakentamisessa. Pinolle liitettävät ominaisuudet määritellään lambda-lausekkeen avulla.
 
-Pinolle ominaisuuksia dekoroivat metodit eivät tällä kertaa ole luokan Pino metodeja vaan pinonrakentajan metodeja, joten rakentajan metodin <code>create</code> parametri onkin nyt tyypiltään pinonrakentaja:
+Pinolle ominaisuuksia dekoroivat metodit eivät tällä kertaa ole luokan Pino metodeja, vaan pinonrakentajan metodeja, joten rakentajan metodin <code>create</code> parametri onkin nyt tyypiltään pinonrakentaja:
 
 ``` java
 public class PinonRakentaja {
@@ -438,7 +438,6 @@ Eli kun kutsutaan esim:
     Pino pino1 = builder.create(p->{
         p.kryptaava();
         p.prepaid(10);
-        p.logaava(tiedostoon);
     });
 ```
 
@@ -451,7 +450,6 @@ rakentajan sisällä suoritettava toiminnallisuus vastaa seuraavaa:
         // saa aikaan seuraavat:
         this.kryptaava();
         this.prepaid(10);
-        this.logaava(tiedostoon);
         return pino;
     }
 ```
