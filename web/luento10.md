@@ -28,7 +28,7 @@ Java 8:ssa kaikille rajapinnan  [Interable](http://docs.oracle.com/javase/8/docs
     });
 ```
 
-Nyt parametrina on labda-lauseke <code>s->{ System.out.println(s); }</code>. Lausekkeen parametrina on nuolen vasemmalla puolella oleva _s_. Nuolen oikealla puolella on lausekkeen koodilohko, joka tulostaa parametrina olevan pelaajan. Metodi <code>forEach</code> siis kutsuu jokaiselle kokoelman pelaajalle lambda-lauseketta.
+Nyt parametrina on lambda-lauseke <code>s->{ System.out.println(s); }</code>. Lausekkeen parametrina on nuolen vasemmalla puolella oleva _s_. Nuolen oikealla puolella on lausekkeen koodilohko, joka tulostaa parametrina olevan pelaajan. Metodi <code>forEach</code> siis kutsuu jokaiselle kokoelman pelaajalle lambda-lauseketta.
 
 Lambda-lauseke olisi voitu kirjoittaa myös kokonaan yhdelle riville. Tällöin koodilohkoa ei ole välttämätöntä laittaa aaltosulkeisiin:
 
@@ -49,11 +49,11 @@ Java täydentääkin edellä määritellyn lambda-lausekkeen anonyymiksi sisälu
     });
 ```
 
-Java 8:ssa on mahdollista viitata myös luokkien yksittäisiin metodeihin. Metdodi joka ottaa parametrikseen merkkijonon ja ei palauta mitään onkin tyyppiä <code>Consumer&#60;String></code>
+Java 8:ssa on mahdollista viitata myös luokkien yksittäisiin metodeihin. Metodi joka ottaa parametrikseen merkkijonon ja ei palauta mitään onkin tyyppiä <code>Consumer&#60;String></code>
 
 Voimmekin antaa metodille <code>forEach</code> parametriksi viittauksen metodiin. Java 8:ssa metodeihin viitataan syntaksilla <code>Luokka::metodi</code>. 
 
-Voimmekin muuttaa parhaiden pistemisten tulostuksen seuraavaan muotoon
+Voimmekin muuttaa parhaiden pistemiesten tulostuksen seuraavaan muotoon
 
 ``` java
     stats.topScorers(10).forEach(System.out::println);
@@ -120,7 +120,7 @@ Yleistetyn metodin avulla on nyt helppo tehdä mielivaltaisen monimutkaisia haku
     }        
 ```
 
-Java 8:ssa rajapinnoilla voi olla oleutustoteutuksen omaavia metodeja. Rajapinnalla <code>Predicate</code> löytyykin mukavasti valmiiksi toteutetut metodit <code>and</code>, <code>or</code> ja <code>negate</code>. Näiden avulla on helppo muodostaa yksittäisten esim. lambda-lausekkeen avulla muodostettujen ehtojen avulla mielivaltaisen monimutkaisia ehtoja. Seuraavassa edellisen esimerkin tuloksen tuottava haku de Morganin lakia hyväksikäyttäen muodostettuna:
+Java 8:ssa rajapinnoilla voi olla oletustoteutuksen omaavia metodeja. Rajapinnalla <code>Predicate</code> löytyykin mukavasti valmiiksi toteutetut metodit <code>and</code>, <code>or</code> ja <code>negate</code>. Näiden avulla on helppo muodostaa yksittäisten esim. lambda-lausekkeen avulla muodostettujen ehtojen avulla mielivaltaisen monimutkaisia ehtoja. Seuraavassa edellisen esimerkin tuloksen tuottava haku de Morganin lakia hyväksikäyttäen muodostettuna:
 
 ``` java
     Statistics stats = new Statistics();
@@ -179,7 +179,7 @@ Jotta myös muunlaiset järjestykset olisivat mahdollisia, generalisoidaan metod
     }
 ```
 
-Metodin tarvitsema vertailujaolio on helppo luoda lambda-lausekkeena:
+Metodin tarvitsema vertailijaolio on helppo luoda lambda-lausekkeena:
 
 ``` java
     Comparator<Player> byPoints = (p1, p2)->p2.getPoints()-p1.getPoints();
@@ -241,7 +241,7 @@ Seuraavassa pelaajat listattuna ensisijaisesti tehtyjen maalien ja toissijaisest
     stats.sorted(order, 20).forEach(out::println);
 ```
 
-### numeerinen statsitiikka 
+### numeerinen statistiikka 
 
 Haluaisimme laskea erilaisia numeerisia tilastoja pelaajista. Esim. yksittäisen joukkueen yhteenlasketun maalimäärän. 
 
