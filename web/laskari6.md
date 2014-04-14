@@ -1,6 +1,6 @@
-# Laskari 6 UNDER COSTRUCTION
+# Laskari 6
 
-## Huom: ohjausta tehtävien tekoon to klo 14-16 ja pe klo 14-16 salissa BK107
+## Huom: ohjausta tehtävien tekoon to klo 12-14 ja pe klo 14-16 salissa BK107
 
 ### Tehtävien palautuksen deadline vasta **su 5.5. klo 23.59**
 
