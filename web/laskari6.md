@@ -10,6 +10,9 @@
   * kannattaa käyttää samaa repoa kuin edellisten viikkojen tehtävissä
 * palautusrepositorion nimi ilmoitetaan tehtävien lopussa olevalla palautuslomakkeella
 
+## Java 8
+
+Useimmissa viikon tehtävistä voi ja kannattaakin hyödyntää Java 8:ia. Jos haluat tehdä näin, muuta pom.xml:stä source maven-compiler-plugin:in source- ja target-versioiksi 1.8.
 
 ## 1. Laskin ja komento-oliot
 
