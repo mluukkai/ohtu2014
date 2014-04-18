@@ -1,0 +1,29 @@
+#surefire
+#Wed Mar 19 10:17:05 EET 2014
+testClassesDirectory=/Users/henrikorpela/viikko2_ohtu/viikko2/Ohtu-NhlStatistics1/target/test-classes
+classPathUrl.3=/Users/henrikorpela/.m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar
+classPathUrl.2=/Users/henrikorpela/.m2/repository/junit/junit/4.10/junit-4.10.jar
+useManifestOnlyJar=true
+classPathUrl.1=/Users/henrikorpela/viikko2_ohtu/viikko2/Ohtu-NhlStatistics1/target/classes
+reportsDirectory=/Users/henrikorpela/viikko2_ohtu/viikko2/Ohtu-NhlStatistics1/target/surefire-reports
+classPathUrl.0=/Users/henrikorpela/viikko2_ohtu/viikko2/Ohtu-NhlStatistics1/target/test-classes
+dirscanner.0=directoryScannerOptions
+providerConfiguration=org.apache.maven.surefire.junit4.JUnit4Provider
+testSuiteDefinitionTestSourceDirectory=/Users/henrikorpela/viikko2_ohtu/viikko2/Ohtu-NhlStatistics1/src/test/java
+surefireClassPathUrl.1=/Users/henrikorpela/.m2/repository/org/apache/maven/surefire/surefire-api/2.7.2/surefire-api-2.7.2.jar
+surefireClassPathUrl.0=/Users/henrikorpela/.m2/repository/org/apache/maven/surefire/surefire-junit4/2.7.2/surefire-junit4-2.7.2.jar
+runOrder=filesystem
+report.2=org.apache.maven.surefire.report.XMLReporter
+useSystemClassLoader=true
+report.1=org.apache.maven.surefire.report.BriefFileReporter
+report.0=org.apache.maven.surefire.report.ForkingConsoleReporter
+excludes0=**/*$*
+isTrimStackTrace=true
+dirscanner.0.params=/Users/henrikorpela/viikko2_ohtu/viikko2/Ohtu-NhlStatistics1/target/test-classes|[**/Test*.java, **/*Test.java, **/*TestCase.java]|[**/*$*]
+enableAssertions=true
+includes2=**/*TestCase.java
+failIfNoTests=false
+includes1=**/*Test.java
+dirscanner.0.types=java.io.File|java.util.ArrayList|java.util.ArrayList
+includes0=**/Test*.java
+childDelegation=false
