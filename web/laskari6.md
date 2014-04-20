@@ -435,7 +435,6 @@ tee referaatti vielä neljännestä tehtävän 12 artikkelista
 tehtävien kirjaus:
 
 * Kirjaa tekemäsi tehtävät [tänne](http://ohtustats.herokuapp.com) 
-  * **Palautus onnistuu vasta ma 14.4.**
   * huom: tehtävien palautuksen deadline on su 4.5. klo 23.59
 
 palaute tehtävistä:
