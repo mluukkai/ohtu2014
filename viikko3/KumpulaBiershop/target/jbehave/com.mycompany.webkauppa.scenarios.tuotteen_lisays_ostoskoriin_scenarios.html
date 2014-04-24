@@ -1,0 +1,27 @@
+<div class="story">
+<h1></h1>
+<div class="path">com/mycompany/webkauppa/scenarios/tuotteen_lisays_ostoskoriin_scenarios.story</div>
+<div class="scenario">
+<h2>Scenario: Price and itemcount is shown when an item is added to shopping cart</h2>
+<div class="step successful">Given you are in tuotelista</div>
+<div class="step successful">When item <span class="step parameter">Weihenstephaner</span> is added to shoppingcart</div>
+<div class="step successful">Then the number of items in cart should be <span class="step parameter">1</span></div>
+<div class="step successful">And the total price of cart should correspond the price of item <span class="step parameter">Weihenstephaner</span></div>
+</div>
+<div class="scenario">
+<h2>Scenario: Price and itemcount is shown when two different items are added to shopping cart</h2>
+<div class="step successful">Given you are in tuotelista</div>
+<div class="step successful">When item <span class="step parameter">Weihenstephaner</span> is added to shoppingcart</div>
+<div class="step successful">And item <span class="step parameter">Karjala</span> is added to shoppingcart</div>
+<div class="step successful">Then the number of items in cart should be <span class="step parameter">2</span></div>
+<div class="step successful">And the total price of cart should correspond the price of items <span class="step parameter">Weihenstephaner</span> and <span class="step parameter">Karjala</span></div>
+</div>
+<div class="scenario">
+<h2>Scenario: Price and itemcount is shown when two same items are added to shopping cart</h2>
+<div class="step successful">Given you are in tuotelista</div>
+<div class="step successful">When item <span class="step parameter">Weihenstephaner</span> is added to shoppingcart</div>
+<div class="step successful">And item <span class="step parameter">Karjala</span> is added to shoppingcart</div>
+<div class="step successful">Then the number of items in cart should be <span class="step parameter">2</span></div>
+<div class="step successful">And the total price of cart should correspond the price of items <span class="step parameter">Weihenstephaner</span> and <span class="step parameter">Karjala</span></div>
+</div>
+</div>

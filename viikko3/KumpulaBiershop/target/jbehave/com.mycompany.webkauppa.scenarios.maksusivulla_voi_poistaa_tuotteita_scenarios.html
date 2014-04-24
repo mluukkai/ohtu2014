@@ -1,0 +1,21 @@
+<div class="story">
+<h1></h1>
+<div class="path">com/mycompany/webkauppa/scenarios/maksusivulla_voi_poistaa_tuotteita_scenarios.story</div>
+<div class="scenario">
+<h2>Scenario: Count of one item can be reduced</h2>
+<div class="step successful">Given you have <span class="step parameter"><span class="step parameter">Weihenstephaner</span></span> and <span class="step parameter"><span class="step parameter">Weihenstephaner</span></span> in shoppingcart</div>
+<div class="step successful">When link <span class="step parameter">maksa ostokset</span> is clicked</div>
+<div class="step successful">And <span class="step parameter">Weihenstephaner</span> is removed from shoppingcart</div>
+<div class="step successful">Then <span class="step parameter">1</span> times <span class="step parameter">Weihenstephaner</span> is shown at payment page</div>
+</div>
+<div class="scenario">
+<h2>Scenario: If count of item drops to zero, item is removed from list</h2>
+<div class="step successful">Given you have <span class="step parameter">Weihenstephaner</span> and <span class="step parameter">Karjala</span> in shoppingcart</div>
+<div class="step successful">When link <span class="step parameter">maksa ostokset</span> is clicked</div>
+<div class="step successful">And <span class="step parameter">Weihenstephaner</span> is removed from shoppingcart</div>
+<div class="step successful">Then <span class="step parameter">Weihenstephaner</span> is not shown at payment page</div>
+</div>
+<div class="scenario">
+<h2>Scenario: </h2>
+</div>
+</div>

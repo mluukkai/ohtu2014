@@ -1,6 +1,7 @@
 
 package com.mycompany.webkauppa;
 
+import com.mycompany.webkauppa.ohjaus.KomentoTehdas;
 import com.mycompany.webkauppa.sovelluslogiikka.Ostoskori;
 import com.mycompany.webkauppa.sovelluslogiikka.Varasto;
 import java.io.IOException;
@@ -15,9 +16,11 @@ public abstract class WebKauppaServlet extends HttpServlet {
 
     protected HttpSession sessio;
     protected Varasto varasto;
-
+    protected KomentoTehdas komennot;
+    
     public WebKauppaServlet() {
         varasto = Varasto.getInstance();
+        this.komennot = new KomentoTehdas();
     }        
     
     public void naytaSivu(String url, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
