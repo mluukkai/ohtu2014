@@ -1,76 +1,75 @@
-
 package ohtu.kivipaperisakset;
 
-// "Muistava tekoäly"
-
 public class TekoalyParannettu {
-  private String[] muisti;
-  private int vapaaMuistiIndeksi;
 
-  public TekoalyParannettu(int muistinKoko) {
-    muisti = new String[muistinKoko];
-    vapaaMuistiIndeksi = 0;
-  }
-  
-  public void asetaSiirto(String siirto) {
-    // jos muisti täyttyy, unohdetaan viimeinen alkio
-    if(vapaaMuistiIndeksi == muisti.length) {
-      for(int i = 1; i < muisti.length; i++) {
-        muisti[i-1] = muisti[i];
-      }
-      
-      vapaaMuistiIndeksi--;
-    }
-    
-    muisti[vapaaMuistiIndeksi] = siirto;    
-    vapaaMuistiIndeksi++;
-  }
+    private String[] muisti;
+    private int vapaaMuistiIndeksi;
+    private int k;
+    private int s;
+    private int p;
 
-  
-  public String annaSiirto() {
-    if(vapaaMuistiIndeksi == 0 || vapaaMuistiIndeksi == 1) {
-      return "k";
+    public TekoalyParannettu(int muistinKoko) {
+        muisti = new String[muistinKoko];
+        vapaaMuistiIndeksi = 0;
     }
     
-    String viimeisinSiirto = muisti[vapaaMuistiIndeksi - 1];
-    
-    int k = 0;
-    int p = 0;
-    int s = 0;
-    
-    
-    for(int i = 0; i < vapaaMuistiIndeksi - 1; i++) {
-      if(viimeisinSiirto.equals(muisti[i])) {
-        String seuraava = muisti[i+1];
-        
-        if("k".equals(seuraava)) {
-          k++;
+    public void nollaaMuuttujat(){
+        k = 0;
+        s = 0;
+        p = 0;
+    }
+
+    public void asetaSiirto(String siirto) {
+        unohdaViimeinen();
+        muisti[vapaaMuistiIndeksi] = siirto;
+        vapaaMuistiIndeksi++;
+    }
+
+    private void unohdaViimeinen() {
+        if (vapaaMuistiIndeksi == muisti.length) {
+            for (int i = 1; i < muisti.length; i++) {
+                muisti[i - 1] = muisti[i];
+            }
+            vapaaMuistiIndeksi--;
         }
-        else if("p".equals(seuraava)) {
-          p++;
+    }
+
+    public void kasvata(String siirto) {
+        switch (siirto) {
+            case "k": k++; break;
+            case "p": p++; break;
+            default: s++; break;
         }
-        else {
-          s++;
-        }        
-      }
     }
-    
-    
-    // Tehdään siirron valinta esimerkiksi seuraavasti;
-    // - jos kiviä eniten, annetaan aina paperi
-    // - jos papereita eniten, annetaan aina sakset
-    // muulloin annetaan aina kivi
-    if(k > p && k > s) {
-      return "p";
+
+    public String annaSiirto() {
+        if (onkoMuistiaTarpeeksi()) return "k";
+        String viimeisinSiirto = muisti[vapaaMuistiIndeksi - 1];
+        nollaaMuuttujat();
+        haeSiirrot(viimeisinSiirto);
+        return valinta();
     }
-    else if (p > k && p > s) {
-      return "s";
+
+    private boolean onkoMuistiaTarpeeksi() {
+        return vapaaMuistiIndeksi == 0 || vapaaMuistiIndeksi == 1;
     }
-    else {
-      return "k";
+
+    private void haeSiirrot(String viimeisinSiirto) {
+        for (int i = 0; i < vapaaMuistiIndeksi - 1; i++) {
+            if (viimeisinSiirto.equals(muisti[i])) {
+                String seuraava = muisti[i + 1];
+                kasvata(seuraava);  
+            }
+        }
     }
-    
-    // Tehokkaampiakin tapoja löytyy, mutta niistä lisää 
-    // Johdatus Tekoälyyn kurssilla!
-  }
+
+    private String valinta() {
+        if (k > p && k > s) {
+            return "p";
+        } else if (p > k && p > s) {
+            return "s";
+        } else {
+            return "k";
+        }
+    }
 }

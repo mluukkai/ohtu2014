@@ -8,18 +8,30 @@ import static org.junit.Assert.*;
 public class IntJoukkoTest {
 
     IntJoukko joukko;
+    IntJoukko joukko2;
+    IntJoukko tyhja;
 
     @Before
     public void setUp() {
         joukko = new IntJoukko();
         joukko.lisaa(10);
         joukko.lisaa(3);
+        joukko2 = new IntJoukko();
+        joukko2.lisaa(4);
+        joukko.lisaa(3);
+        tyhja = new IntJoukko();
     }
 
     @Test
     public void lukujaLisattyMaara() {
         joukko.lisaa(4);
         assertEquals(3, joukko.mahtavuus());
+    }
+    
+    @Test
+    public void tyhjanTulostus() {
+        assertEquals(0, tyhja.mahtavuus());
+        assertEquals("{}", tyhja.toString());
     }
 
     @Test
@@ -68,6 +80,28 @@ public class IntJoukkoTest {
         joukko.poista(11);
         assertFalse(joukko.kuuluu(11));
         assertEquals(13, joukko.mahtavuus());
+    }
+    
+    @Test 
+    public void leikkausToimii(){
+        IntJoukko leikkausJoukko;
+        leikkausJoukko = IntJoukko.leikkaus(joukko, joukko2);
+        assertEquals(1, leikkausJoukko.mahtavuus());
+    }
+    
+    @Test
+    public void erotusToimii(){
+        IntJoukko erotusJoukko;
+        erotusJoukko = IntJoukko.erotus(joukko, joukko2);
+        assertTrue(erotusJoukko.kuuluu(10));
+        assertEquals(2, erotusJoukko.mahtavuus());
+    }
+    
+    @Test
+    public void yhdisteToimii(){
+        IntJoukko yhdisteJoukko;
+        yhdisteJoukko = IntJoukko.yhdiste(joukko, joukko2);
+        assertEquals(3, yhdisteJoukko.mahtavuus());
     }
     
     @Test

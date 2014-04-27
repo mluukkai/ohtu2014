@@ -4,34 +4,42 @@ import java.util.Scanner;
 
 public class KPSPelaajaVsPelaaja {
 
-    private static final Scanner scanner = new Scanner(System.in);
-
-    public void pelaa() {
-        Tuomari tuomari = new Tuomari();
-
-        System.out.print("Ensimmäisen pelaajan siirto: ");
-        String ekanSiirto = scanner.nextLine();
-        System.out.print("Toisen pelaajan siirto: ");
-        String tokanSiirto = scanner.nextLine();
-
-        while (onkoOkSiirto(ekanSiirto) && onkoOkSiirto(tokanSiirto)) {
-            tuomari.kirjaaSiirto(ekanSiirto, tokanSiirto);
-            System.out.println(tuomari);
-            System.out.println();
-
-            System.out.print("Ensimmäisen pelaajan siirto: ");
-            ekanSiirto = scanner.nextLine();
-            
-            System.out.print("Toisen pelaajan siirto: ");
-            tokanSiirto = scanner.nextLine();
-        }
-
-        System.out.println();
-        System.out.println("Kiitos!");
-        System.out.println(tuomari);
+    private Scanner scanner;
+    private Tuomari tuomari;
+    private String pelaajan1Siirto;
+    private String pelaajan2Siirto;
+    
+    KPSPelaajaVsPelaaja(Scanner scanner, Tuomari tuomari){
+        this.scanner = scanner;
+        this.tuomari = tuomari;
     }
 
-    private static boolean onkoOkSiirto(String siirto) {
+    public void pelaa() {
+        while (true) {
+            kysySiirrot();
+            if(!validiSiirto(pelaajan1Siirto)|| !validiSiirto(pelaajan2Siirto)){
+                break;
+            }
+            tuomari.kirjaaSiirto(pelaajan1Siirto, pelaajan2Siirto);
+            tulostaTulokset();
+        }
+        System.out.println("Kiitos!");
+        tulostaTulokset();
+    }
+    
+    public void tulostaTulokset(){
+        System.out.println("");
+        System.out.println(tuomari);
+    }
+    
+    public void kysySiirrot(){
+        System.out.print("Ensimmäisen pelaajan siirto: ");
+        pelaajan1Siirto = scanner.nextLine();
+        System.out.print("Toisen pelaajan siirto: ");
+        pelaajan2Siirto = scanner.nextLine();
+    }
+
+    private static boolean validiSiirto(String siirto) {
         return "k".equals(siirto) || "p".equals(siirto) || "s".equals(siirto);
     }
 }

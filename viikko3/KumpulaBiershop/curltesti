@@ -1,0 +1,1 @@
+curl -d "" 'http://localhost:8080/MaksaOstokset?nimi=Matti&osoite=Helsinki&luottokorttinumero=1234&ostokset=4,10;1,3'
