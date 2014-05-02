@@ -8,6 +8,10 @@ public class Varasto {
     private static Varasto instanssi;
     private static TuoteDAO tuoteDAO = TuoteDAO.inMemory();
 
+    public static void resetInstance() {
+ 	instanssi = new Varasto();
+    }
+
     public static Varasto getInstance() {
         if (instanssi == null) {
             instanssi = new Varasto();
