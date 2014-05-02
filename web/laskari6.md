@@ -1,6 +1,6 @@
 # Laskari 6
 
-## Huom: ohjausta tehtävien tekoon to klo 12-14 ja pe klo 14-16 salissa BK107
+## Huom: ohjausta tehtävien tekoon to klo 15-17 ja pe klo 14-16 salissa BK107
 
 ### Tehtävien palautuksen deadline vasta **su 4.5. klo 23.59**
 
@@ -10,6 +10,9 @@
   * kannattaa käyttää samaa repoa kuin edellisten viikkojen tehtävissä
 * palautusrepositorion nimi ilmoitetaan tehtävien lopussa olevalla palautuslomakkeella
 
+## Java 8
+
+Useimmissa viikon tehtävistä voi ja kannattaakin hyödyntää Java 8:ia. Jos haluat tehdä näin, muuta pom.xml:stä source maven-compiler-plugin:in source- ja target-versioiksi 1.8.
 
 ## 1. Laskin ja komento-oliot
 
@@ -432,7 +435,6 @@ tee referaatti vielä neljännestä tehtävän 12 artikkelista
 tehtävien kirjaus:
 
 * Kirjaa tekemäsi tehtävät [tänne](http://ohtustats.herokuapp.com) 
-  * **Palautus onnistuu vasta ma 14.4.**
   * huom: tehtävien palautuksen deadline on su 4.5. klo 23.59
 
 palaute tehtävistä:
