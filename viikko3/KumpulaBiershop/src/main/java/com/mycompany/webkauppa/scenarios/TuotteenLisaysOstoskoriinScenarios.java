@@ -43,21 +43,6 @@ public class TuotteenLisaysOstoskoriinScenarios extends WebScenarioBase {
         int hinta2 = etsiTuotteenHinta(item2);
         AssertShoppingcartPrice(hinta1 + hinta2);
     }
-    int vitut = 0;    
-    
-    @Given("vittu")
-    public void givenVittu() {
-        vitut++;
-    }
-    
-    @When("perkele")
-    public void whenPerkele() {
-    }
-    
-    @Then("vittu is said $n times")
-    public void thenVittuIsSaid1Times(int n) {
-        Assert.assertEquals(1, vitut);
-    }
 
     // helpers
     public void AssertShoppingcartItemCount(int num) {
