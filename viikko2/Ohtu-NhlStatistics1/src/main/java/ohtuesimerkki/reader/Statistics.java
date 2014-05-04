@@ -1,18 +1,26 @@
-package ohtuesimerkki;
+package ohtuesimerkki.reader;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Statistics {
 
     private List<Player> players;
 
-    public Statistics() {
-        PlayerReader reader = new PlayerReader("http://nhlstats-2013-14.herokuapp.com/players.txt");
-        players = reader.getPlayers();       
+	private Reader reader;
+
+    @Autowired
+    public Statistics(Reader reader) {
+        this.reader = reader;
+		players = reader.getPlayers();
     }
+	
 
     public Player search(String name) {
         for (Player player : players) {

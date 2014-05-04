@@ -1,11 +1,14 @@
-package ohtuesimerkki;
+package ohtuesimerkki.reader;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class PlayerReader {
+import org.springframework.stereotype.Component;
+
+@Component
+public class PlayerReader implements Reader {
 
     private Scanner scanner;
 

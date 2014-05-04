@@ -1,0 +1,3 @@
+tehty viikko 5 laskarit 8/8 tehtävää.
+hyvä harjoitus pom filen configuroinnista.
+git stash komento oli myös uutta asiaa.
