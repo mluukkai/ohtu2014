@@ -389,7 +389,7 @@ On taas aika perinteisen kurssipalautteen: [https://ilmo.cs.helsinki.fi/kurssit/
 
 ## bonustehtävät
 
-*Viikon maksimi on 9, mutta tekemällä seuraavia voit paikata edellisten viikkojen tekemättömiä rasteja*
+*Viikon maksimi on 9, mutta tekemällä seuraavia voit paikata edellisten viikkojen tekemättömiä rasteja tai tämän viikon aiempia tehtäviä*
 
 ## 10 ja 11 (kahden rastin tehtävä) KPS yksin- ja kaksinpeli
 
