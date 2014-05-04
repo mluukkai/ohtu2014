@@ -11,3 +11,5 @@ target/
 # ei hakemsistoa OhtuVarasto/target/
 OhtuVarasto/target/
 
+/viikko6/Laskin/dist/
+/viikko6/Tennis/dist/
